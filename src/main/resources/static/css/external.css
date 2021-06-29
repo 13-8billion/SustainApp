@@ -1,0 +1,259 @@
+/* removes white margin around edge of background image */
+body {
+    margin: 0 0 0 0;
+    text-align: center;
+}
+
+/* background image */
+.background {
+    background-size: cover;
+    opacity: 100%;
+    min-height: 100vh; /* so background stays full size of viewport*/
+    background-image: url('../images/background.jpeg');
+    width:100%;
+}
+
+/* style main header*/
+.header {
+    text-align: center;
+    color: white;
+    border-bottom: 1px solid white;
+    font-family: Helvetica, sans-serif;
+    font-weight: bolder;
+    text-shadow: 2px 2px 5px black;
+    padding-top: 2px;
+
+}
+
+/* jamie's pizzeria logo*/
+#logo {
+    font-size: 250%;
+    margin-top: 1%;
+}
+
+/* image caption style */
+#caption {
+    font-size: 150%;
+}
+
+/* navigation menu */
+#nav {
+    width: 100%; /*makes the menu width the same as the window width*/
+    margin: 0 0 0 0; /*removes margin and padding*/
+    padding: 0;
+    list-style: none; /*removes bullets from the list*/
+    background-color: white;
+}
+
+#nav li {
+    float: left; /*floats list items left*/
+    clear: right;
+    padding-left: 9.3%;
+    font-size: 80%;
+    padding-top: 1%;
+}
+
+#nav li a {
+    display: block; /*fills up the entire list item and makes the whole area clickable*/
+    padding: 9px 25px;
+    text-decoration: none; /*removes the underline from the anchor*/
+    font-weight: bold;
+    color: white;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+#nav li a:hover {
+    color: #c00;
+    opacity: 50%;
+    background-color: #fff;
+}
+
+
+
+/* main form stylings */
+.form {
+    margin: 3% 1% 1% 0;
+    position: center;
+    font-family: Helvetica, sans-serif;
+    display: inline-block;
+    border: none;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, .5);*/
+    border-radius: 4px;
+    /*background: rgba(255, 255, 255, 0.3); !* allows change in opacity without affecting text opacity*!*/
+    padding-right: 5%;
+    padding-left: 4%;
+}
+
+/* first header in form */
+#formP1, #formR1{
+    font-family: Helvetica, sans-serif;
+    font-size: 130%;
+    color: white;
+    margin: 0 0 0 0;
+    text-shadow: 2px 2px 5px black;
+    padding-bottom: 5%;
+}
+#formP3{
+    font-family: Helvetica, sans-serif;
+    font-size: 100%;
+    color: white;
+    margin: 0 0 0 0;
+    text-shadow: 2px 2px 5px black;
+    padding-left: 10%;
+}
+/* form stylings for input of type text boxes*/
+input[type=text], [type=email], select {
+    width: 110%;
+    padding: 5% 10px;
+    margin: 20px 0;
+    display: inline-block;
+    border-radius: 20px;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, .1);
+    transition: 0.5s;
+    outline: none; /*removes deault 'blue' outline when field is selected*/
+    background-color: rgba(255, 255, 255, .5); /* allows change in opacity without affected text */
+    color: white;
+    font-family: Helvetica, sans-serif;
+    text-align: left;
+    text-shadow: 2px 2px 5px black;
+}
+
+input[type=text]:focus {
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    text-shadow: none;
+}
+input[type=email]:focus {
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    text-shadow: none;
+}
+
+/* form styling for input of type password box*/
+input[type=password], select {
+    width: 110%;
+    padding: 5% 5px;
+    margin: 5px 0;
+    display: inline-block;
+    border-radius: 20px;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, .1);
+    transition: 0.5s;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    font-family: Helvetica, sans-serif;
+    text-shadow: 2px 2px 5px black;
+}
+
+/* gives colour transition to password word when selected*/
+input[type=password]:focus {
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 1);
+    text-shadow: none;
+    color: black;
+}
+
+/* submit box styling */
+input[type=submit], [type=button]{
+    width: 110%;
+    background-color: rgba(55, 158, 190, 1);
+    color: white;
+    padding: 6%;
+    margin: 8px 0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.button{
+    width: 110%;
+    background-color: rgba(55, 158, 190, 1);
+    color: white;
+    padding: 6%;
+    margin: 8px 0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+/* changes colour of submit box on hover*/
+input[type=submit]:hover {
+    background-color: rgba(255, 255, 255, .8);
+    color: rgba(55, 158, 190, 1);
+}
+
+input[type=button]:hover {
+    background-color: rgba(255, 255, 255, .8);
+    color: rgba(55, 158, 190, 1);
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, .8);
+    color: rgba(55, 158, 190, 1);
+}
+
+/* reset box styling */
+input[type=reset] {
+    width: 90%;
+    background-color: white;
+    opacity: 60%;
+    color: black;
+    padding: 11px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+/* changed colour of reset box on hover*/
+input[type=reset]:hover {
+    background-color: red;
+}
+
+/* style when total is displayed */
+#totalNow {
+    color: white;
+    font-size: 200%;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    font-style: italic;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    text-align: center;
+}
+
+/* footer stylings*/
+/*.footer {*/
+/*    font-size: 80%;*/
+/*    color: white;*/
+/*    text-align: center;*/
+/*    font-family:Helvetica, sans-serif;*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    width: 100%;*/
+/*    height: 4rem;            !* Footer height *!*/
+/*    text-shadow: 2px 2px 5px black;*/
+/*    background: rgba(255, 255, 255, 0.3); !*!* allows change in opacity without affecting text opacity*!*!*/
+/*}*/
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+/*#content-wrap {*/
+/*    padding-bottom: 4rem;    !* Footer height *!*/
+/*}*/
+
+

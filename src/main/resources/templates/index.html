@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login/SignUp</title>
+    <meta charset="UTF-8">
+    <link href="css/external.css" th:href="@{css/external.css}" rel="stylesheet"> <!--link to external .css stylesheet-->
+    <script src="js/mainAmyPercival.js"></script> <!--link external JavaScript-->
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script><!-- jquery for alerts plugin-->
+    <script src="jQueryPlugin/jquery.alerts.js"></script> <!-- jquery alerts plugin1-->
+    <link href="jQueryPlugin/jquery.alerts.css" rel="stylesheet"> <!-- js alert plugin1 .css stylesheet-->
+</head>
+<body>
+<div id="page-container">
+    <div id="content-wrap">
+<!--background image-->
+<div class="background">
+    <div class="header">
+        <figure> <!-- to add a caption underneath the logo-->
+            <p id="logo"> S &nbsp;&nbsp; U &nbsp;&nbsp; S &nbsp;&nbsp; T &nbsp;&nbsp; A &nbsp;&nbsp; I &nbsp;&nbsp;
+                N</p>
+            <figcaption> <!--content of caption-->
+                <div id="h2">
+                    <p id="caption"> S&nbsp; U&nbsp; S&nbsp; T&nbsp; A&nbsp; I&nbsp; N&nbsp; A&nbsp; B&nbsp; L&nbsp; E&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp; L&nbsp; I&nbsp; F&nbsp; E&nbsp; S&nbsp; T&nbsp; Y&nbsp;L&nbsp;E &nbsp;&nbsp;&nbsp;&nbsp;
+                        A&nbsp; P&nbsp; P
+                    </p>
+                </div>
+            </figcaption>
+        </figure>
+    </div>
+
+    <!-- form begins here-->
+    <div class="form">
+        <form name="loginForm" id="loginForm" method="post" action=" mailto:x20163266@student.ncirl.ie"
+              onsubmit="return !! validateForm()">
+            <!-- call validate function in 'form' tag when user clicks submit button-->
+            <p id="formP1">Log in to continue:</p>
+            <table>
+                <tr>
+                    <!--username input field-->
+                    <td>
+                            <input type="text" name="username" size="35" value="Enter username">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+
+                    <td>
+                            <input type="password" name="password" size="35" value ="Enter password">
+                        <!-- 'size' changes length of input box-->
+                    </td>
+                </tr>
+                <tr><!-- submit button -->
+                    <td>
+                        <input id="login" type="submit" name="login" value="LOGIN">
+                    </td>
+                </tr>
+                <tr><!-- submit button -->
+                    <td>
+                        <p id = "formP3">OR</p>
+                    </td>
+                </tr>
+                <tr><!-- submit button -->
+                    <td>
+                        <a href="signUp"><input id="signUp" type="button" name="signUp" value="SIGN UP"></a>
+                    </td>
+                </tr>
+            </table>
+            <!--form ends-->
+        </form>
+    </div>
+    </div>
+<!--    <footer class="footer">-->
+<!--        &lt;!&ndash; footer &ndash;&gt;-->
+<!--        <p> S U S T A I N </p>-->
+<!--        <p> Copyrights © 2021 All Rights Reserved By Amy</p>-->
+<!--    </footer>-->
+        </div>
+</div>
+
+</body>
+</html>
