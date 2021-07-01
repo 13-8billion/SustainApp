@@ -1,6 +1,7 @@
-package sustain.project;
+package sustain.project.classes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sustain.project.interfaces.UserRepo;
 
 import java.util.List;
 

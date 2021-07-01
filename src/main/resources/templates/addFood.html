@@ -1,10 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <title>Add Food</title>
     <meta charset="UTF-8">
-    <title>SUSTAIN: Add Food</title>
+    <link href="../css/external.css" th:href="@{../css/external.css}" rel="stylesheet"> <!--link to external .css stylesheet-->
+    <script src="js/mainAmyPercival.js"></script> <!--link external JavaScript-->
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script><!-- jquery for alerts plugin-->
+    <script src="jQueryPlugin/jquery.alerts.js"></script> <!-- jquery alerts plugin1-->
+    <link href="jQueryPlugin/jquery.alerts.css" rel="stylesheet"> <!-- js alert plugin1 .css stylesheet-->
 </head>
 <body>
-jbkjb
+<div id="page-container">
+    <div id="content-wrap">
+        <div class="background">
+            <div class="header">
+                <figure> <!-- to add a caption underneath the logo-->
+                    <p id="logo"> S &nbsp;&nbsp; U &nbsp;&nbsp; S &nbsp;&nbsp; T &nbsp;&nbsp; A &nbsp;&nbsp; I &nbsp;&nbsp;
+                        N</p>
+                    <figcaption> <!--content of caption-->
+                        <div id="h2">
+                            <p id="caption"> S&nbsp; U&nbsp; S&nbsp; T&nbsp; A&nbsp; I&nbsp; N&nbsp; A&nbsp; B&nbsp; L&nbsp;
+                                E&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp; L&nbsp; I&nbsp; F&nbsp; E&nbsp; S&nbsp; T&nbsp; Y&nbsp;L&nbsp;E
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                A&nbsp; P&nbsp; P
+                            </p>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <!-- form begins here-->
+            <div class="form">
+                <form action="#" th:action="@{//save}" th:object="${food}" method="post">
+                    <!-- call validate function in 'form' tag when user clicks submit button-->
+                    <p id="formR1">SIGN UP:</p>
+                    <table>
+                        <tr>
+                            <!--username input field-->
+                            <td>
+                                <select id=food name="food" th:field="*{foodName}">
+                                    <option value="" disabled selected>Choose Food</option>
+                                    <option th:value="apples">Apple</option>
+                                    <option th:value="bananas">Banana</option>
+                                    <option th:value="beefDairy">Beef (dairy herd)</option>
+                                    <option th:value="beefHerd">Beef (beef herd)</option>
+                                    <option th:value="beer">Beer (5% ABV)</option>
+                                    <option th:value="beetSugar">Beet Sugar</option>
+                                    <option th:value="berries">Berries</option>
+                                    <option th:value="bread">Bread (wheat & rye)</option>
+                                    <option th:value="caneSugar">Cane Sugar</option>
+                                    <option th:value="cheese">Cheese</option>
+                                    <option th:value="citrus">Citrus Fruit</option>
+                                    <option th:value="coffee">Coffee (1 portion = 15g)</option>
+                                    <option th:value="darkChocolate">Dark Chocolate</option>
+                                    <option th:value="eggs">Eggs</option>
+                                    <option th:value="fishFarmed">Fish (farmed)</option>
+                                    <option th:value="grains">Grains</option>
+                                    <option th:value="groundnuts">Groundnuts</option>
+                                    <option th:value="lamb">Lamb</option>
+                                    <option th:value="maize">Maize (meal)</option>
+                                    <option th:value="milk">Milk (dairy)</option>
+                                    <option th:value="soymilk">Milk (soy)</option>
+                                    <option th:value="nuts">Nuts</option>
+                                    <option th:value="oatmeal">Oatmeal</option>
+                                    <option th:value="oliveOil">Olive Oil</option>
+                                    <option th:value="onionsLeeks">Onions & Leeks</option>
+                                    <option th:value="palmOil">Palm Oil</option>
+                                    <option th:value="peas">Peas</option>
+                                    <option th:value="pork">Pork</option>
+                                    <option th:value="potatoes">Potatoes</option>
+                                    <option th:value="poultry">Poultry</option>
+                                    <option th:value="prawnsFarmed">Prawns (farmed)</option>
+                                    <option th:value="pulses">Pulses</option>
+                                    <option th:value="rapeseedOil">Rapeseed Oil</option>
+                                    <option th:value="rice">Rice</option>
+                                    <option th:value="rootVegetables">Root Vegetables</option>
+                                    <option th:value="soybeanOil">Soybean Oil</option>
+                                    <option th:value="sunflowerOil">Sunflower Oil</option>
+                                    <option th:value="tofu">Tofu</option>
+                                    <option th:value="tomatoes">Tomatoes</option>
+                                    <option th:value="wine">Wine</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <select th:field="${food.foodName}">
+                                        <option value="0">Select Food</option>
+                                        <option th:each="food : ${listFood}" th:value="${food.foodID}" th:text="${food.foodName}"></option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                        <tr>
+                            <td>
+                                <!-- 'size' changes length of input box-->
+                            </td>
+                        </tr>
+                        <tr><!-- submit button -->
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <!--form ends-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

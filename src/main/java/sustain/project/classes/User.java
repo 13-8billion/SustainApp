@@ -1,4 +1,4 @@
-package sustain.project;
+package sustain.project.classes;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
