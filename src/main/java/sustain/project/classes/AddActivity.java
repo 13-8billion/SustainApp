@@ -32,7 +32,6 @@ public class AddActivity {
         this.activityID = activityID;
     }
 
-
     public void setActivityType(String activityType) {
         this.activityType = activityType;
     }
