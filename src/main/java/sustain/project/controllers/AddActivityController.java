@@ -21,6 +21,7 @@ public class AddActivityController {
     @Autowired
     private AddActivityService service;
 
+
     @Autowired
     private FoodService foodService;
 
@@ -48,7 +49,6 @@ public class AddActivityController {
     public String showAddFoodForm(Model model) {
         Food food = new Food();
         model.addAttribute("food", food);
-
         return "addFood";
     }
 
@@ -60,10 +60,10 @@ public class AddActivityController {
     }
 
 
-    @RequestMapping("/delete/{date}")
-    public String delete(@PathVariable(name = "date") String date) {
-        service.delete(date);
-
-        return "editActivity"; //eg. homepage
-    }
+//    @RequestMapping("/delete/{date}")
+//    public String delete(@PathVariable(name = "date") String date) {
+//        service.delete(date);
+//
+//        return "editActivity"; //eg. homepage
+//    }
 }

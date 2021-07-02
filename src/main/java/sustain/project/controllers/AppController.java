@@ -1,9 +1,12 @@
 package sustain.project.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import sustain.project.classes.AddUserFood;
+import sustain.project.classes.AddUserFoodService;
 import sustain.project.classes.User;
 import sustain.project.classes.UserService;
 
@@ -14,6 +17,9 @@ public class AppController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private AddUserFoodService auf;
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
@@ -33,11 +39,25 @@ public class AppController {
         return "signUp";
     }
 
+    @RequestMapping("/addFoodPage")
+    public String showAddFoodForm(Model model) {
+        AddUserFood foodItems = new AddUserFood();
+        model.addAttribute("foodItems", foodItems);
+
+        return "addFood";
+    }
+
+    @RequestMapping(value = "/addFood", method = RequestMethod.POST)
+    public void AddUserFood(@ModelAttribute("foodItems") AddUserFood foodItems) {
+        auf.save(foodItems);
+    }
+
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") User user) {
         service.save(user);
 
-        return "redirect:addFood"; //eg. homepage
+        return "index"; //eg. homepage
     }
 
     @RequestMapping("/edit/{username}")

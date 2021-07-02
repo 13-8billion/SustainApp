@@ -17,7 +17,6 @@ public class Food {
     private double grams;
 
 
-
     // CONSTRUCTORS
 
     public Food(int foodID, String foodName, double co2g) {

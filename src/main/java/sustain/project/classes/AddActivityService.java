@@ -14,12 +14,12 @@ public class AddActivityService {
         repo.save(a);
     }
 
-    public AddActivity get(String activityType) {
-        return repo.findById(activityType).get();
-    }
-
-    public void delete(String activityType) {
-        repo.deleteById(activityType);
-    }
+//    public AddActivity get(String activityType) {
+//        return repo.findById(activityType).get();
+//    }
+//
+//    public void delete(String activityType) {
+//        repo.deleteById(activityType);
+//    }
 }
 
