@@ -2,10 +2,12 @@ package sustain.project.classes;
 
 import javax.persistence.*;
 
-@Entity // so java knows it's an entity(obvs)
+@Entity // mySQL entity
 @Table(name = "User")
 public class User {
 
+    @Id // mySQL primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userID")
     private String userID;
     @Column(name = "username")
@@ -20,8 +22,6 @@ public class User {
     public User() {
     }
 
-    @Id // so mySQL knows this is primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public String getUserID() {
         return userID;
     }

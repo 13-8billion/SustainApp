@@ -41,23 +41,23 @@ public class Food {
 
     // SETTERS AND GETTERS
 
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    @Id //  mySQL primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "foodName")
+    public String getFoodName() {
+        return foodName;
+    }
+
     public int getFoodID() {
         return foodID;
     }
 
     public void setFoodID(int foodID) {
         this.foodID = foodID;
-    }
-
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
-    }
-
-    @Id // so mySQL knows this is primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "foodName")
-    public String getFoodName() {
-        return foodName;
     }
 
     public void setCo2g(double co2g) {

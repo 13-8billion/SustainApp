@@ -7,7 +7,7 @@ body {
 /* background image */
 .background {
     background-size: cover;
-    opacity: 90%;
+    opacity: 95%;
     min-height: 100vh; /* so background stays full size of viewport*/
     background-image: url('../images/lake.jpeg');
     width:100%;
@@ -20,21 +20,25 @@ body {
     color: white;
     /*border-bottom: 1px solid white;*/
     text-shadow: 2px 2px 5px black;
-    padding-top: 1px;
 
 }
 
-/* jamie's pizzeria logo*/
-/*#logo {*/
-/*    margin-top: 1%;*/
-/*}*/
+
+#logo {
+   width: 15%;
+    padding-top: 10px;
+}
 #logoCaption{
-    font-family: Georgia, serif;
-    font-size: 140%;
-    color: white;
-    margin: 2% 0 0 0;
-    text-shadow: 2px 2px 3px black;
-    font-style: italic;
+    font-family: Andale Mono, monospace;
+    font-size: 180%;
+    color: #4dffa6;
+    text-align: center;
+    text-shadow: 2px 2px 2px 2px;
+/*   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
+    margin: 0 33%;
+
+    /* font-style: italic;*/
+    font-weight: bold;
 }
 
 
@@ -74,43 +78,42 @@ body {
 
 /* main form stylings */
 .form {
-    margin: 0 0 0 0;
-    position: center;
-    font-family: Helvetica, sans-serif;
-    display: inline-block;
-    border: none;
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, .5);*/
-    border-radius: 4px;
+/*    margin: 0 0 0 0;*/
+/*    position: center;
+*/    font-family: Helvetica, sans-serif;
+      display: inline-block;
+  /*  border: none;*/
+/*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, .5);*/
+  /*  border-radius: 4px;*/
     /*background: rgba(255, 255, 255, 0.3); !* allows change in opacity without affecting text opacity*!*/
-    padding-right: 5%;
-    padding-left: 4%;
+ /*   padding-right: 5%;*/
+      padding-left: 2%;
 }
 
 /* first header in form */
 #formP1, #formR1{
     font-family: Georgia, serif;
-    font-size: 140%;
+    font-size: 100%;
     color: white;
     margin: 0 0 0 0;
-    text-shadow: 2px 2px 10px black;
+    text-shadow: 2px 2px 20px black;
     padding-bottom: 5%;
     font-style: italic;
 }
 #formP3{
-    font-size: 100%;
+    font-size: 110%;
     color: white;
-    margin: 0 0 0 0;
-    text-shadow: 2px 2px 5px black;
+    margin: 4% 0 0 0;
+    text-shadow: 2px 2px 3px black;
     padding-left: 10%;
     font-family: Helvetica, sans-serif;
 }
 /* form stylings for input of type text boxes*/
-input[type=text], [type=email], select {
+input[type=text], input[type=password], input[type=email], #select {
     width: 110%;
-    padding: 5% 10px;
-    margin: 20px 0;
-    display: inline-block;
-    border-radius: 20px;
+    padding: 5%;
+    margin: 3% 0;
+    border-radius: 50px;
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, .1);
     transition: 0.5s;
@@ -119,107 +122,100 @@ input[type=text], [type=email], select {
     color: grey;
     font-family: Helvetica, sans-serif;
     text-align: left;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75)
+
     /*text-shadow: 2px 2px 5px black;*/
 }
+/**/
 
-input[type=text]:focus {
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #select:focus {
     border: 2px solid white;
     background-color: rgba(255, 255, 255, 1);
     color: grey;
-    text-shadow: none;
+  
 }
-input[type=email]:focus {
-    border: 2px solid white;
-    background-color: rgba(255, 255, 255, 1);
-    color: black;
-    text-shadow: none;
-}
-
-/* form styling for input of type password box*/
-input[type=password], select {
-    width: 110%;
-    padding: 5% 5px;
-    margin: 5px 0;
-    display: inline-block;
-    border-radius: 20px;
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, .1);
-    transition: 0.5s;
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: grey;
-    font-family: Helvetica, sans-serif;
-    /*text-shadow: 2px 2px 5px black;*/
-}
-
-/* gives colour transition to password word when selected*/
-input[type=password]:focus {
-    border: 2px solid white;
-    background-color: rgba(255, 255, 255, 1);
-    text-shadow: none;
-    color: grey;
 }
 
 /* submit box styling */
 /*input[type=submit], [type=button]{*/
-#login{
+#login, #signUpp{
     width: 110%;
-    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
-    color: rgba(255, 255, 255, .8); /*rgba(55, 158, 190, 1);*/
-    padding: 6%;
-    margin: 8px 0;
+    background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
+/*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
+/*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
+    color: #fff;
+    padding: 5%;
+    margin: 3% 0;
     border: none;
-    border-radius: 20px;
+    border-radius: 40px;
     cursor: pointer;
     outline: none;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+.regButton{
+    background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
+    /*    background-color: #4dffa6; !*rgba(255, 255, 255, .8);*/
+    /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
+    color: #fff;
+    padding: 10%;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    outline: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
 }
 
-#login:hover {
-    background-color: rgba(255, 255, 255, .8);
-    color: #4dffa6;
+#login:hover, #signUpp:hover, .regButton:hover {
+   background-image: linear-gradient(to bottom right, #365eff, #4dffa6);
+  
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
 }
 
 #signUp{
-    width: 110%;
-    background-color: white; /*rgba(255, 255, 255, .8);*/
+      width: 110%;
+ /*   background-image: linear-gradient(to bottom right, #4dffa6, #365eff);*/
+/*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
+    color: rgba(255, 255, 255, 1); /*rgba(55, 158, 190, 1);*/
     color: #4dffa6;
-    padding: 6%;
-    margin: 8px 0;
+    padding: 5%;
+    margin: 3% 0;
     border: none;
-    border-radius: 20px;
+    border-radius: 40px;
     cursor: pointer;
     outline: none;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    font-size: 16px;
 }
 
 #signUp:hover {
-    background-color: #4dffa6;
-    color: rgba(255, 255, 255, .8);
-
-/*.button{*/
-/*    width: 110%;*/
-/*    background-color: rgba(55, 158, 190, 1);*/
-/*    color: white;*/
-/*    padding: 6%;*/
-/*    margin: 8px 0;*/
-/*    border: none;*/
-/*    border-radius: 20px;*/
-/*    cursor: pointer;*/
-/*    outline: none;*/
-/*    font-family: Helvetica, sans-serif;*/
-/*    font-weight: bold;*/
-/*}*/
-/* changes colour of submit box on hover*/
-
+    background-image: linear-gradient(to bottom right, #365eff, #4dffa6);
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    color: white;
 }
 
-/*.button:hover {*/
-/*    background-color: rgba(255, 255, 255, .8);*/
-/*    color: rgba(55, 158, 190, 1);*/
-/*}*/
 
 /* reset box styling */
 input[type=reset] {
@@ -267,6 +263,20 @@ input[type=reset]:hover {
 /*    background: rgba(255, 255, 255, 0.3); !*!* allows change in opacity without affecting text opacity*!*!*/
 /*}*/
 
+#copy{
+    color: grey;
+    padding-top: 15%;
+    padding-left: 10%;
+
+}
+
+#copy2{
+    color: grey;
+    padding-top: 13%;
+    padding-left: 10%;
+
+}
+
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -275,5 +285,3 @@ input[type=reset]:hover {
 /*#content-wrap {*/
 /*    padding-bottom: 4rem;    !* Footer height *!*/
 /*}*/
-
-

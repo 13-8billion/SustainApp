@@ -1,7 +1,7 @@
 package sustain.project.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,6 +39,23 @@ public class AppController {
         return "signUp";
     }
 
+    @PostMapping("/save")
+    public String processRegister(User user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        service.save(user);
+
+        return "register_success";
+    }
+
+//    @RequestMapping(value = "/login")
+//    public String showUserDashboard() {
+//
+//        return "dashboard"; //eg. homepage
+//    }
+
     @RequestMapping("/addFoodPage")
     public String showAddFoodForm(Model model) {
         AddUserFood foodItems = new AddUserFood();
@@ -53,12 +70,17 @@ public class AppController {
     }
 
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute("user") User user) {
-        service.save(user);
 
-        return "index"; //eg. homepage
-    }
+//    @PostMapping("/save")
+//    public String saveUser(User user) {
+//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        String encodedPassword = passwordEncoder.encode(user.getPassword());
+//        user.setPassword(encodedPassword);
+//
+//        service.save(user);
+//
+//        return "dashboard";
+//    }
 
     @RequestMapping("/edit/{username}")
     public ModelAndView showEditUserForm(@PathVariable(name = "username") String username) {
