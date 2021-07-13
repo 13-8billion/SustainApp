@@ -10,6 +10,8 @@ import sustain.project.classes.AddUserFoodService;
 import sustain.project.classes.User;
 import sustain.project.classes.UserService;
 
+import java.security.Principal;
+
 
 @Controller
 public class AppController{
@@ -19,6 +21,8 @@ public class AppController{
 
     @Autowired
     private AddUserFoodService auf;
+
+    // VIEWS
 
     @RequestMapping(value = "/login")
     public ModelAndView showLogin() {
@@ -31,7 +35,7 @@ public class AppController{
     }
 
     @RequestMapping("/logout")
-    public ModelAndView viewLogout(Model model) {
+    public ModelAndView viewLogout() {
         return new ModelAndView("index");
     }
 
@@ -43,6 +47,21 @@ public class AppController{
         return "signUp";
     }
 
+    @RequestMapping("/addFoodView")
+        public String showAddFoodForm(Model model) {
+        AddUserFood foodItems = new AddUserFood();
+        model.addAttribute("foodItems", foodItems);
+
+        return "addFood";
+    }
+
+    @RequestMapping(value = "/dashboard")
+    public ModelAndView showUserDashboard() {
+        return new ModelAndView("dashboard");
+    }
+
+    // METHODS
+
     @PostMapping("/save")
     public String processRegister(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -53,37 +72,26 @@ public class AppController{
 
         return "register_success";
     }
-    @RequestMapping(value = "/dashboard")
-    public ModelAndView showUserDashboard() {
-        return new ModelAndView("dashboard");
-    }
 
 
-    @RequestMapping("/addFoodPage")
-    public String showAddFoodForm(Model model) {
-        AddUserFood foodItems = new AddUserFood();
-        model.addAttribute("foodItems", foodItems);
-
+    @RequestMapping(value = "/addFoodItems", method = RequestMethod.POST)
+    public String AddUserFood(@ModelAttribute("foodItems") AddUserFood foodItems) {
+        auf.save(foodItems);;
         return "addFood";
     }
 
-    @RequestMapping(value = "/addFood", method = RequestMethod.POST)
-    public void AddUserFood(@ModelAttribute("foodItems") AddUserFood foodItems) {
-        auf.save(foodItems);
+    @Controller
+    public class SecurityController {
+
+        @RequestMapping(value = "/username", method = RequestMethod.GET)
+        @ResponseBody
+        public String currentUserName(Principal principal) {
+            return principal.getName();
+        }
     }
 
 
 
-//    @PostMapping("/save")
-//    public String saveUser(User user) {
-//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//        String encodedPassword = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
-//
-//        service.save(user);
-//
-//        return "dashboard";
-//    }
 
     @RequestMapping("/edit/{username}")
     public ModelAndView showEditUserForm(@PathVariable(name = "username") String username) {
