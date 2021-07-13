@@ -20,11 +20,10 @@ body {
     color: white;
     /*border-bottom: 1px solid white;*/
     text-shadow: 2px 2px 5px black;
-
+    padding-top: 1%;
 }
 
-
-#logo {
+#logo2 {
    width: 15%;
     padding-top: 10px;
 }
@@ -36,8 +35,16 @@ body {
     text-shadow: 2px 2px 2px 2px;
 /*   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
     margin: 0 33%;
-
-    /* font-style: italic;*/
+    font-weight: bold;
+}
+#logoCaption2{
+    font-family: Andale Mono, monospace;
+    font-size: 130%;
+    color: #4dffa6;
+    text-align: center;
+    text-shadow: 2px 2px 2px 2px;
+    /*   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
+    margin: 0 33%;
     font-weight: bold;
 }
 
@@ -161,6 +168,10 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #se
     font-size: 16px;
     font-weight: 600;
     color: #fff;
+}
+
+#logout{
+    margin-top: 50%;
 }
 .regButton{
     background-image: linear-gradient(to bottom right, #4dffa6, #365eff);

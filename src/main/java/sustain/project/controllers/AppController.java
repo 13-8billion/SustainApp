@@ -10,10 +10,9 @@ import sustain.project.classes.AddUserFoodService;
 import sustain.project.classes.User;
 import sustain.project.classes.UserService;
 
-import java.util.List;
 
 @Controller
-public class AppController {
+public class AppController{
 
     @Autowired
     private UserService service;
@@ -21,14 +20,19 @@ public class AppController {
     @Autowired
     private AddUserFoodService auf;
 
-    @RequestMapping("/")
-    public String viewHomePage(Model model) {
+    @RequestMapping(value = "/login")
+    public ModelAndView showLogin() {
+        return new ModelAndView("index");
+    }
 
-        List<User> listUsers = service.listAll();
-        model.addAttribute("listUsers", listUsers);
+    @RequestMapping(value = "/")
+    public ModelAndView showLanding() {
+        return new ModelAndView("index");
+    }
 
-        return "index"; // return is how the method takes you to the html page
-        // must be same name as page
+    @RequestMapping("/logout")
+    public ModelAndView viewLogout(Model model) {
+        return new ModelAndView("index");
     }
 
     @RequestMapping("/signUp")
@@ -49,12 +53,11 @@ public class AppController {
 
         return "register_success";
     }
+    @RequestMapping(value = "/dashboard")
+    public ModelAndView showUserDashboard() {
+        return new ModelAndView("dashboard");
+    }
 
-//    @RequestMapping(value = "/login")
-//    public String showUserDashboard() {
-//
-//        return "dashboard"; //eg. homepage
-//    }
 
     @RequestMapping("/addFoodPage")
     public String showAddFoodForm(Model model) {

@@ -21,28 +21,29 @@
       <div class="background">
         <div class="header">
           <figure>
-            <img id="logo" src="images/logo2.png" alt="images/image of logo" />
+            <img id="logo2" src="images/logo2.png" alt="images/image of logo" />
             <figcaption>
               <p id="logoCaption">WHAT CHANGE WILL YOU MAKE?</p>
             </figcaption>
           </figure>
         </div><!-- form begins here-->
         <div class="form">
-          <form name="loginForm" th:action="@{/login}" id="loginForm" action="#" onsubmit="return !! validateForm()">
+          <form name="loginForm" th:action="@{/login}"
+                method="post" id="loginForm" action="#" onsubmit="return !! validateForm()">
             <!-- call validate function in 'form' tag when user clicks submit button-->
             <div class="col-sm-10">
               <table>
                 <tr>
                   <!--username input field-->
-                  <td><input type="text" name="username" size="40" placeholder="Username" class="form-control" id="inputdefault" /></td>
+                  <td><input type="text" name="username" id="username" size="40" placeholder="Email" class="form-control" /></td>
                 </tr>
                 <tr>
-                  <td><input type="password" name="password" size="40" placeholder="Password" class="form-control" id="inputdefault" /> <!-- 'size' changes length of input box--></td>
+                  <td><input type="password" name="password" id="password" size="40" placeholder="Password" class="form-control" /> <!-- 'size' changes length of input box--></td>
                 </tr>
                 <tr>
                   <td>
                     <div class="checkbox mb-2">
-                      <label id ="formP3"><input type="checkbox" value="remember-me" /> Remember me</label>
+                      <label id ="formP3"><input type="checkbox" value="remember-me" />Remember me</label>
                     </div>
                   </td>
                 </tr>
