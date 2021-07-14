@@ -1,7 +1,8 @@
-package sustain.project.classes;
+package sustain.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sustain.project.classes.AddActivity;
 import sustain.project.interfaces.ActivityRepo;
 
 @Service

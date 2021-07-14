@@ -14,7 +14,6 @@ public class Food {
     private String foodName;
     @Column(name = "co2g")
     private double co2g;
-    private double grams;
 
 
     // CONSTRUCTORS
@@ -25,15 +24,10 @@ public class Food {
         this.co2g = co2g;
     }
 
-    public Food(String foodName){
+    public Food(String foodName) {
         this.foodName = foodName;
     }
 
-    public Food(String foodName, double grams)
-    {
-        this.foodName = foodName;
-        this.grams = grams;
-    }
 
     public Food() {
 
@@ -52,12 +46,12 @@ public class Food {
         return foodName;
     }
 
-    public int getFoodID() {
-        return foodID;
-    }
-
     public void setFoodID(int foodID) {
         this.foodID = foodID;
+    }
+
+    public int getFoodID() {
+        return foodID;
     }
 
     public void setCo2g(double co2g) {
@@ -68,19 +62,11 @@ public class Food {
         return co2g;
     }
 
-    public void setGrams(double grams)
-    {
-        this.grams = grams;
-    }
-
-    public double getGrams()
-    {
-        return grams;
-    }
-
     @Override
     public String toString() {
-        return foodName + ", " + grams;
+        return foodName + ", " + co2g;
     }
 }
+
+
 

@@ -14,6 +14,9 @@ public class AddUserFood {
     private String foodName;
     @Column(name = "grams")
     private double grams;
+    @Column(name = "res")
+    private double res;
+
     public AddUserFood() {
     }
 
@@ -49,6 +52,13 @@ public class AddUserFood {
 
     public double getGrams() {
         return grams;
+    }
+
+    public void setRes(double res){
+        this.res = res;
+    }
+    public double getRes() {
+        return res;
     }
 
 }

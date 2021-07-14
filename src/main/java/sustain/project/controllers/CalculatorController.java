@@ -1,15 +1,6 @@
 package sustain.project.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import sustain.project.classes.AddUserFood;
-import sustain.project.classes.AddUserFoodService;
-import sustain.project.classes.Food;
-import sustain.project.classes.FoodService;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class CalculatorController {

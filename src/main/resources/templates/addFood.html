@@ -162,7 +162,7 @@
 <!--    th:action="@{/username}"-->
 
     <div class="form">
-      <form action="#" th:action="@{/addFoodItems}" th:object="${foodItems}" method="post">
+      <form action="#" th:action="@{/calcFood}" th:object="${foodObject}" method="post">
         <!-- call validate function in 'form' tag when user clicks submit button-->
         <div class="col-sm-10">
           <table>
@@ -226,6 +226,12 @@
             <tr>
               <!-- submit button -->
               <td><input id="addFoodItem" type="submit" name="addfoodItem" value="ADD FOOD" /></td>
+            </tr>
+            <tr>
+              <td>
+                <p th:field="*{res}">RESULT HERE:</p>
+
+              </td>
             </tr>
           </table>
         </div><!--form ends-->

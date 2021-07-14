@@ -1,4 +1,5 @@
 package sustain.project.controllers;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -6,15 +7,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import sustain.project.classes.AddUserFood;
-import sustain.project.classes.AddUserFoodService;
+import sustain.project.classes.Food;
+import sustain.project.service.AddUserFoodService;
 import sustain.project.classes.User;
-import sustain.project.classes.UserService;
+import sustain.project.service.FoodService;
+import sustain.project.service.UserService;
 
 import java.security.Principal;
+import java.util.List;
 
 
 @Controller
-public class AppController{
+public class AppController {
 
     @Autowired
     private UserService service;
@@ -22,7 +26,20 @@ public class AppController{
     @Autowired
     private AddUserFoodService auf;
 
+    @Autowired
+    private FoodService f;
+
     // VIEWS
+
+    @RequestMapping("/test")
+    public String viewHomePage(Model model) {
+
+        List<Food> listFood = f.listAll();
+        model.addAttribute("listFood", listFood);
+
+        return "list"; // return is how the method takes you to the html page
+        // must be same name as page
+    }
 
     @RequestMapping(value = "/login")
     public ModelAndView showLogin() {
@@ -48,9 +65,9 @@ public class AppController{
     }
 
     @RequestMapping("/addFoodView")
-        public String showAddFoodForm(Model model) {
-        AddUserFood foodItems = new AddUserFood();
-        model.addAttribute("foodItems", foodItems);
+    public String showAddFoodForm(Model model) {
+        AddUserFood foodObject = new AddUserFood();
+        model.addAttribute("foodObject", foodObject);
 
         return "addFood";
     }
@@ -59,6 +76,7 @@ public class AppController{
     public ModelAndView showUserDashboard() {
         return new ModelAndView("dashboard");
     }
+
 
     // METHODS
 
@@ -74,11 +92,37 @@ public class AppController{
     }
 
 
-    @RequestMapping(value = "/addFoodItems", method = RequestMethod.POST)
+    @PostMapping("/addFoodItems")
     public String AddUserFood(@ModelAttribute("foodItems") AddUserFood foodItems) {
-        auf.save(foodItems);;
+        auf.save(foodItems);
         return "addFood";
     }
+
+
+    @PostMapping("/calcFood")
+    public String calcFood(@ModelAttribute("foodObject") AddUserFood foodObject, @ModelAttribute("foodName") String foodN,
+                           @ModelAttribute("grams") double g) {
+        double res = 0;
+        List<Food> fl = f.listAll();
+
+        for (Food food : fl) {
+
+            if (food.getFoodName().equals(foodN)) {
+
+                double oneG = food.getCo2g() / 100;
+                res = g * oneG;
+            }
+        }
+
+        foodObject.setRes(res);
+        foodObject.setUsername("AMY");
+        auf.save(foodObject);
+
+
+        return "addFood";
+    }
+
+
 
     @Controller
     public class SecurityController {
@@ -89,8 +133,6 @@ public class AppController{
             return principal.getName();
         }
     }
-
-
 
 
     @RequestMapping("/edit/{username}")
