@@ -226,11 +226,39 @@
             <tr>
               <td>
                 <p th:text="*{res}"></p>
+                <p th:text="*{foodName}"></p> <p th:text="*{grams}"></p>
+
 
               </td>
             </tr>
           </table>
         </div><!--form ends-->
+      </form>
+
+      <form action="#" th:action="@{/calcFoodTotal}" th:object="${foodTotalObject}" method="post">
+      <div align="center"><h1>Food Manager</h1>
+        <table border="1">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Total co2</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="foodTotal : ${listTotal}">
+            <td th:text="${foodTotal.ID}">ID</td>
+            <td th:text="${foodTotal.username}">Username</td>
+            <td th:text="${foodTotal.total}">Total co2</td>
+          </tr>
+          </tbody>
+
+          <tr>
+            <!-- submit button -->
+            <td><input id="foodTotal" type="submit" name="footTotal" value="CALCULATE" /></td>
+          </tr>
+        </table>
+      </div>
       </form>
 
 

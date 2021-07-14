@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import sustain.project.classes.AddUserFood;
 import sustain.project.classes.Food;
-import sustain.project.service.AddUserFoodService;
+import sustain.project.classes.FoodTotal;
+import sustain.project.service.*;
 import sustain.project.classes.User;
-import sustain.project.service.CustomUserDetailsService;
-import sustain.project.service.FoodService;
-import sustain.project.service.UserService;
 
 import java.security.Principal;
 import java.util.List;
@@ -32,6 +30,9 @@ public class AppController {
 
     @Autowired
     private CustomUserDetailsService userDetails;
+
+    @Autowired
+    private FoodTotalService fts;
 
     // VIEWS
 
@@ -122,6 +123,33 @@ public class AppController {
         foodObject.setUsername(userDetails.returnUsername());
         auf.save(foodObject);
         model.addAttribute("res", res);
+        model.addAttribute("foodName", foodN);
+        model.addAttribute("grams", g);
+
+        return "addFood";
+    }
+
+    @PostMapping("/calcFoodTotal")
+    public String calcFoodTotal(@ModelAttribute("foodTotalObject") FoodTotal foodTotalObject,
+                                Model model){
+
+        List<AddUserFood> ufl = auf.listAll();
+        String username = userDetails.returnUsername();
+        foodTotalObject.setUsername(username);
+        double total = 0.0;
+        for (int i = 0; i<ufl.size(); i++) {
+
+            if (ufl.get(i).getUsername().equals(username)) {
+
+                total = ufl.get(i).getRes();
+            }
+        }
+
+        foodTotalObject.setTotalCo2(total);
+        fts.save(foodTotalObject);
+        model.addAttribute("listTotal", ufl);
+        model.addAttribute("total", total);
+        model.addAttribute("username", username);
 
         return "addFood";
     }

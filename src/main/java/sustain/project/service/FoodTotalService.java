@@ -1,27 +1,28 @@
 package sustain.project.service;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sustain.project.classes.AddUserFood;
-import sustain.project.interfaces.AddUserFoodRepo;
+import sustain.project.classes.FoodTotal;
+import sustain.project.interfaces.FoodTotalRepo;
 
 import java.util.List;
 
 @Service
 @Transactional
-public class AddUserFoodService {
+public class FoodTotalService {
     @Autowired
-    private AddUserFoodRepo repo;
+    private FoodTotalRepo repo;
 
-    public List<AddUserFood> listAll() {
+    public List<FoodTotal> listAll() {
         return repo.findAll();
     }
 
-    public void save(AddUserFood foodItems) {
-        repo.save(foodItems);
+    public void save(FoodTotal foodTotalObject) {
+        repo.save(foodTotalObject);
     }
 
-    public AddUserFood get(String username) {
+    public FoodTotal get(String username) {
         return repo.findById(username).get();
     }
 
