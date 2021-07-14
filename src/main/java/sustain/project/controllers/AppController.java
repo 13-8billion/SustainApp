@@ -104,7 +104,7 @@ public class AppController {
 
     @PostMapping("/calcFood")
     public String calcFood(@ModelAttribute("foodObject") AddUserFood foodObject, @ModelAttribute("foodName") String foodN,
-                           @ModelAttribute("grams") double g) {
+                           @ModelAttribute("grams") double g, Model model) {
         double res = 0;
         List<Food> fl = f.listAll();
 
@@ -121,7 +121,7 @@ public class AppController {
         foodObject.setRes(res);
         foodObject.setUsername(userDetails.returnUsername());
         auf.save(foodObject);
-
+        model.addAttribute("res", res);
 
         return "addFood";
     }
