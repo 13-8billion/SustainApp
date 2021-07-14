@@ -10,6 +10,7 @@ import sustain.project.classes.AddUserFood;
 import sustain.project.classes.Food;
 import sustain.project.service.AddUserFoodService;
 import sustain.project.classes.User;
+import sustain.project.service.CustomUserDetailsService;
 import sustain.project.service.FoodService;
 import sustain.project.service.UserService;
 
@@ -28,6 +29,9 @@ public class AppController {
 
     @Autowired
     private FoodService f;
+
+    @Autowired
+    private CustomUserDetailsService userDetails;
 
     // VIEWS
 
@@ -98,12 +102,12 @@ public class AppController {
         return "addFood";
     }
 
-
     @PostMapping("/calcFood")
     public String calcFood(@ModelAttribute("foodObject") AddUserFood foodObject, @ModelAttribute("foodName") String foodN,
                            @ModelAttribute("grams") double g) {
         double res = 0;
         List<Food> fl = f.listAll();
+
 
         for (Food food : fl) {
 
@@ -115,7 +119,7 @@ public class AppController {
         }
 
         foodObject.setRes(res);
-        foodObject.setUsername("AMY");
+        foodObject.setUsername(userDetails.returnUsername());
         auf.save(foodObject);
 
 

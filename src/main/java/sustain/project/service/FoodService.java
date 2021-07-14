@@ -24,8 +24,8 @@ public class FoodService {
         repo.save(food);
     }
 
-    public Food get(String foodName) {
-        return repo.findById(foodName).get();
+    public Food get(String username) {
+        return repo.findById(username).get();
     }
 
     public void delete(String foodName) {
