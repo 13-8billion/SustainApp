@@ -116,7 +116,7 @@ body {
     font-family: Helvetica, sans-serif;
 }
 /* form stylings for input of type text boxes*/
-input[type=text], input[type=password], input[type=email], #select {
+input[type=text], input[type=password], input[type=email], #select, #foodName{
     width: 110%;
     padding: 5%;
     margin: 3% 0;
@@ -150,7 +150,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #se
 
 /* submit box styling */
 /*input[type=submit], [type=button]{*/
-#login, #signUpp, #addFoodItem{
+#login, #signUpp, #addFoodItem, #foodTotal{
     width: 110%;
     background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
 /*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/

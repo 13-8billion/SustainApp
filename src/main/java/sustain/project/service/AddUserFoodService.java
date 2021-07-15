@@ -28,5 +28,11 @@ public class AddUserFoodService {
     public void delete(String username) {
         repo.deleteById(username);
     }
+
+    public void deleteAll(Iterable<AddUserFood> foodObject){
+        repo.deleteAllInBatch(foodObject);
+    }
+
+
 }
 

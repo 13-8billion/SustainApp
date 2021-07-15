@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sustain.project.classes.Food;
 import sustain.project.interfaces.FoodRepo;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

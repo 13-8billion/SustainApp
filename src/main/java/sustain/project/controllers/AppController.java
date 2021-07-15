@@ -1,5 +1,6 @@
 package sustain.project.controllers;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,7 @@ public class AppController {
     @RequestMapping("/test")
     public String viewHomePage(Model model) {
 
-        List<Food> listFood = f.listAll();
+        List<AddUserFood> listFood = auf.listAll();
         model.addAttribute("listFood", listFood);
 
         return "list"; // return is how the method takes you to the html page
@@ -103,9 +104,9 @@ public class AppController {
         return "addFood";
     }
 
-    @PostMapping("/calcFood")
-    public String calcFood(@ModelAttribute("foodObject") AddUserFood foodObject, @ModelAttribute("foodName") String foodN,
-                           @ModelAttribute("grams") double g, Model model) {
+    @PostMapping(value = "/calcFood", params = "add")
+    public ModelAndView calcFood(@ModelAttribute("foodObject") AddUserFood foodObject, @ModelAttribute("foodName") String foodN,
+                                 @ModelAttribute("grams") double g, Model model) {
         double res = 0;
         List<Food> fl = f.listAll();
 
@@ -126,34 +127,40 @@ public class AppController {
         model.addAttribute("foodName", foodN);
         model.addAttribute("grams", g);
 
-        return "addFood";
+        return new ModelAndView("addFood");
     }
 
-    @PostMapping("/calcFoodTotal")
-    public String calcFoodTotal(@ModelAttribute("foodTotalObject") FoodTotal foodTotalObject,
-                                Model model){
+    @PostMapping(value = "/calcFood", params = "calc")
+    public ModelAndView calcFoodTotal(@ModelAttribute("foodTotalObject") FoodTotal foodTotalObject,
+                                      @ModelAttribute("foodObject") AddUserFood foodObject, @ModelAttribute("foodName") String foodN,
+                                      @ModelAttribute("grams") double g, Model model ) {
 
         List<AddUserFood> ufl = auf.listAll();
         String username = userDetails.returnUsername();
         foodTotalObject.setUsername(username);
         double total = 0.0;
-        for (int i = 0; i<ufl.size(); i++) {
+        for (AddUserFood addUserFood : ufl) {
 
-            if (ufl.get(i).getUsername().equals(username)) {
+            if (addUserFood.getUsername().equals(username)) {
 
-                total = ufl.get(i).getRes();
+                total = total + addUserFood.getRes();
             }
         }
 
         foodTotalObject.setTotalCo2(total);
         fts.save(foodTotalObject);
-        model.addAttribute("listTotal", ufl);
+
         model.addAttribute("total", total);
-        model.addAttribute("username", username);
+        // have to add above /calcFood method attributes here too
+        // and in method parameters else form submit won't work
+        model.addAttribute("foodName", foodN);
+        model.addAttribute("grams", g);
 
-        return "addFood";
+        Iterable<AddUserFood> deleteFoodObject = auf.listAll();
+        auf.deleteAll(deleteFoodObject);
+
+        return new ModelAndView("addFood");
     }
-
 
 
     @Controller

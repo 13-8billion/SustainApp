@@ -1,456 +1,459 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-  <meta charset="utf-8"/>
-  <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-  <title>Dashboard</title>
+    <title>Dashboard</title>
 
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-  <meta name="viewport" content="width=device-width"/>
-
-
-  <!-- Bootstrap core CSS     -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-
-  <!-- Animation library for notifications   -->
-  <link href="assets/css/animate.min.css" rel="stylesheet"/>
-
-  <!--  Light Bootstrap Table core CSS    -->
-  <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
 
 
-  <!--  CSS for Demo Purpose, don't include it in your project     -->
-  <link href="assets/css/demo.css" rel="stylesheet"/>
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
 
 
-  <!--     Fonts and icons     -->
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
-  <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet"/>
 
-  <link href="css/external.css" th:href="@{css/external.css}" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
+
+    <link href="css/external.css" th:href="@{css/external.css}" rel="stylesheet"/>
 
 </head>
 <body>
 
 <div class="wrapper">
-  <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
 
 
-    <div class="sidebar-wrapper">
-      <div class="logo">
-        <img src="assets/img/sagan.jpeg" alt="Avatar" id="avatar">
-        <a href="#" class="simple-text">
-          <b>@[[${#request.userPrincipal.principal.username}]]</b>
-        </a>
-      </div>
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <img src="assets/img/sagan.jpeg" alt="Avatar" id="avatar">
+                <a href="#" class="simple-text">
+                    <b>@[[${#request.userPrincipal.principal.username}]]</b>
+                </a>
+            </div>
 
-      <ul class="nav">
-        <li class="active">
-          <a href="dashboard">
-            <i class="pe-7s-user"></i>
+            <ul class="nav">
+                <li class="active">
+                    <a href="dashboard">
+                        <i class="pe-7s-user"></i>
 
-            <p>Dashboard</p>
-          </a>
-        </li>
-        <li>
-          <a href="addFoodView">
-            <i class="pe-7s-news-paper"></i>
-            <p>CO₂ Calculator</p>
-          </a>
-        </li>
-        <li>
-          <a href="table.html">
-            <i class="pe-7s-graph"></i>
-            <p>My Statistics</p>
-          </a>
-        </li>
-        <li>
-          <a href="typography.html">
-            <i class="pe-7s-science"></i>
-            <p>Meal Planner</p>
-          </a>
-        </li>
-      </ul>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="addFoodView">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>CO₂ Calculator</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="table.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>My Statistics</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="typography.html">
+                        <i class="pe-7s-science"></i>
+                        <p>Meal Planner</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <div class="main-panel">
-    <nav class="navbar navbar-default navbar-fixed">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#"><p>
-            Welcome <b>[[${#request.userPrincipal.principal.username}]]</b>
-          </p></a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <form th:action="@{/logout}" method="post">
-            <ul class="nav navbar-nav navbar-left">
-              <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-dashboard"></i>
-                  <p class="hidden-lg hidden-md">Dashboard</p>
-                </a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-globe"></i>
-                  <b class="caret hidden-lg hidden-md"></b>
-                  <p class="hidden-lg hidden-md">
-                    5 Notifications
-                    <b class="caret"></b>
-                  </p>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Notification 1</a></li>
-                  <li><a href="#">Notification 2</a></li>
-                  <li><a href="#">Notification 3</a></li>
-                  <li><a href="#">Notification 4</a></li>
-                  <li><a href="#">Another notification</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="">
-                  <i class="fa fa-search"></i>
-                  <p class="hidden-lg hidden-md">Search</p>
-                </a>
-              </li>
-            </ul>
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><p>
+                        Welcome <b>[[${#request.userPrincipal.principal.username}]]</b>
+                    </p></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <form th:action="@{/logout}" method="post">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-dashboard"></i>
+                                    <p class="hidden-lg hidden-md">Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+                                    <p class="hidden-lg hidden-md">
+                                        5 Notifications
+                                        <b class="caret"></b>
+                                    </p>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Notification 1</a></li>
+                                    <li><a href="#">Notification 2</a></li>
+                                    <li><a href="#">Notification 3</a></li>
+                                    <li><a href="#">Notification 4</a></li>
+                                    <li><a href="#">Another notification</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-search"></i>
+                                    <p class="hidden-lg hidden-md">Search</p>
+                                </a>
+                            </li>
+                        </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="">
-                  <p>Account</p>
-                </a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <p>
-                    Dropdown
-                    <b class="caret"></b>
-                  </p>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="">
+                                    <p>Account</p>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+                                        Dropdown
+                                        <b class="caret"></b>
+                                    </p>
 
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li>
-              <li>
-                <!--                           <div id = "logout">-->
-                <a href="logout">
-                  <p>Log out</p>
-                </a>
-                <!--                            </div>-->
-              </li>
-              <li class="separator hidden-lg"></li>
-            </ul>
-          </form>
-        </div>
-      </div>
-    </nav>
-
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <!--                           <div id = "logout">-->
+                                <a href="logout">
+                                    <p>Log out</p>
+                                </a>
+                                <!--                            </div>-->
+                            </li>
+                            <li class="separator hidden-lg"></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </nav>
 
 
-<!--    th:action="@{/username}"-->
+        <div class="form">
+            <form action="#" th:action="@{/calcFood}" method="post">
+                <!-- call validate function in 'form' tag when user clicks submit button-->
+                <div class="col-sm-10">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="foodName"></label><select id="foodName" name="foodName"
+                                                                      th:field="*{foodName}" th:object="${foodObject}">
+                                <option value="" disabled="disabled" selected="selected">Choose Food</option>
+                                <option value="apples">Apple</option>
+                                <option value="bananas">Banana</option>
+                                <option value="beef (dairy)">Beef (dairy herd)</option>
+                                <option value="beef (herd)">Beef (beef herd)</option>
+                                <option value="beer">Beer (5% ABV)</option>
+                                <option value="beet sugar">Beet Sugar</option>
+                                <option value="berries">Berries</option>
+                                <option value="wheat & rye (bread)">Bread (wheat & rye)</option>
+                                <option value="cane sugar">Cane Sugar</option>
+                                <option value="cheese">Cheese</option>
+                                <option value="citrus">Citrus Fruit</option>
+                                <option value="coffee">Coffee (1 portion = 15g)</option>
+                                <option value="dark chocolate">Dark Chocolate</option>
+                                <option value="eggs">Eggs</option>
+                                <option value="fish (farmed)">Fish (farmed)</option>
+                                <option value="grains">Grains</option>
+                                <option value="groundnuts">Groundnuts</option>
+                                <option value="lamb">Lamb</option>
+                                <option value="maize (meal)">Maize (meal)</option>
+                                <option value="milk">Milk (dairy)</option>
+                                <option value="soymilk">Milk (soy)</option>
+                                <option value="nuts">Nuts</option>
+                                <option value="oatmeal">Oatmeal</option>
+                                <option value="olive oil">Olive Oil</option>
+                                <option value="onions & leeks">Onions & Leeks</option>
+                                <option value="palm oil">Palm Oil</option>
+                                <option value="peas">Peas</option>
+                                <option value="pork">Pork</option>
+                                <option value="potatoes">Potatoes</option>
+                                <option value="poultry">Poultry</option>
+                                <option value="prawns (farmed)">Prawns (farmed)</option>
+                                <option value="pulses">Pulses</option>
+                                <option value="rapeseed oil">Rapeseed Oil</option>
+                                <option value="rice">Rice</option>
+                                <option value="root vegetables">Root Vegetables</option>
+                                <option value="soybean oil">Soybean Oil</option>
+                                <option value="sunflower oil">Sunflower Oil</option>
+                                <option value="tofu">Tofu</option>
+                                <option value="tomatoes">Tomatoes</option>
+                                <option value="wine">Wine</option>
+                            </select>
+                                <!-- 'size' changes length of input box-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="grams" size="30" value="Grams" th:field="*{grams}" th:object="${foodObject}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- submit button -->
+                            <td><input id="addFoodItem" type="submit" name="add" value="ADD FOOD"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p th:text="*{res}"></p>
+                                <p th:text="*{foodName}"></p>
+                                <p th:text="*{grams}"></p>
+                            </td>
+                        </tr>
 
-    <div class="form">
-      <form action="#" th:action="@{/calcFood}" th:object="${foodObject}" method="post">
-        <!-- call validate function in 'form' tag when user clicks submit button-->
-        <div class="col-sm-10">
-          <table>
-            <tr>
-              <td>
-                <label for="foodName"></label><select id="foodName" name="foodName" th:field="*{foodName}">
-                  <option value="" disabled selected>Choose Food</option>
-                  <option value="apples">Apple</option>
-                  <option value="bananas">Banana</option>
-                  <option value="beef (dairy)">Beef (dairy herd)</option>
-                  <option value="beef (herd)">Beef (beef herd)</option>
-                  <option value="beer">Beer (5% ABV)</option>
-                  <option value="beet sugar">Beet Sugar</option>
-                  <option value="berries">Berries</option>
-                  <option value="bread">Bread (wheat & rye)</option>
-                  <option value="cane sugar">Cane Sugar</option>
-                  <option value="cheese">Cheese</option>
-                  <option value="citrus">Citrus Fruit</option>
-                  <option value="coffee">Coffee (1 portion = 15g)</option>
-                  <option value="dark chocolate">Dark Chocolate</option>
-                  <option value="eggs">Eggs</option>
-                  <option value="fish (farmed)">Fish (farmed)</option>
-                  <option value="grains">Grains</option>
-                  <option value="groundnuts">Groundnuts</option>
-                  <option value="lamb">Lamb</option>
-                  <option value="maize (meal)">Maize (meal)</option>
-                  <option value="milk">Milk (dairy)</option>
-                  <option value="soymilk">Milk (soy)</option>
-                  <option value="nuts">Nuts</option>
-                  <option value="oatmeal">Oatmeal</option>
-                  <option value="olive oil">Olive Oil</option>
-                  <option value="onions & leeks">Onions & Leeks</option>
-                  <option value="palm oil">Palm Oil</option>
-                  <option value="peas">Peas</option>
-                  <option value="pork">Pork</option>
-                  <option value="potatoes">Potatoes</option>
-                  <option value="poultry">Poultry</option>
-                  <option value="prawns (farmed)">Prawns (farmed)</option>
-                  <option value="pulses">Pulses</option>
-                  <option value="rapeseed oil">Rapeseed Oil</option>
-                  <option value="rice">Rice</option>
-                  <option value="root vegetables">Root Vegetables</option>
-                  <option value="soybean oil">Soybean Oil</option>
-                  <option value="sunflower oil">Sunflower Oil</option>
-                  <option value="tofu">Tofu</option>
-                  <option value="tomatoes">Tomatoes</option>
-                  <option value="wine">Wine</option>
-                </select>
-                <!-- 'size' changes length of input box-->
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="text" name="grams" size="30" value="Grams" th:field="*{grams}">
-              </td>
-            </tr>
-            <tr>
-              <!-- submit button -->
-              <td><input id="addFoodItem" type="submit" name="addfoodItem" value="ADD FOOD" /></td>
-            </tr>
-            <tr>
-              <td>
-                <p th:text="*{res}"></p>
-                <p th:text="*{foodName}"></p> <p th:text="*{grams}"></p>
+                        <tr>
+                            <!-- submit button -->
+                            <td><input  th:object="${foodTotalObject}" id="foodTotal" type="submit" name="calc" value="CALCULATE"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p> TOTAL CO2(kg) FOR THIS MEAL</p>
+                                <p th:text="*{total}"></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div><!--form ends-->
+            </form>
+
+<!--        <div class="form">-->
+<!--            <form action="#" th:action="@{/calcFoodTotal}" th:object="${foodTotalObject}" method="post">-->
+<!--                <div align="center">-->
+<!--                    <table>-->
+<!--                    <tr>-->
+<!--                        &lt;!&ndash; submit button &ndash;&gt;-->
+<!--                        <td><input id="foodTotal" type="submit" name="footTotal" value="CALCULATE"/></td>-->
+<!--                    </tr>-->
+
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <p> TOTAL</p>-->
+<!--                            <p th:text="*{total}"></p>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    </table>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
 
 
-              </td>
-            </tr>
-          </table>
-        </div><!--form ends-->
-      </form>
+            <!--        <div class="row">
+                       <div class="col-md-6">
+                           <div class="card ">
+                               <div class="header">
+                                   <h4 class="title">2014 Sales</h4>
+                                   <p class="category">All products including Taxes</p>
+                               </div>
+                               <div class="content">
+                                   <div id="chartActivity" class="ct-chart"></div>
 
-      <form action="#" th:action="@{/calcFoodTotal}" th:object="${foodTotalObject}" method="post">
-      <div align="center"><h1>Food Manager</h1>
-        <table border="1">
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Total co2</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr th:each="foodTotal : ${listTotal}">
-            <td th:text="${foodTotal.ID}">ID</td>
-            <td th:text="${foodTotal.username}">Username</td>
-            <td th:text="${foodTotal.total}">Total co2</td>
-          </tr>
-          </tbody>
-
-          <tr>
-            <!-- submit button -->
-            <td><input id="foodTotal" type="submit" name="footTotal" value="CALCULATE" /></td>
-          </tr>
-        </table>
-      </div>
-      </form>
-
-
-
-        <!--        <div class="row">
-                   <div class="col-md-6">
-                       <div class="card ">
-                           <div class="header">
-                               <h4 class="title">2014 Sales</h4>
-                               <p class="category">All products including Taxes</p>
-                           </div>
-                           <div class="content">
-                               <div id="chartActivity" class="ct-chart"></div>
-
-                               <div class="footer">
-                                   <div class="legend">
-                                       <i class="fa fa-circle text-info"></i> Tesla Model S
-                                       <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                                   </div>
-                                   <hr>
-                                   <div class="stats">
-                                       <i class="fa fa-check"></i> Data information certified
+                                   <div class="footer">
+                                       <div class="legend">
+                                           <i class="fa fa-circle text-info"></i> Tesla Model S
+                                           <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                                       </div>
+                                       <hr>
+                                       <div class="stats">
+                                           <i class="fa fa-check"></i> Data information certified
+                                       </div>
                                    </div>
                                </div>
                            </div>
-                       </div>
-                   </div> -->
-        <!--
-                            <div class="col-md-6">
-                                <div class="card ">
-                                    <div class="header">
-                                        <h4 class="title">Tasks</h4>
-                                        <p class="category">Backend development</p>
-                                    </div>
-                                    <div class="content">
-                                        <div class="table-full-width">
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox1" type="checkbox">
-                                                                    <label for="checkbox1"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox2" type="checkbox" checked>
-                                                                    <label for="checkbox2"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox3" type="checkbox">
-                                                                    <label for="checkbox3"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                        </td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox4" type="checkbox" checked>
-                                                                    <label for="checkbox4"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox5" type="checkbox">
-                                                                    <label for="checkbox5"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Read "Following makes Medium better"</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox6" type="checkbox" checked>
-                                                                    <label for="checkbox6"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Unfollow 5 enemies from twitter</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                       </div> -->
+            <!--
+                                <div class="col-md-6">
+                                    <div class="card ">
+                                        <div class="header">
+                                            <h4 class="title">Tasks</h4>
+                                            <p class="category">Backend development</p>
                                         </div>
+                                        <div class="content">
+                                            <div class="table-full-width">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="checkbox">
+                                                                        <input id="checkbox1" type="checkbox">
+                                                                        <label for="checkbox1"></label>
+                                                                    </div>
+                                                            </td>
+                                                            <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                                            <td class="td-actions text-right">
+                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                    <i class="fa fa-times"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="checkbox">
+                                                                        <input id="checkbox2" type="checkbox" checked>
+                                                                        <label for="checkbox2"></label>
+                                                                    </div>
+                                                            </td>
+                                                            <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                                            <td class="td-actions text-right">
+                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                    <i class="fa fa-times"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="checkbox">
+                                                                        <input id="checkbox3" type="checkbox">
+                                                                        <label for="checkbox3"></label>
+                                                                    </div>
+                                                            </td>
+                                                            <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                                            </td>
+                                                            <td class="td-actions text-right">
+                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                    <i class="fa fa-times"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="checkbox">
+                                                                        <input id="checkbox4" type="checkbox" checked>
+                                                                        <label for="checkbox4"></label>
+                                                                    </div>
+                                                            </td>
+                                                            <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                                                            <td class="td-actions text-right">
+                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                    <i class="fa fa-times"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="checkbox">
+                                                                        <input id="checkbox5" type="checkbox">
+                                                                        <label for="checkbox5"></label>
+                                                                    </div>
+                                                            </td>
+                                                            <td>Read "Following makes Medium better"</td>
+                                                            <td class="td-actions text-right">
+                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                    <i class="fa fa-times"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="checkbox">
+                                                                        <input id="checkbox6" type="checkbox" checked>
+                                                                        <label for="checkbox6"></label>
+                                                                    </div>
+                                                            </td>
+                                                            <td>Unfollow 5 enemies from twitter</td>
+                                                            <td class="td-actions text-right">
+                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                                    <i class="fa fa-times"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
 
-                                        <div class="footer">
-                                            <hr>
-                                            <div class="stats">
-                                                <i class="fa fa-history"></i> Updated 3 minutes ago
+                                            <div class="footer">
+                                                <hr>
+                                                <div class="stats">
+                                                    <i class="fa fa-history"></i> Updated 3 minutes ago
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div> -->
+                    </div> -->
 
 
-        <footer class="footer">
-          <div class="container-fluid">
-            <nav class="pull-left">
-              <ul>
-                <li>
-                  <a href="#">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    Contact
-                  </a>
-                </li>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Contact
+                                </a>
+                            </li>
 
-              </ul>
-            </nav>
-            <p class="copyright pull-right">
-              &copy;
-              <script>document.write(new Date().getFullYear())</script>
-              <a href="http://www.creative-tim.com">SUSTAIN</a> What will you change?
-            </p>
-          </div>
-        </footer>
+                        </ul>
+                    </nav>
+                    <p class="copyright pull-right">
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script>
+                        <a href="http://www.creative-tim.com">SUSTAIN</a> What will you change?
+                    </p>
+                </div>
+            </footer>
 
-      </div>
+        </div>
     </div>
-  </div>
+</div>
 </div>
 </body>
 
@@ -474,20 +477,20 @@
 <script src="assets/js/demo.js"></script>
 
 <script type="text/javascript">
-  $(document).ready(function () {
+    $(document).ready(function () {
 
-    demo.initChartist();
+        demo.initChartist();
 
-    // $.notify({
-    //    	icon: 'pe-7s-gift',
-    //    	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+        // $.notify({
+        //    	icon: 'pe-7s-gift',
+        //    	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
 
-    //    },{
-    //        type: 'info',
-    //        timer: 4000
-    //    });
+        //    },{
+        //        type: 'info',
+        //        timer: 4000
+        //    });
 
-  });
+    });
 </script>
 
 </html>
