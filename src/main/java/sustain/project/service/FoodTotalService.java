@@ -3,7 +3,7 @@ package sustain.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sustain.project.classes.FoodTotal;
+import sustain.project.models.FoodTotal;
 import sustain.project.interfaces.FoodTotalRepo;
 
 import java.util.List;

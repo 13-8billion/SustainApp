@@ -2,7 +2,7 @@ package sustain.project.interfaces;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import sustain.project.classes.User;
+import sustain.project.models.User;
 
 @org.springframework.stereotype.Repository
 public interface UserRepo extends JpaRepository<User, String> {

@@ -1,4 +1,4 @@
-package sustain.project.classes;
+package sustain.project.models;
 
 import javax.sql.DataSource;
 

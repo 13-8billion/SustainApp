@@ -10,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import org.springframework.test.annotation.Rollback;
-import sustain.project.classes.User;
+import sustain.project.models.User;
 import sustain.project.interfaces.UserRepo;
 
 @DataJpaTest

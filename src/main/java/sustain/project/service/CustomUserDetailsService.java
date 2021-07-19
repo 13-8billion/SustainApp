@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import sustain.project.classes.CustomUserDetails;
-import sustain.project.classes.User;
+import sustain.project.models.CustomUserDetails;
+import sustain.project.models.User;
 import sustain.project.interfaces.UserRepo;
 
 @Service

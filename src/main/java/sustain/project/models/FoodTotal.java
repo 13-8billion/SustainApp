@@ -1,10 +1,15 @@
-package sustain.project.classes;
+package sustain.project.models;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "FoodTotal")
-public class FoodTotal {
+public class FoodTotal implements Serializable {
 
     // VARIABLES
 
@@ -14,20 +19,24 @@ public class FoodTotal {
     private String username;
     @Column(name = "totalCo2")
     private double totalCo2;
+    @Column
+    @Transient
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
 
 
     // CONSTRUCTORS
 
-    public FoodTotal(int ID, String username, double Totalco2) {
+    public FoodTotal(int ID, String username) {
         this.ID = ID;
         this.username = username;
+    }
+
+
+    public FoodTotal(double totalCo2) {
         this.totalCo2 = totalCo2;
-    }
 
-    public FoodTotal(String username) {
-        this.username = username;
     }
-
 
     public FoodTotal() {
 
@@ -60,6 +69,15 @@ public class FoodTotal {
 
     public void setTotalCo2(double totalCo2) {
         this.totalCo2 = totalCo2;
+    }
+
+        // was of type LocalDate
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
 }

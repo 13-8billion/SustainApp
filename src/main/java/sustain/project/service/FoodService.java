@@ -2,7 +2,7 @@ package sustain.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sustain.project.classes.Food;
+import sustain.project.models.Food;
 import sustain.project.interfaces.FoodRepo;
 import java.util.List;
 

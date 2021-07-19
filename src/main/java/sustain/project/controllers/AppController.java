@@ -1,19 +1,19 @@
 package sustain.project.controllers;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import sustain.project.classes.AddUserFood;
-import sustain.project.classes.Food;
-import sustain.project.classes.FoodTotal;
+import sustain.project.models.AddUserFood;
+import sustain.project.models.Food;
+import sustain.project.models.FoodTotal;
 import sustain.project.service.*;
-import sustain.project.classes.User;
+import sustain.project.models.User;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -83,6 +83,10 @@ public class AppController {
         return new ModelAndView("dashboard");
     }
 
+    @RequestMapping("/stats")
+    public String stats(){
+        return "stats";
+    }
 
     // METHODS
 
@@ -138,7 +142,9 @@ public class AppController {
         List<AddUserFood> ufl = auf.listAll();
         String username = userDetails.returnUsername();
         foodTotalObject.setUsername(username);
+        LocalDate date = LocalDate.now();
         double total = 0.0;
+
         for (AddUserFood addUserFood : ufl) {
 
             if (addUserFood.getUsername().equals(username)) {
@@ -148,6 +154,7 @@ public class AppController {
         }
 
         foodTotalObject.setTotalCo2(total);
+        foodTotalObject.setDate(date);
         fts.save(foodTotalObject);
 
         model.addAttribute("total", total);
