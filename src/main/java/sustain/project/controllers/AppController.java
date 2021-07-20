@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 @Controller
 public class AppController {
 
@@ -239,34 +238,146 @@ public class AppController {
     @GetMapping("/go")
     public String showFoodTotal(Model model) {
 
-        List<Double> monthTotals = new ArrayList<>();
         List<FoodTotal> ft = fts.listAll();
-
-        OverAllTotal oat = new OverAllTotal();
-
-
         int month = 0;
-        double totals = 0;
-        double uneven = 0;
+        double total1 = 0;
+        double total2 = 0;
+        double total3 = 0;
+        double total4 = 0;
+        double total5 = 0;
+        double total6 = 0;
+        double total7 = 0;
+        double total8 = 0;
+        double total9 = 0;
+        double total10 = 0;
+        double total11 = 0;
+        double total12 = 0;
 
-        if (ft.size() % 2 != 0) // if array length when divided by 2 has a remainder element (i.e uneven)
-        {
-           uneven = ft.get(ft.size() - 1).getTotalCo2();
-           ft.remove(ft.size() - 1);
-        }
+        OverAllTotal oat1 = new OverAllTotal();
+        OverAllTotal oat2 = new OverAllTotal();
+        OverAllTotal oat3 = new OverAllTotal();
+        OverAllTotal oat4 = new OverAllTotal();
+        OverAllTotal oat5 = new OverAllTotal();
+        OverAllTotal oat6 = new OverAllTotal();
+        OverAllTotal oat7 = new OverAllTotal();
+        OverAllTotal oat8 = new OverAllTotal();
+        OverAllTotal oat9 = new OverAllTotal();
+        OverAllTotal oat10 = new OverAllTotal();
+        OverAllTotal oat11 = new OverAllTotal();
+        OverAllTotal oat12 = new OverAllTotal();
 
-        for (int i = 0; i < ft.size(); i = i + 2) {
+        for (int i = 0; i < ft.size(); i++) {
 
-            if (ft.get(i).getDate().getMonthValue() == ft.get(i+1).getDate().getMonthValue())
 
-                month = ft.get(i).getDate().getMonthValue();
+            if (ft.get(i).getDate().getMonthValue() == 1) {
+                month = 1;
+                total1 = total1 + ft.get(i).getTotalCo2();
+                oat1.setUsername("Test");
+                oat1.setTotal(total1);
+                oat1.setDate(month);
+                oats.save(oat1);
+            }
 
-            totals = totals + ft.get(i).getTotalCo2() + uneven;
+            if (ft.get(i).getDate().getMonthValue() == 2) {
+                month = 2;
+                total2 = total2 + ft.get(i).getTotalCo2();
+                oat2.setUsername("Test");
+                oat2.setTotal(total2);
+                oat2.setDate(month);
+                oats.save(oat2);
+            }
 
-            oat.setUsername("Test");
-            oat.setTotal(totals);
-            oat.setDate(month);
-            oats.save(oat);
+
+            if (ft.get(i).getDate().getMonthValue() == 3) {
+                month = 3;
+                total3 = total3 + ft.get(i).getTotalCo2();
+                oat3.setUsername("Test");
+                oat3.setTotal(total3);
+                oat3.setDate(month);
+                oats.save(oat3);
+            }
+
+            if (ft.get(i).getDate().getMonthValue() == 4) {
+                month = 4;
+                total4 = total4 + ft.get(i).getTotalCo2();
+                oat4.setUsername("Test");
+                oat4.setTotal(total4);
+                oat4.setDate(month);
+                oats.save(oat4);
+            }
+
+            if (ft.get(i).getDate().getMonthValue() == 5) {
+                month = 5;
+                total5 = total5 + ft.get(i).getTotalCo2();
+                oat5.setUsername("Test");
+                oat5.setTotal(total5);
+                oat5.setDate(month);
+                oats.save(oat5);
+            }
+
+            if (ft.get(i).getDate().getMonthValue() == 6) {
+                month = 6;
+                total6 = total6 + ft.get(i).getTotalCo2();
+                oat6.setUsername("Test");
+                oat6.setTotal(total6);
+                oat6.setDate(month);
+                oats.save(oat6);
+            }
+
+            if (ft.get(i).getDate().getMonthValue() == 7) {
+                month = 7;
+                total7 = total7 + ft.get(i).getTotalCo2();
+                oat7.setUsername("Test");
+                oat7.setTotal(total7);
+                oat7.setDate(month);
+                oats.save(oat7);
+            }
+
+            if (ft.get(i).getDate().getMonthValue() == 8) {
+                month = 8;
+                total8 = total8 + ft.get(i).getTotalCo2();
+                oat8.setUsername("Test");
+                oat8.setTotal(total8);
+                oat8.setDate(month);
+                oats.save(oat8);
+            }
+
+            if (ft.get(i).getDate().getMonthValue() == 9) {
+                month = 9;
+                total9 = total9 + ft.get(i).getTotalCo2();
+                oat9.setUsername("Test");
+                oat9.setTotal(total9);
+                oat9.setDate(month);
+                oats.save(oat9);
+            }
+
+            if (ft.get(i).getDate().getMonthValue() == 10) {
+                month = 10;
+                total10 = total10 + ft.get(i).getTotalCo2();
+                oat10.setUsername("Test");
+                oat10.setTotal(total10);
+                oat10.setDate(month);
+                oats.save(oat10);
+            }
+
+            if (ft.get(i).getDate().getMonthValue() == 11) {
+                month = 11;
+                total11 = total11 + ft.get(i).getTotalCo2();
+                oat11.setUsername("Test");
+                oat11.setTotal(total11);
+                oat11.setDate(month);
+                oats.save(oat11);
+            }
+
+            if (ft.get(i).getDate().getMonthValue() == 12) {
+                month = 12;
+                total12 = total12 + ft.get(i).getTotalCo2();
+                oat12.setUsername("Test");
+                oat12.setTotal(total10);
+                oat12.setDate(month);
+                oats.save(oat12);
+            }
+
         }
 
         return "eChartTest";
