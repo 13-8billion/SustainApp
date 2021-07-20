@@ -1,31 +1,31 @@
 package sustain.project.eCharts;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sustain.project.models.FoodTotal;
 import sustain.project.service.CustomUserDetailsService;
 import sustain.project.service.FoodTotalService;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
-import java.util.Date;
-
 import java.util.*;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 
 @RestController
 @RequestMapping(value = "/echart")
 public class EChartController {
 
-    private static final int DATA_COUNT = 12;
 
+
+    private static final int DATA_COUNT = 12;
     @Autowired
     private CustomUserDetailsService userDetails;
-
     @Autowired
     private FoodTotalService fts;
+
 
     @RequestMapping("/line")
     public EChartData line() {
@@ -39,7 +39,7 @@ public class EChartController {
         service.setXData(getXAxis());
 
         // 数据
-        service.addLine("Food", createData(DATA_COUNT));
+        service.addLine("Food", createD(listft()));
 //        service.addLine("Travel", createData(DATA_COUNT));
 
         return service.getData();
@@ -104,7 +104,6 @@ public class EChartController {
 
 
     private List<Double> createData(int count) {
-
         List<FoodTotal> db = fts.listAll();
         List<Double> data = new ArrayList<>();
         String username = userDetails.returnUsername();
@@ -113,44 +112,47 @@ public class EChartController {
 
 
         for (int i = 0; i < count; i++) {
-//            for (int j = 0; j < dateList.size(); j++) {
-
-                    // changed date variable to string from LocalDate type.. check how to use type
-                //dateList.get(j).equals("Jan") &&
-
-            //db.get(i).getUsername().equals(username) &&
 
                     if (db.get(i).getUsername().equals(username) && db.get(i).getDate().equals(jan))
                         data.add(db.get(i).getTotalCo2());
+        }
+        return data;
+    }
+
+    private int listft(){
+        List<FoodTotal> db = fts.listAll();
+
+        return db.size();
+
+    }
+
+    /**
+     * 产生数据
+     *
+     * @param size
+     * @return
+     */
+    private List<Double> createD(int size) {
+
+        List<FoodTotal> db = fts.listAll();
+        List<Double> data = new ArrayList<>();
+        String username = userDetails.returnUsername();
+        CharSequence myDate = "2021-07-16";
+        LocalDate jan = LocalDate.parse(myDate);
+
+
+        for (int i = 0; i < size; i++) {
+
+            if (db.get(i).getUsername().equals(username))
+                data.add(db.get(i).getTotalCo2());
 //            }
         }
         return data;
     }
 
-//    FoodTotalService fts;
-//    private List<FoodTotal> createData(int count) {
-//        List<FoodTotal> DB = fts.listAll();
-//        List<FoodTotal> totals = new ArrayList<>();
-//        double res = 0;
-//
-//        String username = userDetails.returnUsername();
-//
-//        for (int i = 0; i < count; i++) {
-//
-//            for (int j = 0; j < DB.size(); j++) {
-//
-//                if (DB.get(j).getUsername().equals(username))
-//
-//                    res = DB.get(j).getTotalCo2();
-//            }
-//            totals.add(new FoodTotal(res));
-//        }
-//        return totals;
-//    }
 
-
-    private ArrayList<String> getXAxis() {
-        ArrayList<String> dateList = new ArrayList<>();
+    private List<String> getXAxis() {
+        List<String> dateList = new ArrayList<>();
         dateList.add("Jan");
         dateList.add("Feb");
         dateList.add("Mar");
@@ -167,7 +169,6 @@ public class EChartController {
         return dateList;
     }
 
-
     /**
      * 构建饼图的数据
      *
@@ -182,5 +183,7 @@ public class EChartController {
 
         return result;
     }
+
+
 
 }

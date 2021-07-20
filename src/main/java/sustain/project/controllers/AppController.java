@@ -6,15 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import sustain.project.models.AddUserFood;
-import sustain.project.models.Food;
-import sustain.project.models.FoodTotal;
+import sustain.project.models.*;
 import sustain.project.service.*;
-import sustain.project.models.User;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
 
 
 @Controller
@@ -34,6 +33,9 @@ public class AppController {
 
     @Autowired
     private FoodTotalService fts;
+
+    @Autowired
+    private OverAllTotalService oats;
 
     // VIEWS
 
@@ -84,7 +86,7 @@ public class AppController {
     }
 
     @RequestMapping("/stats")
-    public String stats(){
+    public String stats() {
         return "stats";
     }
 
@@ -137,8 +139,8 @@ public class AppController {
     @PostMapping(value = "/calcFood", params = "calc")
     public ModelAndView calcFoodTotal(@ModelAttribute("foodTotalObject") FoodTotal foodTotalObject,
                                       @ModelAttribute("foodObject") AddUserFood foodObject, @ModelAttribute("foodName") String foodN,
-                                      @ModelAttribute("grams") double g, Model model ) {
-
+                                      @ModelAttribute("grams") double g, Model model) {
+//        FoodTotal fto = new FoodTotal();
         List<AddUserFood> ufl = auf.listAll();
         String username = userDetails.returnUsername();
         foodTotalObject.setUsername(username);
@@ -163,11 +165,47 @@ public class AppController {
         model.addAttribute("foodName", foodN);
         model.addAttribute("grams", g);
 
+//        fto.setDate(null);
+//        fto.setUsername(null);
+//        fto.setTotalCo2(0.0);
+//        fto.setID(0);
+
         Iterable<AddUserFood> deleteFoodObject = auf.listAll();
         auf.deleteAll(deleteFoodObject);
 
         return new ModelAndView("addFood");
     }
+
+//    @GetMapping("/eChartTest")
+//    public String showFoodTotal(Model model) {
+//
+//
+//        List<Double> total = fts.listAll().stream().map(x -> x.getTotalCo2()).collect(Collectors.toList());
+//        List<LocalDate> date = fts.listAll().stream().map(x -> x.getDate()).collect(Collectors.toList());
+//        List<Integer> month = fts.listAll().stream().map(x -> x.getDate().getMonthValue()).collect(Collectors.toList());
+//
+//
+//        List<Double> monthTotals = new ArrayList<>();
+//        List<FoodTotal> ft = fts.listAll();
+//
+//        int aug = 7;
+//        double augTotals = 0;
+//
+//        for (int i = 0; i < ft.size(); i++) {
+//
+//            if (ft.get(i).getDate().getMonthValue() == aug)
+//
+//                augTotals = augTotals + ft.get(i).getTotalCo2();
+//
+//            monthTotals.add(6, augTotals);
+//
+//        }
+//
+//        model.addAttribute("total", total);
+//        model.addAttribute("month", monthTotals);
+//        return "eChartTest";
+//
+//    }
 
 
     @Controller
@@ -197,4 +235,48 @@ public class AppController {
 
         return "redirect:/"; //eg. homepage
     }
+
+    @GetMapping("/go")
+    public String showFoodTotal(Model model) {
+
+        List<Double> monthTotals = new ArrayList<>();
+        List<FoodTotal> ft = fts.listAll();
+
+        OverAllTotal oat = new OverAllTotal();
+
+
+        int month = 0;
+        double totals = 0;
+        double uneven = 0;
+
+        if (ft.size() % 2 != 0) // if array length when divided by 2 has a remainder element (i.e uneven)
+        {
+           uneven = ft.get(ft.size() - 1).getTotalCo2();
+           ft.remove(ft.size() - 1);
+        }
+
+        for (int i = 0; i < ft.size(); i = i + 2) {
+
+            if (ft.get(i).getDate().getMonthValue() == ft.get(i+1).getDate().getMonthValue())
+
+                month = ft.get(i).getDate().getMonthValue();
+
+            totals = totals + ft.get(i).getTotalCo2() + uneven;
+
+            oat.setUsername("Test");
+            oat.setTotal(totals);
+            oat.setDate(month);
+            oats.save(oat);
+        }
+
+        return "eChartTest";
+
+    }
+
+    @RequestMapping(value = "/eChartTest")
+    public ModelAndView showeChartTest() {
+        return new ModelAndView("eChartTest");
+    }
+
+
 }

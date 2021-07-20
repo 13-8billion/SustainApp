@@ -1,5 +1,6 @@
 package sustain.project.eCharts;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class EChartData {
     private List<SustainEntry> entry;
 
     private String title, subTitle, name;
+
+    private LocalDate name2;
 
     public List<SustainSeries> getSeries() {
         return series;
@@ -105,6 +108,7 @@ public class EChartData {
 
         return list;
     }
+
 
     public List<SustainEntry> getEntry() {
         return entry;

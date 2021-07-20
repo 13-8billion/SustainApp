@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -172,6 +171,39 @@
             echarts.connect([ chart1, chart2, chart3 ]);
 
             var chart4 = drawChart("main4", "/echart/pie");
+
+
+
+        </script>
+
+        <div id="main" style="width: 600px;height:400px;"></div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: 'ECharts'
+                },
+                tooltip: {},
+                legend: {
+                    data:['FOOD']
+                },
+                xAxis: {
+                    // categories: [[${date}]],
+                    data: ["A","B","C","D","E","F"]
+                },
+                yAxis: {},
+                series: [{
+                    name: 'TOTAL CO2',
+                    type: 'bar',
+                    data: [[${total}]]
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
         </script>
 
 

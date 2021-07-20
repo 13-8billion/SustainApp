@@ -3,26 +3,27 @@ package sustain.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sustain.project.models.FoodTotal;
-import sustain.project.interfaces.FoodTotalRepo;
+import sustain.project.interfaces.OverAllTotalRepo;
+import sustain.project.models.OverAllTotal;
+
 
 import java.util.List;
 
 @Service
 @Transactional
-public class FoodTotalService {
+public class OverAllTotalService{
     @Autowired
-    private FoodTotalRepo repo;
+    private OverAllTotalRepo repo;
 
-    public List<FoodTotal> listAll() {
+    public List<OverAllTotal> listAll() {
         return repo.findAll();
     }
 
-    public void save(FoodTotal foodTotalObject) {
-        repo.save(foodTotalObject);
+    public void save(OverAllTotal overAllTotalObject) {
+        repo.save(overAllTotalObject);
     }
 
-    public FoodTotal get(String username) {
+    public OverAllTotal get(String username) {
         return repo.findById(username).get();
     }
 
@@ -31,4 +32,3 @@ public class FoodTotalService {
     }
 
 }
-

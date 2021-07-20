@@ -1,5 +1,6 @@
 package sustain.project.eCharts;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -36,6 +37,8 @@ public class SustainEchartService {
     public void addBar(String name, List<?> data) {
         addData(name, "bar", data);
     }
+
+
 
     /**
      *

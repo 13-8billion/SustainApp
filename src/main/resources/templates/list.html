@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Manager</title>
+</head>
+<body>
+<div align="center"><h1>Food Manager</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Person ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="addUserFood : ${listFood}">
+            <td th:text="${addUserFood.ID}">Food ID</td>
+            <td th:text="${addUserFood.username}">username</td>
+            <td th:text="${addUserFood.grams}">grams</td>
+            <td th:text="${addUserFood.foodName}">foodname</td>
+            <td th:text="${addUserFood.res}">res</td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
