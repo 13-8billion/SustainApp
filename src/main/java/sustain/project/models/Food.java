@@ -1,10 +1,12 @@
 package sustain.project.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "Food")
-public class Food {
+public class Food implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     // VARIABLES
 

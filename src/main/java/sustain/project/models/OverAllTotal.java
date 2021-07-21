@@ -1,13 +1,13 @@
 package sustain.project.models;
-
-import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.io.Serializable;
+
 
 
 @Entity
 @Table(name = "OverAllTotal")
-public class OverAllTotal{
+public class OverAllTotal implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Column(name = "ID")
     private int ID;
@@ -16,7 +16,7 @@ public class OverAllTotal{
     @Column(name = "total")
     private double total;
     @Column(name = "date")
-    private int date;
+    private String date;
 
 
     @Id //  mySQL primary key
@@ -46,11 +46,11 @@ public class OverAllTotal{
         this.total = total;
     }
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

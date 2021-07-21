@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sustain.project.interfaces.OverAllTotalRepo;
+import sustain.project.models.AddUserFood;
 import sustain.project.models.OverAllTotal;
 
 
@@ -29,6 +30,10 @@ public class OverAllTotalService{
 
     public void delete(String username) {
         repo.deleteById(username);
+    }
+
+    public void deleteAll(Iterable<OverAllTotal> totalObject){
+        repo.deleteAllInBatch(totalObject);
     }
 
 }

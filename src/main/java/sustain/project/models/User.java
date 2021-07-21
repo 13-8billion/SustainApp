@@ -1,10 +1,12 @@
 package sustain.project.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity // mySQL entity
 @Table(name = "User")
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id // mySQL primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
