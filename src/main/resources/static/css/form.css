@@ -1,0 +1,165 @@
+/* main form stylings */
+.form {
+    /*    margin: 0 0 0 0;*/
+    /*    position: center;
+    */    font-family: Helvetica, sans-serif;
+    display: inline-block;
+    /*  border: none;*/
+    /*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, .5);*/
+    /*  border-radius: 4px;*/
+    /*background: rgba(255, 255, 255, 0.3); !* allows change in opacity without affecting text opacity*!*/
+    /*   padding-right: 5%;*/
+    padding-left: 2%;
+}
+
+/* first header in form */
+#formP1, #formR1{
+    font-family: Georgia, serif;
+    font-size: 100%;
+    color: white;
+    margin: 0 0 0 0;
+    text-shadow: 2px 2px 20px black;
+    padding-bottom: 5%;
+    font-style: italic;
+}
+#formP3{
+    font-size: 110%;
+    color: white;
+    margin: 4% 0 0 0;
+    text-shadow: 2px 2px 3px black;
+    padding-left: 10%;
+    font-family: Helvetica, sans-serif;
+}
+/* form stylings for input of type text boxes*/
+input[type=text], input[type=password], input[type=email], #select, #foodName{
+    width: 110%;
+    padding: 5%;
+    margin: 3% 0;
+    border-radius: 50px;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, .1);
+    transition: 0.5s;
+    outline: none; /*removes deault 'blue' outline when field is selected*/
+    background-color: rgba(255, 255, 255, .8); /* allows change in opacity without affected text */
+    color: grey;
+    font-family: Helvetica, sans-serif;
+    text-align: left;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75)
+
+    /*text-shadow: 2px 2px 5px black;*/
+}
+/**/
+
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #select:focus {
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 1);
+    color: grey;
+
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* submit box styling */
+/*input[type=submit], [type=button]{*/
+#login, #signUpp, #addFoodItem, #foodTotal{
+    width: 110%;
+    background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
+    /*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
+    /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
+    color: #fff;
+    padding: 5%;
+    margin: 3% 0;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    outline: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+#logout{
+    margin-top: 50%;
+}
+.regButton{
+    background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
+    /*    background-color: #4dffa6; !*rgba(255, 255, 255, .8);*/
+    /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
+    color: #fff;
+    padding: 10%;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    outline: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+}
+
+#login:hover, #signUpp:hover, .regButton:hover {
+    background-image: linear-gradient(to bottom right, #365eff, #4dffa6);
+
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+#signUp{
+    width: 110%;
+    /*   background-image: linear-gradient(to bottom right, #4dffa6, #365eff);*/
+    /*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
+    color: rgba(255, 255, 255, 1); /*rgba(55, 158, 190, 1);*/
+    color: #4dffa6;
+    padding: 5%;
+    margin: 3% 0;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    outline: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    font-size: 16px;
+}
+
+#signUp:hover {
+    background-image: linear-gradient(to bottom right, #365eff, #4dffa6);
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    color: white;
+}
+
+
+/* reset box styling */
+input[type=reset] {
+    width: 90%;
+    background-color: white;
+    opacity: 60%;
+    color: black;
+    padding: 11px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+/* changed colour of reset box on hover*/
+input[type=reset]:hover {
+    background-color: red;
+}

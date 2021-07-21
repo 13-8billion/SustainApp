@@ -16,7 +16,7 @@ public class OverAllTotal{
     @Column(name = "total")
     private double total;
     @Column(name = "date")
-    private int date;
+    private String date;
 
 
     @Id //  mySQL primary key
@@ -46,11 +46,11 @@ public class OverAllTotal{
         this.total = total;
     }
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
