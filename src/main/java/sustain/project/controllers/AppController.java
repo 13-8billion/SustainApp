@@ -40,6 +40,16 @@ public class AppController {
     @Autowired
     private TransportTotalService tts;
 
+    @Autowired
+    private HouseEnergyService hes;
+
+    @Autowired
+    private AddHouseService ahs;
+
+    @Autowired
+    private HouseEnergyTotalService hets;
+
+
     // VIEWS
 
     @RequestMapping("/test")
@@ -106,7 +116,16 @@ public class AppController {
         return "addTransport";
     }
 
-    // METHODS
+    @RequestMapping("/addHouseEnergyView")
+    public String showHouseEnergyForm(Model model) {
+        AddHouse houseObject = new AddHouse();
+        model.addAttribute("houseObject", houseObject);
+
+        return "addHouse";
+    }
+
+
+    // USER METHODS
 
     @PostMapping("/save")
     public String processRegister(User user) {
@@ -118,6 +137,7 @@ public class AppController {
 
         return "register_success";
     }
+
 
     // FOOD
 
@@ -224,7 +244,7 @@ public class AppController {
 
     @PostMapping(value = "/calcTransport", params = "calc")
     public ModelAndView calcTransportTotal(@ModelAttribute("transTotalObject") TransportTotal transTotalObject,
-                                      @ModelAttribute("transObject") AddTransport foodObject, @ModelAttribute("type") String type,
+                                      @ModelAttribute("transObject") AddTransport transObject, @ModelAttribute("type") String type,
                                       @ModelAttribute("distance") double d, Model model) {
 
         String username = userDetails.returnUsername();
@@ -256,6 +276,83 @@ public class AppController {
         return new ModelAndView("addTransport");
     }
 
+    // HOUSE ENERGY
+
+    @PostMapping("/addHouseActivity")
+    public String AddHouse(@ModelAttribute("houseObject") AddHouse houseObject) {
+        ahs.save(houseObject);
+        return "addHouse";
+    }
+
+    @PostMapping(value = "/calcHouse", params = "add")
+    public ModelAndView calcHouse(@ModelAttribute("houseObject") AddHouse houseObject, @ModelAttribute("etype") String etype,
+                                      @ModelAttribute("kWh") double kWh, Model model) {
+        double res = 0;
+        List<HouseEnergy> hl = hes.listAll();
+
+
+        for (HouseEnergy house : hl) {
+
+            if (house.getEtype().equals(etype)) {
+
+                res = house.getCo2() * kWh;
+            }
+        }
+
+        houseObject.setRes(res);
+        houseObject.setUsername(userDetails.returnUsername());
+        ahs.save(houseObject);
+        model.addAttribute("res", res);
+        model.addAttribute("etype", etype);
+        model.addAttribute("kWh", kWh);
+
+        return new ModelAndView("addHouse");
+    }
+
+    @PostMapping(value = "/calcHouse", params = "calc")
+    public ModelAndView calcHouseTotal(@ModelAttribute("houseTotalObject") HouseEnergyTotal houseTotalObject,
+                                           @ModelAttribute("houseObject") AddHouse houseObject, @ModelAttribute("etype") String etype,
+                                           @ModelAttribute("kWh") double kWh, Model model) {
+
+        String username = userDetails.returnUsername();
+        List<AddHouse> hl = ahs.listAll();
+        houseTotalObject.setUsername(username);
+        LocalDate date = LocalDate.now();
+        double total = 0.0;
+
+        for (AddHouse addHouse : hl) {
+
+            if (addHouse.getUsername().equals(username)) {
+
+                total = total + addHouse.getRes();
+            }
+        }
+
+        houseTotalObject.setTotal(total);
+        houseTotalObject.setDate(date);
+        hets.save(houseTotalObject);
+
+        model.addAttribute("total", total);
+        // have to add above /calcFood method attributes here too
+        // and in method parameters else form submit won't work
+        model.addAttribute("etype", etype);
+        model.addAttribute("kWh", kWh);
+        Iterable<AddHouse> deleteHouseObject = ahs.listAll();
+        ahs.deleteAll(deleteHouseObject);
+
+        return new ModelAndView("addHouse");
+    }
+
+
+
+
+
+
+
+
+
+
+    // SECURITY
 
     @Controller
     public class SecurityController {

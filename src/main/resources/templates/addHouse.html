@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="assets/img/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-  <title>Transport</title>
+  <title>House</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
   <meta name="viewport" content="width=device-width"/>
@@ -153,74 +153,50 @@
 
 
     <div class="form">
-      <form action="#" th:action="@{/calcTransport}" method="post">
+      <form action="#" th:action="@{/calcHouse}" method="post">
         <!-- call validate function in 'form' tag when user clicks submit button-->
         <div class="col-sm-10">
           <table>
             <tr>
               <td>
-                <label for="type"></label><select id="type" name="type"
-                                                      th:field="*{type}" th:object="${transObject}">
-                <option value="" disabled="disabled" selected="selected">Choose Vehicle</option>
-                <option value="" disabled="disabled" selected="selected">BUS</option>
-                <option value="bus (local)">Bus (local)</option>
-                <option value="coach">Bus (coach)</option>
-                <option value="" disabled="disabled" selected="selected">CAR - DIESEL</option>
-                <option value="car (diesel/small)">Car - small (up tp 1.7 litre engine)</option>
-                <option value="car (diesel/medium)">Car - medium (1.7 - 2.0 litre engine)</option>
-                <option value="car (diesel/large)">Car - large (2.0+ litre engine)</option>
-                <option value="car (diesel/average)">Car - average (unknown)</option>
-                <option value="" disabled="disabled" selected="selected">CAR - PETROL</option>
-                <option value="car (petrol/small)">Car - small (up tp 1.4 litre engine)</option>
-                <option value="car (petrol/medium)">Car - medium (1.4 - 2.0 litre engine)</option>
-                <option value="car (petrol/large)">Car - large (2.0+ litre engine)</option>
-                <option value="car (petrol/average)">Car - average (unknown)</option>
-                <option value="" disabled="disabled" selected="selected">CAR - HYBRID</option>
-                <option value="car (hybrid/small)">Car - small (up tp 1.4 litre engine)</option>
-                <option value="car (hybrid/medium)">Car - medium (1.4 - 2.0 litre engine)</option>
-                <option value="car (hybrid/large)">Car - large (2.0+ litre engine)</option>
-                <option value="car (hybrid/average)">Car - average (unknown)</option>
-                <option value="" disabled="disabled" selected="selected">FERRY</option>
-                <option value="ferry (foot)">Ferry (foot passenger)</option>
-                <<option value="ferry (car)">Ferry (car passenger)</option>
-                <option value="" disabled="disabled" selected="selected">MOTORBIKE - PETROL</option>
-                <option value="motorbike (petrol/small)">Motorbike - small (125cc)</option>
-                <option value="motorbike (petrol/medium)">Motorbike - medium (125 - 500cc)</option>
-                <option value="motorbike (petrol/large)">Motorbike - large (500cc)</option>
-                <option value="motorbike (petrol/average)">Motorbike - average (unknown)</option>
-                <option value="" disabled="disabled" selected="selected">RAIL</option>
-                <option value="rail (national)">Rail (national)</option>
-                <option value="rail (international)">Rail (international)</option>
-                <option value="rail (light/tram)">Rail (light/tram)</option>
+                <label for="etype"></label><select id="etype" name="etype"
+                                                  th:field="*{etype}" th:object="${houseObject}">
+                <option value="" disabled="disabled" selected="selected">Choose Energy</option>
+                <option value="Burning Oil">Burning Oil (kerosene)</option>
+                <option value="Coal">Coal</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Gas Oil">Gas Oil (red diesel)</option>
+                <option value="Natural Gas">Natural Gas</option>
+                <option value="Propane">Propane</option>
               </select>
                 <!-- 'size' changes length of input box-->
               </td>
             </tr>
             <tr>
               <td>
-                <input type="text" name="distance" size="30" value="distance" th:field="*{distance}" th:object="${transObject}">
+                <input type="text" name="kWh" size="30" value="kWh" th:field="*{kWh}" th:object="${houseObject}">
               </td>
             </tr>
             <tr>
               <!-- submit button -->
-              <td><input id="addTransportActivity" type="submit" name="add" value="ADD JOURNEY"/></td>
+              <td><input id="addHouseActivity" type="submit" name="add" value="ADD ENERGY CONSUMPTION"/></td>
             </tr>
             <tr>
               <td>
                 <p th:text="*{res}"></p>
-                <p th:text="*{type}"></p>
-                <p th:text="*{distance}"></p>
+                <p th:text="*{etype}"></p>
+                <p th:text="*{kWh}"></p>
               </td>
             </tr>
 
             <tr>
               <!-- submit button -->
-              <td><input  th:object="${transTotalObject}" id="transTotal" type="submit" name="calc" value="CALCULATE"/></td>
+              <td><input  th:object="${houseTotalObject}" id="houseTotal" type="submit" name="calc" value="CALCULATE"/></td>
             </tr>
 
             <tr>
               <td>
-                <p> TOTAL CO2e (kg) FOR THIS JOURNEY</p>
+                <p> TOTAL CO2e (kg):</p>
                 <p th:text="*{total}"></p>
               </td>
             </tr>
