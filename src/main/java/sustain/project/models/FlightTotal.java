@@ -11,8 +11,8 @@ public class FlightTotal implements Serializable {
 
     // VARIABLES
 
-    @Column(name = "ID")
-    private int ID;
+    @Column(name = "id")
+    private int id;
     @Column(name = "username")
     private String username;
     @Column(name = "total")
@@ -22,13 +22,13 @@ public class FlightTotal implements Serializable {
 
     @Id //  mySQL primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    public int getID() {
-        return ID;
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
 

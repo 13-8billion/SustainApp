@@ -24,12 +24,12 @@ public class FlightTotalService {
         repo.save(flightObj);
     }
 
-    public FlightTotal get(String type) {
-        return repo.findById(type).get();
+    public FlightTotal get(int id) {
+        return repo.findById(id).get();
     }
 
-    public void delete(String type) {
-        repo.deleteById(type);
+    public void delete(int id) {
+        repo.deleteById(id);
     }
 
     public void deleteAll(Iterable<FlightTotal> flightObj){

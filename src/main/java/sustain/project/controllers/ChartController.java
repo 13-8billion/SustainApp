@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import sustain.project.models.*;
 import sustain.project.service.*;
+
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,11 +29,13 @@ public class ChartController {
 
     // METHODS
 
+
     @GetMapping("/statistics")
     public String showAnnualStats(Model model) {
 
         String username = userDetails.returnUsername();
         List<FoodTotal> ft = fts.listAll();
+
         double total1 = 0;
         double total2 = 0;
         double total3 = 0;
@@ -58,7 +62,9 @@ public class ChartController {
         OverAllTotal oat11 = new OverAllTotal();
         OverAllTotal oat12 = new OverAllTotal();
 
+
         // FOOD
+
         for (FoodTotal foodTotal : ft) {
             if (foodTotal.getDate().getMonthValue() == 1 && foodTotal.getUsername().equals(username)) {
                 total1 = total1 + foodTotal.getTotalCo2();
@@ -169,8 +175,8 @@ public class ChartController {
         // TRANSPORT
 
         List<TransportTotal> tt = tts.listAll();
-        for (TransportTotal transTotal : tt) {
 
+        for (TransportTotal transTotal : tt) {
 
             if (transTotal.getDate().getMonthValue() == 1 && transTotal.getUsername().equals(username)) {
                 total1 = transTotal.getTotalCo2();
@@ -280,6 +286,7 @@ public class ChartController {
         // HOUSE ENERGY
 
         List<HouseEnergyTotal> het = hets.listAll();
+
         for (HouseEnergyTotal houseTotal : het) {
 
             if (houseTotal.getDate().getMonthValue() == 1 && houseTotal.getUsername().equals(username)) {
@@ -389,7 +396,9 @@ public class ChartController {
 
         // FLIGHT
 
+
         List<FlightTotal> flt = flts.listAll();
+
         for (FlightTotal flightTotal : flt) {
 
             if (flightTotal.getDate().getMonthValue() == 1 && flightTotal.getUsername().equals(username)) {
@@ -490,13 +499,63 @@ public class ChartController {
             }
 
 
-            List<Double> totalFlight= oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            List<Double> totalFlight = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalFlight", totalFlight);
 
 
         }
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
+
+
+        // PIE CHART
+
+        double foodT = 0;
+        double transT = 0;
+        double houseT = 0;
+        double flightT = 0;
+
+        List<FoodTotal> foods = fts.listAll();
+        List<TransportTotal> trans = tts.listAll();
+        List<HouseEnergyTotal> house = hets.listAll();
+        List<FlightTotal> flights = flts.listAll();
+
+        for (FoodTotal food : foods) {
+
+            if (food.getUsername().equals(username)) {
+
+                foodT = foodT + food.getTotalCo2();
+            }
+        }
+
+        for (TransportTotal tran : trans) {
+
+            if (tran.getUsername().equals(username)) {
+
+                transT = transT + tran.getTotalCo2();
+            }
+        }
+
+        for (int i = 0; i < house.size(); i++) {
+
+            if (house.get(i).getUsername().equals(username)) {
+
+                houseT = houseT + foods.get(i).getTotalCo2();
+            }
+        }
+
+        for (int i = 0; i < flights.size(); i++) {
+
+            if (flights.get(i).getUsername().equals(username)) {
+
+                flightT = flightT + foods.get(i).getTotalCo2();
+            }
+        }
+
+        model.addAttribute("foodT", foodT);
+        model.addAttribute("transT", transT);
+        model.addAttribute("houseT", houseT);
+        model.addAttribute("flightT", flightT);
 
         return "statistics";
     }
@@ -964,7 +1023,7 @@ public class ChartController {
                 oats.save(oat12);
             }
 
-            List<Double> totalFlight= oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            List<Double> totalFlight = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalFlight", totalFlight);
 
 
