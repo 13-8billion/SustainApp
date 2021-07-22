@@ -49,6 +49,12 @@ public class AppController {
     @Autowired
     private HouseEnergyTotalService hets;
 
+    @Autowired
+    private AddFlightService afs;
+
+    @Autowired
+    private FlightTotalService flts;
+
 
     // VIEWS
 
@@ -85,14 +91,6 @@ public class AppController {
         return "signUp";
     }
 
-    @RequestMapping("/addFoodView")
-    public String showAddFoodForm(Model model) {
-        AddUserFood foodObject = new AddUserFood();
-        model.addAttribute("foodObject", foodObject);
-
-        return "addFood";
-    }
-
     @RequestMapping(value = "/dashboard")
     public ModelAndView showUserDashboard() {
         return new ModelAndView("dashboard");
@@ -106,6 +104,14 @@ public class AppController {
     @RequestMapping("/activityPageView")
     public String activityPageView() {
         return "activityPage";
+    }
+
+    @RequestMapping("/addFoodView")
+    public String showAddFoodForm(Model model) {
+        AddUserFood foodObject = new AddUserFood();
+        model.addAttribute("foodObject", foodObject);
+
+        return "addFood";
     }
 
     @RequestMapping("/addTransportView")
@@ -122,6 +128,14 @@ public class AppController {
         model.addAttribute("houseObject", houseObject);
 
         return "addHouse";
+    }
+
+    @RequestMapping("/addFlightView")
+    public String showFlightForm(Model model) {
+        AddFlight flightObject = new AddFlight();
+        model.addAttribute("flightObject", flightObject);
+
+        return "addFlight";
     }
 
 
@@ -344,7 +358,61 @@ public class AppController {
     }
 
 
+    // FLIGHT
 
+    @PostMapping("/addFlightActivity")
+    public String AddFlight(@ModelAttribute("flightObject") AddFlight flightObject) {
+        afs.save(flightObject);
+        return "addFlight";
+    }
+
+    @PostMapping(value = "/calcFlight", params = "add")
+    public ModelAndView calcFlight(@ModelAttribute("flightObject") AddFlight flightObject, @ModelAttribute("distance") double distance,
+                                   Model model) {
+
+        double res = 0.115 * distance;
+
+        flightObject.setRes(res);
+        flightObject.setUsername(userDetails.returnUsername());
+        afs.save(flightObject);
+        model.addAttribute("res", res);
+        model.addAttribute("distance", distance);
+
+        return new ModelAndView("addFlight");
+    }
+
+    @PostMapping(value = "/calcFlight", params = "calc")
+    public ModelAndView calcFlightTotal(@ModelAttribute("flightTotalObject") FlightTotal flightTotalObject,
+                                       @ModelAttribute("flightObject") AddFlight flightObject, @ModelAttribute("distance") double distance,
+                                       Model model) {
+
+        String username = userDetails.returnUsername();
+        List<AddFlight> fl = afs.listAll();
+        flightTotalObject.setUsername(username);
+        LocalDate date = LocalDate.now();
+        double total = 0.0;
+
+        for (AddFlight addFlight : fl) {
+
+            if (addFlight.getUsername().equals(username)) {
+
+                total = total + addFlight.getRes();
+            }
+        }
+
+        flightTotalObject.setTotal(total);
+        flightTotalObject.setDate(date);
+        flts.save(flightTotalObject);
+
+        model.addAttribute("total", total);
+        // have to add above /calcFood method attributes here too
+        // and in method parameters else form submit won't work
+        model.addAttribute("distance", distance);
+        Iterable<AddFlight> deleteFlightObject = afs.listAll();
+        afs.deleteAll(deleteFlightObject);
+
+        return new ModelAndView("addFlight");
+    }
 
 
 
