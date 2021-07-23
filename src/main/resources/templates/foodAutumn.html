@@ -8,8 +8,9 @@
   <script src="js/jquery-1.6.1.min.js"></script>
   <script src="echart/echarts.min.js"></script>
   <script src="echart/drawchart.js"></script>
+  <script src="js/main.js"></script>
 
-  <title>My Statistics</title>
+  <title>Autumn</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
   <meta name="viewport" content="width=device-width"/>
@@ -60,13 +61,12 @@
             <p>CO₂ Calculator</p>
           </a>
         </li>
-        <li class="active">
           <a href="statistics">
             <i class="pe-7s-graph"></i>
             <p>My Statistics</p>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="mealPlanner">
             <i class="pe-7s-leaf"></i>
             <p>Meal Planner</p>
@@ -156,48 +156,61 @@
       </div>
     </nav>
 
-
-
-
-
-
-
-
-
-
-
-
-    <footer class="footer">
-      <div class="container-fluid">
-        <nav class="pull-left">
-          <ul>
-            <li>
-              <a href="#">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Contact
-              </a>
-            </li>
-
-          </ul>
-        </nav>
-        <p class="copyright pull-right">
-          &copy;
-          <script>document.write(new Date().getFullYear())</script>
-          <a href="#">SUSTAIN</a> What will you change?
-        </p>
-      </div>
-    </footer>
-
   </div>
+  <table id="searchBar">
+    <tr>
+      <td>
+        <select type="text" id="input">
+          <option value="" disabled="disabled" selected="selected">Dietary Preference</option>
+          <option value="vegan">Vegan</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="glutenFree">Gluten Free</option>
+        </select>
+        <button onclick="searchFunction()" class="dropbtn">select</button>
+      </td>
+    </tr>
+  </table>
+  </form>
+  <!--GRID OF PRODUTCS-->
+  <ul id="productList">
+    <li><a href="#">vegWinter</a><a href="#"><img src = "images/food/carrot_burger.png" width="200" height="200" id = "veggieWinter"  alt = "veggieWinter"></a></li>
+    <li><a href="#">vegSummer</a><a href="#"><img src = "images/food/mush.png" width="200" height="200" id = "veggieSummer"  alt = "veggiesUMMER"></a></li>
+    <li><a href="#">vegWinter</a><a href= "#"><img src = "images/food/kale.png" width="200" height="200"  id = "veggie_winter" alt = "veggie_winter"></a></li>
+    <li><a href="#">vegSpring</a><a href="#"><img src = "images/food/lentil.png" width="200" height="200"  id = "veggieSpring" alt = "veggieSpring"></a></li>
+
+  </ul>
+
+  <footer class="footer">
+    <div class="container-fluid">
+      <nav class="pull-left">
+        <ul>
+          <li>
+            <a href="#">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Contact
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <p class="copyright pull-right">
+        &copy;
+        <script>document.write(new Date().getFullYear())</script>
+        <a href="#">SUSTAIN</a> What will you change?
+      </p>
+    </div>
+  </footer>
+
+</div>
 </div>
 </body>
 

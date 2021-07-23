@@ -101,6 +101,31 @@ public class AppController {
         return "statistics";
     }
 
+    @RequestMapping("/mealPlanner")
+    public String mealPlanner() {
+        return "mealPlanner";
+    }
+
+    @RequestMapping("/foodWinter")
+    public String foodWinter() {
+        return "foodWinter";
+    }
+
+    @RequestMapping("/foodSpring")
+    public String foodSpring() {
+        return "foodSpring";
+    }
+
+    @RequestMapping("/foodSummer")
+    public String foodSummer() {
+        return "foodSummer";
+    }
+
+    @RequestMapping("/foodAutumn")
+    public String foodAutumn() {
+        return "foodAutumn";
+    }
+
     @RequestMapping("/activityPageView")
     public String activityPageView() {
         return "activityPage";

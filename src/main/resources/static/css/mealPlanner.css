@@ -1,0 +1,7 @@
+.background_img{
+    background-image: url('../images/lake.jpeg');
+    opacity: 80%;
+    min-height: 100vh; /* so background stays full size of viewport*/
+    width:100%;
+    background-size: cover;
+}

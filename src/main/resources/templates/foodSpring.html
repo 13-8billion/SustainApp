@@ -8,8 +8,9 @@
   <script src="js/jquery-1.6.1.min.js"></script>
   <script src="echart/echarts.min.js"></script>
   <script src="echart/drawchart.js"></script>
+  <script src="js/main.js"></script>
 
-  <title>My Statistics</title>
+  <title>Spring</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
   <meta name="viewport" content="width=device-width"/>
@@ -25,8 +26,8 @@
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
   <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
-  <!--    <link href="css/external.css" th:href="@{css/external.css}" rel="stylesheet"/>-->
-  <!--    MY OWN CSS FUCKS UP THE ALIGNMENT OF EVERYTHING-->
+  <link href="css/external.css" th:href="@{css/mealPlanner.css}" rel="stylesheet"/>
+
 
 </head>
 <body>
@@ -60,13 +61,13 @@
             <p>CO₂ Calculator</p>
           </a>
         </li>
-        <li class="active">
+        <li>
           <a href="statistics">
             <i class="pe-7s-graph"></i>
             <p>My Statistics</p>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="mealPlanner">
             <i class="pe-7s-leaf"></i>
             <p>Meal Planner</p>
@@ -156,14 +157,72 @@
       </div>
     </nav>
 
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+
+              <table>
+                <tr>
+                  <td>
+                    <select type="text" id="input">
+                      <option value="" disabled="disabled" selected="selected">Dietary Preference
+                      </option>
+                      <option value="vegan">Vegan</option>
+                      <option value="vegetarian">Vegetarian</option>
+                      <option value="glutenFree">Gluten-Free</option>
+                    </select>
+                    <button onclick="searchFunction()" class="dropbtn">select</button>
+                  </td>
+                </tr>
+              </table>
+
+              <div class="container">
+                <!--GRID OF PRODUTCS-->
+
+                <ul id="productList">
+                  <div class="item c">
+                    <li><a href="#">vegWinter</a><a href="#"><img src="images/food/carrot_burger.png"
+                                                                  width="200" height="200" id="veggieWinter"
+                                                                  alt="veggieWinter"></a></li></div>
+                  <div class="item d">
+                    <li><a href="#">vegSummer</a><a href="#"><img src="images/food/mush.png" width="200"
+                                                                  height="200" id="veggieSummer"
+                                                                  alt="veggiesUMMER"></a></li></div>
+                  <div class="item e">
+                    <li><a href="#">vegWinter</a><a href="#"><img src="images/food/kale.png" width="200"
+                                                                  height="200" id="veggie_winter"
+                                                                  alt="veggie_winter"></a></li></div>
+                  <div class="item f">
+                    <li><a href="#">vegSpring</a><a href="#"><img src="images/food/lentil.png" width="200"
+                                                                  height="200" id="veggieSpring"
+                                                                  alt="veggieSpring"></a></li></div>
+                  <div class="item c">
+                    <li><a href="#">vegWinter</a><a href="#"><img src="images/food/carrot_burger.png"
+                                                                  width="200" height="200" id="veggieEWinter"
+                                                                  alt="veggieWinter"></a></li></div>
+                  <div class="item d">
+                    <li><a href="#">vegSummer</a><a href="#"><img src="images/food/mush.png" width="200"
+                                                                  height="200" id="veggie_Summer"
+                                                                  alt="veggiesUMMER"></a></li></div>
+                  <div class="item e">
+                    <li><a href="#">vegWinter</a><a href="#"><img src="images/food/kale.png" width="200"
+                                                                  height="200" id="veggieWwinter"
+                                                                  alt="veggie_winter"></a></li></div>
+                  <div class="item f">
+                    <li><a href="#">vegSpring</a><a href="#"><img src="images/food/lentil.png" width="200"
+                                                                  height="200" id="veggie_Spring"
+                                                                  alt="veggieSpring"></a></li></div>
+                </ul>
+              </div>
 
 
-
-
-
-
-
-
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -199,6 +258,8 @@
 
   </div>
 </div>
+
+</div>
 </body>
 
 <!--   Core JS Files   -->
@@ -221,5 +282,6 @@
 
   });
 </script>
+
 
 </html>
