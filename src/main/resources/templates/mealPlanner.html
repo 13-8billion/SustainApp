@@ -8,6 +8,7 @@
   <script src="js/jquery-1.6.1.min.js"></script>
   <script src="echart/echarts.min.js"></script>
   <script src="echart/drawchart.js"></script>
+  <script src="js/main.js"></script>
 
   <title>My Statistics</title>
 
@@ -25,8 +26,8 @@
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
   <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
-  <!--    <link href="css/external.css" th:href="@{css/external.css}" rel="stylesheet"/>-->
-  <!--    MY OWN CSS FUCKS UP THE ALIGNMENT OF EVERYTHING-->
+      <link href="css/external.css" th:href="@{css/mealPlanner.css}" rel="stylesheet"/>
+
 
 </head>
 <body>
@@ -60,13 +61,13 @@
             <p>CO₂ Calculator</p>
           </a>
         </li>
-        <li class="active">
+        <li>
           <a href="statistics">
             <i class="pe-7s-graph"></i>
             <p>My Statistics</p>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="mealPlanner">
             <i class="pe-7s-leaf"></i>
             <p>Meal Planner</p>
@@ -156,15 +157,27 @@
       </div>
     </nav>
 
+    <div class = "background_img">
+
+      <table class = seasons>
+        <tbody>
+        <tr>
+          <td>Mark</td>
+          <td></td>
+          <td>Otto</td>
+        </tr>
+        <tr>
+          <td>Jacob</td>
+          <td></td>
+          <td>Thornton</td>
+        </tr>
+        </tbody>
+      </table>
 
 
 
 
-
-
-
-
-
+    </div>
 
 
     <footer class="footer">
@@ -199,6 +212,8 @@
 
   </div>
 </div>
+
+</div>
 </body>
 
 <!--   Core JS Files   -->
@@ -221,5 +236,6 @@
 
   });
 </script>
+
 
 </html>
