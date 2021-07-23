@@ -1,7 +1,41 @@
 .background_img{
-    background-image: url('../images/lake.jpeg');
+    background-image: url('../images/food/foodB.jpeg');
     opacity: 80%;
     min-height: 100vh; /* so background stays full size of viewport*/
     width:100%;
     background-size: cover;
 }
+
+.seasons{
+    font-size: 700%;
+    color: white;
+    padding-top: 50%;
+    margin-left: 3%;
+}
+
+#summer, #winter, #spring, #autumn{
+    padding: 10%;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#summer:hover, #winter:hover, #spring:hover, #autumn:hover{
+    opacity: 80%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.container,  #productList {
+    display: grid;
+    height: 700px;
+    grid-template-columns: 270px 270px 270px 270px;
+    /*grid-gap: 10%;*/
+    text-align: center;
+    font-size: 1.4em;
+    margin-left: 7%;
+    justify-content: space-around;
+    align-content: space-evenly;
+    list-style: none;
+}
+
