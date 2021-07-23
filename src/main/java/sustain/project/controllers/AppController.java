@@ -1,6 +1,7 @@
 package sustain.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 import sustain.project.models.*;
 import sustain.project.service.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
@@ -166,7 +171,7 @@ public class AppController {
 
     // USER METHODS
 
-    @PostMapping(value = "/save", params = "save")
+    @PostMapping(value = "/save")
     public String processRegister(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
@@ -176,6 +181,21 @@ public class AppController {
 
         return "register_success";
     }
+
+//    @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
+//    public String logoutDo(HttpServletRequest request, HttpServletResponse response){
+//        HttpSession session= request.getSession(false);
+//        SecurityContextHolder.clearContext();
+//        session= request.getSession(false);
+//        if(session != null) {
+//            session.invalidate();
+//        }
+//        for(Cookie cookie : request.getCookies()) {
+//            cookie.setMaxAge(0);
+//        }
+//
+//        return "index";
+//    }
 
 
 
