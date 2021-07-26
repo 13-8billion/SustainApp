@@ -1,7 +1,8 @@
 package sustain.project.models;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
-
 
 
 @Entity
@@ -16,7 +17,9 @@ public class OverAllTotal implements Serializable {
     @Column(name = "total")
     private double total;
     @Column(name = "date")
-    private String date;
+    @Transient
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private int date;
 
 
     @Id //  mySQL primary key
@@ -46,11 +49,11 @@ public class OverAllTotal implements Serializable {
         this.total = total;
     }
 
-    public String getDate() {
+    public int getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(int date) {
         this.date = date;
     }
 

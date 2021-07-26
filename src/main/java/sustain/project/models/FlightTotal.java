@@ -1,5 +1,7 @@
 package sustain.project.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -18,6 +20,8 @@ public class FlightTotal implements Serializable {
     @Column(name = "total")
     private double total;
     @Column(name = "date")
+    @Transient
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     @Id //  mySQL primary key

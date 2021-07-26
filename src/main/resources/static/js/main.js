@@ -18,22 +18,30 @@ function searchFunction() {
     }
 }
 
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+function validateFood()
+{
 
-function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("productList");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        txtValue = a[i].textContent || a[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-        } else {
-            a[i].style.display = "none";
-        }
+//email not blank
+    var grams=document.forms["addFood"]["grams"].value;
+    if (grams === 0.0) //if name is null or blank
+    {
+        alert("Please enter grams");
+        return false;
     }
+
+// //password not blank and 8 characters
+//     var password=document.forms["loginForm"]["password"].value;
+//     if (password.length <8 || password=="") //if password less than 8 characters or blank
+//     {
+//         alert("Password must be eight characters in length");
+//         return false;
+//     }
+//
+// //if email and password meet stipulations then alert successful login
+//     var all=document.forms["loginForm"]["contactEmail1" && "password"].value;
+//     if (all != null || all!="") //if all input is not null or blank
+//     {
+//         alert("Successful login. You will now be redirected to our home page.");
+//         return true;
+//     }
 }

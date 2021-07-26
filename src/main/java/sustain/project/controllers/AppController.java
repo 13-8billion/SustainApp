@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -176,27 +177,10 @@ public class AppController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-
         service.save(user);
 
         return "register_success";
     }
-
-//    @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
-//    public String logoutDo(HttpServletRequest request, HttpServletResponse response){
-//        HttpSession session= request.getSession(false);
-//        SecurityContextHolder.clearContext();
-//        session= request.getSession(false);
-//        if(session != null) {
-//            session.invalidate();
-//        }
-//        for(Cookie cookie : request.getCookies()) {
-//            cookie.setMaxAge(0);
-//        }
-//
-//        return "index";
-//    }
-
 
 
     // FOOD
@@ -214,13 +198,14 @@ public class AppController {
         String username = userDetails.returnUsername();
         List<Food> fl = f.listAll();
 
-
         for (Food food : fl) {
 
             if (food.getFoodName().equals(foodN)) {
 
                 double oneG = food.getCo2g() / 100;
                 res = g * oneG;
+                res = Math.round(res*100);
+                res = res/100;
             }
         }
 
@@ -250,6 +235,8 @@ public class AppController {
             if (addUserFood.getUsername().equals(username)) {
 
                 total = total + addUserFood.getRes();
+                total = Math.round(total*100);
+                total = total/100;
             }
         }
 
@@ -289,6 +276,8 @@ public class AppController {
             if (tran.getType().equals(type)) {
 
                 res = tran.getCo2km() * d;
+                res = Math.round(res*100);
+                res = res/100;
             }
         }
 
@@ -318,6 +307,8 @@ public class AppController {
             if (addTrans.getUsername().equals(username)) {
 
                 total = total + addTrans.getRes();
+                total = Math.round(total*100);
+                total = total/100;
             }
         }
 
@@ -356,6 +347,8 @@ public class AppController {
             if (house.getEtype().equals(etype)) {
 
                 res = house.getCo2() * kWh;
+                res = Math.round(res*100);
+                res = res/100;
             }
         }
 
@@ -385,6 +378,8 @@ public class AppController {
             if (addHouse.getUsername().equals(username)) {
 
                 total = total + addHouse.getRes();
+                total = Math.round(total*100);
+                total = total/100;
             }
         }
 
@@ -417,6 +412,8 @@ public class AppController {
                                    Model model) {
 
         double res = 0.115 * distance;
+        res = Math.round(res*100);
+        res = res/100;
 
         flightObject.setRes(res);
         flightObject.setUsername(userDetails.returnUsername());
@@ -443,6 +440,8 @@ public class AppController {
             if (addFlight.getUsername().equals(username)) {
 
                 total = total + addFlight.getRes();
+                total = Math.round(total*100);
+                total = total/100;
             }
         }
 

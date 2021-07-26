@@ -159,12 +159,82 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-4.5">
+                        <div class="card">
+
+                            <div id="main2"
+                                 style="height: 500px; border: 1px solid #bebebe; padding-top: 30px; padding-right: 20px; padding-bottom: 10px;"></div>
+
+                            <script type="text/javascript">
+
+                                var chartDom = document.getElementById('main2');
+                                var myChart = echarts.init(chartDom);
+                                var option;
+
+                                option = {
+                                    color: ['#44e394', 'rgb(88,175,248)', 'rgba(255, 0, 135)', 'rgba(255, 191, 0)'],
+
+                                    legend: {
+                                        top: 'bottom',
+                                        // textStyle: {fontSize: 14},
+                                        // orient: 'horizontal',
+                                        // left: 'center',
+                                        data: ["Food", "Transport", "House Energy", "Flight"],
+                                    },
+
+                                    title: {
+                                        left: '3%',
+                                        itemGap: 5,
+                                        text: 'CO₂ Statistics 2021',
+                                        subtext: 'Emissions By Source (kg)',
+                                        textStyle: {fontSize: 22, fontWeight: 'lighter'},
+                                        subtextStyle: {fontSize: 15, align: 'center'},
+                                    },
+                                    toolbox: {
+                                        show: true,
+                                        feature: {
+                                            mark: {show: true},
+                                            dataView: {show: true, readOnly: false},
+                                            restore: {show: true},
+                                            saveAsImage: {show: true}
+                                        }
+                                    },
+                                    series: [
+                                        {
+                                            type: 'pie',
+                                            radius: [25, 125],
+                                            center: ['50%', '50%'],
+                                            roseType: 'area',
+                                            itemStyle: {
+                                                borderRadius: 8
+                                            },
+                                            data: [
+                                                {value: [[${foodT}]], name: 'Food'},
+                                                {value: [[${transT}]], name: 'Transport'},
+                                                {value: [[${houseT}]], name: 'House'},
+                                                {value: [[${flightT}]], name: 'Flight'},
+                                            ]
+                                        }
+                                    ]
+                                };
+
+                                option && myChart.setOption(option);
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
                         <div class="card">
 
                             <div id="main"
                                  style="height: 400px; border: 1px solid #bebebe; padding-top: 30px; padding-right: 20px; padding-bottom: 10px;"></div>
-
 
                             <script type="text/javascript">
 
@@ -207,10 +277,12 @@
                                             data: ["Food", "Transport", "House Energy", "Flight"],
                                         },
                                         xAxis: {
-                                            type: 'category',
+                                            data: [[${date}]],
+                                            // // type: 'category',
                                             data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                             boundaryGap: false,
                                         },
+
                                         yAxis: {
                                             type: 'value',
                                         },
@@ -218,21 +290,20 @@
                                             name: 'Food',
                                             type: 'line',
                                             smooth: 'true',
-                                            stack: 'Total amount',
-                                            // markLine: {
-                                            itemStyle: {
-                                                normal: {
-                                                    areaStyle: {
-                                                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                            offset: 0,
-                                                            color: 'rgba(128, 255, 165)'
-                                                        }, {
-                                                            offset: 1,
-                                                            color: 'rgba(1, 191, 236)',
-                                                        }])
-                                                    }
-                                                }
-                                            },
+                                            // stack: 'Total amount',
+                                            // itemStyle: {
+                                            //     normal: {
+                                            //         areaStyle: {
+                                            //             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                            //                 offset: 0,
+                                            //                 color: 'rgba(128, 255, 165)'
+                                            //             }, {
+                                            //                 offset: 1,
+                                            //                 color: 'rgba(1, 191, 236)',
+                                            //             }])
+                                            //         }
+                                            //     }
+                                            // },
                                             lineStyle: {normal: {color: '#44e394'}},
                                             data: [[${total}]],
                                             text: 'CO₂ (kg)',
@@ -242,21 +313,20 @@
                                                 name: 'Transport',
                                                 type: 'line',
                                                 smooth: 'true',
-                                                stack: 'Total amount',
-                                                // markLine: {
-                                                itemStyle: {
-                                                    normal: {
-                                                        areaStyle: {
-                                                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                                offset: 0,
-                                                                color: 'rgba(55, 162, 255)'
-                                                            }, {
-                                                                offset: 1,
-                                                                color: 'rgba(116, 21, 219)'
-                                                            }])
-                                                        }
-                                                    }
-                                                },
+                                                // stack: 'Total amount',
+                                                // itemStyle: {
+                                                //     normal: {
+                                                //         areaStyle: {
+                                                //             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                                //                 offset: 0,
+                                                //                 color: 'rgba(55, 162, 255)'
+                                                //             }, {
+                                                //                 offset: 1,
+                                                //                 color: 'rgba(116, 21, 219)'
+                                                //             }])
+                                                //         }
+                                                //     }
+                                                // },
                                                 lineStyle: {normal: {color: 'rgb(88,175,248)'}},
                                                 data: [[${totalTrans}]],
                                                 text: 'CO₂ (kg)',
@@ -267,21 +337,20 @@
                                                 type: 'line',
                                                 smooth: 'true',
                                                 stack: 'Total amount',
-                                                // markLine: {
-                                                itemStyle: {
-                                                    normal: {
-                                                        areaStyle: {
-                                                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                                offset: 0,
-                                                                color: 'rgba(255, 0, 135)'
-                                                            }, {
-                                                                offset: 1,
-                                                                color: 'rgba(135, 0, 157)'
-                                                            }])
-
-                                                        }
-                                                    }
-                                                },
+                                                // itemStyle: {
+                                                //     normal: {
+                                                //         areaStyle: {
+                                                //             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                                //                 offset: 0,
+                                                //                 color: 'rgba(255, 0, 135)'
+                                                //             }, {
+                                                //                 offset: 1,
+                                                //                 color: 'rgba(135, 0, 157)'
+                                                //             }])
+                                                //
+                                                //         }
+                                                //     }
+                                                // },
                                                 lineStyle: {normal: {color: 'rgba(255, 0, 135)'}},
                                                 data: [[${totalHouse}]],
                                                 text: 'CO₂ (kg)',
@@ -292,21 +361,20 @@
                                                 name: 'Flight',
                                                 type: 'line',
                                                 smooth: 'true',
-                                                stack: 'Total amount',
-                                                // markLine: {
-                                                itemStyle: {
-                                                    normal: {
-                                                        areaStyle: {
-                                                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                                offset: 0,
-                                                                color: 'rgba(255, 191, 0)'
-                                                            }, {
-                                                                offset: 1,
-                                                                color: 'rgba(224, 62, 76)'
-                                                            }])
-                                                        }
-                                                    }
-                                                },
+                                                // stack: 'Total amount',
+                                                // itemStyle: {
+                                                //     normal: {
+                                                //         areaStyle: {
+                                                //             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                                //                 offset: 0,
+                                                //                 color: 'rgba(255, 191, 0)'
+                                                //             }, {
+                                                //                 offset: 1,
+                                                //                 color: 'rgba(224, 62, 76)'
+                                                //             }])
+                                                //         }
+                                                //     }
+                                                // },
                                                 lineStyle: {normal: {color: 'rgba(255, 191, 0)'}},
                                                 data: [[${totalFlight}]],
                                                 text: 'CO₂ (kg)',
@@ -376,9 +444,6 @@
         <!--                        </div>-->
         <!--                    </div>-->
         <!--                </div>-->
-
-
-
 
 
         <footer class="footer">
