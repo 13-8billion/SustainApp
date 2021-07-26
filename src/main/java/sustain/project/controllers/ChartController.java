@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import sustain.project.models.*;
 import sustain.project.service.*;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,24 +30,6 @@ public class ChartController {
     // METHODS
 
 
-//    @GetMapping("/statistics")
-//    public String getAllFood(Model model) {
-//        String username = userDetails.returnUsername();
-//        List<FoodTotal> ft = fts.listAll();
-//
-//        for (FoodTotal foodTotal : ft) {
-//            if (foodTotal.getDate().getMonthValue() == 1 && foodTotal.getUsername().equals(username)) {
-//
-//                List<Double> total = fts.listAll().stream().map(x -> x.getTotalCo2()).collect(Collectors.toList());
-//                List<Integer> date = fts.listAll().stream().map(x -> x.getDate().getMonthValue()).collect(Collectors.toList());
-//                model.addAttribute("total", total);
-//                model.addAttribute("date", date);
-//            }
-//        }
-//        return "statistics";
-//    }
-
-
     @GetMapping("/statistics")
     public String showAnnualStats(Model model) {
 
@@ -54,9 +37,9 @@ public class ChartController {
         List<FoodTotal> ft = fts.listAll();
 
         double total1 = 0, total2 = 0, total3 = 0, total4 = 0, total5 = 0, total6 = 0, total7 = 0,
-                total8 = 0, total9 = 0, total10 = 0, total11 = 0, total12 = 0;
+                total8 = 0, total9 = 0, total10 = 0, total11 = 0, total12 = 0, total13 = 0;
 
-        OverAllTotal oat1, oat2, oat3, oat4, oat5, oat6, oat7, oat8, oat9, oat10, oat11, oat12;
+        OverAllTotal oat1, oat2, oat3, oat4, oat5, oat6, oat7, oat8, oat9, oat10, oat11, oat12, oat13;
         oat1 = new OverAllTotal();
         oat2 = new OverAllTotal();
         oat3 = new OverAllTotal();
@@ -69,6 +52,7 @@ public class ChartController {
         oat10 = new OverAllTotal();
         oat11 = new OverAllTotal();
         oat12 = new OverAllTotal();
+        oat13 = new OverAllTotal();
 
 
         // FOOD
@@ -534,12 +518,107 @@ public class ChartController {
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
 
+        return "statistics";
+    }
 
-//        return "statistics";
-//
+    @GetMapping("/lastMonthStats")
+    public String lastMonthStats(Model model) {
 
-            return "statistics";
+        // FOOD
+
+        List<FoodTotal> ft = fts.listAll();
+        String username = userDetails.returnUsername();
+
+        for (FoodTotal foodTotal : ft) {
+            LocalDate now = LocalDate.now();
+            if (foodTotal.getDate().getMonthValue() == now.getMonthValue() && foodTotal.getUsername().equals(username)) {
+                OverAllTotal foodMonth = new OverAllTotal();
+
+                foodMonth.setUsername(username);
+                foodMonth.setTotal(foodTotal.getTotalCo2());
+                foodMonth.setFullDate(foodTotal.getDate());
+                oats.save(foodMonth);
+            }
+
+            List<Double> totalfm = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            model.addAttribute("totalfm", totalfm);
+            List<LocalDate> datefm = oats.listAll().stream().map(x -> x.getFullDate()).collect(Collectors.toList());
+            model.addAttribute("datefm", datefm);
         }
+        Iterable<OverAllTotal> deleteTotalObject = oats.listAll();
+        oats.deleteAll(deleteTotalObject);
+
+        // TRANSPORT
+
+        List<TransportTotal> tt = tts.listAll();
+
+        for (TransportTotal transTotal : tt) {
+            LocalDate now = LocalDate.now();
+            if (transTotal.getDate().getMonthValue() == now.getMonthValue() && transTotal.getUsername().equals(username)) {
+                OverAllTotal transMonth = new OverAllTotal();
+
+                transMonth.setUsername(username);
+                transMonth.setTotal(transTotal.getTotalCo2());
+                transMonth.setFullDate(transTotal.getDate());
+                oats.save(transMonth);
+            }
+
+            List<Double> totaltm = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            model.addAttribute("totaltm", totaltm);
+            List<LocalDate> datetm = oats.listAll().stream().map(x -> x.getFullDate()).collect(Collectors.toList());
+            model.addAttribute("datetm", datetm);
+        }
+        deleteTotalObject = oats.listAll();
+        oats.deleteAll(deleteTotalObject);
+
+        // HOUSE
+
+        List<HouseEnergyTotal> ht = hets.listAll();
+
+        for (HouseEnergyTotal houseTotal : ht) {
+            LocalDate now = LocalDate.now();
+            if (houseTotal.getDate().getMonthValue() == now.getMonthValue() && houseTotal.getUsername().equals(username)) {
+                OverAllTotal houseMonth = new OverAllTotal();
+
+                houseMonth.setUsername(username);
+                houseMonth.setTotal(houseTotal.getTotal());
+                houseMonth.setFullDate(houseTotal.getDate());
+                oats.save(houseMonth);
+            }
+
+            List<Double> totalhm = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            model.addAttribute("totalhm", totalhm);
+            List<LocalDate> datehm = oats.listAll().stream().map(x -> x.getFullDate()).collect(Collectors.toList());
+            model.addAttribute("datehm", datehm);
+        }
+        deleteTotalObject = oats.listAll();
+        oats.deleteAll(deleteTotalObject);
+
+        // FLIGHT
+
+        List<FlightTotal> flt = flts.listAll();
+
+        for (FlightTotal flightTotal : flt) {
+            LocalDate now = LocalDate.now();
+            if (flightTotal.getDate().getMonthValue() == now.getMonthValue() && flightTotal.getUsername().equals(username)) {
+                OverAllTotal flightMonth = new OverAllTotal();
+
+                flightMonth.setUsername(username);
+                flightMonth.setTotal(flightTotal.getTotal());
+                flightMonth.setFullDate(flightTotal.getDate());
+                oats.save(flightMonth);
+            }
+
+            List<Double> totalflm = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            model.addAttribute("totalflm", totalflm);
+            List<LocalDate> dateflm = oats.listAll().stream().map(x -> x.getFullDate()).collect(Collectors.toList());
+            model.addAttribute("dateflm", dateflm);
+        }
+        deleteTotalObject = oats.listAll();
+        oats.deleteAll(deleteTotalObject);
+
+        return "lastMonthStats";
+    }
 
 
     @GetMapping("/dashboard")
@@ -1050,37 +1129,37 @@ public class ChartController {
         List<HouseEnergyTotal> house = hets.listAll();
         List<FlightTotal> flights = flts.listAll();
 
-            for (FoodTotal food : foods) {
+        for (FoodTotal food : foods) {
 
-                if (food.getUsername().equals(username)) {
+            if (food.getUsername().equals(username)) {
 
-                    foodT = foodT + food.getTotalCo2();
-                }
+                foodT = foodT + food.getTotalCo2();
             }
+        }
 
-            for (TransportTotal tran : trans) {
+        for (TransportTotal tran : trans) {
 
-                if (tran.getUsername().equals(username)) {
+            if (tran.getUsername().equals(username)) {
 
-                    transT = transT + tran.getTotalCo2();
-                }
+                transT = transT + tran.getTotalCo2();
             }
+        }
 
-            for (int i = 0; i < house.size(); i++) {
+        for (int i = 0; i < house.size(); i++) {
 
-                if (house.get(i).getUsername().equals(username)) {
+            if (house.get(i).getUsername().equals(username)) {
 
-                    houseT = houseT + foods.get(i).getTotalCo2();
-                }
+                houseT = houseT + foods.get(i).getTotalCo2();
             }
+        }
 
-            for (int i = 0; i < flights.size(); i++) {
+        for (int i = 0; i < flights.size(); i++) {
 
-                if (flights.get(i).getUsername().equals(username)) {
+            if (flights.get(i).getUsername().equals(username)) {
 
-                    flightT = flightT + foods.get(i).getTotalCo2();
-                }
+                flightT = flightT + foods.get(i).getTotalCo2();
             }
+        }
 
         model.addAttribute("foodT", foodT);
         model.addAttribute("transT", transT);

@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -13,8 +12,6 @@
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
-
-
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <!-- Animation library for notifications   -->
@@ -25,16 +22,11 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
-    <!--    <link href="css/external.css" th:href="@{css/external.css}" rel="stylesheet"/>-->
-    <!--    MY OWN CSS FUCKS UP THE ALIGNMENT OF EVERYTHING-->
-
 </head>
 <body>
 
 <div class="wrapper">
     <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
-
-
         <div class="sidebar-wrapper">
             <div class="logo">
                 <img src="assets/img/sagan.jpeg" alt="Avatar" id="avatar">
@@ -42,18 +34,13 @@
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
             </div>
-
             <ul class="nav">
                 <li class="active">
-
                     <a href="dashboard">
                         <i class="pe-7s-user"></i>
-
                         <p>Dashboard</p>
                     </a>
-
                 </li>
-
                 <li>
                     <a href="activityPageView">
                         <i class="pe-7s-calculator"></i>
@@ -475,11 +462,10 @@
                 <p class="copyright pull-right">
                     &copy;
                     <script>document.write(new Date().getFullYear())</script>
-                    <a href="http://www.creative-tim.com">SUSTAIN</a> What will you change?
+                    <a href="#">SUSTAIN</a> What will you change?
                 </p>
             </div>
         </footer>
-
     </div>
 </div>
 </div>
@@ -489,22 +475,15 @@
 <!--   Core JS Files   -->
 <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-
 <!--  Charts Plugin -->
 <script src="assets/js/chartist.min.js"></script>
-
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
-
 <!--  Google Maps Plugin    -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="assets/js/demo.js"></script>
-
-</script>
 
 </html>

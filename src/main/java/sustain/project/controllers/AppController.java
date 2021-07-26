@@ -132,6 +132,16 @@ public class AppController {
         return "foodAutumn";
     }
 
+    @RequestMapping("/lastMonthStats")
+    public String lastMonthStats() {
+        return "lastMonthStats";
+    }
+
+    @RequestMapping("/lastWeekStats")
+    public String lastWeekStats() {
+        return "lastMonthStats";
+    }
+
     @RequestMapping("/activityPageView")
     public String activityPageView() {
         return "activityPage";

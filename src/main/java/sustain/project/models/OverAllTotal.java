@@ -3,6 +3,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 
 @Entity
@@ -17,9 +19,11 @@ public class OverAllTotal implements Serializable {
     @Column(name = "total")
     private double total;
     @Column(name = "date")
-    @Transient
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private int date;
+    @Column(name = "fullDate")
+    @Transient
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private LocalDate fullDate;
 
 
     @Id //  mySQL primary key
@@ -57,4 +61,11 @@ public class OverAllTotal implements Serializable {
         this.date = date;
     }
 
+    public LocalDate getFullDate() {
+        return fullDate;
+    }
+
+    public void setFullDate(LocalDate fullDate) {
+        this.fullDate = fullDate;
+    }
 }
