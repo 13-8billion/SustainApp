@@ -8,10 +8,11 @@
     <script src="echart/echarts.min.js"></script>
     <script src="echart/drawchart.js"></script>
 
-    <title>Last Week</title>
+    <title>Last Year</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
+
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <!-- Animation library for notifications   -->
@@ -23,8 +24,10 @@
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
 
+
 </head>
 <body>
+
 <div class="wrapper">
     <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
         <div class="sidebar-wrapper">
@@ -146,9 +149,9 @@
         <script
                 src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-        <div><a href="statistics"> LAST YEAR</a></div>
+        <div><a href="statistics"> LAST WEEK</a></div>
         <div><a href="lastMonthStats">LAST MONTH</a></div>
-        <div><a href="lastWeekStats">LAST WEEK</a></div>
+        <div><a href="lastYearStats">LAST YEAR</a></div>
 
         <div class="content">
             <div class="container-fluid">
@@ -167,8 +170,8 @@
                                     title: {
                                         left: '2.3%',
                                         itemGap: 4,
-                                        text: 'Food CO₂ Emissions',
-                                        subtext: 'Last Week',
+                                        text: 'Cumulative CO₂ Emissions',
+                                        subtext: '2021 Food Emissions (kg)',
                                         textStyle: {fontSize: 20, fontWeight: 'lighter'},
                                         subtextStyle: {fontSize: 15, align: 'center'},
                                     },
@@ -197,8 +200,8 @@
                                         data: ["Food"],
                                     },
                                     xAxis: {
-                                        // type: 'time',
-                                        data: [[${datefw}]],
+                                        type: 'category',
+                                        data: [[${date}]],
                                         // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                         boundaryGap: false,
                                     },
@@ -223,7 +226,7 @@
                                             }
                                         },
                                         lineStyle: {normal: {color: '#44e394'}},
-                                        data: [[${totalfw}]],
+                                        data: [[${total}]],
                                         text: 'CO₂ (kg)',
                                         emphasis: {focus: 'series'},
                                     }],
@@ -491,127 +494,42 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="content">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card">
-
-                                            <div id="main10"
-                                                 style="height: 400px; border: 1px solid #ccc; padding: 30px;"></div>
-                                            <script type="text/javascript">
-
-                                                var myChart = echarts.init(document.getElementById('main10'));
-
-                                                var option = {
-                                                    color: ['rgba(255, 0, 135)', 'rgba(255, 0, 135)'],
-                                                    title: {
-                                                        left: '2.3%',
-                                                        itemGap: 4,
-                                                        text: 'Food CO₂ Emissions (kg)',
-                                                        subtext: 'Last Month',
-                                                        textStyle: {fontSize: 20, fontWeight: 'lighter'},
-                                                        subtextStyle: {fontSize: 15, align: 'center'},
-                                                    },
-                                                    tooltip: {
-                                                        trigger: 'axis',
-                                                        axisPointer: {type: 'shadow', label: {color: '#fff'}}
-                                                    },
-
-                                                    toolbox: {
-                                                        text: 'Download',
-                                                        feature: {
-                                                            saveAsImage: {}
-                                                        },
-                                                    },
-                                                    grid: {
-                                                        left: '3%',
-                                                        right: '4%',
-                                                        bottom: '3%',
-                                                        top: '25%',
-                                                        containLabel: true
-                                                    },
-                                                    legend: {
-                                                        textStyle: {fontSize: 14},
-                                                        orient: 'vertical',
-                                                        left: 'center',
-                                                        data: ["Food"],
-                                                    },
-                                                    xAxis: {
-                                                        data: [[${datefm}]],
-                                                        // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                                                        boundaryGap: false,
-                                                    },
-                                                    yAxis: {},
-                                                    series: [{
-                                                        name: 'House Energy',
-                                                        type: 'line',
-                                                        smooth: 'true',
-                                                        // markLine: {
-                                                        itemStyle: {
-                                                            normal: {
-                                                                areaStyle: {
-                                                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                                        offset: 0,
-                                                                        color: 'rgba(255, 0, 135)'
-                                                                    }, {
-                                                                        offset: 1,
-                                                                        color: 'rgba(135, 0, 157)'
-                                                                    }])
-                                                                    // }
-                                                                }
-                                                            }
-                                                        },
-                                                        lineStyle: {normal: {color: 'rgba(255, 0, 135)'}},
-                                                        data: [[${totalfm}]],
-                                                        text: 'CO₂ (kg)',
-                                                        emphasis: {focus: 'series'},
-                                                    }],
-                                                };
-                                                myChart.setOption(option);
-                                            </script>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="pull-left">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    About Us
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Contact
-                                </a>
-                            </li>
-
-                        </ul>
-                    </nav>
-                    <p class="copyright pull-right">
-                        &copy;
-                        <script>document.write(new Date().getFullYear())</script>
-                        <a href="#">SUSTAIN</a> What will you change?
-                    </p>
-                </div>
-            </footer>
         </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    <a href="#">SUSTAIN</a> What will you change?
+                </p>
+            </div>
+        </footer>
     </div>
+</div>
 </div>
 </body>
 

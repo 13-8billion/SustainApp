@@ -29,10 +29,12 @@ public class ChartController {
     @Autowired
     private FlightTotalService flts;
 
+    private final LocalDate now = LocalDate.now();
+
     // METHODS
 
 
-    @GetMapping("/statistics")
+    @GetMapping("/lastYearStats")
     public String showAnnualStats(Model model) {
 
         String username = userDetails.returnUsername();
@@ -75,7 +77,6 @@ public class ChartController {
                 oat2.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat2);
             }
-
 
             if (foodTotal.getDate().getMonthValue() == 3 && foodTotal.getUsername().equals(username)) {
                 total3 = total3 + foodTotal.getTotalCo2();
@@ -520,7 +521,7 @@ public class ChartController {
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
 
-        return "statistics";
+        return "lastYearStats";
     }
 
     @GetMapping("/lastMonthStats")
@@ -531,15 +532,25 @@ public class ChartController {
         List<FoodTotal> ft = fts.listAll();
         String username = userDetails.returnUsername();
 
-        for (FoodTotal foodTotal : ft) {
-            LocalDate now = LocalDate.now();
-            if (foodTotal.getDate().getMonthValue() == now.getMonthValue() && foodTotal.getUsername().equals(username)) {
+        for (int i = 0; i<ft.size(); i ++) {
+            if (ft.get(i).getDate().getMonthValue() == now.getMonthValue() && ft.get(i).getUsername().equals(username)) {
                 OverAllTotal foodMonth = new OverAllTotal();
-
+                double total = 0;
+                total = total + ft.get(i).getTotalCo2();
                 foodMonth.setUsername(username);
-                foodMonth.setTotal(foodTotal.getTotalCo2());
-                foodMonth.setFullDate(foodTotal.getDate());
+                foodMonth.setTotal(total);
+                foodMonth.setFullDate(ft.get(i).getDate());
+
+//
+//                if(ft.get(i).getDate() == ft.get(i).getDate()){
+//                    total = ft.get(i).getTotalCo2() + ft.get(i).getTotalCo2();
+//                    foodMonth.setTotal(total);
+//                    foodMonth.setFullDate(ft.get(i).getDate());
+//                    foodMonth.setUsername(username);
+//                    oats.save(foodMonth);
+//                }
                 oats.save(foodMonth);
+
             }
 
             List<Double> totalfm = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
@@ -555,7 +566,6 @@ public class ChartController {
         List<TransportTotal> tt = tts.listAll();
 
         for (TransportTotal transTotal : tt) {
-            LocalDate now = LocalDate.now();
             if (transTotal.getDate().getMonthValue() == now.getMonthValue() && transTotal.getUsername().equals(username)) {
                 OverAllTotal transMonth = new OverAllTotal();
 
@@ -578,7 +588,6 @@ public class ChartController {
         List<HouseEnergyTotal> ht = hets.listAll();
 
         for (HouseEnergyTotal houseTotal : ht) {
-            LocalDate now = LocalDate.now();
             if (houseTotal.getDate().getMonthValue() == now.getMonthValue() && houseTotal.getUsername().equals(username)) {
                 OverAllTotal houseMonth = new OverAllTotal();
 
@@ -601,7 +610,6 @@ public class ChartController {
         List<FlightTotal> flt = flts.listAll();
 
         for (FlightTotal flightTotal : flt) {
-            LocalDate now = LocalDate.now();
             if (flightTotal.getDate().getMonthValue() == now.getMonthValue() && flightTotal.getUsername().equals(username)) {
                 OverAllTotal flightMonth = new OverAllTotal();
 
@@ -622,73 +630,143 @@ public class ChartController {
         return "lastMonthStats";
     }
 
-    public static LocalDate[] getPreviousWeek(LocalDate date) {
-        final int dayOfWeek = date.getDayOfWeek().getValue();
-        final LocalDate from = date.minusDays(dayOfWeek + 6); // (dayOfWeek - 1) + 7
-        final LocalDate to = date.minusDays(dayOfWeek);
-
-        return new LocalDate[]{from, to};
-    }
-
-    public static LocalDate[] getPreviousMonth(LocalDate date) {
-        final LocalDate from = date.minusDays(date.getDayOfMonth() - 1).minusMonths(1);
-        final LocalDate to = from.plusMonths(1).minusDays(1);
-
-        return new LocalDate[]{from, to};
-    }
-
-    @GetMapping("/lastWeekStats")
+    @GetMapping("/statistics")
     public String lastWeekStats(Model model) {
 
         // FOOD
 
         List<FoodTotal> ft = fts.listAll();
         String username = userDetails.returnUsername();
-
         LocalDate startDate = LocalDate.now().minusDays(7);
         LocalDate endDate = LocalDate.now();
-
         long numOfDays = ChronoUnit.DAYS.between(startDate, endDate);
 
         List<LocalDate> listOfDates = LongStream.range(0, numOfDays)
                 .mapToObj(startDate::plusDays)
                 .collect(Collectors.toList());
 
-        System.out.println(listOfDates);
         ArrayList<LocalDate> arListDates = new ArrayList<>(listOfDates);
         ArrayList<LocalDate> arrDate = new ArrayList<>();
 
-        for (int i = 0; i < ft.size(); i++) {
+        for (FoodTotal foodTotal : ft) {
 
-           arrDate.add(ft.get(i).getDate());
+            arrDate.add(foodTotal.getDate());
         }
-        System.out.println("Before: " + arrDate);
         arrDate.retainAll(arListDates);
-        System.out.println("After: " + arrDate);
 
+        for (FoodTotal foodTotal : ft) {
 
-        for (int i = 0; i < ft.size(); i++) {
-
-            if (arrDate.contains(ft.get(i).getDate()) && ft.get(i).getUsername().equals(username)) {
+            if (arrDate.contains(foodTotal.getDate()) && foodTotal.getUsername().equals(username)) {
 
                 OverAllTotal foodWeek = new OverAllTotal();
-
                 foodWeek.setUsername(username);
-                foodWeek.setTotal(ft.get(i).getTotalCo2());
-                foodWeek.setFullDate(ft.get(i).getDate());
+                foodWeek.setTotal(foodTotal.getTotalCo2());
+                foodWeek.setFullDate(foodTotal.getDate());
                 oats.save(foodWeek);
             }
+
 
             List<Double> totalfw = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalfw", totalfw);
             List<Integer> datefw = oats.listAll().stream().map(x -> x.getFullDate().getDayOfMonth()).collect(Collectors.toList());
             model.addAttribute("datefw", datefw);
         }
-//        Iterable<OverAllTotal> deleteTotalObject = oats.listAll();
-//        oats.deleteAll(deleteTotalObject);
+        Iterable<OverAllTotal> deleteTotalObject = oats.listAll();
+        oats.deleteAll(deleteTotalObject);
 
 
-        return "lastWeekStats";
+        // TRANSPORT
+
+        List<TransportTotal> tt = tts.listAll();
+
+        for (TransportTotal transTotal : tt) {
+
+            arrDate.add(transTotal.getDate());
+        }
+        arrDate.retainAll(arListDates);
+
+        for (TransportTotal transTotal : tt) {
+
+            if (arrDate.contains(transTotal.getDate()) && transTotal.getUsername().equals(username)) {
+
+                OverAllTotal transWeek = new OverAllTotal();
+
+                transWeek.setUsername(username);
+                transWeek.setTotal(transTotal.getTotalCo2());
+                transWeek.setFullDate(transTotal.getDate());
+                oats.save(transWeek);
+            }
+
+            List<Double> totaltw = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            model.addAttribute("totaltw", totaltw);
+            List<Integer> datetw = oats.listAll().stream().map(x -> x.getFullDate().getDayOfMonth()).collect(Collectors.toList());
+            model.addAttribute("datetw", datetw);
+        }
+        deleteTotalObject = oats.listAll();
+        oats.deleteAll(deleteTotalObject);
+
+        // HOUSE
+
+        List<HouseEnergyTotal> het = hets.listAll();
+
+        for (HouseEnergyTotal houseTotal : het) {
+
+            arrDate.add(houseTotal.getDate());
+        }
+        arrDate.retainAll(arListDates);
+
+        for (HouseEnergyTotal houseTotal : het) {
+
+            if (arrDate.contains(houseTotal.getDate()) && houseTotal.getUsername().equals(username)) {
+
+                OverAllTotal houseWeek = new OverAllTotal();
+
+                houseWeek.setUsername(username);
+                houseWeek.setTotal(houseTotal.getTotal());
+                houseWeek.setFullDate(houseTotal.getDate());
+                oats.save(houseWeek);
+            }
+
+            List<Double> totalhw = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            model.addAttribute("totalhw", totalhw);
+            List<Integer> datehw = oats.listAll().stream().map(x -> x.getFullDate().getDayOfMonth()).collect(Collectors.toList());
+            model.addAttribute("datehw", datehw);
+        }
+        deleteTotalObject = oats.listAll();
+        oats.deleteAll(deleteTotalObject);
+
+        // FLIGHT
+
+        List<FlightTotal> flt = flts.listAll();
+
+        for (FlightTotal flightTotal : flt) {
+
+            arrDate.add(flightTotal.getDate());
+        }
+        arrDate.retainAll(arListDates);
+
+        for (FlightTotal flightTotal : flt) {
+
+            if (arrDate.contains(flightTotal.getDate()) && flightTotal.getUsername().equals(username)) {
+
+                OverAllTotal flightWeek = new OverAllTotal();
+
+                flightWeek.setUsername(username);
+                flightWeek.setTotal(flightTotal.getTotal());
+                flightWeek.setFullDate(flightTotal.getDate());
+                oats.save(flightWeek);
+            }
+
+            List<Double> totalflw = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            model.addAttribute("totalflw", totalflw);
+            List<Integer> dateflw = oats.listAll().stream().map(x -> x.getFullDate().getDayOfMonth()).collect(Collectors.toList());
+            model.addAttribute("dateflw", dateflw);
+        }
+        deleteTotalObject = oats.listAll();
+        oats.deleteAll(deleteTotalObject);
+
+
+        return "statistics";
     }
 
     @GetMapping("/dashboard")

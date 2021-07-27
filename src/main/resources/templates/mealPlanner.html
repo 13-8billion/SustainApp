@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8"/>
   <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -10,12 +9,10 @@
   <script src="echart/drawchart.js"></script>
   <script src="js/main.js"></script>
 
-  <title>My Statistics</title>
+  <title>Meal Planner</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
   <meta name="viewport" content="width=device-width"/>
-
-
   <!-- Bootstrap core CSS     -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
   <!-- Animation library for notifications   -->
@@ -34,8 +31,6 @@
 
 <div class="wrapper">
   <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
-
-
     <div class="sidebar-wrapper">
       <div class="logo">
         <img src="assets/img/sagan.jpeg" alt="Avatar" id="avatar">
@@ -43,18 +38,13 @@
           <b>[[${#request.userPrincipal.principal.username}]]</b>
         </a>
       </div>
-
       <ul class="nav">
         <li>
-
           <a href="dashboard">
             <i class="pe-7s-user"></i>
-
             <p>Dashboard</p>
           </a>
-
         </li>
-
         <li>
           <a href="activityPageView">
             <i class="pe-7s-calculator"></i>

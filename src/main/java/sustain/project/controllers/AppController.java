@@ -102,9 +102,9 @@ public class AppController {
         return new ModelAndView("dashboard");
     }
 
-    @RequestMapping("/statistics")
-    public String stats() {
-        return "statistics";
+    @RequestMapping("/lastYearStats")
+    public String lastYearStats() {
+        return "lastYearStats";
     }
 
     @RequestMapping("/mealPlanner")
@@ -137,7 +137,7 @@ public class AppController {
         return "lastMonthStats";
     }
 
-    @RequestMapping("/lastWeekStats")
+    @RequestMapping("/statistics")
     public String lastWeekStats() {
         return "lastMonthStats";
     }
@@ -212,13 +212,12 @@ public class AppController {
 
             if (food.getFoodName().equals(foodN)) {
 
-                double oneG = food.getCo2g() / 100;
-                res = g * oneG;
+                double oneG = food.getCo2g() / 100; // oneG = co2 per 1gram.. co2g is co2 per 100 gram
+                res = g * oneG; // result is user input grams * oneG (co2 per 1 gram)
                 res = Math.round(res*100);
-                res = res/100;
+                res = res/100; // get to the nearest 2 decimal places
             }
         }
-
         foodObject.setRes(res);
         foodObject.setUsername(username);
         auf.save(foodObject);
