@@ -18,8 +18,8 @@ public class OverAllTotal implements Serializable {
     private String username;
     @Column(name = "total")
     private double total;
-    @Column(name = "date")
-    private int date;
+    @Column(name = "monthly")
+    private int monthly;
     @Column(name = "fullDate")
     @Transient
     @DateTimeFormat(pattern = "yyyy/MM/dd")
@@ -53,12 +53,12 @@ public class OverAllTotal implements Serializable {
         this.total = total;
     }
 
-    public int getDate() {
-        return date;
+    public int getMonthly() {
+        return monthly;
     }
 
-    public void setDate(int date) {
-        this.date = date;
+    public void setMonthly(int monthly) {
+        this.monthly = monthly;
     }
 
     public LocalDate getFullDate() {

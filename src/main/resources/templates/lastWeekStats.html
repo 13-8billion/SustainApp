@@ -167,8 +167,8 @@
                                     title: {
                                         left: '2.3%',
                                         itemGap: 4,
-                                        text: 'Cumulative CO₂ Emissions',
-                                        subtext: '2021 Food Emissions (kg)',
+                                        text: 'Food CO₂ Emissions',
+                                        subtext: 'Last Week',
                                         textStyle: {fontSize: 20, fontWeight: 'lighter'},
                                         subtextStyle: {fontSize: 15, align: 'center'},
                                     },
@@ -197,8 +197,8 @@
                                         data: ["Food"],
                                     },
                                     xAxis: {
-                                        type: 'category',
-                                        data: [[${date}]],
+                                        // type: 'time',
+                                        data: [[${datefw}]],
                                         // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                         boundaryGap: false,
                                     },
@@ -223,7 +223,7 @@
                                             }
                                         },
                                         lineStyle: {normal: {color: '#44e394'}},
-                                        data: [[${total}]],
+                                        data: [[${totalfw}]],
                                         text: 'CO₂ (kg)',
                                         emphasis: {focus: 'series'},
                                     }],

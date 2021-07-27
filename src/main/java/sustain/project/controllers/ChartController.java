@@ -8,8 +8,10 @@ import sustain.project.models.*;
 import sustain.project.service.*;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 
 @Controller
 public class ChartController {
@@ -37,7 +39,7 @@ public class ChartController {
         List<FoodTotal> ft = fts.listAll();
 
         double total1 = 0, total2 = 0, total3 = 0, total4 = 0, total5 = 0, total6 = 0, total7 = 0,
-                total8 = 0, total9 = 0, total10 = 0, total11 = 0, total12 = 0, total13 = 0;
+                total8 = 0, total9 = 0, total10 = 0, total11 = 0, total12 = 0;
 
         OverAllTotal oat1, oat2, oat3, oat4, oat5, oat6, oat7, oat8, oat9, oat10, oat11, oat12, oat13;
         oat1 = new OverAllTotal();
@@ -62,7 +64,7 @@ public class ChartController {
                 total1 = total1 + foodTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
-                oat1.setDate(foodTotal.getDate().getMonthValue());
+                oat1.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
@@ -70,7 +72,7 @@ public class ChartController {
                 total2 = total2 + foodTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
-                oat2.setDate(foodTotal.getDate().getMonthValue());
+                oat2.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat2);
             }
 
@@ -79,7 +81,7 @@ public class ChartController {
                 total3 = total3 + foodTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
-                oat3.setDate(foodTotal.getDate().getMonthValue());
+                oat3.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
@@ -87,7 +89,7 @@ public class ChartController {
                 total4 = total4 + foodTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
-                oat4.setDate(foodTotal.getDate().getMonthValue());
+                oat4.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
@@ -95,7 +97,7 @@ public class ChartController {
                 total5 = total5 + foodTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
-                oat5.setDate(foodTotal.getDate().getMonthValue());
+                oat5.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
@@ -103,7 +105,7 @@ public class ChartController {
                 total6 = total6 + foodTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
-                oat6.setDate(foodTotal.getDate().getMonthValue());
+                oat6.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
@@ -111,7 +113,7 @@ public class ChartController {
                 total7 = total7 + foodTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
-                oat7.setDate((foodTotal.getDate().getMonthValue()));
+                oat7.setMonthly((foodTotal.getDate().getMonthValue()));
                 oats.save(oat7);
             }
 
@@ -119,7 +121,7 @@ public class ChartController {
                 total8 = total8 + foodTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
-                oat8.setDate(foodTotal.getDate().getMonthValue());
+                oat8.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
@@ -127,7 +129,7 @@ public class ChartController {
                 total9 = total9 + foodTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
-                oat9.setDate(foodTotal.getDate().getMonthValue());
+                oat9.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
@@ -135,7 +137,7 @@ public class ChartController {
                 total10 = total10 + foodTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
-                oat10.setDate(foodTotal.getDate().getMonthValue());
+                oat10.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
@@ -143,7 +145,7 @@ public class ChartController {
                 total11 = total11 + foodTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
-                oat11.setDate(foodTotal.getDate().getMonthValue());
+                oat11.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
@@ -151,13 +153,13 @@ public class ChartController {
                 total12 = total12 + foodTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
-                oat12.setDate(foodTotal.getDate().getMonthValue());
+                oat12.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat12);
             }
 
             List<Double> total = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("total", total);
-            List<Integer> date = oats.listAll().stream().map(x -> x.getDate()).collect(Collectors.toList());
+            List<Integer> date = oats.listAll().stream().map(x -> x.getMonthly()).collect(Collectors.toList());
             model.addAttribute("date", date);
 
 
@@ -176,7 +178,7 @@ public class ChartController {
                 total1 = transTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
-                oat1.setDate(transTotal.getDate().getMonthValue());
+                oat1.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
@@ -184,7 +186,7 @@ public class ChartController {
                 total2 = transTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
-                oat2.setDate(transTotal.getDate().getMonthValue());
+                oat2.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat2);
             }
 
@@ -193,7 +195,7 @@ public class ChartController {
                 total3 = transTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
-                oat3.setDate(transTotal.getDate().getMonthValue());
+                oat3.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
@@ -201,7 +203,7 @@ public class ChartController {
                 total4 = transTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
-                oat4.setDate(transTotal.getDate().getMonthValue());
+                oat4.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
@@ -209,7 +211,7 @@ public class ChartController {
                 total5 = transTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
-                oat5.setDate(transTotal.getDate().getMonthValue());
+                oat5.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
@@ -217,7 +219,7 @@ public class ChartController {
                 total6 = transTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
-                oat6.setDate(transTotal.getDate().getMonthValue());
+                oat6.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
@@ -225,7 +227,7 @@ public class ChartController {
                 total7 = transTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
-                oat7.setDate(transTotal.getDate().getMonthValue());
+                oat7.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat7);
             }
 
@@ -233,7 +235,7 @@ public class ChartController {
                 total8 = transTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
-                oat8.setDate(transTotal.getDate().getMonthValue());
+                oat8.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
@@ -241,7 +243,7 @@ public class ChartController {
                 total9 = transTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
-                oat9.setDate(transTotal.getDate().getMonthValue());
+                oat9.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
@@ -249,7 +251,7 @@ public class ChartController {
                 total10 = transTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
-                oat10.setDate(transTotal.getDate().getMonthValue());
+                oat10.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
@@ -257,7 +259,7 @@ public class ChartController {
                 total11 = transTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
-                oat11.setDate(transTotal.getDate().getMonthValue());
+                oat11.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
@@ -265,13 +267,13 @@ public class ChartController {
                 total12 = transTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
-                oat12.setDate(transTotal.getDate().getMonthValue());
+                oat12.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat12);
             }
 
             List<Double> totalTrans = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalTrans", totalTrans);
-            List<Integer> date = oats.listAll().stream().map(x -> x.getDate()).collect(Collectors.toList());
+            List<Integer> date = oats.listAll().stream().map(x -> x.getMonthly()).collect(Collectors.toList());
             model.addAttribute("date", date);
 
         }
@@ -289,7 +291,7 @@ public class ChartController {
                 total1 = houseTotal.getTotal();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
-                oat1.setDate(houseTotal.getDate().getMonthValue());
+                oat1.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
@@ -297,7 +299,7 @@ public class ChartController {
                 total2 = houseTotal.getTotal();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
-                oat2.setDate(houseTotal.getDate().getMonthValue());
+                oat2.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat2);
             }
 
@@ -306,7 +308,7 @@ public class ChartController {
                 total3 = houseTotal.getTotal();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
-                oat3.setDate(houseTotal.getDate().getMonthValue());
+                oat3.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
@@ -314,7 +316,7 @@ public class ChartController {
                 total4 = houseTotal.getTotal();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
-                oat4.setDate(houseTotal.getDate().getMonthValue());
+                oat4.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
@@ -322,7 +324,7 @@ public class ChartController {
                 total5 = houseTotal.getTotal();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
-                oat5.setDate(houseTotal.getDate().getMonthValue());
+                oat5.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
@@ -330,7 +332,7 @@ public class ChartController {
                 total6 = houseTotal.getTotal();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
-                oat6.setDate(houseTotal.getDate().getMonthValue());
+                oat6.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
@@ -338,7 +340,7 @@ public class ChartController {
                 total7 = houseTotal.getTotal();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
-                oat7.setDate(houseTotal.getDate().getMonthValue());
+                oat7.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat7);
             }
 
@@ -346,7 +348,7 @@ public class ChartController {
                 total8 = houseTotal.getTotal();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
-                oat8.setDate(houseTotal.getDate().getMonthValue());
+                oat8.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
@@ -354,7 +356,7 @@ public class ChartController {
                 total9 = houseTotal.getTotal();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
-                oat9.setDate(houseTotal.getDate().getMonthValue());
+                oat9.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
@@ -362,7 +364,7 @@ public class ChartController {
                 total10 = houseTotal.getTotal();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
-                oat10.setDate(houseTotal.getDate().getMonthValue());
+                oat10.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
@@ -370,7 +372,7 @@ public class ChartController {
                 total11 = houseTotal.getTotal();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
-                oat11.setDate(houseTotal.getDate().getMonthValue());
+                oat11.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
@@ -378,13 +380,13 @@ public class ChartController {
                 total12 = houseTotal.getTotal();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
-                oat12.setDate(houseTotal.getDate().getMonthValue());
+                oat12.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat12);
             }
 
             List<Double> totalHouse = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalHouse", totalHouse);
-            List<Integer> date = oats.listAll().stream().map(x -> x.getDate()).collect(Collectors.toList());
+            List<Integer> date = oats.listAll().stream().map(x -> x.getMonthly()).collect(Collectors.toList());
             model.addAttribute("date", date);
 //
 //
@@ -404,7 +406,7 @@ public class ChartController {
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
 //                Month month = Month.from(flightTotal.getDate());
-                oat1.setDate(flightTotal.getDate().getMonthValue());
+                oat1.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
@@ -413,7 +415,7 @@ public class ChartController {
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
 //                Month month = Month.from(flightTotal.getDate());
-                oat2.setDate(flightTotal.getDate().getMonthValue());
+                oat2.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat2);
             }
 
@@ -423,7 +425,7 @@ public class ChartController {
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
 //                Month month = Month.from(flightTotal.getDate());
-                oat3.setDate(flightTotal.getDate().getMonthValue());
+                oat3.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
@@ -432,7 +434,7 @@ public class ChartController {
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
 //                Month month = Month.from(flightTotal.getDate());
-                oat4.setDate(flightTotal.getDate().getMonthValue());
+                oat4.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
@@ -441,7 +443,7 @@ public class ChartController {
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
 //                Month month = Month.from(flightTotal.getDate());
-                oat5.setDate(flightTotal.getDate().getMonthValue());
+                oat5.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
@@ -450,7 +452,7 @@ public class ChartController {
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
 //                Month month = Month.from(flightTotal.getDate());
-                oat6.setDate(flightTotal.getDate().getMonthValue());
+                oat6.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
@@ -459,7 +461,7 @@ public class ChartController {
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
 //                Month month = Month.from(flightTotal.getDate());
-                oat7.setDate(flightTotal.getDate().getMonthValue());
+                oat7.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat7);
             }
 
@@ -468,7 +470,7 @@ public class ChartController {
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
 //                Month month = Month.from(flightTotal.getDate());
-                oat8.setDate(flightTotal.getDate().getMonthValue());
+                oat8.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
@@ -477,7 +479,7 @@ public class ChartController {
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
 //                Month month = Month.from(flightTotal.getDate());
-                oat9.setDate(flightTotal.getDate().getMonthValue());
+                oat9.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
@@ -486,7 +488,7 @@ public class ChartController {
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
 //                Month month = Month.from(flightTotal.getDate());
-                oat10.setDate(flightTotal.getDate().getMonthValue());
+                oat10.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
@@ -495,7 +497,7 @@ public class ChartController {
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
 //                Month month = Month.from(flightTotal.getDate());
-                oat11.setDate(flightTotal.getDate().getMonthValue());
+                oat11.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
@@ -504,13 +506,13 @@ public class ChartController {
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
 //                Month month = Month.from(flightTotal.getDate());
-                oat12.setDate(flightTotal.getDate().getMonthValue());
+                oat12.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat12);
             }
 
 
             List<Double> totalFlight = oats.listAll().stream().map(OverAllTotal::getTotal).collect(Collectors.toList());
-            List<Integer> date = oats.listAll().stream().map(OverAllTotal::getDate).collect(Collectors.toList());
+            List<Integer> date = oats.listAll().stream().map(OverAllTotal::getMonthly).collect(Collectors.toList());
 
             model.addAttribute("totalFlight", totalFlight);
             model.addAttribute("dateFl", date);
@@ -542,7 +544,7 @@ public class ChartController {
 
             List<Double> totalfm = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalfm", totalfm);
-            List<LocalDate> datefm = oats.listAll().stream().map(x -> x.getFullDate()).collect(Collectors.toList());
+            List<Integer> datefm = oats.listAll().stream().map(x -> x.getFullDate().getDayOfMonth()).collect(Collectors.toList());
             model.addAttribute("datefm", datefm);
         }
         Iterable<OverAllTotal> deleteTotalObject = oats.listAll();
@@ -565,7 +567,7 @@ public class ChartController {
 
             List<Double> totaltm = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totaltm", totaltm);
-            List<LocalDate> datetm = oats.listAll().stream().map(x -> x.getFullDate()).collect(Collectors.toList());
+            List<Integer> datetm = oats.listAll().stream().map(x -> x.getFullDate().getDayOfMonth()).collect(Collectors.toList());
             model.addAttribute("datetm", datetm);
         }
         deleteTotalObject = oats.listAll();
@@ -588,7 +590,7 @@ public class ChartController {
 
             List<Double> totalhm = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalhm", totalhm);
-            List<LocalDate> datehm = oats.listAll().stream().map(x -> x.getFullDate()).collect(Collectors.toList());
+            List<Integer> datehm = oats.listAll().stream().map(x -> x.getFullDate().getDayOfMonth()).collect(Collectors.toList());
             model.addAttribute("datehm", datehm);
         }
         deleteTotalObject = oats.listAll();
@@ -611,7 +613,7 @@ public class ChartController {
 
             List<Double> totalflm = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalflm", totalflm);
-            List<LocalDate> dateflm = oats.listAll().stream().map(x -> x.getFullDate()).collect(Collectors.toList());
+            List<Integer> dateflm = oats.listAll().stream().map(x -> x.getFullDate().getDayOfMonth()).collect(Collectors.toList());
             model.addAttribute("dateflm", dateflm);
         }
         deleteTotalObject = oats.listAll();
@@ -620,6 +622,74 @@ public class ChartController {
         return "lastMonthStats";
     }
 
+    public static LocalDate[] getPreviousWeek(LocalDate date) {
+        final int dayOfWeek = date.getDayOfWeek().getValue();
+        final LocalDate from = date.minusDays(dayOfWeek + 6); // (dayOfWeek - 1) + 7
+        final LocalDate to = date.minusDays(dayOfWeek);
+
+        return new LocalDate[]{from, to};
+    }
+
+    public static LocalDate[] getPreviousMonth(LocalDate date) {
+        final LocalDate from = date.minusDays(date.getDayOfMonth() - 1).minusMonths(1);
+        final LocalDate to = from.plusMonths(1).minusDays(1);
+
+        return new LocalDate[]{from, to};
+    }
+
+    @GetMapping("/lastWeekStats")
+    public String lastWeekStats(Model model) {
+
+        // FOOD
+
+        List<FoodTotal> ft = fts.listAll();
+        String username = userDetails.returnUsername();
+
+        LocalDate startDate = LocalDate.now().minusDays(7);
+        LocalDate endDate = LocalDate.now();
+
+        long numOfDays = ChronoUnit.DAYS.between(startDate, endDate);
+
+        List<LocalDate> listOfDates = LongStream.range(0, numOfDays)
+                .mapToObj(startDate::plusDays)
+                .collect(Collectors.toList());
+
+        System.out.println(listOfDates);
+        ArrayList<LocalDate> arListDates = new ArrayList<>(listOfDates);
+        ArrayList<LocalDate> arrDate = new ArrayList<>();
+
+        for (int i = 0; i < ft.size(); i++) {
+
+           arrDate.add(ft.get(i).getDate());
+        }
+        System.out.println("Before: " + arrDate);
+        arrDate.retainAll(arListDates);
+        System.out.println("After: " + arrDate);
+
+
+        for (int i = 0; i < ft.size(); i++) {
+
+            if (arrDate.contains(ft.get(i).getDate()) && ft.get(i).getUsername().equals(username)) {
+
+                OverAllTotal foodWeek = new OverAllTotal();
+
+                foodWeek.setUsername(username);
+                foodWeek.setTotal(ft.get(i).getTotalCo2());
+                foodWeek.setFullDate(ft.get(i).getDate());
+                oats.save(foodWeek);
+            }
+
+            List<Double> totalfw = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
+            model.addAttribute("totalfw", totalfw);
+            List<Integer> datefw = oats.listAll().stream().map(x -> x.getFullDate().getDayOfMonth()).collect(Collectors.toList());
+            model.addAttribute("datefw", datefw);
+        }
+//        Iterable<OverAllTotal> deleteTotalObject = oats.listAll();
+//        oats.deleteAll(deleteTotalObject);
+
+
+        return "lastWeekStats";
+    }
 
     @GetMapping("/dashboard")
     public String showStatsDash(Model model) {
@@ -659,7 +729,7 @@ public class ChartController {
                 total1 = total1 + foodTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
-                oat1.setDate(foodTotal.getDate().getMonthValue());
+                oat1.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
@@ -667,7 +737,7 @@ public class ChartController {
                 total2 = total2 + foodTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
-                oat2.setDate(foodTotal.getDate().getMonthValue());
+                oat2.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat2);
             }
 
@@ -676,7 +746,7 @@ public class ChartController {
                 total3 = total3 + foodTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
-                oat3.setDate(foodTotal.getDate().getMonthValue());
+                oat3.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
@@ -684,7 +754,7 @@ public class ChartController {
                 total4 = total4 + foodTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
-                oat4.setDate(foodTotal.getDate().getMonthValue());
+                oat4.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
@@ -692,7 +762,7 @@ public class ChartController {
                 total5 = total5 + foodTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
-                oat5.setDate(foodTotal.getDate().getMonthValue());
+                oat5.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
@@ -700,7 +770,7 @@ public class ChartController {
                 total6 = total6 + foodTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
-                oat6.setDate(foodTotal.getDate().getMonthValue());
+                oat6.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
@@ -708,7 +778,7 @@ public class ChartController {
                 total7 = total7 + foodTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
-                oat7.setDate((foodTotal.getDate().getMonthValue()));
+                oat7.setMonthly((foodTotal.getDate().getMonthValue()));
                 oats.save(oat7);
             }
 
@@ -716,7 +786,7 @@ public class ChartController {
                 total8 = total8 + foodTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
-                oat8.setDate(foodTotal.getDate().getMonthValue());
+                oat8.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
@@ -724,7 +794,7 @@ public class ChartController {
                 total9 = total9 + foodTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
-                oat9.setDate(foodTotal.getDate().getMonthValue());
+                oat9.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
@@ -732,7 +802,7 @@ public class ChartController {
                 total10 = total10 + foodTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
-                oat10.setDate(foodTotal.getDate().getMonthValue());
+                oat10.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
@@ -740,7 +810,7 @@ public class ChartController {
                 total11 = total11 + foodTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
-                oat11.setDate(foodTotal.getDate().getMonthValue());
+                oat11.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
@@ -748,13 +818,13 @@ public class ChartController {
                 total12 = total12 + foodTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
-                oat12.setDate(foodTotal.getDate().getMonthValue());
+                oat12.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat12);
             }
 
             List<Double> total = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("total", total);
-            List<Integer> date = oats.listAll().stream().map(x -> x.getDate()).collect(Collectors.toList());
+            List<Integer> date = oats.listAll().stream().map(x -> x.getMonthly()).collect(Collectors.toList());
             model.addAttribute("date", date);
 
 
@@ -773,7 +843,7 @@ public class ChartController {
                 total1 = transTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
-                oat1.setDate(transTotal.getDate().getMonthValue());
+                oat1.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
@@ -781,7 +851,7 @@ public class ChartController {
                 total2 = transTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
-                oat2.setDate(transTotal.getDate().getMonthValue());
+                oat2.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat2);
             }
 
@@ -790,7 +860,7 @@ public class ChartController {
                 total3 = transTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
-                oat3.setDate(transTotal.getDate().getMonthValue());
+                oat3.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
@@ -798,7 +868,7 @@ public class ChartController {
                 total4 = transTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
-                oat4.setDate(transTotal.getDate().getMonthValue());
+                oat4.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
@@ -806,7 +876,7 @@ public class ChartController {
                 total5 = transTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
-                oat5.setDate(transTotal.getDate().getMonthValue());
+                oat5.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
@@ -814,7 +884,7 @@ public class ChartController {
                 total6 = transTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
-                oat6.setDate(transTotal.getDate().getMonthValue());
+                oat6.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
@@ -822,7 +892,7 @@ public class ChartController {
                 total7 = transTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
-                oat7.setDate(transTotal.getDate().getMonthValue());
+                oat7.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat7);
             }
 
@@ -830,7 +900,7 @@ public class ChartController {
                 total8 = transTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
-                oat8.setDate(transTotal.getDate().getMonthValue());
+                oat8.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
@@ -838,7 +908,7 @@ public class ChartController {
                 total9 = transTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
-                oat9.setDate(transTotal.getDate().getMonthValue());
+                oat9.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
@@ -846,7 +916,7 @@ public class ChartController {
                 total10 = transTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
-                oat10.setDate(transTotal.getDate().getMonthValue());
+                oat10.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
@@ -854,7 +924,7 @@ public class ChartController {
                 total11 = transTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
-                oat11.setDate(transTotal.getDate().getMonthValue());
+                oat11.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
@@ -862,13 +932,13 @@ public class ChartController {
                 total12 = transTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
-                oat12.setDate(transTotal.getDate().getMonthValue());
+                oat12.setMonthly(transTotal.getDate().getMonthValue());
                 oats.save(oat12);
             }
 
             List<Double> totalTrans = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalTrans", totalTrans);
-            List<Integer> date = oats.listAll().stream().map(x -> x.getDate()).collect(Collectors.toList());
+            List<Integer> date = oats.listAll().stream().map(x -> x.getMonthly()).collect(Collectors.toList());
             model.addAttribute("date", date);
 
         }
@@ -886,7 +956,7 @@ public class ChartController {
                 total1 = houseTotal.getTotal();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
-                oat1.setDate(houseTotal.getDate().getMonthValue());
+                oat1.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
@@ -894,7 +964,7 @@ public class ChartController {
                 total2 = houseTotal.getTotal();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
-                oat2.setDate(houseTotal.getDate().getMonthValue());
+                oat2.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat2);
             }
 
@@ -903,7 +973,7 @@ public class ChartController {
                 total3 = houseTotal.getTotal();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
-                oat3.setDate(houseTotal.getDate().getMonthValue());
+                oat3.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
@@ -911,7 +981,7 @@ public class ChartController {
                 total4 = houseTotal.getTotal();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
-                oat4.setDate(houseTotal.getDate().getMonthValue());
+                oat4.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
@@ -919,7 +989,7 @@ public class ChartController {
                 total5 = houseTotal.getTotal();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
-                oat5.setDate(houseTotal.getDate().getMonthValue());
+                oat5.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
@@ -927,7 +997,7 @@ public class ChartController {
                 total6 = houseTotal.getTotal();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
-                oat6.setDate(houseTotal.getDate().getMonthValue());
+                oat6.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
@@ -935,7 +1005,7 @@ public class ChartController {
                 total7 = houseTotal.getTotal();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
-                oat7.setDate(houseTotal.getDate().getMonthValue());
+                oat7.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat7);
             }
 
@@ -943,7 +1013,7 @@ public class ChartController {
                 total8 = houseTotal.getTotal();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
-                oat8.setDate(houseTotal.getDate().getMonthValue());
+                oat8.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
@@ -951,7 +1021,7 @@ public class ChartController {
                 total9 = houseTotal.getTotal();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
-                oat9.setDate(houseTotal.getDate().getMonthValue());
+                oat9.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
@@ -959,7 +1029,7 @@ public class ChartController {
                 total10 = houseTotal.getTotal();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
-                oat10.setDate(houseTotal.getDate().getMonthValue());
+                oat10.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
@@ -967,7 +1037,7 @@ public class ChartController {
                 total11 = houseTotal.getTotal();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
-                oat11.setDate(houseTotal.getDate().getMonthValue());
+                oat11.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
@@ -975,13 +1045,13 @@ public class ChartController {
                 total12 = houseTotal.getTotal();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
-                oat12.setDate(houseTotal.getDate().getMonthValue());
+                oat12.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat12);
             }
 
             List<Double> totalHouse = oats.listAll().stream().map(x -> x.getTotal()).collect(Collectors.toList());
             model.addAttribute("totalHouse", totalHouse);
-            List<Integer> date = oats.listAll().stream().map(x -> x.getDate()).collect(Collectors.toList());
+            List<Integer> date = oats.listAll().stream().map(x -> x.getMonthly()).collect(Collectors.toList());
             model.addAttribute("date", date);
 //
 //
@@ -1001,7 +1071,7 @@ public class ChartController {
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
 //                Month month = Month.from(flightTotal.getDate());
-                oat1.setDate(flightTotal.getDate().getMonthValue());
+                oat1.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
@@ -1010,7 +1080,7 @@ public class ChartController {
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
 //                Month month = Month.from(flightTotal.getDate());
-                oat2.setDate(flightTotal.getDate().getMonthValue());
+                oat2.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat2);
             }
 
@@ -1020,7 +1090,7 @@ public class ChartController {
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
 //                Month month = Month.from(flightTotal.getDate());
-                oat3.setDate(flightTotal.getDate().getMonthValue());
+                oat3.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
@@ -1029,7 +1099,7 @@ public class ChartController {
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
 //                Month month = Month.from(flightTotal.getDate());
-                oat4.setDate(flightTotal.getDate().getMonthValue());
+                oat4.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
@@ -1038,7 +1108,7 @@ public class ChartController {
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
 //                Month month = Month.from(flightTotal.getDate());
-                oat5.setDate(flightTotal.getDate().getMonthValue());
+                oat5.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
@@ -1047,7 +1117,7 @@ public class ChartController {
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
 //                Month month = Month.from(flightTotal.getDate());
-                oat6.setDate(flightTotal.getDate().getMonthValue());
+                oat6.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
@@ -1056,7 +1126,7 @@ public class ChartController {
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
 //                Month month = Month.from(flightTotal.getDate());
-                oat7.setDate(flightTotal.getDate().getMonthValue());
+                oat7.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat7);
             }
 
@@ -1065,7 +1135,7 @@ public class ChartController {
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
 //                Month month = Month.from(flightTotal.getDate());
-                oat8.setDate(flightTotal.getDate().getMonthValue());
+                oat8.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
@@ -1074,7 +1144,7 @@ public class ChartController {
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
 //                Month month = Month.from(flightTotal.getDate());
-                oat9.setDate(flightTotal.getDate().getMonthValue());
+                oat9.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
@@ -1083,7 +1153,7 @@ public class ChartController {
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
 //                Month month = Month.from(flightTotal.getDate());
-                oat10.setDate(flightTotal.getDate().getMonthValue());
+                oat10.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
@@ -1092,7 +1162,7 @@ public class ChartController {
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
 //                Month month = Month.from(flightTotal.getDate());
-                oat11.setDate(flightTotal.getDate().getMonthValue());
+                oat11.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
@@ -1101,13 +1171,13 @@ public class ChartController {
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
 //                Month month = Month.from(flightTotal.getDate());
-                oat12.setDate(flightTotal.getDate().getMonthValue());
+                oat12.setMonthly(flightTotal.getDate().getMonthValue());
                 oats.save(oat12);
             }
 
 
             List<Double> totalFlight = oats.listAll().stream().map(OverAllTotal::getTotal).collect(Collectors.toList());
-            List<Integer> date = oats.listAll().stream().map(OverAllTotal::getDate).collect(Collectors.toList());
+            List<Integer> date = oats.listAll().stream().map(OverAllTotal::getMonthly).collect(Collectors.toList());
 
             model.addAttribute("totalFlight", totalFlight);
             model.addAttribute("date", date);
@@ -1149,7 +1219,7 @@ public class ChartController {
 
             if (house.get(i).getUsername().equals(username)) {
 
-                houseT = houseT + foods.get(i).getTotalCo2();
+                houseT = houseT + house.get(i).getTotal();
             }
         }
 
@@ -1157,7 +1227,7 @@ public class ChartController {
 
             if (flights.get(i).getUsername().equals(username)) {
 
-                flightT = flightT + foods.get(i).getTotalCo2();
+                flightT = flightT + flights.get(i).getTotal();
             }
         }
 
