@@ -521,6 +521,55 @@ public class ChartController {
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
 
+        //  PIE CHART
+
+        double foodT = 0;
+        double transT = 0;
+        double houseT = 0;
+        double flightT = 0;
+
+        List<FoodTotal> foods = fts.listAll();
+        List<TransportTotal> trans = tts.listAll();
+        List<HouseEnergyTotal> house = hets.listAll();
+        List<FlightTotal> flights = flts.listAll();
+
+        for (FoodTotal food : foods) {
+
+            if (food.getUsername().equals(username)) {
+
+                foodT = foodT + food.getTotalCo2();
+            }
+        }
+
+        for (TransportTotal tran : trans) {
+
+            if (tran.getUsername().equals(username)) {
+
+                transT = transT + tran.getTotalCo2();
+            }
+        }
+
+        for (int i = 0; i < house.size(); i++) {
+
+            if (house.get(i).getUsername().equals(username)) {
+
+                houseT = houseT + house.get(i).getTotal();
+            }
+        }
+
+        for (int i = 0; i < flights.size(); i++) {
+
+            if (flights.get(i).getUsername().equals(username)) {
+
+                flightT = flightT + flights.get(i).getTotal();
+            }
+        }
+
+        model.addAttribute("foodT", foodT);
+        model.addAttribute("transT", transT);
+        model.addAttribute("houseT", houseT);
+        model.addAttribute("flightT", flightT);
+
         return "lastYearStats";
     }
 
@@ -764,6 +813,57 @@ public class ChartController {
         }
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
+
+
+        // PIE CHART
+
+
+        double foodT = 0;
+        double transT = 0;
+        double houseT = 0;
+        double flightT = 0;
+
+        List<FoodTotal> foods = fts.listAll();
+        List<TransportTotal> trans = tts.listAll();
+        List<HouseEnergyTotal> house = hets.listAll();
+        List<FlightTotal> flights = flts.listAll();
+
+        for (FoodTotal food : foods) {
+
+            if (arrDate.contains(food.getDate()) && food.getUsername().equals(username)) {
+
+                foodT = foodT + food.getTotalCo2();
+            }
+        }
+
+        for (TransportTotal tran : trans) {
+
+            if (arrDate.contains(tran.getDate()) && tran.getUsername().equals(username)) {
+
+                transT = transT + tran.getTotalCo2();
+            }
+        }
+
+        for (int i = 0; i < house.size(); i++) {
+
+            if (arrDate.contains(house.get(i).getDate()) && house.get(i).getUsername().equals(username)) {
+
+                houseT = houseT + house.get(i).getTotal();
+            }
+        }
+
+        for (int i = 0; i < flights.size(); i++) {
+
+            if (arrDate.contains(flights.get(i).getDate()) && flights.get(i).getUsername().equals(username)) {
+
+                flightT = flightT + flights.get(i).getTotal();
+            }
+        }
+
+        model.addAttribute("foodT", foodT);
+        model.addAttribute("transT", transT);
+        model.addAttribute("houseT", houseT);
+        model.addAttribute("flightT", flightT);
 
 
         return "statistics";
