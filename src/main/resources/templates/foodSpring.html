@@ -27,6 +27,7 @@
   <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
   <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
   <link href="css/external.css" th:href="@{css/mealPlanner.css}" rel="stylesheet"/>
+  <link href="css/external.css" th:href="@{css/form.css}" rel="stylesheet"/>
 
 
 </head>
@@ -38,7 +39,7 @@
 
     <div class="sidebar-wrapper">
       <div class="logo">
-        <img src="assets/img/sagan.jpeg" alt="Avatar" id="avatar">
+        <img src="images/profile.png" alt="Avatar" class="avatar">
         <a href="#" class="simple-text">
           <b>[[${#request.userPrincipal.principal.username}]]</b>
         </a>
@@ -48,7 +49,7 @@
         <li>
 
           <a href="dashboard">
-            <i class="pe-7s-user"></i>
+            <i class="pe-7s-user-female"></i>
 
             <p>Dashboard</p>
           </a>

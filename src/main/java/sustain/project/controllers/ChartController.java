@@ -43,7 +43,7 @@ public class ChartController {
         double total1 = 0, total2 = 0, total3 = 0, total4 = 0, total5 = 0, total6 = 0, total7 = 0,
                 total8 = 0, total9 = 0, total10 = 0, total11 = 0, total12 = 0;
 
-        OverAllTotal oat1, oat2, oat3, oat4, oat5, oat6, oat7, oat8, oat9, oat10, oat11, oat12, oat13;
+        OverAllTotal oat1, oat2, oat3, oat4, oat5, oat6, oat7, oat8, oat9, oat10, oat11, oat12;
         oat1 = new OverAllTotal();
         oat2 = new OverAllTotal();
         oat3 = new OverAllTotal();
@@ -56,21 +56,19 @@ public class ChartController {
         oat10 = new OverAllTotal();
         oat11 = new OverAllTotal();
         oat12 = new OverAllTotal();
-        oat13 = new OverAllTotal();
 
 
         // FOOD
 
         for (FoodTotal foodTotal : ft) {
-            if (foodTotal.getDate().getMonthValue() == 1 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 1 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total1 = total1 + foodTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
                 oat1.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
-
-            if (foodTotal.getDate().getMonthValue() == 2 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 2 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total2 = total2 + foodTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
@@ -78,7 +76,7 @@ public class ChartController {
                 oats.save(oat2);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 3 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 3 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total3 = total3 + foodTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
@@ -86,7 +84,7 @@ public class ChartController {
                 oats.save(oat3);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 4 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 4 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total4 = total4 + foodTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
@@ -94,7 +92,7 @@ public class ChartController {
                 oats.save(oat4);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 5 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 5 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total5 = total5 + foodTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
@@ -102,7 +100,7 @@ public class ChartController {
                 oats.save(oat5);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 6 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 6 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total6 = total6 + foodTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
@@ -110,7 +108,7 @@ public class ChartController {
                 oats.save(oat6);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 7 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 7 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total7 = total7 + foodTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
@@ -118,7 +116,7 @@ public class ChartController {
                 oats.save(oat7);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 8 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 8 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total8 = total8 + foodTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
@@ -126,7 +124,7 @@ public class ChartController {
                 oats.save(oat8);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 9 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 9 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total9 = total9 + foodTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
@@ -134,7 +132,7 @@ public class ChartController {
                 oats.save(oat9);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 10 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 10 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total10 = total10 + foodTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
@@ -142,7 +140,7 @@ public class ChartController {
                 oats.save(oat10);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 11 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 11 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total11 = total11 + foodTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
@@ -150,7 +148,7 @@ public class ChartController {
                 oats.save(oat11);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 12 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getDate().getMonthValue() == 12 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total12 = total12 + foodTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);

@@ -1,14 +1,15 @@
+.avatar{
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: 3px solid #FFFFFF;
+}
+
+
 /* main form stylings */
 .form {
-    /*    margin: 0 0 0 0;*/
-    /*    position: center;
-    */    font-family: Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     display: inline-block;
-    /*  border: none;*/
-    /*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, .5);*/
-    /*  border-radius: 4px;*/
-    /*background: rgba(255, 255, 255, 0.3); !* allows change in opacity without affecting text opacity*!*/
-    /*   padding-right: 5%;*/
     padding-left: 2%;
 }
 
@@ -45,7 +46,6 @@ input[type=text], input[type=password],input[type=number], input[type=email], #s
     font-family: Helvetica, sans-serif;
     text-align: left;
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75)
-
     /*text-shadow: 2px 2px 5px black;*/
 }
 /**/
@@ -89,7 +89,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=number]:focus, input
 }
 
 .btn-primary{
-    background-image: linear-gradient(to bottom right, #fa4ea5, #fccb56);
+    background-image: linear-gradient(to bottom right, #fa4ea5, #8a4b9f);
     /*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
     /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
     color: #fff;
@@ -98,15 +98,17 @@ input[type=text]:focus, input[type=email]:focus, input[type=number]:focus, input
     margin-left:50%;
     position: relative;
     font-weight: bold;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     /*box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
     /*font-size: 16px;*/
     /*font-weight: 600;*/
 }
 
 .btn-primary.active{
-    background-image: linear-gradient(to bottom right, #f60081, #fabb00);
+    background-image: linear-gradient(to bottom right, #f60081, #87009DFF);
     border: none;
     color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 #logout{
@@ -131,7 +133,6 @@ input[type=text]:focus, input[type=email]:focus, input[type=number]:focus, input
 
 #login:hover, #signUpp:hover, .regButton:hover {
     background-image: linear-gradient(to bottom right, #365eff, #4dffa6);
-
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
@@ -139,7 +140,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=number]:focus, input
 }
 
 .btn-primary:hover{
-    background-image: linear-gradient(to bottom right, #FFBF00FF, #FF0087FF);
+    background-image: linear-gradient(to bottom right, #87009DFF, #FF0087FF);
     color: #fff;
     border: none;
     moz-transition: all .4s ease-in-out;
