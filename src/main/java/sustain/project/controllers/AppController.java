@@ -142,7 +142,7 @@ public class AppController {
         return "activityPage";
     }
 
-    @RequestMapping("/addFoodView")
+    @RequestMapping(value = "/addFoodView", method = RequestMethod.GET)
     public String showAddFoodForm(Model model) {
         AddUserFood foodObject = new AddUserFood();
         model.addAttribute("foodObject", foodObject);
@@ -237,13 +237,13 @@ public class AppController {
                 res = res/100; // get to the nearest 2 decimal places
             }
         }
+
         foodObject.setRes(res);
         foodObject.setUsername(username);
         auf.save(foodObject);
         model.addAttribute("res", res);
         model.addAttribute("foodName", foodN);
         model.addAttribute("grams", g);
-
         return new ModelAndView("addFood");
     }
 

@@ -24,7 +24,7 @@
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
     <script src="js/main.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -152,15 +152,16 @@
         </nav>
 
         <h2 id="h1">How do your food choices impact the environment?</h2>
-        <h3 id="h2">Simply select an item and its quantity and click <b>add food</b>. Repeat as many times as necessary. <br> Only click <b>calculate total</b> once all your items have been added to receive the total CO₂ emissions.</h3>
-        <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions will be added to your statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
-        <div class="content">
+        <h3 id="h2">Simply select an item and its quantity and click <b>add food</b>. Repeat as many times as necessary.
+            <br> Only click <b>calculate total</b> once all your items have been added to receive the total CO₂
+            emissions.</h3>
+        <div class="contentCalc">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="card">
-                            <div id = "foodClip">
-                                <img src ="images/foodClip.png" alt = "food clip art">
+                            <div id="foodClip">
+                                <img src="images/foodClip.png" alt="food clip art">
                             </div>
 
                             <div class="calcForm">
@@ -171,58 +172,58 @@
                                             <td>
                                                 <h3 id="tableH2"> Select a food or drink</h3>
                                                 <select id="foodName" name="foodName"
-                                                                                      th:field="*{foodName}"
-                                                                                      th:object="${foodObject}">
-                                                <option value="" disabled="disabled" selected="selected">Choose
-                                                    Food
-                                                </option>
-                                                <option value="apples">Apple</option>
-                                                <option value="bananas">Banana</option>
-                                                <option value="beef (dairy)">Beef (dairy herd)</option>
-                                                <option value="beef (herd)">Beef (beef herd)</option>
-                                                <option value="beer">Beer (5% ABV)</option>
-                                                <option value="beet sugar">Beet Sugar</option>
-                                                <option value="berries">Berries</option>
-                                                <option value="wheat & rye (bread)">Bread (wheat & rye)</option>
-                                                <option value="cane sugar">Cane Sugar</option>
-                                                <option value="cheese">Cheese</option>
-                                                <option value="citrus">Citrus Fruit</option>
-                                                <option value="coffee">Coffee (1 portion = 15g)</option>
-                                                <option value="dark chocolate">Dark Chocolate</option>
-                                                <option value="eggs">Eggs</option>
-                                                <option value="fish (farmed)">Fish (farmed)</option>
-                                                <option value="grains">Grains</option>
-                                                <option value="groundnuts">Groundnuts</option>
-                                                <option value="lamb">Lamb</option>
-                                                <option value="maize (meal)">Maize (meal)</option>
-                                                <option value="milk">Milk (dairy)</option>
-                                                <option value="soymilk">Milk (soy)</option>
-                                                <option value="nuts">Nuts</option>
-                                                <option value="oatmeal">Oatmeal</option>
-                                                <option value="olive oil">Olive Oil</option>
-                                                <option value="onions & leeks">Onions & Leeks</option>
-                                                <option value="palm oil">Palm Oil</option>
-                                                <option value="peas">Peas</option>
-                                                <option value="pork">Pork</option>
-                                                <option value="potatoes">Potatoes</option>
-                                                <option value="poultry">Poultry</option>
-                                                <option value="prawns (farmed)">Prawns (farmed)</option>
-                                                <option value="pulses">Pulses</option>
-                                                <option value="rapeseed oil">Rapeseed Oil</option>
-                                                <option value="rice">Rice</option>
-                                                <option value="root vegetables">Root Vegetables</option>
-                                                <option value="soybean oil">Soybean Oil</option>
-                                                <option value="sunflower oil">Sunflower Oil</option>
-                                                <option value="tofu">Tofu</option>
-                                                <option value="tomatoes">Tomatoes</option>
-                                                <option value="wine">Wine</option>
-                                            </select>
+                                                        th:field="*{foodName}"
+                                                        th:object="${foodObject}">
+                                                    <option value="" disabled="disabled" selected="selected">Choose
+                                                        Food
+                                                    </option>
+                                                    <option value="apples">Apple</option>
+                                                    <option value="bananas">Banana</option>
+                                                    <option value="beef (dairy)">Beef (dairy herd)</option>
+                                                    <option value="beef (herd)">Beef (beef herd)</option>
+                                                    <option value="beer">Beer (5% ABV)</option>
+                                                    <option value="beet sugar">Beet Sugar</option>
+                                                    <option value="berries">Berries</option>
+                                                    <option value="wheat & rye (bread)">Bread (wheat & rye)</option>
+                                                    <option value="cane sugar">Cane Sugar</option>
+                                                    <option value="cheese">Cheese</option>
+                                                    <option value="citrus">Citrus Fruit</option>
+                                                    <option value="coffee">Coffee (1 portion = 15g)</option>
+                                                    <option value="dark chocolate">Dark Chocolate</option>
+                                                    <option value="eggs">Eggs</option>
+                                                    <option value="fish (farmed)">Fish (farmed)</option>
+                                                    <option value="grains">Grains</option>
+                                                    <option value="groundnuts">Groundnuts</option>
+                                                    <option value="lamb">Lamb</option>
+                                                    <option value="maize (meal)">Maize (meal)</option>
+                                                    <option value="milk">Milk (dairy)</option>
+                                                    <option value="soymilk">Milk (soy)</option>
+                                                    <option value="nuts">Nuts</option>
+                                                    <option value="oatmeal">Oatmeal</option>
+                                                    <option value="olive oil">Olive Oil</option>
+                                                    <option value="onions & leeks">Onions & Leeks</option>
+                                                    <option value="palm oil">Palm Oil</option>
+                                                    <option value="peas">Peas</option>
+                                                    <option value="pork">Pork</option>
+                                                    <option value="potatoes">Potatoes</option>
+                                                    <option value="poultry">Poultry</option>
+                                                    <option value="prawns (farmed)">Prawns (farmed)</option>
+                                                    <option value="pulses">Pulses</option>
+                                                    <option value="rapeseed oil">Rapeseed Oil</option>
+                                                    <option value="rice">Rice</option>
+                                                    <option value="root vegetables">Root Vegetables</option>
+                                                    <option value="soybean oil">Soybean Oil</option>
+                                                    <option value="sunflower oil">Sunflower Oil</option>
+                                                    <option value="tofu">Tofu</option>
+                                                    <option value="tomatoes">Tomatoes</option>
+                                                    <option value="wine">Wine</option>
+                                                </select>
                                                 <!-- 'size' changes length of input box-->
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <h3 id="tableH3"> Select quantity in grams</h3>
+                                                <h3 id="tableH3"> Enter quantity in grams</h3>
                                                 <input type="number" name="grams" size="30" value="Grams"
                                                        th:field="*{grams}"
                                                        th:object="${foodObject}">
@@ -230,16 +231,22 @@
                                         </tr>
                                         <tr>
                                             <!-- submit button -->
-                                            <td><input id="addFoodItem" type="submit" name="add" value="ADD FOOD"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td>
-                                                <p th:text="*{res}"></p>
-                                                <p th:text="*{foodName}"></p>
-                                                <p th:text="*{grams}"></p>
+                                                <button id="addFoodItem" onclick="TestsFunction()" name="add"
+                                                        value="ADD FOOD">ADD FOOD
+                                                </button>
                                             </td>
                                         </tr>
+<!--                                        <tr>-->
+<!--                                            <td>-->
+<!--                                                &lt;!&ndash;                                                style="display:none"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                <div id="res">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <p th:text="#{co2.message(${res})}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <p th:text="#{grams.message(${grams})}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <p th:text="#{food.message(${foodName})}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
 
                                         <tr>
                                             <!-- submit button -->
@@ -251,23 +258,28 @@
                                         <tr>
                                             <td>
                                                 <!--                                                    <p> TOTAL CO2(kg) FOR THIS MEAL</p>-->
-                                                <p th:text="*{total}"> TOTAL CO2(kg) FOR THIS MEAL</p>
+                                                <p th:text="*{total}"></p>
                                             </td>
                                         </tr>
                                     </table>
                                 </form>
                             </div>
-
-                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions will be added to your
+            statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
+
+        <button onclick="TestsFunction()">Tests</button>
+
+        <div id="TestsDiv" style="display:none">
+            tests here!
+        </div>
+
     </div>
 </div>
-
-
 <footer class="footer">
     <div class="container-fluid">
         <nav class="pull-left">

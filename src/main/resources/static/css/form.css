@@ -1,5 +1,5 @@
-.calcTable{
-    width: 140%;
+.calcTable {
+    width: 170%;
 }
 
 .avatar{
@@ -14,19 +14,18 @@
 .calcForm{
     font-family: Helvetica, sans-serif;
     display: inline-block;
-    margin-left: 5%;
+    margin-left: 7%;
 }
 
-.content {
+.contentCalc {
     margin-left: 30.5%;
-    margin-top:-2%;
-
+    margin-top:2%;
 }
 
 /* first header in form */
 #tableH2, #tableH3{
     font-family: Helvetica, sans-serif;
-    font-size: 140%;
+    font-size: 120%;
     color: grey;
     text-align: center;
     padding-left:6%
@@ -46,7 +45,7 @@
     font-size: 100%;
     color: grey;
     text-align: center;
-    margin-top:2%;
+    margin-top:1%;
     line-height: 150%;
     /*font-weight: bold;*/
 }
@@ -55,12 +54,17 @@
     width: 100%;
     margin-bottom: 3%;
 }
+#res{
+    text-align: center;
+    font-size: 1%;
+    color: grey;
+}
 
 /* form stylings for input of type text boxes*/
 input[type=text], input[type=number], #select, #foodName{
     width: 110%;
     padding: 3%;
-    margin-bottom: 5%;
+    margin-bottom: 1%;
     border-radius: 50px;
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, .1);

@@ -18,6 +18,11 @@ function searchFunction() {
     }
 }
 
+function TestsFunction() {
+    var T = document.getElementById("res");
+    T.style.display = "block";  // <-- Set it to block
+}
+
 function validateFood()
 {
 
