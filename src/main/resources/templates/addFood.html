@@ -151,302 +151,153 @@
             </div>
         </nav>
 
-
-        <div class="form">
-            <form action="#" th:action="@{/calcFood}" method="post" name="addFood">
-                <!-- call validate function in 'form' tag when user clicks submit button-->
-                <div class="col-sm-10">
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="foodName"></label><select id="foodName" name="foodName"
-                                                                      th:field="*{foodName}" th:object="${foodObject}">
-                                <option value="" disabled="disabled" selected="selected">Choose Food</option>
-                                <option value="apples">Apple</option>
-                                <option value="bananas">Banana</option>
-                                <option value="beef (dairy)">Beef (dairy herd)</option>
-                                <option value="beef (herd)">Beef (beef herd)</option>
-                                <option value="beer">Beer (5% ABV)</option>
-                                <option value="beet sugar">Beet Sugar</option>
-                                <option value="berries">Berries</option>
-                                <option value="wheat & rye (bread)">Bread (wheat & rye)</option>
-                                <option value="cane sugar">Cane Sugar</option>
-                                <option value="cheese">Cheese</option>
-                                <option value="citrus">Citrus Fruit</option>
-                                <option value="coffee">Coffee (1 portion = 15g)</option>
-                                <option value="dark chocolate">Dark Chocolate</option>
-                                <option value="eggs">Eggs</option>
-                                <option value="fish (farmed)">Fish (farmed)</option>
-                                <option value="grains">Grains</option>
-                                <option value="groundnuts">Groundnuts</option>
-                                <option value="lamb">Lamb</option>
-                                <option value="maize (meal)">Maize (meal)</option>
-                                <option value="milk">Milk (dairy)</option>
-                                <option value="soymilk">Milk (soy)</option>
-                                <option value="nuts">Nuts</option>
-                                <option value="oatmeal">Oatmeal</option>
-                                <option value="olive oil">Olive Oil</option>
-                                <option value="onions & leeks">Onions & Leeks</option>
-                                <option value="palm oil">Palm Oil</option>
-                                <option value="peas">Peas</option>
-                                <option value="pork">Pork</option>
-                                <option value="potatoes">Potatoes</option>
-                                <option value="poultry">Poultry</option>
-                                <option value="prawns (farmed)">Prawns (farmed)</option>
-                                <option value="pulses">Pulses</option>
-                                <option value="rapeseed oil">Rapeseed Oil</option>
-                                <option value="rice">Rice</option>
-                                <option value="root vegetables">Root Vegetables</option>
-                                <option value="soybean oil">Soybean Oil</option>
-                                <option value="sunflower oil">Sunflower Oil</option>
-                                <option value="tofu">Tofu</option>
-                                <option value="tomatoes">Tomatoes</option>
-                                <option value="wine">Wine</option>
-                            </select>
-                                <!-- 'size' changes length of input box-->
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="number" name="grams" size="30" value="Grams" th:field="*{grams}"
-                                       th:object="${foodObject}">
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- submit button -->
-                            <td><input id="addFoodItem" type="submit" name="add" value="ADD FOOD"/></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p th:text="*{res}"></p>
-                                <p th:text="*{foodName}"></p>
-                                <p th:text="*{grams}"></p>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <!-- submit button -->
-                            <td><input th:object="${foodTotalObject}" id="foodTotal" type="submit" name="calc"
-                                       value="CALCULATE"/></td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <p> TOTAL CO2(kg) FOR THIS MEAL</p>
-                                <p th:text="*{total}"></p>
-                            </td>
-                        </tr>
-                    </table>
-                </div><!--form ends-->
-            </form>
-        </div>
-
-        <!--        <div class="form">-->
-        <!--            <form action="#" th:action="@{/calcFoodTotal}" th:object="${foodTotalObject}" method="post">-->
-        <!--                <div align="center">-->
-        <!--                    <table>-->
-        <!--                    <tr>-->
-        <!--                        &lt;!&ndash; submit button &ndash;&gt;-->
-        <!--                        <td><input id="foodTotal" type="submit" name="footTotal" value="CALCULATE"/></td>-->
-        <!--                    </tr>-->
-
-        <!--                    <tr>-->
-        <!--                        <td>-->
-        <!--                            <p> TOTAL</p>-->
-        <!--                            <p th:text="*{total}"></p>-->
-        <!--                        </td>-->
-        <!--                    </tr>-->
-        <!--                    </table>-->
-        <!--                </div>-->
-        <!--            </form>-->
-        <!--        </div>-->
-
-
-        <!--        <div class="row">
-                   <div class="col-md-6">
-                       <div class="card ">
-                           <div class="header">
-                               <h4 class="title">2014 Sales</h4>
-                               <p class="category">All products including Taxes</p>
-                           </div>
-                           <div class="content">
-                               <div id="chartActivity" class="ct-chart"></div>
-
-                               <div class="footer">
-                                   <div class="legend">
-                                       <i class="fa fa-circle text-info"></i> Tesla Model S
-                                       <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                                   </div>
-                                   <hr>
-                                   <div class="stats">
-                                       <i class="fa fa-check"></i> Data information certified
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div> -->
-        <!--
-                            <div class="col-md-6">
-                                <div class="card ">
-                                    <div class="header">
-                                        <h4 class="title">Tasks</h4>
-                                        <p class="category">Backend development</p>
-                                    </div>
-                                    <div class="content">
-                                        <div class="table-full-width">
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox1" type="checkbox">
-                                                                    <label for="checkbox1"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox2" type="checkbox" checked>
-                                                                    <label for="checkbox2"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox3" type="checkbox">
-                                                                    <label for="checkbox3"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                        </td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox4" type="checkbox" checked>
-                                                                    <label for="checkbox4"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox5" type="checkbox">
-                                                                    <label for="checkbox5"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Read "Following makes Medium better"</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                    <input id="checkbox6" type="checkbox" checked>
-                                                                    <label for="checkbox6"></label>
-                                                                </div>
-                                                        </td>
-                                                        <td>Unfollow 5 enemies from twitter</td>
-                                                        <td class="td-actions text-right">
-                                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="fa fa-times"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                        <div class="footer">
-                                            <hr>
-                                            <div class="stats">
-                                                <i class="fa fa-history"></i> Updated 3 minutes ago
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <h2 id="h1">How do your food choices impact the environment?</h2>
+        <h3 id="h2">Simply select an item and its quantity and click <b>add food</b>. Repeat as many times as necessary. <br> Only click <b>calculate total</b> once all your items have been added to receive the total CO₂ emissions.</h3>
+        <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions will be added to your statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div id = "foodClip">
+                                <img src ="images/foodClip.png" alt = "food clip art">
                             </div>
+
+                            <div class="calcForm">
+                                <form action="#" th:action="@{/calcFood}" method="post" name="addFood">
+                                    <!--                                    <div class="col-sm-12">-->
+                                    <table class=calcTable>
+                                        <tr>
+                                            <td>
+                                                <h3 id="tableH2"> Select a food or drink</h3>
+                                                <select id="foodName" name="foodName"
+                                                                                      th:field="*{foodName}"
+                                                                                      th:object="${foodObject}">
+                                                <option value="" disabled="disabled" selected="selected">Choose
+                                                    Food
+                                                </option>
+                                                <option value="apples">Apple</option>
+                                                <option value="bananas">Banana</option>
+                                                <option value="beef (dairy)">Beef (dairy herd)</option>
+                                                <option value="beef (herd)">Beef (beef herd)</option>
+                                                <option value="beer">Beer (5% ABV)</option>
+                                                <option value="beet sugar">Beet Sugar</option>
+                                                <option value="berries">Berries</option>
+                                                <option value="wheat & rye (bread)">Bread (wheat & rye)</option>
+                                                <option value="cane sugar">Cane Sugar</option>
+                                                <option value="cheese">Cheese</option>
+                                                <option value="citrus">Citrus Fruit</option>
+                                                <option value="coffee">Coffee (1 portion = 15g)</option>
+                                                <option value="dark chocolate">Dark Chocolate</option>
+                                                <option value="eggs">Eggs</option>
+                                                <option value="fish (farmed)">Fish (farmed)</option>
+                                                <option value="grains">Grains</option>
+                                                <option value="groundnuts">Groundnuts</option>
+                                                <option value="lamb">Lamb</option>
+                                                <option value="maize (meal)">Maize (meal)</option>
+                                                <option value="milk">Milk (dairy)</option>
+                                                <option value="soymilk">Milk (soy)</option>
+                                                <option value="nuts">Nuts</option>
+                                                <option value="oatmeal">Oatmeal</option>
+                                                <option value="olive oil">Olive Oil</option>
+                                                <option value="onions & leeks">Onions & Leeks</option>
+                                                <option value="palm oil">Palm Oil</option>
+                                                <option value="peas">Peas</option>
+                                                <option value="pork">Pork</option>
+                                                <option value="potatoes">Potatoes</option>
+                                                <option value="poultry">Poultry</option>
+                                                <option value="prawns (farmed)">Prawns (farmed)</option>
+                                                <option value="pulses">Pulses</option>
+                                                <option value="rapeseed oil">Rapeseed Oil</option>
+                                                <option value="rice">Rice</option>
+                                                <option value="root vegetables">Root Vegetables</option>
+                                                <option value="soybean oil">Soybean Oil</option>
+                                                <option value="sunflower oil">Sunflower Oil</option>
+                                                <option value="tofu">Tofu</option>
+                                                <option value="tomatoes">Tomatoes</option>
+                                                <option value="wine">Wine</option>
+                                            </select>
+                                                <!-- 'size' changes length of input box-->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 id="tableH3"> Select quantity in grams</h3>
+                                                <input type="number" name="grams" size="30" value="Grams"
+                                                       th:field="*{grams}"
+                                                       th:object="${foodObject}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <!-- submit button -->
+                                            <td><input id="addFoodItem" type="submit" name="add" value="ADD FOOD"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p th:text="*{res}"></p>
+                                                <p th:text="*{foodName}"></p>
+                                                <p th:text="*{grams}"></p>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <!-- submit button -->
+                                            <td><input th:object="${foodTotalObject}" id="foodTotal" type="submit"
+                                                       name="calc"
+                                                       value="CALCULATE TOTAL"/></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <!--                                                    <p> TOTAL CO2(kg) FOR THIS MEAL</p>-->
+                                                <p th:text="*{total}"> TOTAL CO2(kg) FOR THIS MEAL</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+
+                            <!--                            </div>-->
                         </div>
                     </div>
-                </div> -->
-
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Contact
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy;
-                    <script>document.write(new Date().getFullYear())</script>
-                    <a href="http://www.creative-tim.com">SUSTAIN</a> What will you change?
-                </p>
+                </div>
             </div>
-        </footer>
+        </div>
     </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <nav class="pull-left">
+            <ul>
+                <li>
+                    <a href="#">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+        <p class="copyright pull-right">
+            &copy;
+            <script>document.write(new Date().getFullYear())</script>
+            <a href="http://www.creative-tim.com">SUSTAIN</a> What will you change?
+        </p>
+    </div>
+</footer>
+</div>
 </div>
 </body>
 

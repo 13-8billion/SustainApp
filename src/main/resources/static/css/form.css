@@ -1,3 +1,7 @@
+.calcTable{
+    width: 140%;
+}
+
 .avatar{
     width: 100px;
     height: 100px;
@@ -7,35 +11,56 @@
 
 
 /* main form stylings */
-.form {
+.calcForm{
     font-family: Helvetica, sans-serif;
     display: inline-block;
-    padding-left: 2%;
+    margin-left: 5%;
+}
+
+.content {
+    margin-left: 30.5%;
+    margin-top:-2%;
+
 }
 
 /* first header in form */
-#formP1, #formR1{
-    font-family: Georgia, serif;
-    font-size: 100%;
-    color: white;
-    margin: 0 0 0 0;
-    text-shadow: 2px 2px 20px black;
-    padding-bottom: 5%;
-    font-style: italic;
-}
-#formP3{
-    font-size: 110%;
-    color: white;
-    margin: 4% 0 0 0;
-    text-shadow: 2px 2px 3px black;
-    padding-left: 10%;
+#tableH2, #tableH3{
     font-family: Helvetica, sans-serif;
+    font-size: 140%;
+    color: grey;
+    text-align: center;
+    padding-left:6%
 }
+
+#h1{
+    font-family: Helvetica, sans-serif;
+    font-size: 250%;
+    color: grey;
+    text-align: center;
+    margin-top:2%;
+    /*font-weight: bold;*/
+}
+
+#h2, #h3  {
+    font-family: Helvetica, sans-serif;
+    font-size: 100%;
+    color: grey;
+    text-align: center;
+    margin-top:2%;
+    line-height: 150%;
+    /*font-weight: bold;*/
+}
+
+#foodClip img{
+    width: 100%;
+    margin-bottom: 3%;
+}
+
 /* form stylings for input of type text boxes*/
-input[type=text], input[type=password],input[type=number], input[type=email], #select, #foodName{
+input[type=text], input[type=number], #select, #foodName{
     width: 110%;
-    padding: 5%;
-    margin: 3% 0;
+    padding: 3%;
+    margin-bottom: 5%;
     border-radius: 50px;
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, .1);
@@ -45,13 +70,13 @@ input[type=text], input[type=password],input[type=number], input[type=email], #s
     color: grey;
     font-family: Helvetica, sans-serif;
     text-align: left;
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75)
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25)
     /*text-shadow: 2px 2px 5px black;*/
 }
 /**/
 
 
-input[type=text]:focus, input[type=email]:focus, input[type=number]:focus, input[type=password]:focus, #select:focus {
+input[type=text]:focus, input[type=number]:focus,  #select:focus {
     border: 2px solid white;
     background-color: rgba(255, 255, 255, 1);
     color: grey;
@@ -65,21 +90,21 @@ input[type=text]:focus, input[type=email]:focus, input[type=number]:focus, input
 
 /* submit box styling */
 /*input[type=submit], [type=button]{*/
-#login, #signUpp, #addFoodItem, #foodTotal{
+#addFoodItem, #foodTotal{
     width: 110%;
     background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
     /*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
     /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
     color: #fff;
-    padding: 5%;
-    margin: 3% 0;
+    padding: 3%;
+    margin: 7% 0;
     border: none;
     border-radius: 40px;
     cursor: pointer;
     outline: none;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.5);
     font-size: 16px;
 }
 

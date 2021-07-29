@@ -1,7 +1,6 @@
 package sustain.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,14 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 import sustain.project.models.*;
 import sustain.project.service.*;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.security.Principal;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
+//implements WebMvcConfigurer
 
 @Controller
 public class AppController {
@@ -182,7 +177,17 @@ public class AppController {
 
     // USER METHODS
 
-    @PostMapping(value = "/save")
+//    @PostMapping("/signUp")
+//    public String checkPersonInfo(@Valid User username, BindingResult bindingResult) {
+//
+//        if (bindingResult.hasErrors()) {
+//            return "signUp";
+//        }
+//
+//        return "signUp";
+//    }
+
+    @PostMapping(value = "/saveUser")
     public String processRegister(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
@@ -191,6 +196,20 @@ public class AppController {
 
         return "register_success";
     }
+
+
+    //        List<User> u = service.listAll();
+//
+//        ModelAndView mav = new ModelAndView("signUp");
+//
+//        for (int i = 0; i <u.size();i++) {
+//            if (user.getUsername().equals(u.get(i).getUsername())) {
+//
+//                usernameEr = "Username already exists";
+//                mav.addObject("username", usernameEr);
+//                return mav;
+//
+//            } else {
 
 
     // FOOD

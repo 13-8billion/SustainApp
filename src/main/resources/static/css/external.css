@@ -23,6 +23,12 @@ body {
     padding-top: 1%;
 }
 
+#loginError{
+    margin-left: 40%;
+    margin-right: 40%;
+    padding: 0.3%;
+}
+
 #logo2 {
    width: 15%;
     padding-top: 10px;

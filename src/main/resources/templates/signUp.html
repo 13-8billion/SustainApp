@@ -27,7 +27,7 @@
           </figure>
         </div><!-- form begins here-->
         <div class="form">
-          <form action="#" th:action="@{/save}" th:object="${user}" method="post">
+          <form th:action="@{/saveUser}" th:object="${user}" method="post">
             <!-- call validate function in 'form' tag when user clicks submit button-->
             <div class="col-sm-10">
               <table>
@@ -36,7 +36,9 @@
                   <td><input type="email" class="form-control" id="inputdefault" placeholder="Email" th:field="*{email}" /></td>
                 </tr>
                 <tr>
-                  <td><input type="text" name="username" size="20" placeholder="Username" th:field="*{username}" class="form-control" id="inputdefault1" /> <!-- 'size' changes length of input box--></td>
+                  <td><input type="text" name="username" size="20" placeholder="Username" th:field="*{username}" class="form-control" id="inputdefault1" />
+                   </td>
+<!--                 <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username field empty!</td>-->
                 </tr>
                 <tr>
                   <td><select name="country" th:field="*{location}" class="form-select" id="select">

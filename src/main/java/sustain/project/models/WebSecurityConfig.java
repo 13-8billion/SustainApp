@@ -20,14 +20,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import sustain.project.service.CustomUserDetailsService;
 
 import java.io.IOException;
-import java.util.Locale;
+
 
 @Configuration
 @EnableWebSecurity
@@ -72,20 +68,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .loginPage("/login")
                 .usernameParameter("username")
                 .defaultSuccessUrl("/dashboard")
-                .failureHandler(new SimpleUrlAuthenticationFailureHandler() {
-
-                    @Override
-                    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-                                                        AuthenticationException exception) throws IOException, ServletException {
-                        String email = request.getParameter("email");
-                        String error = exception.getMessage();
-                        System.out.println("A failed login attempt with email: "
-                                + email + ". Reason: " + error);
-
-                        super.setDefaultFailureUrl("/login?error");
-                        super.onAuthenticationFailure(request, response, exception);
-                    }
-                })
                 .permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -99,19 +81,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
         web.ignoring().antMatchers("/css/**", "/images/**");
     }
 
-//    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-        localeChangeInterceptor.setParamName("lang");
-        registry.addInterceptor(localeChangeInterceptor);
-    }
 
-    @Bean
-    public LocaleResolver localeResolver() {
-        CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
-        cookieLocaleResolver.setDefaultLocale(Locale.ENGLISH);
-        return cookieLocaleResolver;
-    }
 
 
 

@@ -2,6 +2,8 @@ package sustain.project.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity // mySQL entity
 @Table(name = "User")
@@ -13,12 +15,16 @@ public class User implements Serializable {
     @Column(name = "userID")
     private String userID;
     @Column(name = "username")
+    @NotNull
     private String username;
     @Column(name = "email")
+    @NotNull
     private String email;
     @Column(name = "location")
     private String location;
     @Column(name = "password")
+    @NotNull
+    @Size(min=8, max=30)
     private String password;
 
     public User() {
