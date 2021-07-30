@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import sustain.project.models.*;
 import sustain.project.service.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
@@ -187,29 +189,20 @@ public class AppController {
 //        return "signUp";
 //    }
 
-    @PostMapping(value = "/saveUser")
-    public String processRegister(User user) {
+    @PostMapping("/save")
+    public String processRegister(@Valid User user, BindingResult bindingResult) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        service.save(user);
 
-        return "register_success";
+        if (bindingResult.hasErrors()) {
+            return "signUp";
+        } else {
+            service.save(user);
+            return "register_success";
+        }
     }
 
-
-    //        List<User> u = service.listAll();
-//
-//        ModelAndView mav = new ModelAndView("signUp");
-//
-//        for (int i = 0; i <u.size();i++) {
-//            if (user.getUsername().equals(u.get(i).getUsername())) {
-//
-//                usernameEr = "Username already exists";
-//                mav.addObject("username", usernameEr);
-//                return mav;
-//
-//            } else {
 
 
     // FOOD

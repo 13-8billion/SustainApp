@@ -2,8 +2,7 @@ package sustain.project.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity // mySQL entity
 @Table(name = "User")
@@ -14,17 +13,18 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userID")
     private String userID;
+    @NotBlank(message = "*Username field cannot be empty")
     @Column(name = "username")
-    @NotNull
     private String username;
+    @NotBlank(message = "*Email field cannot be empty")
+    @Email(message = "*Invalid email")
     @Column(name = "email")
-    @NotNull
     private String email;
     @Column(name = "location")
     private String location;
+    @NotBlank(message = "*Password field cannot be empty!")
+    @Size(min=8, max=100, message="*Password must be at least 8 characters in length")
     @Column(name = "password")
-    @NotNull
-    @Size(min=8, max=30)
     private String password;
 
     public User() {

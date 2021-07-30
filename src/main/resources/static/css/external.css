@@ -23,6 +23,12 @@ body {
     padding-top: 1%;
 }
 
+.inputValidation{
+    font-size: 80%;
+    color: red;
+    font-weight:bold;
+}
+
 #loginError{
     margin-left: 40%;
     margin-right: 40%;

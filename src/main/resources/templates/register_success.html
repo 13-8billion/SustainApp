@@ -27,13 +27,10 @@
                         <p id="logoCaption2">Please log in to continue:</p>
                     </figcaption>
                 </figure>
-            </div>
-<!--            <div th:if="${param.error}" class="alert alert-danger" id="loginError">-->
-<!--                Invalid username or password.-->
-<!--            </div>-->
+            </div><!-- form begins here-->
             <div class="form">
                 <form name="loginForm" th:action="@{/login}"
-                      method="post" id="loginForm">
+                      method="post" id="loginForm" action="#" onsubmit="return !! validateForm()">
                     <!-- call validate function in 'form' tag when user clicks submit button-->
                     <div class="col-sm-10">
                         <table>

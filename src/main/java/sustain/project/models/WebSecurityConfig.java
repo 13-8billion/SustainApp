@@ -1,8 +1,4 @@
 package sustain.project.models;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +11,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import sustain.project.service.CustomUserDetailsService;
 
-import java.io.IOException;
 
 
 @Configuration
@@ -58,11 +51,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/resources/**").permitAll()
                 .antMatchers("/index").permitAll()
                 .antMatchers("/signUp").permitAll()
                 .antMatchers("/register_success").permitAll()
-                .anyRequest().fullyAuthenticated()
+                // must keep permitall() if reg user method is to work correctly...BUG
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -80,9 +73,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
         // Solve the problem of static resources being intercepted
         web.ignoring().antMatchers("/css/**", "/images/**");
     }
-
-
-
-
-
 }
