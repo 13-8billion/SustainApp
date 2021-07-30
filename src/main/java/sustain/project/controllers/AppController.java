@@ -14,7 +14,6 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
-//implements WebMvcConfigurer
 
 @Controller
 public class AppController {
@@ -202,8 +201,6 @@ public class AppController {
             return "register_success";
         }
     }
-
-
 
     // FOOD
 
@@ -515,129 +512,6 @@ public class AppController {
 
         return "redirect:/"; //eg. homepage
     }
-
-//    FlightTotal obj = new FlightTotal();
-//    FlightTotal obj2 = new FlightTotal();
-//    FlightTotal obj3 = new FlightTotal();
-//    FlightTotal obj4 = new FlightTotal();
-//    FlightTotal obj5 = new FlightTotal();
-//    FlightTotal obj6 = new FlightTotal();
-//    FlightTotal obj7 = new FlightTotal();
-//    FlightTotal obj8 = new FlightTotal();
-//    FlightTotal obj9 = new FlightTotal();
-//    FlightTotal obj10 = new FlightTotal();
-//    FlightTotal obj11 = new FlightTotal();
-//    FlightTotal obj12 = new FlightTotal();
-//
-//    @PostMapping(value = "/save", params = "nullify")
-//    public String nullTables() {
-//
-//        LocalDate jan = LocalDate.parse("2021-01-01");
-//        LocalDate feb = LocalDate.parse("2021-02-01");
-//        LocalDate mar = LocalDate.parse("2021-03-01");
-//        LocalDate apr = LocalDate.parse("2021-04-01");
-//        LocalDate may = LocalDate.parse("2021-05-01");
-//        LocalDate jun = LocalDate.parse("2021-06-01");
-//        LocalDate jul = LocalDate.parse("2021-07-01");
-//        LocalDate aug = LocalDate.parse("2021-08-01");
-//        LocalDate sep = LocalDate.parse("2021-09-01");
-//        LocalDate oct = LocalDate.parse("2021-10-01");
-//        LocalDate nov = LocalDate.parse("2021-11-01");
-//        LocalDate dec = LocalDate.parse("2021-12-01");
-//
-//        String username = userDetails.returnUsername();
-//
-//        obj.setId(1);
-//        obj.setDate(jan);
-//        obj.setTotal(0);
-//        obj.setUsername(username);
-//        flts.save(obj);
-//
-//        obj.setId(2);
-//        obj2.setDate(feb);
-//        obj2.setTotal(0);
-//        obj2.setUsername(username);
-//        flts.save(obj2);
-//
-//        obj.setId(3);
-//        obj3.setDate(mar);
-//        obj3.setTotal(0);
-//        obj3.setUsername(username);
-//        flts.save(obj3);
-//
-//        obj.setId(4);
-//        obj4.setDate(apr);
-//        obj4.setTotal(0);
-//        obj4.setUsername(username);
-//        flts.save(obj4);
-//
-//        obj.setId(5);
-//        obj5.setDate(may);
-//        obj5.setTotal(0);
-//        obj5.setUsername(username);
-//        flts.save(obj5);
-//
-//        obj.setId(6);
-//        obj6.setDate(jun);
-//        obj6.setTotal(0);
-//        obj6.setUsername(username);
-//        flts.save(obj6);
-//
-//        obj.setId(7);
-//        obj7.setDate(jul);
-//        obj7.setTotal(0);
-//        obj7.setUsername(username);
-//        flts.save(obj7);
-//
-//        obj.setId(8);
-//        obj8.setDate(aug);
-//        obj8.setTotal(0);
-//        obj8.setUsername(username);
-//        flts.save(obj8);
-//
-//        obj.setId(9);
-//        obj9.setDate(sep);
-//        obj9.setTotal(0);
-//        obj9.setUsername(username);
-//        flts.save(obj9);
-//
-//        obj.setId(10);
-//        obj10.setDate(oct);
-//        obj10.setTotal(0);
-//        obj10.setUsername(username);
-//        flts.save(obj10);
-//
-//        obj.setId(11);
-//        obj11.setDate(nov);
-//        obj11.setTotal(0);
-//        obj11.setUsername(username);
-//        flts.save(obj11);
-//
-//        obj.setId(12);
-//        obj12.setDate(dec);
-//        obj12.setTotal(0);
-//        obj12.setUsername(username);
-//        flts.save(obj12);
-//
-//        return "register_success";
-//    }
-//
-//    private void deleteMethod(){
-//        flts.delete(1);
-//        flts.delete(2);
-//        flts.delete(3);
-//        flts.delete(4);
-//        flts.delete(5);
-//        flts.delete(6);
-//        flts.delete(7);
-//        flts.delete(8);
-//        flts.delete(9);
-//        flts.delete(10);
-//        flts.delete(11);
-//        flts.delete(12);
-//
-//
-//    }
 
 
 }

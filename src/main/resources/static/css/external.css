@@ -24,9 +24,9 @@ body {
 }
 
 .inputValidation{
-    font-size: 80%;
+    font-size: 90%;
     color: red;
-    font-weight:bold;
+    /*font-weight:bold;*/
 }
 
 #loginError{

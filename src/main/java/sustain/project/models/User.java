@@ -1,5 +1,8 @@
 package sustain.project.models;
 
+import sustain.project.interfaces.EmailConstraint;
+import sustain.project.interfaces.UsernameConstraint;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import javax.validation.constraints.*;
@@ -14,16 +17,18 @@ public class User implements Serializable {
     @Column(name = "userID")
     private String userID;
     @NotBlank(message = "*Username field cannot be empty")
+    @UsernameConstraint
     @Column(name = "username")
     private String username;
     @NotBlank(message = "*Email field cannot be empty")
     @Email(message = "*Invalid email")
+//    @EmailConstraint
     @Column(name = "email")
     private String email;
     @Column(name = "location")
     private String location;
     @NotBlank(message = "*Password field cannot be empty!")
-    @Size(min=8, max=100, message="*Password must be at least 8 characters in length")
+    @Size(min=8, max=100, message="*Password must be at least 8 characters")
     @Column(name = "password")
     private String password;
 
