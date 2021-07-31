@@ -20,8 +20,10 @@ function searchFunction() {
 
 function TestsFunction() {
     var T = document.getElementById("res");
-    T.style.display = "block";  // <-- Set it to block
+    setTimeout( function () { T.style.display = "block"; }, 2000);
 }
+
+
 
 function validateFood()
 {

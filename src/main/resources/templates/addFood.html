@@ -237,19 +237,31 @@
                                                 </button>
                                             </td>
                                         </tr>
-<!--                                        <tr>-->
-<!--                                            <td>-->
-<!--                                                &lt;!&ndash;                                                style="display:none"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div id="res">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <p th:text="#{co2.message(${res})}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <p th:text="#{grams.message(${grams})}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <p th:text="#{food.message(${foodName})}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
 
                                         <tr>
-                                            <!-- submit button -->
+                                            <td>
+                                                <div>
+                                                    <p style="color:grey; margin-left: 35%; ">CO₂ (kg):</p>
+                                                    <div class="res">
+                                                        <p style="font-style: italic;  font-weight: bold;"
+                                                           th:text="*{res}"></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!--                                            <tr>-->
+                                        <!--                                                <td>-->
+                                        <!--                                                    <div id="res">-->
+                                        <!--                                                    <p style="font-style: italic;  font-weight: bold;"-->
+                                        <!--                                                       th:text="*{res}"></p>-->
+                                        <!--                                                    </div>-->
+                                        <!--                                                </td>-->
+                                        <!--                                            </tr>-->
+
+
+                                        <!--                                        th:text="#{co2.message(${res}, ${foodName})}-->
+                                        <tr>
                                             <td><input th:object="${foodTotalObject}" id="foodTotal" type="submit"
                                                        name="calc"
                                                        value="CALCULATE TOTAL"/></td>
@@ -257,8 +269,15 @@
 
                                         <tr>
                                             <td>
-                                                <!--                                                    <p> TOTAL CO2(kg) FOR THIS MEAL</p>-->
-                                                <p th:text="*{total}"></p>
+                                                <div class="total">
+                                                    <!--                                                        margin-left: 30%; padding-bottom: 5%; padding-top: 5%;-->
+                                                    <p>Total CO₂ (kg):</p>
+                                                </div>
+                                                <p style="font-style: italic; color: orangered;  font-weight: bold; margin-left: 67%; margin-top: -11%; margin-bottom: -11%;"
+                                                   th:text="*{total}"></p>
+
+                                                <br>
+                                                <br>
                                             </td>
                                         </tr>
                                     </table>
@@ -269,14 +288,18 @@
                 </div>
             </div>
         </div>
+
+
         <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions will be added to your
             statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
 
-        <button onclick="TestsFunction()">Tests</button>
+        <!--        <div id="TestsDiv" style="display:none">-->
+        <!--            tests here!-->
+        <!--        </div>-->
 
-        <div id="TestsDiv" style="display:none">
-            tests here!
-        </div>
+        <!--        <div class="form-group">-->
+        <!--            <button onclick="TestsFunction()">Tests</button>-->
+        <!--        </div>-->
 
     </div>
 </div>

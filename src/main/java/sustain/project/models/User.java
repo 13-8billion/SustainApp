@@ -16,13 +16,12 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userID")
     private String userID;
-    @NotBlank(message = "*Username field cannot be empty")
+//    @NotBlank(message = "*Username field cannot be empty")
     @UsernameConstraint
     @Column(name = "username")
     private String username;
     @NotBlank(message = "*Email field cannot be empty")
     @Email(message = "*Invalid email")
-//    @EmailConstraint
     @Column(name = "email")
     private String email;
     @Column(name = "location")

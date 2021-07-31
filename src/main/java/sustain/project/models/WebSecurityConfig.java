@@ -14,7 +14,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import sustain.project.service.CustomUserDetailsService;
+import javax.validation.Validator;
 
 
 
@@ -23,6 +25,11 @@ import sustain.project.service.CustomUserDetailsService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebSecurityConfigurer<WebSecurity> {
     @Autowired
     private DataSource dataSource;
+
+    @Bean
+    public LocalValidatorFactoryBean validator() {
+        return new LocalValidatorFactoryBean();
+    }
 
     @Bean
     public UserDetailsService userDetailsService() {

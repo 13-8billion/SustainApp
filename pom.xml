@@ -15,6 +15,20 @@
     <description>Sustain App</description>
     <properties>
         <java.version>1.8</java.version>
+
+        <bean
+                id="entityManagerFactory"
+                class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+            <property name="jpaPropertyMap">
+                <map>
+                    <entry
+                            key="javax.persistence.validation.factory"
+                            value-ref="validator"/>
+                    <!-- ... -->
+                </map>
+            </property>
+            <!-- ... -->
+        </bean>
     </properties>
 
     <build>
@@ -30,7 +44,11 @@
                 </configuration>
             </plugin>
         </plugins>
+
+
     </build>
+
+
     <dependencies>
 
 <!--        <dependency>-->
@@ -43,6 +61,8 @@
 <!--            <artifactId>jstl</artifactId>-->
 <!--            <version>1.2</version>-->
 <!--        </dependency>-->
+
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

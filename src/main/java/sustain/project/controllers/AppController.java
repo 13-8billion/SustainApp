@@ -1,6 +1,7 @@
 package sustain.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -187,7 +188,6 @@ public class AppController {
 //
 //        return "signUp";
 //    }
-
     @PostMapping("/save")
     public String processRegister(@Valid User user, BindingResult bindingResult) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -221,10 +221,10 @@ public class AppController {
 
             if (food.getFoodName().equals(foodN)) {
 
-                double oneG = food.getCo2g() / 100; // oneG = co2 per 1gram.. co2g is co2 per 100 gram
-                res = g * oneG; // result is user input grams * oneG (co2 per 1 gram)
+                double oneG = food.getCo2g() / 100; // oneG = kg of co2 per 1gram of food.. co2g is kg co2 per 100 gram of food
+                res = g * oneG; // result is user input grams * oneG (kg of co2 per 1 gram of food item)
                 res = Math.round(res*100);
-                res = res/100; // get to the nearest 2 decimal places
+                res = res/100; // get to the nearest 2 decimal place
             }
         }
 

@@ -5,9 +5,15 @@ import sustain.project.models.User;
 import sustain.project.interfaces.UserRepo;
 
 import java.util.List;
+import javax.validation.Valid;
+import javax.validation.Validator;
 
 @Service
 public class UserService {
+
+    @Autowired
+    private Validator validator;
+
     @Autowired
     private UserRepo repo;
 
@@ -15,7 +21,7 @@ public class UserService {
         return repo.findAll();
     }
 
-    public void save(User user) {
+    public void save(@Valid User user) {
         repo.save(user);
     }
 
