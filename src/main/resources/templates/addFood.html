@@ -171,7 +171,7 @@
                                         <tr>
                                             <td>
                                                 <h3 id="tableH2"> Select a food or drink</h3>
-                                                <select id="foodName" name="foodName"
+                                                <select class="activity" name="foodName"
                                                         th:field="*{foodName}"
                                                         th:object="${foodObject}">
                                                     <option value="" disabled="disabled" selected="selected">Choose
@@ -232,7 +232,7 @@
                                         <tr>
                                             <!-- submit button -->
                                             <td>
-                                                <button id="addFoodItem" onclick="TestsFunction()" name="add"
+                                                <button class="quantity" onclick="TestsFunction()" name="add"
                                                         value="ADD FOOD">ADD FOOD
                                                 </button>
                                             </td>
@@ -262,7 +262,7 @@
 
                                         <!--                                        th:text="#{co2.message(${res}, ${foodName})}-->
                                         <tr>
-                                            <td><input th:object="${foodTotalObject}" id="foodTotal" type="submit"
+                                            <td><input th:object="${foodTotalObject}" class="totalBtn" type="submit"
                                                        name="calc"
                                                        value="CALCULATE TOTAL"/></td>
                                         </tr>
