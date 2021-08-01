@@ -157,25 +157,23 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     /*border-radius: 50px;*/
     position: relative;
     font-weight: bold;
-    padding-top:1.5%;
-    padding-bottom: 1.5%;
+    padding:1.5% 4.85% 1.5% 4.9%;
 }
-
 .btn-arrows:hover{
-    background-color: #dcdada;
+    background-color: #fffefe;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
-    color: white;
+    color: #727171;
 }
 .btn.btn-arrows.active{
-    background-color: #dcdada;
+    background-color: #ffffff;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
-    color: white;
+    color: #727171;
 }
 
 /*.btn-group-arrow{*/

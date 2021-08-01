@@ -152,9 +152,15 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="card" style="margin-bottom:4%">
+                            <div class="btn-group" style="margin: auto; width:110%;">
+                                <a href="addFoodView" class="btn btn-arrows">FOOD</a>
+                                <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
+                                <a href="addHouseEnergyView" class="btn btn-arrows active">HOUSE</a>
+                                <a href="addFlightView" class="btn btn-arrows" style="padding-right:4.7%;">FLIGHT</a>
+                            </div>
                             <div class="clipArt">
                                 <img src="images/rainBulb.jpeg" alt="bulb clip art"
-                                     style="width:90%; height:150px; margin-bottom: -3%; margin-left: 5%">
+                                     style="width:90%; height:150px; margin-bottom: -1%; margin-left: 5%">
                             </div>
                             <div style="display:inline-block; margin-left:5%">
                                 <form action="#" th:action="@{/calcHouse}" method="post">
@@ -162,11 +168,11 @@
                                     <table style="width: 125%">
                                         <tr>
                                             <td>
-                                                <h3 id="tableH2"> Select Energy Source</h3>
+                                                <h3 id="tableH2"> Select energy source</h3>
                                                 <select class="activity" name="etype"
                                                         th:field="*{etype}"
                                                         th:object="${houseObject}">
-                                                    <option label="Select Energy Source" value="">
+                                                    <option label="Select energy source" value="">
                                                     </option>
                                                     <option value="Burning Oil">Burning Oil (kerosene)</option>
                                                     <option value="Coal">Coal</option>
@@ -260,7 +266,7 @@
                 <p class="copyright pull-right">
                     &copy;
                     <script>document.write(new Date().getFullYear())</script>
-                    <a href="http://www.creative-tim.com">SUSTAIN</a> What will you change?
+                    <a href="http://www.creative-tim.com">SUSTAIN</a> What change will you make?
                 </p>
             </div>
         </footer>

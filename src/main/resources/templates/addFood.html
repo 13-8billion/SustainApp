@@ -171,22 +171,19 @@
             necessary.
             <br> Only click <b>calculate total</b> once all your items have been added to receive the total CO₂
             emissions.</h3>
-        <div class="col-sm-6" style="margin-left:17.5%;">
-        <div class="btn-group">
-            <a href="addFlightView" class="btn btn-arrows">FLIGHT</a>
-            <a href="addFoodView" class="btn btn-arrows active">FOOD</a>
-            <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
-            <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
-        </div>
-        </div>
-        <div class="contentCalc" style="margin-top: 4%;">
+        <div class="contentCalc">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="card" style="margin-bottom:4%">
-
+                            <div class="btn-group" style="margin: auto; width:110%;">
+                                <a href="addFoodView" class="btn btn-arrows active">FOOD</a>
+                                <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
+                                <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
+                                <a href="addFlightView" class="btn btn-arrows">FLIGHT</a>
+                            </div>
                             <div class="clipArt">
-                                <img src="images/foodClip.png" alt="food clip art" style="width:97%; height:85px">
+                                <img src="images/foodClip.png" alt="food clip art" style="width:97%; height:85px; margin-top:1%;">
                             </div>
 
                             <div class="calcForm">
@@ -199,7 +196,7 @@
                                                 <select class="activity" name="foodName"
                                                         th:field="*{foodName}"
                                                         th:object="${foodObject}">
-                                                    <option label="Select Food" value="">
+                                                    <option label="Select food" value="">
                                                     </option>
                                                     <option value="apples">Apple</option>
                                                     <option value="bananas">Banana</option>
@@ -340,7 +337,7 @@
         <p class="copyright pull-right">
             &copy;
             <script>document.write(new Date().getFullYear())</script>
-            <a href="http://www.creative-tim.com">SUSTAIN</a> What will you change?
+            <a href="http://www.creative-tim.com">SUSTAIN</a> What change will you make?
         </p>
     </div>
 </footer>
