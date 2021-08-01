@@ -40,6 +40,9 @@
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
             </div>
+            <div style="display: flex; justify-content: center; margin-left:-5%;">
+                <p style= "font-size: 100%; color:#c2c0c0; margin-top:-15%">📍&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+            </div>
 
             <ul class="nav">
                 <li>
@@ -150,7 +153,6 @@
                 </div>
             </div>
         </nav>
-
         <h2 id="h1">How do your food choices impact the environment?</h2>
         <h3 id="h2">Simply select an item and its quantity and click <b>add food</b>. Repeat as many times as necessary.
             <br> Only click <b>calculate total</b> once all your items have been added to receive the total CO₂
@@ -159,8 +161,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="card">
-                            <div id="foodClip">
+                        <div class="card" style="margin-bottom:4%">
+                            <div class="clipArt">
                                 <img src="images/foodClip.png" alt="food clip art">
                             </div>
 
@@ -174,8 +176,7 @@
                                                 <select class="activity" name="foodName"
                                                         th:field="*{foodName}"
                                                         th:object="${foodObject}">
-                                                    <option value="" disabled="disabled" selected="selected">Choose
-                                                        Food
+                                                    <option label="Select Food" value="">
                                                     </option>
                                                     <option value="apples">Apple</option>
                                                     <option value="bananas">Banana</option>
@@ -224,7 +225,7 @@
                                         <tr>
                                             <td>
                                                 <h3 id="tableH3"> Enter quantity in grams</h3>
-                                                <input type="number" name="grams" size="30" value="Grams"
+                                                <input type="number" min="0" name="grams" size="30" value="Grams"
                                                        th:field="*{grams}"
                                                        th:object="${foodObject}">
                                             </td>
@@ -249,18 +250,6 @@
                                                 </div>
                                             </td>
                                         </tr>
-
-                                        <!--                                            <tr>-->
-                                        <!--                                                <td>-->
-                                        <!--                                                    <div id="res">-->
-                                        <!--                                                    <p style="font-style: italic;  font-weight: bold;"-->
-                                        <!--                                                       th:text="*{res}"></p>-->
-                                        <!--                                                    </div>-->
-                                        <!--                                                </td>-->
-                                        <!--                                            </tr>-->
-
-
-                                        <!--                                        th:text="#{co2.message(${res}, ${foodName})}-->
                                         <tr>
                                             <td><input th:object="${foodTotalObject}" class="totalBtn" type="submit"
                                                        name="calc"

@@ -41,6 +41,10 @@
                 </a>
             </div>
 
+            <div style="display: flex; justify-content: center; margin-left:-5%;">
+                <p style= "font-size: 100%; color:#c2c0c0; margin-top:-15%">📍&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+            </div>
+
             <ul class="nav">
                 <li>
                     <a href="dashboard">
@@ -151,367 +155,217 @@
             </div>
         </nav>
         <h2 id="h1">How do your modes of transport impact the environment?</h2>
-        <h3 id="h2">Simply select a vehicle and the distance travelled and click <b>add journey</b>. Repeat as many times as necessary.
+        <h3 id="h2">Simply select a vehicle and the distance travelled and click <b>add journey</b>. Repeat as many
+            times as necessary.
             <br> Only click <b>calculate total</b> once all your journeys have been added to receive the total CO₂
             emissions.</h3>
         <div class="contentCalc">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="card">
-                            <div id="foodClip">
-                                <img src="images/foodClip.png" alt="food clip art">
+                        <div class="card" style="margin-bottom:4%">
+                            <div>
+                                <img src="images/car.png"
+                                     style="width:60%; margin-bottom:-12%; margin-top:-8%; margin-left:19%"
+                                     alt="car clip art">
                             </div>
 
-                            <div class="calcForm">
+                            <div style="display:inline-block; margin-left:5%">
                                 <form action="#" th:action="@{/calcTransport}" method="post">
                                     <!-- call validate function in 'form' tag when user clicks submit button-->
-                                    <div class="col-sm-10">
-                                        <table class="calcTable">
-                                            <tr>
-                                                <td>
-                                                    <h3 id="tableH2"> Select a vehicle</h3>
+                                    <table style="width: 125%">
+                                        <tr>
+                                            <td>
+                                                <h3 id="tableH2"> Select a vehicle</h3>
 
-                                                    <select id="type" class="activity"
-                                                                                      th:field="*{type}"
-                                                                                      th:object="${transObject}">
-                                                    <option value="" disabled="disabled" selected="selected">Choose
-                                                        Vehicle
+                                                <select id="type" class="activity"
+                                                        th:field="*{type}"
+                                                        th:object="${transObject}">
+                                                    <option label="Select Vehicle" value="">
                                                     </option>
-                                                    <option value="" disabled="disabled" selected="selected">BUS
+
+                                                    <option value="" disabled="disabled" selected="selected">--- BUS
+                                                        ---
                                                     </option>
                                                     <option value="bus (local)">Bus (local)</option>
                                                     <option value="coach">Bus (coach)</option>
-                                                    <option value="" disabled="disabled" selected="selected">CAR -
-                                                        DIESEL
+                                                    <option value="" disabled="disabled" selected="selected">--- CAR
+                                                        -
+                                                        DIESEL ---
                                                     </option>
                                                     <option value="car (diesel/small)">Car - small (up tp 1.7 litre
                                                         engine)
                                                     </option>
-                                                    <option value="car (diesel/medium)">Car - medium (1.7 - 2.0 litre
+                                                    <option value="car (diesel/medium)">Car - medium (1.7 - 2.0
+                                                        litre
                                                         engine)
                                                     </option>
-                                                    <option value="car (diesel/large)">Car - large (2.0+ litre engine)
+                                                    <option value="car (diesel/large)">Car - large (2.0+ litre
+                                                        engine)
                                                     </option>
                                                     <option value="car (diesel/average)">Car - average (unknown)
                                                     </option>
-                                                    <option value="" disabled="disabled" selected="selected">CAR -
-                                                        PETROL
+                                                    <option value="" disabled="disabled" selected="selected">--- CAR
+                                                        -
+                                                        PETROL ---
                                                     </option>
                                                     <option value="car (petrol/small)">Car - small (up tp 1.4 litre
                                                         engine)
                                                     </option>
-                                                    <option value="car (petrol/medium)">Car - medium (1.4 - 2.0 litre
+                                                    <option value="car (petrol/medium)">Car - medium (1.4 - 2.0
+                                                        litre
                                                         engine)
                                                     </option>
-                                                    <option value="car (petrol/large)">Car - large (2.0+ litre engine)
+                                                    <option value="car (petrol/large)">Car - large (2.0+ litre
+                                                        engine)
                                                     </option>
                                                     <option value="car (petrol/average)">Car - average (unknown)
                                                     </option>
-                                                    <option value="" disabled="disabled" selected="selected">CAR -
-                                                        HYBRID
+                                                    <option value="" disabled="disabled" selected="selected">--- CAR
+                                                        -
+                                                        HYBRID ---
                                                     </option>
                                                     <option value="car (hybrid/small)">Car - small (up tp 1.4 litre
                                                         engine)
                                                     </option>
-                                                    <option value="car (hybrid/medium)">Car - medium (1.4 - 2.0 litre
+                                                    <option value="car (hybrid/medium)">Car - medium (1.4 - 2.0
+                                                        litre
                                                         engine)
                                                     </option>
-                                                    <option value="car (hybrid/large)">Car - large (2.0+ litre engine)
+                                                    <option value="car (hybrid/large)">Car - large (2.0+ litre
+                                                        engine)
                                                     </option>
                                                     <option value="car (hybrid/average)">Car - average (unknown)
                                                     </option>
-                                                    <option value="" disabled="disabled" selected="selected">FERRY
+                                                    <option value="" disabled="disabled" selected="selected">---
+                                                        FERRY ---
                                                     </option>
                                                     <option value="ferry (foot)">Ferry (foot passenger)</option>
                                                     <
                                                     <option value="ferry (car)">Ferry (car passenger)</option>
-                                                    <option value="" disabled="disabled" selected="selected">MOTORBIKE -
-                                                        PETROL
+                                                    <option value="" disabled="disabled" selected="selected">
+                                                        --- MOTORBIKE -
+                                                        PETROL ---
                                                     </option>
-                                                    <option value="motorbike (petrol/small)">Motorbike - small (125cc)
+                                                    <option value="motorbike (petrol/small)">Motorbike - small
+                                                        (125cc)
                                                     </option>
-                                                    <option value="motorbike (petrol/medium)">Motorbike - medium (125 -
+                                                    <option value="motorbike (petrol/medium)">Motorbike - medium
+                                                        (125 -
                                                         500cc)
                                                     </option>
-                                                    <option value="motorbike (petrol/large)">Motorbike - large (500cc)
+                                                    <option value="motorbike (petrol/large)">Motorbike - large
+                                                        (500cc)
                                                     </option>
                                                     <option value="motorbike (petrol/average)">Motorbike - average
                                                         (unknown)
                                                     </option>
-                                                    <option value="" disabled="disabled" selected="selected">RAIL
+                                                    <option value="" disabled="disabled" selected="selected">---
+                                                        RAIL ---
                                                     </option>
                                                     <option value="rail (national)">Rail (national)</option>
-                                                    <option value="rail (international)">Rail (international)</option>
+                                                    <option value="rail (international)">Rail (international)
+                                                    </option>
                                                     <option value="rail (light/tram)">Rail (light/tram)</option>
                                                 </select>
-                                                    <!-- 'size' changes length of input box-->
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h3 id="tableH3"> Enter distance travelled in km</h3>
+                                                <!-- 'size' changes length of input box-->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 id="tableH3"> Enter distance travelled in km</h3>
 
-                                                    <input type="number" name="distance" size="30" value="distance"
-                                                           th:field="*{distance}"
-                                                           th:object="${transObject}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <!-- submit button -->
-                                                <td>
-                                                    <button class="quantity" onclick="TestsFunction()" name="add"
-                                                            value="ADD FOOD">ADD JOURNEY
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div>
-                                                        <p style="color:grey; margin-left: 35%; ">CO₂ (kg):</p>
-                                                        <div class="res">
-                                                            <p style="font-style: italic;  font-weight: bold;"
-                                                               th:text="*{res}"></p>
-                                                        </div>
+                                                <input type="number" min="0" name="distance" size="30"
+                                                       value="distance"
+                                                       th:field="*{distance}"
+                                                       th:object="${transObject}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <!-- submit button -->
+                                            <td>
+                                                <button class="quantity" onclick="TestsFunction()" name="add"
+                                                        value="ADD FOOD">ADD JOURNEY
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <p style="color:grey; margin-left: 35%; ">CO₂ (kg):</p>
+                                                    <div class="res">
+                                                        <p style="font-style: italic; font-weight: bold;"
+                                                           th:text="*{res}"></p>
                                                     </div>
-                                                </td>
-                                            </tr>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                            <tr>
-                                                <!-- submit button -->
-                                                <td><input th:object="${transTotalObject}" class="totalBtn" type="submit"
-                                                           name="calc"
-                                                           value="CALCULATE TOTAL"/></td>
-                                            </tr>
+                                        <tr>
+                                            <!-- submit button -->
+                                            <td><input th:object="${transTotalObject}" class="totalBtn"
+                                                       type="submit"
+                                                       name="calc"
+                                                       value="CALCULATE TOTAL"/></td>
+                                        </tr>
 
-                                            <tr>
-                                                <td><div class="total">
-                                                        <p>Total CO₂ (kg):</p>
-                                                    </div>
-                                                    <p style="font-style: italic; color: orangered;  font-weight: bold; margin-left: 67%; margin-top: -11%; margin-bottom: -11%;"
-                                                       th:text="*{total}"></p>
+                                        <tr>
+                                            <td>
+                                                <div class="total">
+                                                    <p>Total CO₂ (kg):</p>
+                                                </div>
+                                                <p style="font-style: italic; color: orangered;  font-weight: bold; margin-left: 67%; margin-top: -11%; margin-bottom: -11%;"
+                                                   th:text="*{total}"></p>
 
-                                                    <br>
-                                                    <br>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
+                                                <br>
+                                                <br>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--        <div class="form">-->
-            <!--            <form action="#" th:action="@{/calcFoodTotal}" th:object="${foodTotalObject}" method="post">-->
-            <!--                <div align="center">-->
-            <!--                    <table>-->
-            <!--                    <tr>-->
-            <!--                        &lt;!&ndash; submit button &ndash;&gt;-->
-            <!--                        <td><input id="foodTotal" type="submit" name="footTotal" value="CALCULATE"/></td>-->
-            <!--                    </tr>-->
-
-            <!--                    <tr>-->
-            <!--                        <td>-->
-            <!--                            <p> TOTAL</p>-->
-            <!--                            <p th:text="*{total}"></p>-->
-            <!--                        </td>-->
-            <!--                    </tr>-->
-            <!--                    </table>-->
-            <!--                </div>-->
-            <!--            </form>-->
-            <!--        </div>-->
-
-
-            <!--        <div class="row">
-                       <div class="col-md-6">
-                           <div class="card ">
-                               <div class="header">
-                                   <h4 class="title">2014 Sales</h4>
-                                   <p class="category">All products including Taxes</p>
-                               </div>
-                               <div class="content">
-                                   <div id="chartActivity" class="ct-chart"></div>
-
-                                   <div class="footer">
-                                       <div class="legend">
-                                           <i class="fa fa-circle text-info"></i> Tesla Model S
-                                           <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                                       </div>
-                                       <hr>
-                                       <div class="stats">
-                                           <i class="fa fa-check"></i> Data information certified
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div> -->
-            <!--
-                                <div class="col-md-6">
-                                    <div class="card ">
-                                        <div class="header">
-                                            <h4 class="title">Tasks</h4>
-                                            <p class="category">Backend development</p>
-                                        </div>
-                                        <div class="content">
-                                            <div class="table-full-width">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="checkbox">
-                                                                        <input id="checkbox1" type="checkbox">
-                                                                        <label for="checkbox1"></label>
-                                                                    </div>
-                                                            </td>
-                                                            <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                    <i class="fa fa-edit"></i>
-                                                                </button>
-                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                    <i class="fa fa-times"></i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="checkbox">
-                                                                        <input id="checkbox2" type="checkbox" checked>
-                                                                        <label for="checkbox2"></label>
-                                                                    </div>
-                                                            </td>
-                                                            <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                    <i class="fa fa-edit"></i>
-                                                                </button>
-                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                    <i class="fa fa-times"></i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="checkbox">
-                                                                        <input id="checkbox3" type="checkbox">
-                                                                        <label for="checkbox3"></label>
-                                                                    </div>
-                                                            </td>
-                                                            <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                            </td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                    <i class="fa fa-edit"></i>
-                                                                </button>
-                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                    <i class="fa fa-times"></i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="checkbox">
-                                                                        <input id="checkbox4" type="checkbox" checked>
-                                                                        <label for="checkbox4"></label>
-                                                                    </div>
-                                                            </td>
-                                                            <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                    <i class="fa fa-edit"></i>
-                                                                </button>
-                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                    <i class="fa fa-times"></i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="checkbox">
-                                                                        <input id="checkbox5" type="checkbox">
-                                                                        <label for="checkbox5"></label>
-                                                                    </div>
-                                                            </td>
-                                                            <td>Read "Following makes Medium better"</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                    <i class="fa fa-edit"></i>
-                                                                </button>
-                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                    <i class="fa fa-times"></i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="checkbox">
-                                                                        <input id="checkbox6" type="checkbox" checked>
-                                                                        <label for="checkbox6"></label>
-                                                                    </div>
-                                                            </td>
-                                                            <td>Unfollow 5 enemies from twitter</td>
-                                                            <td class="td-actions text-right">
-                                                                <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                                    <i class="fa fa-edit"></i>
-                                                                </button>
-                                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                                    <i class="fa fa-times"></i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div class="footer">
-                                                <hr>
-                                                <div class="stats">
-                                                    <i class="fa fa-history"></i> Updated 3 minutes ago
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="pull-left">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    About Us
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Contact
-                                </a>
-                            </li>
-
-                        </ul>
-                    </nav>
-                    <p class="copyright pull-right">
-                        &copy;
-                        <script>document.write(new Date().getFullYear())</script>
-                        <a href="http://www.creative-tim.com">SUSTAIN</a> What will you change?
-                    </p>
-                </div>
-            </footer>
-
         </div>
+
+        <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions will be added to your
+            statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    <a href="http://www.creative-tim.com">SUSTAIN</a> What will you change?
+                </p>
+            </div>
+        </footer>
+
     </div>
+</div>
 </div>
 </div>
 </body>

@@ -35,6 +35,9 @@
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
             </div>
+            <div style="display: flex; justify-content: center; margin-left:-5%;">
+                <p style= "font-size: 100%; color:#c2c0c0; margin-top:-15%">📍&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+            </div>
             <ul class="nav">
                 <li>
                     <a href="dashboard">
@@ -81,6 +84,7 @@
                                     <p class="hidden-lg hidden-md">Dashboard</p>
                                 </a>
                             </li>
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-globe"></i>
@@ -90,6 +94,7 @@
                                         <b class="caret"></b>
                                     </p>
                                 </a>
+
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Notification 1</a></li>
                                     <li><a href="#">Notification 2</a></li>
@@ -105,7 +110,11 @@
                                 </a>
                             </li>
                         </ul>
-
+                        <div class="btn-group">
+                            <a href="statistics" class="btn btn-primary active">LAST WEEK</a>
+                            <a href="lastMonthStats" class="btn btn-primary">LAST MONTH</a>
+                            <a href="lastYearStats" class="btn btn-primary">LAST YEAR</a>
+                        </div>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href="">
@@ -146,18 +155,6 @@
 
         <script
                 src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-        <!--        <div><a href="statistics"> LAST WEEK</a></div>-->
-        <!--        <div><a href="lastMonthStats">LAST MONTH</a></div>-->
-        <!--        <div><a href="lastYearStats">LAST YEAR</a></div>-->
-
-
-        <div class="btn-group">
-            <a href="statistics" class="btn btn-primary active">LAST WEEK</a>
-            <a href="lastMonthStats" class="btn btn-primary">LAST MONTH</a>
-            <a href="lastYearStats" class="btn btn-primary">LAST YEAR</a>
-        </div>
-
 
         <div class="content">
             <div class="container-fluid">

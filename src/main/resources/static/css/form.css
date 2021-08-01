@@ -50,13 +50,12 @@
     /*font-weight: bold;*/
 }
 
-#foodClip img{
+.clipArt img{
     width: 100%;
     margin-bottom: 3%;
 }
 .res{
     text-align: center;
-    font-size: 1%;
     color: orangered;
     margin-left:25%;
     margin-top:-11.5%;
@@ -143,8 +142,9 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
 }
 
 .btn-group{
-    margin-left: 34%;
-    margin-top: 2%;
+    margin-left: 35%;
+    margin-top: 1%;
+    margin-bottom: -1.5%;
 }
 
 .btn-primary{
@@ -154,10 +154,12 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     color: #fff;
     border: none;
     border-radius: 40px;
-    margin-left:50%;
+    /*margin-left:40%;*/
     position: relative;
     font-weight: bold;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding-top:1.5%;
+    padding-bottom:1.5%;
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
     /*box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
     /*font-size: 16px;*/
     /*font-weight: 600;*/
