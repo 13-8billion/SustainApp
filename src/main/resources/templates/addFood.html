@@ -39,9 +39,9 @@
                 <a href="#" class="simple-text">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
-            </div>
-            <div style="display: flex; justify-content: center; margin-left:-5%;">
-                <p style="font-size: 100%; color:#c2c0c0; margin-top:-15%">📍&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+                <div style="display: flex; justify-content: center; margin-left:-5%;">
+                    <p style= "font-size: 100%; color:#e0dede; margin-top:-15%">📍&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+                </div>
             </div>
 
             <ul class="nav">
@@ -153,31 +153,40 @@
                 </div>
             </div>
         </nav>
-        <div>
-            <a href="addFlightView">
-                <button class="btn-primary" value=" < FLIGHT" style="color:white; padding:1%;  float: left; margin-top:30%; margin-left:15%">◀︎ FLIGHT
-                </button>
-            </a>
-        </div>
-        <div>
-            <a href="addTransView">
-                <button class="btn-primary" value=" < FLIGHT" style="color:white; padding:1%;  float: right; margin-top:30%; margin-right:15%">TRANSPORT ►
-                </button>
-            </a>
-        </div>
+<!--        <div style="width:100%">-->
+<!--            <a href="addFlightView">-->
+<!--                <button class="btn-arrows" style="color:white; padding:1%;  float: left; margin-top:37%; margin-left:15%">◀︎ FLIGHT-->
+<!--                </button>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <a href="addTransportView">-->
+<!--                <button class="btn-arrows" style="color:white; padding:1%;  float: right; margin-top:37.5%; margin-right:15%">TRANSPORT ►-->
+<!--                </button>-->
+<!--            </a>-->
+<!--        </div>-->
+
         <h2 id="h1">How do your food choices impact the environment?</h2>
         <h3 id="h2">Simply select an item and its quantity and click <b>add food</b>. Repeat as many times as
             necessary.
             <br> Only click <b>calculate total</b> once all your items have been added to receive the total CO₂
             emissions.</h3>
-        <!--        </div>-->
-        <div class="contentCalc">
+        <div class="col-sm-6" style="margin-left:17.5%;">
+        <div class="btn-group">
+            <a href="addFlightView" class="btn btn-arrows">FLIGHT</a>
+            <a href="addFoodView" class="btn btn-arrows active">FOOD</a>
+            <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
+            <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
+        </div>
+        </div>
+        <div class="contentCalc" style="margin-top: 4%;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="card" style="margin-bottom:4%">
+
                             <div class="clipArt">
-                                <img src="images/foodClip.png" alt="food clip art" style="width:97%; height:90px">
+                                <img src="images/foodClip.png" alt="food clip art" style="width:97%; height:85px">
                             </div>
 
                             <div class="calcForm">
