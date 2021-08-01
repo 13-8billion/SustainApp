@@ -2,229 +2,253 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-  <meta charset="utf-8"/>
-  <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="images/logoIcon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-  <title>Add Flight</title>
+    <title>Add Flight</title>
 
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-  <meta name="viewport" content="width=device-width"/>
-  <link href="css/external.css" th:href="@{css/form.css}" rel="stylesheet"/>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+    <link href="css/external.css" th:href="@{css/form.css}" rel="stylesheet"/>
 
-  <!--    FROM FREE TEMPLATE FOUND @ CREATIVETIM.COM-->
-  <!-- Bootstrap core CSS     -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Animation library for notifications   -->
-  <link href="assets/css/animate.min.css" rel="stylesheet"/>
-  <!--  Light Bootstrap Table core CSS    -->
-  <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-  <!--     Fonts and icons     -->
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
-  <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
-  <link href="css/external.css" th:href="@{css/form.css}" rel="stylesheet"/>
-
-
-
+    <!--    FROM FREE TEMPLATE FOUND @ CREATIVETIM.COM-->
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
+    <link href="css/external.css" th:href="@{css/form.css}" rel="stylesheet"/>
 </head>
 <body>
-
 <div class="wrapper">
-  <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
-
-
-    <div class="sidebar-wrapper">
-      <div class="logo">
-        <img src="images/profile.png" alt="Avatar" class="avatar">
-        <a href="#" class="simple-text">
-          <b>[[${#request.userPrincipal.principal.username}]]</b>
-        </a>
-      </div>
-      <div style="display: flex; justify-content: center; margin-left:-5%;">
-        <p style= "font-size: 100%; color:#cbc8c8; margin-top:-15%">📍&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
-      </div>
-
-      <ul class="nav">
-        <li>
-          <a href="dashboard">
-            <i class="pe-7s-user"></i>
-
-            <p>Dashboard</p>
-          </a>
-        </li>
-        <li class="active">
-          <a href="activityPageView">
-            <i class="pe-7s-calculator"></i>
-            <p>CO₂ Calculator</p>
-          </a>
-        </li>
-        <li>
-          <a href="statistics">
-            <i class="pe-7s-graph"></i>
-            <p>My Statistics</p>
-          </a>
-        </li>
-        <li>
-          <a href="mealPlanner">
-            <i class="pe-7s-leaf"></i>
-            <p>Meal Planner</p>
-          </a>
-        </li>
-      </ul>
+    <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <img src="images/profile.png" alt="Avatar" class="avatar">
+                <a href="#" class="simple-text">
+                    <b>[[${#request.userPrincipal.principal.username}]]</b>
+                </a>
+            </div>
+            <div style="display: flex; justify-content: center; margin-left:-5%;">
+                <p style="font-size: 100%; color:#cbc8c8; margin-top:-15%">📍&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+            </div>
+            <ul class="nav">
+                <li>
+                    <a href="dashboard">
+                        <i class="pe-7s-user"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="activityPageView">
+                        <i class="pe-7s-calculator"></i>
+                        <p>CO₂ Calculator</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="statistics">
+                        <i class="pe-7s-graph"></i>
+                        <p>My Statistics</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="mealPlanner">
+                        <i class="pe-7s-leaf"></i>
+                        <p>Meal Planner</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <div class="main-panel">
-    <nav class="navbar navbar-default navbar-fixed">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#"><p>
-           <b style ="color: rgba(255,0,135,0.65)">&nbsp;[[${#request.userPrincipal.principal.username}]]</b>
-          </p></a>
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><p>
+                        <b style="color: rgba(255,0,135,0.65)">&nbsp;[[${#request.userPrincipal.principal.username}]]</b>
+                    </p></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <form th:action="@{/logout}" method="post">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-dashboard"></i>
+                                    <p class="hidden-lg hidden-md">Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+                                    <p class="hidden-lg hidden-md">
+                                        5 Notifications
+                                        <b class="caret"></b>
+                                    </p>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Notification 1</a></li>
+                                    <li><a href="#">Notification 2</a></li>
+                                    <li><a href="#">Notification 3</a></li>
+                                    <li><a href="#">Notification 4</a></li>
+                                    <li><a href="#">Another notification</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-search"></i>
+                                    <p class="hidden-lg hidden-md">Search</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="">
+                                    <p>Account</p>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+                                        Dropdown
+                                        <b class="caret"></b>
+                                    </p>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="logout">
+                                    <p>Log out</p>
+                                </a>
+                            </li>
+                            <li class="separator hidden-lg"></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <h2 id="h1">How do your flights impact the environment?</h2>
+        <h3 id="h2">Simply select the distance travelled and click <b>add flight</b>.
+            Repeat as many times as necessary.
+            <br> Only click <b>calculate total</b> once all energy flights have been added to receive the total CO₂
+            emissions.</h3>
+        <div class="contentCalc">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card" style="margin-bottom:4%">
+                            <div class="clipArt">
+                                <img src="images/plane.png" alt="bulb clip art"
+                                     style="width:95%; height:120px; margin-bottom: -3%; margin-left:3%">
+                            </div>
+                            <div style="display:inline-block; margin-left:5%">
+                                <form action="#" th:action="@{/calcFlight}" method="post">
+                                    <!-- call validate function in 'form' tag when user clicks submit button-->
+                                    <table style="width: 135%">
+                                        <tr>
+                                            <td>
+                                                <h3 id="tableH3"> Enter distance travelled in km</h3>
+                                                <input type="number" min="0" name="distance" size="30" value="distance"
+                                                       th:field="*{distance}"
+                                                       th:object="${flightObject}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <!-- submit button -->
+                                            <td><input class="quantity" type="submit" name="add" value="ADD FLIGHT"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <p style="color:grey; margin-left: 35%; ">CO₂ (kg):</p>
+                                                    <div class="res">
+                                                        <p style="font-style: italic; font-weight: bold;"
+                                                           th:text="*{res}"></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <!-- submit button -->
+                                            <td><input th:object="${flightTotalObject}" class="totalBtn" type="submit"
+                                                       name="calc"
+                                                       value="CALCULATE TOTAL"/></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="total">
+                                                    <p>Total CO₂ (kg):</p>
+                                                </div>
+                                                <p style="font-style: italic; color: orangered;  font-weight: bold; margin-left: 67%; margin-top: -11%; margin-bottom: -11%;"
+                                                   th:text="*{total}"></p>
+                                                <br>
+                                                <br>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="collapse navbar-collapse">
-          <form th:action="@{/logout}" method="post">
-            <ul class="nav navbar-nav navbar-left">
-              <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-dashboard"></i>
-                  <p class="hidden-lg hidden-md">Dashboard</p>
-                </a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-globe"></i>
-                  <b class="caret hidden-lg hidden-md"></b>
-                  <p class="hidden-lg hidden-md">
-                    5 Notifications
-                    <b class="caret"></b>
-                  </p>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Notification 1</a></li>
-                  <li><a href="#">Notification 2</a></li>
-                  <li><a href="#">Notification 3</a></li>
-                  <li><a href="#">Notification 4</a></li>
-                  <li><a href="#">Another notification</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="">
-                  <i class="fa fa-search"></i>
-                  <p class="hidden-lg hidden-md">Search</p>
-                </a>
-              </li>
-            </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="">
-                  <p>Account</p>
-                </a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <p>
-                    Dropdown
-                    <b class="caret"></b>
-                  </p>
+        <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions will be added to your
+            statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
 
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li>
-              <li>
-                <!--                           <div id = "logout">-->
-                <a href="logout">
-                  <p>Log out</p>
-                </a>
-                <!--                            </div>-->
-              </li>
-              <li class="separator hidden-lg"></li>
-            </ul>
-          </form>
+        <footer class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Contact
+                                </a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <p class="copyright pull-right">
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script>
+                        <a href="#">SUSTAIN</a> What will you change?
+                    </p>
+                </div>
+            </footer>
+
         </div>
-      </div>
-    </nav>
-
-
-    <div class="form">
-      <form action="#" th:action="@{/calcFlight}" method="post">
-        <!-- call validate function in 'form' tag when user clicks submit button-->
-        <div class="col-sm-10">
-          <table>
-            <tr>
-              <td>
-                <input type="number" name="distance" size="30" value="distance" th:field="*{distance}" th:object="${flightObject}">
-              </td>
-            </tr>
-            <tr>
-              <!-- submit button -->
-              <td><input id="addFlight" type="submit" name="add" value="ADD FLIGHT"/></td>
-            </tr>
-            <tr>
-              <td>
-                <p th:text="*{res}"></p>
-                <p th:text="*{distance}"></p>
-              </td>
-            </tr>
-
-            <tr>
-              <!-- submit button -->
-              <td><input  th:object="${flightTotalObject}" id="flightTotal" type="submit" name="calc" value="CALCULATE"/></td>
-            </tr>
-
-            <tr>
-              <td>
-                <p> TOTAL CO2(kg) FOR FLIGHT</p>
-                <p th:text="*{total}"></p>
-              </td>
-            </tr>
-          </table>
-        </div><!--form ends-->
-      </form>
-
-
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav class="pull-left">
-            <ul>
-              <li>
-                <a href="#">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Contact
-                </a>
-              </li>
-
-            </ul>
-          </nav>
-          <p class="copyright pull-right">
-            &copy;
-            <script>document.write(new Date().getFullYear())</script>
-            <a href="#">SUSTAIN</a> What will you change?
-          </p>
-        </div>
-      </footer>
-
     </div>
-  </div>
 </div>
 
 </body>
@@ -243,20 +267,20 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function () {
+    $(document).ready(function () {
 
-    demo.initChartist();
+        demo.initChartist();
 
-    // $.notify({
-    //    	icon: 'pe-7s-gift',
-    //    	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+        // $.notify({
+        //    	icon: 'pe-7s-gift',
+        //    	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
 
-    //    },{
-    //        type: 'info',
-    //        timer: 4000
-    //    });
+        //    },{
+        //        type: 'info',
+        //        timer: 4000
+        //    });
 
-  });
+    });
 </script>
 
 </html>
