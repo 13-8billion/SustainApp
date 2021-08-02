@@ -10,7 +10,7 @@
     <script src="echart/drawchart.js"></script>
     <script src="js/main.js"></script>
 
-    <title>Spring</title>
+    <title>Spring/Summer</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -54,15 +54,12 @@
 
             <ul class="nav">
                 <li>
-
                     <a href="dashboard">
                         <i class="pe-7s-user-female"></i>
 
                         <p>Dashboard</p>
                     </a>
-
                 </li>
-
                 <li>
                     <a href="activityPageView">
                         <i class="pe-7s-calculator"></i>
@@ -126,7 +123,6 @@
                                 </a>
                             </li>
                         </ul>
-
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href="">
@@ -139,7 +135,6 @@
                                         Dropdown
                                         <b class="caret"></b>
                                     </p>
-
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Action</a></li>
@@ -152,11 +147,9 @@
                                 </ul>
                             </li>
                             <li>
-                                <!--                           <div id = "logout">-->
                                 <a href="logout">
                                     <p>Log out</p>
                                 </a>
-                                <!--                            </div>-->
                             </li>
                             <li class="separator hidden-lg"></li>
                         </ul>
@@ -164,95 +157,85 @@
                 </div>
             </div>
         </nav>
-
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-
                             <table>
                                 <tr>
                                     <td>
                                         <select type="text" id="input">
                                             <option value="" disabled="disabled" selected="selected">Dietary Preference
                                             </option>
-                                            <option value="vegan">Vegan</option>
-                                            <option value="vegetarian">Vegetarian</option>
-                                            <option value="glutenFree">Gluten-Free</option>
+                                            <option value="Vegan">Vegan</option>
+                                            <option value="Vegetarian">Vegetarian</option>
+                                            <option value="Gluten-Free">Gluten-Free</option>
                                         </select>
                                         <button onclick="searchFunction()" class="dropbtn">select</button>
                                     </td>
                                 </tr>
                             </table>
-
                             <div class="container">
-                                <ul class="foodList">
-                                    <div class="item c">
-                                        <li><a href="https://www.wwf.org.uk/recipes/carrot-chickpea-burgers" style="color:white; font-size:1%">Vegan<img
+                                <ul id="foodList">
+                                    <div class="item">
+                                        <li><a href="https://www.wwf.org.uk/recipes/carrot-chickpea-burgers" style="color:white; font-size:1%">Vegetarian<img
                                                 src="images/food/spring-summer/chickpeaBurger.png"
-                                                href="#" id="Vegan"
-                                                alt="vegan"></a></li>
+                                                alt="carrotBurger"></a></li>
                                     </div>
-                                    <div class="item d">
-                                        <li><a href="https://www.wwf.org.uk/recipes/chickpea-almond-stew"><img
-                                                src="images/food/spring-summer/chickpeaStew.png" id="veggieSummer"
-                                                alt="veggiesUMMER"></a></li>
-                                    </div>
-                                    <div class="item e">
-                                        <li><a href="https://www.olivemagazine.com/recipes/vegan/courgette-curry/"><img
-                                                src="images/food/spring-summer/courgetteCurry.png" id="veggie_winter"
-                                                alt="veggie_winter"></a></li>
-                                    </div>
-                                    <div class="item f">
-                                        <li><a href="https://www.wwf.org.uk/recipes/spinach-chickpea-falafel-wrap"><img
-                                                src="images/food/spring-summer/falafelWrap.png" id="veggieSpring"
-                                                alt="veggieSpring"></a></li>
-                                    </div>
-                                    <div class="item c">
-                                        <li>
-                                            <a href="https://www.olivemagazine.com/recipes/vegetarian/halloumi-and-mediterranean-veg-traybake/"><img
-                                                    src="images/food/spring-summer/halloumiVeg.png"
-                                                     id="veggieEWinter"
-                                                    alt="veggieWinter"></a></li>
-                                    </div>
-                                    <div class="item d">
-                                        <li><a href="https://www.wwf.org.uk/recipes/lentil-stew"><img
-                                                src="images/food/spring-summer/lentilStew.png" id="veggie_Summer"
-                                                alt="veggiesUMMER"></a></li>
-                                    </div>
-                                    <div class="item e">
-                                        <li>
-                                            <a href="https://www.olivemagazine.com/recipes/vegan/smoky-mushroom-and-walnut-stuffed-portobellos/"><img
-                                                    src="images/food/spring-summer/mushWalnuts.png" id="veggieWwinter"
-                                                    alt="veggie_winter"></a></li>
-                                    </div>
-                                    <div class="item f">
-                                        <li><a href="https://www.wwf.org.uk/recipes/green-veg-crumble"><img
-                                                src="images/food/spring-summer/greenPie.png"
-                                                alt="veggieSpring"></a></li>
-                                    </div>
-                                    <div class="item c">
-                                        <li><a href="https://www.wwf.org.uk/recipes/chickpea-almond-stew"><img
+                                    <div class="item">
+                                        <li><a href="https://www.wwf.org.uk/recipes/chickpea-almond-stew" style="color:white; font-size:1%">Vegetarian<img
                                                 src="images/food/spring-summer/chickpeaStew.png"
-                                                alt="veggieSpring"></a></li>
+                                                alt="chickpeaStew"></a></li>
                                     </div>
-                                    <div class="item d" >
+                                    <div class="item">
                                         <li>
-                                            <a href="https://www.olivemagazine.com/recipes/vegetarian/aubergine-kebabs-onion-salsa/"><img
+                                            <a href="https://www.olivemagazine.com/recipes/vegetarian/halloumi-and-mediterranean-veg-traybake/" style="color:white; font-size:1%">Vegetarian<img
+                                                    src="images/food/spring-summer/halloumiVeg.png"
+                                                    alt="halloumiVeg"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li><a href="https://www.olivemagazine.com/recipes/vegan/courgette-curry/" style="color:white; font-size:1%">Vegan Gluten-Free<img
+                                                src="images/food/spring-summer/courgetteCurry.png"
+                                                alt="courgetteCurry"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li><a href="https://www.wwf.org.uk/recipes/spinach-chickpea-falafel-wrap" style="color:white; font-size:1%">Vegan<img
+                                                src="images/food/spring-summer/falafelWrap.png"
+                                                alt="falafelWrap"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li><a href="https://www.wwf.org.uk/recipes/lentil-stew" style="color:white; font-size:1%">Vegan<img
+                                                src="images/food/spring-summer/lentilStew.png"
+                                                alt="lentilStew"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.olivemagazine.com/recipes/vegan/smoky-mushroom-and-walnut-stuffed-portobellos/" style="color:white; font-size:1%">Vegan<img
+                                                    src="images/food/spring-summer/mushWalnuts.png"
+                                                    alt="mushroomWalnut"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li><a href="https://www.wwf.org.uk/recipes/green-veg-crumble" style="color:white; font-size:1%">Vegetarian<img
+                                                src="images/food/spring-summer/greenPie.png"
+                                                alt="greenVegCrumble"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.olivemagazine.com/recipes/vegetarian/aubergine-kebabs-onion-salsa/" style="color:white; font-size:1%">Vegan<img
                                                     src="images/food/spring-summer/aubergineKebabs.png"
-                                                    alt="veggieSpring"></a></li>
-                                        <div class="item e">
+                                                    alt="aubergineKebabs"></a></li>
+                                        <div class="item">
                                             <li>
-                                                <a href="https://www.olivemagazine.com/recipes/vegan/roasted-harissa-cauliflower/"><img
+                                                <a href="https://www.olivemagazine.com/recipes/vegan/roasted-harissa-cauliflower/" style="color:white; font-size:1%">Vegan<img
                                                         src="images/food/spring-summer/roastedCauliflower.png"
-                                                        alt="veggieSpring"></a></li>
+                                                        alt="cauliflowerRoasted"></a></li>
                                         </div>
-                                        <div class="item f">
+                                        <div class="item">
                                             <li>
-                                                <a href="https://www.olivemagazine.com/recipes/vegetarian/pepper-date-and-harissa-tagine/"><img
+                                                <a href="https://www.olivemagazine.com/recipes/vegetarian/pepper-date-and-harissa-tagine/" style="color:white; font-size:1%">Vegan<img
                                                         src="images/food/spring-summer/tagine.png"
-                                                        alt="veggieSpring"></a></li>
+                                                        alt="dateTagine"></a></li>
                                         </div>
                                     </div>
                                 </ul>

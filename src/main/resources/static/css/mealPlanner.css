@@ -15,7 +15,7 @@
     list-style: none;
 }
 
-.foodList {
+#foodList {
     display: grid;
     /*height: 700px;*/
     grid-template-columns: 240px 240px 240px;
