@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="images/logoIcon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Add Food</title>
+    <title>CO₂ Calculator</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -35,12 +35,14 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
+                <img src="images/sideLogo.png" alt="sideLogo" style="width:50%; margin-top:-45%; margin-bottom:-10%; margin-left:-3%;">
                 <img src="images/profile.png" alt="Avatar" class="avatar">
                 <a href="#" class="simple-text">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
                 <div style="display: flex; justify-content: center; margin-left:-5%;">
-                    <p style= "font-size: 100%; color:#e0dede; margin-top:-15%">📍&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+
+                    <p style="font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
                 </div>
             </div>
 
@@ -153,24 +155,40 @@
                 </div>
             </div>
         </nav>
-<!--        <div style="width:100%">-->
-<!--            <a href="addFlightView">-->
-<!--                <button class="btn-arrows" style="color:white; padding:1%;  float: left; margin-top:37%; margin-left:15%">◀︎ FLIGHT-->
-<!--                </button>-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <a href="addTransportView">-->
-<!--                <button class="btn-arrows" style="color:white; padding:1%;  float: right; margin-top:37.5%; margin-right:15%">TRANSPORT ►-->
-<!--                </button>-->
-<!--            </a>-->
-<!--        </div>-->
+        <!--        <div style="width:100%">-->
+        <!--            <a href="addFlightView">-->
+        <!--                <button class="btn-arrows" style="color:white; padding:1%;  float: left; margin-top:37%; margin-left:15%">◀︎ FLIGHT-->
+        <!--                </button>-->
+        <!--            </a>-->
+        <!--        </div>-->
+        <!--        <div>-->
+        <!--            <a href="addTransportView">-->
+        <!--                <button class="btn-arrows" style="color:white; padding:1%;  float: right; margin-top:37.5%; margin-right:15%">TRANSPORT ►-->
+        <!--                </button>-->
+        <!--            </a>-->
+        <!--        </div>-->
 
         <h2 id="h1">How do your food choices impact the environment?</h2>
         <h3 id="h2">Simply select an item and its quantity and click <b>add food</b>. Repeat as many times as
             necessary.
             <br> Only click <b>calculate total</b> once all your items have been added to receive the total CO₂
             emissions.</h3>
+
+<!--                    <div class="col-sm-6" style=" float:left; margin-left: 2%; margin-top: 1.2%; width:30%;">-->
+<!--                        <div class="card">-->
+<!--                            <div>-->
+<!--                                <p style="color:grey; margin-left: 35%; ">CO₂-->
+<!--                                    (kg):</p>-->
+<!--                                <div class="res">-->
+<!--                                    <br>-->
+<!--                                    <br>-->
+<!--                                    <br>-->
+<!--                                    <p style="font-weight: bold; font-size:300%;"-->
+<!--                                       th:text="#{co2.message(${res})}" ></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
         <div class="contentCalc">
             <div class="container-fluid">
                 <div class="row">
@@ -183,7 +201,8 @@
                                 <a href="addFlightView" class="btn btn-arrows">FLIGHT</a>
                             </div>
                             <div class="clipArt">
-                                <img src="images/foodClip.png" alt="food clip art" style="width:97%; height:85px; margin-top:1%;">
+                                <img src="images/foodClip.png" alt="food clip art"
+                                     style="width:97%; height:85px; margin-top:1%;">
                             </div>
 
                             <div class="calcForm">
@@ -200,17 +219,23 @@
                                                     </option>
                                                     <option value="apples">Apple</option>
                                                     <option value="bananas">Banana</option>
-                                                    <option value="beef (dairy)">Beef (dairy herd)</option>
-                                                    <option value="beef (herd)">Beef (beef herd)</option>
+                                                    <option value="beef (dairy)">Beef (dairy herd)
+                                                    </option>
+                                                    <option value="beef (herd)">Beef (beef herd)
+                                                    </option>
                                                     <option value="beer">Beer (5% ABV)</option>
                                                     <option value="beet sugar">Beet Sugar</option>
                                                     <option value="berries">Berries</option>
-                                                    <option value="wheat & rye (bread)">Bread (wheat & rye)</option>
+                                                    <option value="wheat & rye (bread)">Bread (wheat &
+                                                        rye)
+                                                    </option>
                                                     <option value="cane sugar">Cane Sugar</option>
                                                     <option value="cheese">Cheese</option>
                                                     <option value="citrus">Citrus Fruit</option>
-                                                    <option value="coffee">Coffee (1 portion = 15g)</option>
-                                                    <option value="dark chocolate">Dark Chocolate</option>
+                                                    <option value="coffee">Coffee (1 portion = 15g)
+                                                    </option>
+                                                    <option value="dark chocolate">Dark Chocolate
+                                                    </option>
                                                     <option value="eggs">Eggs</option>
                                                     <option value="fish (farmed)">Fish (farmed)</option>
                                                     <option value="grains">Grains</option>
@@ -222,17 +247,20 @@
                                                     <option value="nuts">Nuts</option>
                                                     <option value="oatmeal">Oatmeal</option>
                                                     <option value="olive oil">Olive Oil</option>
-                                                    <option value="onions & leeks">Onions & Leeks</option>
+                                                    <option value="onions & leeks">Onions & Leeks
+                                                    </option>
                                                     <option value="palm oil">Palm Oil</option>
                                                     <option value="peas">Peas</option>
                                                     <option value="pork">Pork</option>
                                                     <option value="potatoes">Potatoes</option>
                                                     <option value="poultry">Poultry</option>
-                                                    <option value="prawns (farmed)">Prawns (farmed)</option>
+                                                    <option value="prawns (farmed)">Prawns (farmed)
+                                                    </option>
                                                     <option value="pulses">Pulses</option>
                                                     <option value="rapeseed oil">Rapeseed Oil</option>
                                                     <option value="rice">Rice</option>
-                                                    <option value="root vegetables">Root Vegetables</option>
+                                                    <option value="root vegetables">Root Vegetables
+                                                    </option>
                                                     <option value="soybean oil">Soybean Oil</option>
                                                     <option value="sunflower oil">Sunflower Oil</option>
                                                     <option value="tofu">Tofu</option>
@@ -245,7 +273,8 @@
                                         <tr>
                                             <td>
                                                 <h3 id="tableH3"> Enter quantity in grams</h3>
-                                                <input type="number" min="0" name="grams" size="30" value="Grams"
+                                                <input type="number" min="0" name="grams" size="30"
+                                                       value="Grams"
                                                        th:field="*{grams}"
                                                        th:object="${foodObject}">
                                             </td>
@@ -253,7 +282,8 @@
                                         <tr>
                                             <!-- submit button -->
                                             <td>
-                                                <button class="quantity" onclick="TestsFunction()" name="add"
+                                                <button class="quantity" onclick="TestsFunction()"
+                                                        name="add"
                                                         value="ADD FOOD">ADD FOOD
                                                 </button>
                                             </td>
@@ -262,7 +292,8 @@
                                         <tr>
                                             <td>
                                                 <div>
-                                                    <p style="color:grey; margin-left: 35%; ">CO₂ (kg):</p>
+                                                    <p style="color:grey; margin-left: 35%; ">CO₂
+                                                        (kg):</p>
                                                     <div class="res">
                                                         <p style="font-style: italic;  font-weight: bold;"
                                                            th:text="*{res}"></p>
@@ -271,7 +302,8 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input th:object="${foodTotalObject}" class="totalBtn" type="submit"
+                                            <td><input th:object="${foodTotalObject}" class="totalBtn"
+                                                       type="submit"
                                                        name="calc"
                                                        value="CALCULATE TOTAL"/></td>
                                         </tr>
@@ -299,7 +331,8 @@
         </div>
 
 
-        <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions will be added to your
+        <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions will
+            be added to your
             statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
 
         <!--        <div id="TestsDiv" style="display:none">-->

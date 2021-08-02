@@ -122,11 +122,11 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     outline: none;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.5);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25);
     font-size: 16px;
 }
 .quantity:hover, .totalBtn:hover {
-    background-color: #36b9ff;
+    background-color: #01BFECFF;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
@@ -146,7 +146,7 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     outline: none;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.5);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25);
     font-size: 16px;
 }
 

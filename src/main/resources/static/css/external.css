@@ -36,8 +36,8 @@ body {
 }
 
 #logo2 {
-   width: 15%;
-    padding-top: 10px;
+   width: 20%;
+   margin: -3% 0 -5% 0;
 }
 #logoCaption{
     font-family: Andale Mono, monospace;
@@ -46,7 +46,7 @@ body {
     text-align: center;
     text-shadow: 2px 2px 2px 2px;
 /*   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
-    margin: 0 33%;
+    margin: 0 33% 3%;
     font-weight: bold;
 }
 #logoCaption2{

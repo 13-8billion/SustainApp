@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="images/logoIcon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Transport</title>
+    <title>CO₂ Calculator</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -33,12 +33,14 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
+                <img src="images/sideLogo.png" alt="sideLogo" style="width:50%; margin-top:-45%; margin-bottom:-10%; margin-left:-3%;">
+
                 <img src="images/profile.png" alt="Avatar" class="avatar">
                 <a href="#" class="simple-text">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
                 <div style="display: flex; justify-content: center; margin-left:-5%;">
-                    <p style= "font-size: 100%; color:#e0dede; margin-top:-15%">📍&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+                    <p style= "font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
                 </div>
             </div>
 
