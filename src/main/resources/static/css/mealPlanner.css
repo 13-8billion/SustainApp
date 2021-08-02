@@ -1,17 +1,3 @@
-.background_img{
-    background-image: url('../images/food/foodB.jpeg');
-    opacity: 80%;
-    min-height: 100vh; /* so background stays full size of viewport*/
-    width:100%;
-    background-size: cover;
-}
-
-.seasons{
-    font-size: 700%;
-    color: white;
-    padding-top: 50%;
-    margin-left: 3%;
-}
 
 #summer, #winter, #spring, #autumn{
     padding: 10%;
