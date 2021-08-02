@@ -1,17 +1,4 @@
 
-#summer, #winter, #spring, #autumn{
-    padding: 10%;
-    font-weight: bolder;
-    text-align: center;
-    text-decoration: none;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-#summer:hover, #winter:hover, #spring:hover, #autumn:hover{
-    opacity: 80%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
 .container,  #productList {
     display: grid;
     /*height: 700px;*/
@@ -26,7 +13,20 @@
     justify-content: space-around;
     align-content: space-evenly;
     list-style: none;
+}
 
+.foodList {
+    display: grid;
+    /*height: 700px;*/
+    grid-template-columns: 240px 240px 240px;
+    /*270px 270px*/
+    grid-gap: 3% 20%;
+    text-align: center;
+    font-size: 1.4em;
+    margin: 3% 5% 3% -45%;
+    justify-content: space-around;
+    align-content: space-evenly;
+    list-style: none;
 }
 
 

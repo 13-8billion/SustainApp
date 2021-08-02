@@ -3,7 +3,7 @@ function searchFunction() {
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById('input'); // take input from the user
     filter = input.value.toUpperCase(); // make all input uppercase
-    ul = document.getElementById("productList");
+    ul = document.getElementById("foodList");
     li = ul.getElementsByTagName('li');
 
     // Loop through all list items, and hide those who don't match the search query

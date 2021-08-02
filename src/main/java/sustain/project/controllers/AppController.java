@@ -1,7 +1,6 @@
 package sustain.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -109,24 +108,14 @@ public class AppController {
         return "mealPlanner";
     }
 
-    @RequestMapping("/foodWinter")
-    public String foodWinter() {
-        return "foodWinter";
-    }
-
-    @RequestMapping("/foodSpring")
+    @RequestMapping("/foodSpringSummer")
     public String foodSpring() {
-        return "foodSpring";
+        return "foodSpringSummer";
     }
 
-    @RequestMapping("/foodSummer")
-    public String foodSummer() {
-        return "foodSummer";
-    }
-
-    @RequestMapping("/foodAutumn")
+    @RequestMapping("/foodAutumnWinter")
     public String foodAutumn() {
-        return "foodAutumn";
+        return "foodAutumnWinter";
     }
 
     @RequestMapping("/lastMonthStats")

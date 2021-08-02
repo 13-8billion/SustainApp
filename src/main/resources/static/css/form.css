@@ -92,7 +92,7 @@ input[type=text], input[type=number], #select, .activity{
     color: grey;
     font-family: Helvetica, sans-serif;
     text-align: left;
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25)
+    /*box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25)*/
     /*text-shadow: 2px 2px 5px black;*/
 }
 /**/
