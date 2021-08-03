@@ -71,6 +71,7 @@ button.close {
     -webkit-font-smoothing: antialiased;
     font-family: "Roboto","Helvetica Neue",Arial,sans-serif;
     font-weight: 400;
+
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
@@ -156,6 +157,7 @@ body,
 .wrapper {
     min-height: 100vh;
     position: relative;
+    background-color:#2b2b2b;
 }
 
 body {
@@ -233,30 +235,36 @@ input:focus {
     height: 100vh;
 }
 
-.sidebar {
+/*/-----------------------------*/
+
+
+.sidebar{
+    height: calc(100vh - 90px);
+    width: 230px;
     position: fixed;
     top: 0;
-    bottom: 0;
-    right: auto;
     left: 0;
-    width: 260px;
-    display: block;
+    bottom:0;
     z-index: 1;
-    color: #fff;
-    font-weight: 200;
     background-size: cover;
     background-position: center center;
+    display: block;
+    box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.6);
+    margin: 70px 0 70px 20px;
+    transition: 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    border-radius: 5px;
 }
 
 .sidebar .sidebar-wrapper {
     position: relative;
-    max-height: calc(100vh - 75px);
-    min-height: 100%;
+    /*max-height: calc(100vh - 705px);*/
+    /*min-height: 100%;*/
     overflow: auto;
-    width: 260px;
+    width: 100%;
     z-index: 4;
-    padding-bottom: 100px;
+    /*padding-bottom: 100px;*/
 }
+
 
 .sidebar .sidebar-background {
     position: absolute;
@@ -268,6 +276,7 @@ input:focus {
     left: 0;
     background-size: cover;
     background-position: center center;
+    border-radius: 5px;
 }
 
 .sidebar .logo {
@@ -378,7 +387,7 @@ input:focus {
 }
 .logo img{
     border-radius: 50%;
-    margin-left: 28%;
+    margin-left: 25%;
     margin-bottom: 5%;
 }
 .sidebar .logo p {
@@ -443,22 +452,13 @@ input:focus {
     background-size: 150% 150%;
     z-index: 3;
     opacity: 1;
+    border-radius: 5px;
 }
 
 .sidebar[data-image]:after, .sidebar.has-image:after {
     opacity: .77;
 }
 
-.sidebar[data-color="blue"]:after {
-    background: #1F77D0;
-    background: -moz-linear-gradient(top, #1F77D0 0%, #533ce1 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1F77D0), color-stop(100%, #533ce1));
-    background: -webkit-linear-gradient(top, #1F77D0 0%, #533ce1 100%);
-    background: -o-linear-gradient(top, #1F77D0 0%, #533ce1 100%);
-    background: -ms-linear-gradient(top, #1F77D0 0%, #533ce1 100%);
-    background: linear-gradient(to bottom, #1F77D0 0%, #533ce1 100%);
-    background-size: 150% 150%;
-}
 
 .sidebar[data-color="azure"]:after {
     background: #1DC7EA;
@@ -469,51 +469,9 @@ input:focus {
     background: -ms-linear-gradient(top, #4dffa6 0%, #365eff 50%);
     background: linear-gradient(to bottom, #4dffa6 0%, #365eff 50%);
     background-size: 150% 150%;
+    border-radius: 5px;
 }
 
-.sidebar[data-color="green"]:after {
-    background: #87CB16;
-    background: -moz-linear-gradient(top, #87CB16 0%, #6dc030 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #87CB16), color-stop(100%, #6dc030));
-    background: -webkit-linear-gradient(top, #87CB16 0%, #6dc030 100%);
-    background: -o-linear-gradient(top, #87CB16 0%, #6dc030 100%);
-    background: -ms-linear-gradient(top, #87CB16 0%, #6dc030 100%);
-    background: linear-gradient(to bottom, #87CB16 0%, #6dc030 100%);
-    background-size: 150% 150%;
-}
-
-.sidebar[data-color="orange"]:after {
-    background: #FFA534;
-    background: -moz-linear-gradient(top, #FFA534 0%, #ff5221 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFA534), color-stop(100%, #ff5221));
-    background: -webkit-linear-gradient(top, #FFA534 0%, #ff5221 100%);
-    background: -o-linear-gradient(top, #FFA534 0%, #ff5221 100%);
-    background: -ms-linear-gradient(top, #FFA534 0%, #ff5221 100%);
-    background: linear-gradient(to bottom, #FFA534 0%, #ff5221 100%);
-    background-size: 150% 150%;
-}
-
-.sidebar[data-color="red"]:after {
-    background: #FB404B;
-    background: -moz-linear-gradient(top, #FB404B 0%, #bb0502 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FB404B), color-stop(100%, #bb0502));
-    background: -webkit-linear-gradient(top, #FB404B 0%, #bb0502 100%);
-    background: -o-linear-gradient(top, #FB404B 0%, #bb0502 100%);
-    background: -ms-linear-gradient(top, #FB404B 0%, #bb0502 100%);
-    background: linear-gradient(to bottom, #FB404B 0%, #bb0502 100%);
-    background-size: 150% 150%;
-}
-
-.sidebar[data-color="purple"]:after {
-    background: #9368E9;
-    background: -moz-linear-gradient(top, #9368E9 0%, #943bea 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9368E9), color-stop(100%, #943bea));
-    background: -webkit-linear-gradient(top, #9368E9 0%, #943bea 100%);
-    background: -o-linear-gradient(top, #9368E9 0%, #943bea 100%);
-    background: -ms-linear-gradient(top, #9368E9 0%, #943bea 100%);
-    background: linear-gradient(to bottom, #9368E9 0%, #943bea 100%);
-    background-size: 150% 150%;
-}
 
 .main-panel {
     position: relative;
@@ -528,14 +486,25 @@ input:focus {
 }
 
 .main-panel > .footer {
-    border-top: 1px solid #e7e7e7;
+    /*border-top: 1px solid #e7e7e7;*/
 }
 
 .main-panel .navbar {
     margin-bottom: 0;
 }
 
-.sidebar,
+.sidebar{
+    max-height: 89%;
+    height: 89%;
+    -webkit-transition-property: top,bottom;
+    transition-property: top,bottom;
+    -webkit-transition-duration: .2s,.2s;
+    transition-duration: .2s,.2s;
+    -webkit-transition-timing-function: linear,linear;
+    transition-timing-function: linear,linear;
+    -webkit-overflow-scrolling: touch;
+}
+
 .main-panel {
     max-height: 100%;
     height: 100%;
@@ -1848,8 +1817,10 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .navbar-default {
-    background-color: rgba(255, 255, 255, 0.96);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    /*background-color: rgba(255, 255, 255, 0.96);*/
+    background-color: transparent;
+    margin-top:.2%;
+    /*border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
 }
 
 .navbar-default .navbar-nav > li > a:not(.btn) {
@@ -1987,7 +1958,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .footer {
-    background-color: #FFFFFF;
+    background-color: transparent;
     line-height: 20px;
 }
 
@@ -2206,10 +2177,12 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .card {
-    border-radius: 4px;
+    border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
-    background-color: #FFFFFF;
+    background-color: #323232;
     margin-bottom: 30px;
+    border: none;
+    margin-top:-3%;
 }
 
 .card .image {
