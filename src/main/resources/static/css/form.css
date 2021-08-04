@@ -1,9 +1,4 @@
 
-.calcTable {
-    width: 185%;
-    max-width: 185%;
-}
-
 .avatar{
     width: 100px;
     height: 100px;
@@ -58,17 +53,13 @@
 .res{
     text-align: center;
     color: orangered;
-    margin-left:5%;
-    margin-top:-11.5%;
     max-width: 100%;
+    font-style: italic;
 }
 
 .resTran{
-
     text-align: center;
     color: orangered;
-    margin-left:5%;
-    margin-top:-10.5%;
     max-width: 100%;
 }
 

@@ -149,7 +149,7 @@
                                                 <div style="display:inline-block; margin-left:5%">
                                                     <form action="#" th:action="@{/calcTransport}" method="post">
                                                         <!-- call validate function in 'form' tag when user clicks submit button-->
-                                                        <table style="width: 120%">
+                                                        <table style="width: 130%;">
                                                             <tr>
                                                                 <td>
                                                                     <h3 id="tableH2"> Select a vehicle</h3>
@@ -280,7 +280,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td> <p th:text="${Err}" class="inputValidation" style="text-align: right; margin-right:-8%;"></p></td>
+                                                                <td> <p th:text="${Err}" class="inputValidation" style="text-align: right;"></p></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
@@ -295,7 +295,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td> <p th:text="${tErr}" class="inputValidation" style="text-align: right; margin-right:-8%;"></p></td>
+                                                                <td> <p th:text="${tErr}" class="inputValidation" style="text-align: right;"></p></td>
                                                             </tr>
                                                             <tr>
                                                                 <!-- submit button -->
@@ -329,10 +329,9 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="total">
-                                                                        <p>Total CO₂ (kg):</p>
-                                                                    </div>
-                                                                    <p style="font-style: italic; color: orangered;  font-weight: bold; margin-left: 67%; margin-top: -11%; margin-bottom: -11%;"
+                                                                    <p style="font-weight: bold;"
                                                                        th:text="*{total}"></p>
+                                                                    </div>
 
                                                                     <br>
                                                                     <br>
