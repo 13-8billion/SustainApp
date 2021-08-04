@@ -7,6 +7,8 @@
     <script src="js/jquery-1.6.1.min.js"></script>
     <script src="echart/echarts.min.js"></script>
     <script src="echart/drawchart.js"></script>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <title>My Statistics - Last Year</title>
 
@@ -26,22 +28,23 @@
     <link href="css/external.css" th:href="@{css/form.css}" rel="stylesheet"/>
 
 
-
 </head>
 <body>
 
 <div class="wrapper">
+
+    <img src="images/sideLogo.png" alt="sideLogo"
+         style="width:8%; margin-top:-1.8%; margin-left:1.5%;">
     <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
         <div class="sidebar-wrapper">
             <div class="logo">
-                <img src="images/sideLogo.png" alt="sideLogo" style="width:50%; margin-top:-45%; margin-bottom:-10%; margin-left:-3%;">
-
                 <img src="images/profile.png" alt="Avatar" class="avatar">
                 <a href="#" class="simple-text">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
                 <div style="display: flex; justify-content: center; margin-left:-5%;">
-                    <p style= "font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+                    <p style="font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]
+                    </p>
                 </div>
             </div>
             <ul class="nav">
@@ -77,57 +80,25 @@
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><p>
-                        <b style="color: rgba(255,0,135,0.65)">&nbsp;[[${#request.userPrincipal.principal.username}]]</b>
-                    </p></a>
+                    <a class="navbar-brand" href="#">
+                        <div class="btn-group">
+                            <a href="statistics" class="btn btn-primary">LAST WEEK</a>
+                            <a href="lastMonthStats" class="btn btn-primary">LAST MONTH</a>
+                            <a href="lastYearStats" class="btn btn-primary active">LAST YEAR</a>
+                        </div></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <form th:action="@{/logout}" method="post">
-                        <ul class="nav navbar-nav navbar-left">
-                            <li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-dashboard"></i>
-                                    <p class="hidden-lg hidden-md">Dashboard</p>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-                                    <p class="hidden-lg hidden-md">
-                                        5 Notifications
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Notification 1</a></li>
-                                    <li><a href="#">Notification 2</a></li>
-                                    <li><a href="#">Notification 3</a></li>
-                                    <li><a href="#">Notification 4</a></li>
-                                    <li><a href="#">Another notification</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-search"></i>
-                                    <p class="hidden-lg hidden-md">Search</p>
-                                </a>
-                            </li>
-                        </ul>
-
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="">
-                                    <p>Account</p>
-                                </a>
-                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <p>
-                                        Dropdown
+                                        Logged in as
+                                        <link rel="icon" type="image/png" href="images/profile.png">
+                                        <b style="color: rgba(255,0,135,0.65)">&nbsp;[[${#request.userPrincipal.principal.username}]]</b>
                                         <b class="caret"></b>
-                                    </p>
 
+                                    </p>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Action</a></li>
@@ -136,15 +107,8 @@
                                     <li><a href="#">Another action</a></li>
                                     <li><a href="#">Something</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="logout">Log out</a></li>
                                 </ul>
-                            </li>
-                            <li>
-                                <!--                           <div id = "logout">-->
-                                <a href="logout">
-                                    <p>Log out</p>
-                                </a>
-                                <!--                            </div>-->
                             </li>
                             <li class="separator hidden-lg"></li>
                         </ul>
@@ -153,23 +117,15 @@
             </div>
         </nav>
 
-        <script
-                src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-        <div class="btn-group">
-            <a href="statistics" class="btn btn-primary">LAST WEEK</a>
-            <a href="lastMonthStats" class="btn btn-primary">LAST MONTH</a>
-            <a href="lastYearStats" class="btn btn-primary active">LAST YEAR</a>
-        </div>
 
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="card">
+                        <div class="card" style="margin-top:-6%; margin-left:-3%;">
 
                             <div id="main0"
-                                 style="height: 500px; border: 1px solid #bebebe; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
+                                 style="height: 500px; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
 
                             <script type="text/javascript">
 
@@ -182,7 +138,7 @@
 
                                     legend: {
                                         top: 'bottom',
-                                        // textStyle: {fontSize: 14},
+                                        textStyle: {fontSize: 12, color: 'white'},
                                         // orient: 'horizontal',
                                         // left: 'center',
                                         data: ["Food", "Transport", "House", "Flight"],
@@ -192,8 +148,8 @@
                                         left: '3%',
                                         itemGap: 5,
                                         text: 'CO₂ Statistics',
-                                        subtext: new Date().getFullYear() +' Emissions By Source (kg)',
-                                        textStyle: {fontSize: 22, fontWeight: 'lighter'},
+                                        subtext: new Date().getFullYear() + ' Emissions By Source (kg)',
+                                        textStyle: {fontSize: 22, fontWeight: 'lighter', color: 'white'},
                                         subtextStyle: {fontSize: 15, align: 'center'},
                                     },
                                     toolbox: {
@@ -234,10 +190,10 @@
                     </div>
 
                     <div class="col-md-8">
-                        <div class="card">
+                        <div class="card" style="margin-top:-3%;">
 
                             <div id="main"
-                                 style="height: 500px; border: 1px solid #bebebe; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
+                                 style="height: 500px; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
 
                             <script type="text/javascript">
 
@@ -250,8 +206,8 @@
                                             left: '2.3%',
                                             itemGap: 4,
                                             text: 'Cumulative CO₂ Emissions',
-                                            subtext: new Date().getFullYear() +' Emissions By Source (kg)',
-                                            textStyle: {fontSize: 22, fontWeight: 'lighter'},
+                                            subtext: new Date().getFullYear() + ' Emissions By Source (kg)',
+                                            textStyle: {fontSize: 22, fontWeight: 'lighter', color: 'white'},
                                             subtextStyle: {fontSize: 15, align: 'center'},
                                         },
                                         tooltip: {
@@ -277,12 +233,13 @@
                                             containLabel: true
                                         },
                                         legend: {
-                                            textStyle: {fontSize: 14},
+                                            textStyle: {fontSize: 12, color: 'white'},
                                             orient: 'horizontal',
                                             left: 'center',
                                             data: ["Food", "Transport", "House Energy", "Flight"],
                                             // bottom: 'bottom',
                                             top: 'bottom',
+                                            icon: 'roundRect',
 
                                         },
                                         xAxis: {
@@ -290,10 +247,15 @@
                                             // // type: 'category',
                                             data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                             boundaryGap: false,
+                                            axisLabel: {color: 'white'},
+                                            axisLine: {lineStyle: {color: '#7f7e7e'}},
                                         },
 
                                         yAxis: {
                                             type: 'value',
+                                            axisLabel: {color: 'white'},
+                                            axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                            splitLine: {lineStyle: {color: '#4c4b4b'}}
                                         },
                                         series: [{
                                             name: 'Food',
@@ -399,117 +361,33 @@
                     </div>
                 </div>
             </div>
-<!--        </div>-->
-
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-
-                            <div id="main14"
-                                 style="height: 400px; border: 1px solid #ccc; padding: 30px;"></div>
-                            <script type="text/javascript">
-
-                                var myChart = echarts.init(document.getElementById('main14'));
-
-                                var option = {
-                                    color: ['#44e394', '#44e394'],
-                                    title: {
-                                        left: '2.3%',
-                                        itemGap: 4,
-                                        text: 'Cumulative CO₂ Emissions',
-                                        subtext: new Date().getFullYear() +' Food Emissions (kg)',
-                                        textStyle: {fontSize: 20, fontWeight: 'lighter'},
-                                        subtextStyle: {fontSize: 15, align: 'center'},
-                                    },
-                                    tooltip: {
-                                        trigger: 'axis',
-                                        axisPointer: {type: 'shadow', label: {color: '#fff'}},
-                                    },
-
-                                    toolbox: {
-                                        text: 'Download',
-                                        feature: {
-                                            saveAsImage: {}
-                                        },
-                                    },
-                                    grid: {
-                                        left: '3%',
-                                        right: '4%',
-                                        bottom: '3%',
-                                        top: '25%',
-                                        containLabel: true
-                                    },
-                                    legend: {
-                                        textStyle: {fontSize: 14},
-                                        orient: 'vertical',
-                                        left: 'center',
-                                        data: ["Food"],
-                                    },
-                                    xAxis: {
-                                        type: 'category',
-                                        data: [[${date}]],
-                                        // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                                        boundaryGap: false,
-                                    },
-                                    yAxis: {},
-                                    series: [{
-                                        name: 'Food',
-                                        type: 'line',
-                                        smooth: 'true',
-                                        // markLine: {
-                                        itemStyle: {
-                                            normal: {
-                                                areaStyle: {
-                                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                        offset: 0,
-                                                        color: 'rgba(128, 255, 165)'
-                                                    }, {
-                                                        offset: 1,
-                                                        color: 'rgba(1, 191, 236)',
-                                                    }])
-                                                    // }
-                                                }
-                                            }
-                                        },
-                                        lineStyle: {normal: {color: '#44e394'}},
-                                        data: [[${total}]],
-                                        text: 'CO₂ (kg)',
-                                        emphasis: {focus: 'series'},
-                                    }],
-                                };
-                                myChart.setOption(option);
-                            </script>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--        </div>-->
 
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
-                                <div id="main2"
-                                     style="height: 400px; border: 1px solid #ccc; padding: 30px;"></div>
+
+                                <div id="main14"
+                                     style="height: 400px;padding: 30px;"></div>
                                 <script type="text/javascript">
 
-                                    var myChart = echarts.init(document.getElementById('main2'));
+                                    var myChart = echarts.init(document.getElementById('main14'));
 
                                     var option = {
-                                        color: ['rgba(116, 21, 219)', 'rgba(116, 21, 219)'],
+                                        color: ['#44e394', '#44e394'],
                                         title: {
                                             left: '2.3%',
                                             itemGap: 4,
                                             text: 'Cumulative CO₂ Emissions',
-                                            subtext: new Date().getFullYear() +' Transport Emissions (kg)',
-                                            textStyle: {fontSize: 20, fontWeight: 'lighter'},
+                                            subtext: new Date().getFullYear() + ' Food Emissions (kg)',
+                                            textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                             subtextStyle: {fontSize: 15, align: 'center'},
                                         },
                                         tooltip: {
                                             trigger: 'axis',
-                                            axisPointer: {type: 'shadow', label: {color: '#fff'}}
+                                            axisPointer: {type: 'shadow', label: {color: '#fff'}},
                                         },
 
                                         toolbox: {
@@ -526,20 +404,27 @@
                                             containLabel: true
                                         },
                                         legend: {
-                                            textStyle: {fontSize: 14},
+                                            textStyle: {fontSize: 12, color: 'white'},
                                             orient: 'vertical',
                                             left: 'center',
-                                            data: ["Transport"],
+                                            data: ["Food"],
+                                            icon: 'roundRect',
                                         },
                                         xAxis: {
                                             type: 'category',
                                             data: [[${date}]],
                                             // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                             boundaryGap: false,
+                                            axisLabel: {color: 'white'},
+                                            axisLine: {lineStyle: {color: '#7f7e7e'}},
                                         },
-                                        yAxis: {},
+                                        yAxis: {
+                                            axisLabel: {color: 'white'},
+                                            axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                            splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                        },
                                         series: [{
-                                            name: 'Transport',
+                                            name: 'Food',
                                             type: 'line',
                                             smooth: 'true',
                                             // markLine: {
@@ -548,17 +433,17 @@
                                                     areaStyle: {
                                                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                                             offset: 0,
-                                                            color: 'rgba(55, 162, 255)'
+                                                            color: 'rgba(128, 255, 165)'
                                                         }, {
                                                             offset: 1,
-                                                            color: 'rgba(116, 21, 219)'
+                                                            color: 'rgba(1, 191, 236)',
                                                         }])
                                                         // }
                                                     }
                                                 }
                                             },
-                                            lineStyle: {normal: {color: 'rgb(88,175,248)'}},
-                                            data: [[${totalTrans}]],
+                                            lineStyle: {normal: {color: '#44e394'}},
+                                            data: [[${total}]],
                                             text: 'CO₂ (kg)',
                                             emphasis: {focus: 'series'},
                                         }],
@@ -570,27 +455,25 @@
                     </div>
                 </div>
 
-
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
-
-                                    <div id="main3"
-                                         style="height: 400px; border: 1px solid #ccc; padding: 30px;"></div>
+                                    <div id="main2"
+                                         style="height: 400px; padding: 30px;"></div>
                                     <script type="text/javascript">
 
-                                        var myChart = echarts.init(document.getElementById('main3'));
+                                        var myChart = echarts.init(document.getElementById('main2'));
 
                                         var option = {
-                                            color: ['rgba(255, 0, 135)', 'rgba(255, 0, 135)'],
+                                            color: ['rgba(116, 21, 219)', 'rgba(116, 21, 219)'],
                                             title: {
                                                 left: '2.3%',
                                                 itemGap: 4,
                                                 text: 'Cumulative CO₂ Emissions',
-                                                subtext: new Date().getFullYear() +' House Energy Emissions (kg)',
-                                                textStyle: {fontSize: 20, fontWeight: 'lighter'},
+                                                subtext: new Date().getFullYear() + ' Transport Emissions (kg)',
+                                                textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                                 subtextStyle: {fontSize: 15, align: 'center'},
                                             },
                                             tooltip: {
@@ -612,20 +495,27 @@
                                                 containLabel: true
                                             },
                                             legend: {
-                                                textStyle: {fontSize: 14},
+                                                textStyle: {fontSize: 12, color: 'white'},
                                                 orient: 'vertical',
                                                 left: 'center',
-                                                data: ["House Energy"],
+                                                data: ["Transport"],
+                                                icon: 'roundRect',
                                             },
                                             xAxis: {
                                                 type: 'category',
                                                 data: [[${date}]],
                                                 // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                                 boundaryGap: false,
+                                                axisLabel: {color: 'white'},
+                                                axisLine: {lineStyle: {color: '#7f7e7e'}},
                                             },
-                                            yAxis: {},
+                                            yAxis: {
+                                                axisLabel: {color: 'white'},
+                                                axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                            },
                                             series: [{
-                                                name: 'House Energy',
+                                                name: 'Transport',
                                                 type: 'line',
                                                 smooth: 'true',
                                                 // markLine: {
@@ -634,17 +524,17 @@
                                                         areaStyle: {
                                                             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                                                 offset: 0,
-                                                                color: 'rgba(255, 0, 135)'
+                                                                color: 'rgba(55, 162, 255)'
                                                             }, {
                                                                 offset: 1,
-                                                                color: 'rgba(135, 0, 157)'
+                                                                color: 'rgba(116, 21, 219)'
                                                             }])
                                                             // }
                                                         }
                                                     }
                                                 },
-                                                lineStyle: {normal: {color: 'rgba(255, 0, 135)'}},
-                                                data: [[${totalHouse}]],
+                                                lineStyle: {normal: {color: 'rgb(88,175,248)'}},
+                                                data: [[${totalTrans}]],
                                                 text: 'CO₂ (kg)',
                                                 emphasis: {focus: 'series'},
                                             }],
@@ -655,26 +545,28 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="content">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card">
 
-                                        <div id="main4"
-                                             style="height: 400px; border: 1px solid #ccc; padding: 30px;"></div>
+                                        <div id="main3"
+                                             style="height: 400px;  padding: 30px;"></div>
                                         <script type="text/javascript">
 
-                                            var myChart = echarts.init(document.getElementById('main4'));
+                                            var myChart = echarts.init(document.getElementById('main3'));
 
                                             var option = {
-                                                color: ['rgba(255, 191, 0)', 'rgba(255, 191, 0)'],
+                                                color: ['rgba(255, 0, 135)', 'rgba(255, 0, 135)'],
                                                 title: {
                                                     left: '2.3%',
                                                     itemGap: 4,
                                                     text: 'Cumulative CO₂ Emissions',
-                                                    subtext: new Date().getFullYear() + ' Flight Emissions (kg)',
-                                                    textStyle: {fontSize: 20, fontWeight: 'lighter'},
+                                                    subtext: new Date().getFullYear() + ' House Energy Emissions (kg)',
+                                                    textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                                     subtextStyle: {fontSize: 15, align: 'center'},
                                                 },
                                                 tooltip: {
@@ -696,22 +588,27 @@
                                                     containLabel: true
                                                 },
                                                 legend: {
-                                                    textStyle: {fontSize: 14},
+                                                    textStyle: {fontSize: 12, color: 'white'},
                                                     orient: 'vertical',
                                                     left: 'center',
-                                                    data: ["Flight"],
+                                                    data: ["House Energy"],
+                                                    icon: 'roundRect',
                                                 },
                                                 xAxis: {
-                                                    // name: 'Month',
-                                                    data: [[${dateFl}]],
-                                                    // type: 'time',
-                                                    // data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                                                    type: 'category',
+                                                    data: [[${date}]],
+                                                    // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                                     boundaryGap: false,
+                                                    axisLabel: {color: 'white'},
+                                                    axisLine: {lineStyle: {color: '#7f7e7e'}},
                                                 },
-                                                yAxis: {},
+                                                yAxis: {
+                                                    axisLabel: {color: 'white'},
+                                                    axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                    splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                                },
                                                 series: [{
-
-                                                    name: 'Flight',
+                                                    name: 'House Energy',
                                                     type: 'line',
                                                     smooth: 'true',
                                                     // markLine: {
@@ -720,24 +617,122 @@
                                                             areaStyle: {
                                                                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                                                     offset: 0,
-                                                                    color: 'rgba(255, 191, 0)'
+                                                                    color: 'rgba(255, 0, 135)'
                                                                 }, {
                                                                     offset: 1,
-                                                                    color: 'rgba(224, 62, 76)'
+                                                                    color: 'rgba(135, 0, 157)'
                                                                 }])
                                                                 // }
                                                             }
                                                         }
                                                     },
-                                                    lineStyle: {normal: {color: 'rgba(255, 191, 0)'}},
-                                                    data: [[${totalFlight}]],
+                                                    lineStyle: {normal: {color: 'rgba(255, 0, 135)'}},
+                                                    data: [[${totalHouse}]],
                                                     text: 'CO₂ (kg)',
                                                     emphasis: {focus: 'series'},
                                                 }],
                                             };
                                             myChart.setOption(option);
                                         </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
 
+                                            <div id="main4"
+                                                 style="height: 400px; padding: 30px;"></div>
+                                            <script type="text/javascript">
+
+                                                var myChart = echarts.init(document.getElementById('main4'));
+
+                                                var option = {
+                                                    color: ['rgba(255, 191, 0)', 'rgba(255, 191, 0)'],
+                                                    title: {
+                                                        left: '2.3%',
+                                                        itemGap: 4,
+                                                        text: 'Cumulative CO₂ Emissions',
+                                                        subtext: new Date().getFullYear() + ' Flight Emissions (kg)',
+                                                        textStyle: {
+                                                            fontSize: 20,
+                                                            fontWeight: 'lighter',
+                                                            color: 'white'
+                                                        },
+                                                        subtextStyle: {fontSize: 15, align: 'center'},
+                                                    },
+                                                    tooltip: {
+                                                        trigger: 'axis',
+                                                        axisPointer: {type: 'shadow', label: {color: '#fff'}}
+                                                    },
+
+                                                    toolbox: {
+                                                        text: 'Download',
+                                                        feature: {
+                                                            saveAsImage: {}
+                                                        },
+                                                    },
+                                                    grid: {
+                                                        left: '3%',
+                                                        right: '4%',
+                                                        bottom: '3%',
+                                                        top: '25%',
+                                                        containLabel: true
+                                                    },
+                                                    legend: {
+                                                        textStyle: {fontSize: 12, color: 'white'},
+                                                        orient: 'vertical',
+                                                        left: 'center',
+                                                        data: ["Flight"],
+                                                        icon: 'roundRect',
+                                                    },
+                                                    xAxis: {
+                                                        // name: 'Month',
+                                                        data: [[${dateFl}]],
+                                                        // type: 'time',
+                                                        // data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                                                        boundaryGap: false,
+                                                        axisLabel: {color: 'white'},
+                                                        axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                    },
+                                                    yAxis: {
+                                                        axisLabel: {color: 'white'},
+                                                        axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                        splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                                    },
+                                                    series: [{
+
+                                                        name: 'Flight',
+                                                        type: 'line',
+                                                        smooth: 'true',
+                                                        // markLine: {
+                                                        itemStyle: {
+                                                            normal: {
+                                                                areaStyle: {
+                                                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                                                        offset: 0,
+                                                                        color: 'rgba(255, 191, 0)'
+                                                                    }, {
+                                                                        offset: 1,
+                                                                        color: 'rgba(224, 62, 76)'
+                                                                    }])
+                                                                    // }
+                                                                }
+                                                            }
+                                                        },
+                                                        lineStyle: {normal: {color: 'rgba(255, 191, 0)'}},
+                                                        data: [[${totalFlight}]],
+                                                        text: 'CO₂ (kg)',
+                                                        emphasis: {focus: 'series'},
+                                                    }],
+                                                };
+                                                myChart.setOption(option);
+                                            </script>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -745,39 +740,38 @@
                     </div>
                 </div>
             </div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Contact
+                                </a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <p class="copyright pull-right">
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script>
+                        <a href="#">SUSTAIN</a> What change will you make?
+                    </p>
+                </div>
+            </footer>
         </div>
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Contact
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy;
-                    <script>document.write(new Date().getFullYear())</script>
-                    <a href="#">SUSTAIN</a> What change will you make?
-                </p>
-            </div>
-        </footer>
     </div>
-</div>
 </div>
 </body>
 

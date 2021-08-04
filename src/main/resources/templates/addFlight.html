@@ -27,16 +27,19 @@
 </head>
 <body>
 <div class="wrapper">
+
+    <img src="images/sideLogo.png" alt="sideLogo"
+         style="width:8%; margin-top:-1.8%; margin-left:1.5%;">
     <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
         <div class="sidebar-wrapper">
             <div class="logo">
-                <img src="images/sideLogo.png" alt="sideLogo" style="width:50%; margin-top:-45%; margin-bottom:-10%; margin-left:-3%;">
                 <img src="images/profile.png" alt="Avatar" class="avatar">
                 <a href="#" class="simple-text">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
                 <div style="display: flex; justify-content: center; margin-left:-5%;">
-                    <p style= "font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+                    <p style="font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]
+                    </p>
                 </div>
             </div>
             <ul class="nav">
@@ -72,57 +75,21 @@
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><p>
-                        <b style="color: rgba(255,0,135,0.65)">&nbsp;[[${#request.userPrincipal.principal.username}]]</b>
+                    <a class="navbar-brand" href="#"><p style="font-size: 95%;">
+                        CO₂ CALCULATOR
                     </p></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <form th:action="@{/logout}" method="post">
-                        <ul class="nav navbar-nav navbar-left">
-                            <li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-dashboard"></i>
-                                    <p class="hidden-lg hidden-md">Dashboard</p>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-                                    <p class="hidden-lg hidden-md">
-                                        5 Notifications
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Notification 1</a></li>
-                                    <li><a href="#">Notification 2</a></li>
-                                    <li><a href="#">Notification 3</a></li>
-                                    <li><a href="#">Notification 4</a></li>
-                                    <li><a href="#">Another notification</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-search"></i>
-                                    <p class="hidden-lg hidden-md">Search</p>
-                                </a>
-                            </li>
-                        </ul>
-
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="">
-                                    <p>Account</p>
-                                </a>
-                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <p>
-                                        Dropdown
+                                        Logged in as
+                                        <link rel="icon" type="image/png" href="images/profile.png">
+                                        <b style="color: rgba(255,0,135,0.65)">&nbsp;[[${#request.userPrincipal.principal.username}]]</b>
                                         <b class="caret"></b>
                                     </p>
-
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Action</a></li>
@@ -131,13 +98,8 @@
                                     <li><a href="#">Another action</a></li>
                                     <li><a href="#">Something</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="logout">Log out</a></li>
                                 </ul>
-                            </li>
-                            <li>
-                                <a href="logout">
-                                    <p>Log out</p>
-                                </a>
                             </li>
                             <li class="separator hidden-lg"></li>
                         </ul>
@@ -145,117 +107,136 @@
                 </div>
             </div>
         </nav>
-        <h2 id="h1">How do your flights impact the environment?</h2>
-        <h3 id="h2">Simply select the distance travelled and click <b>add flight</b>.
-            Repeat as many times as necessary.
-            <br> Only click <b>calculate total</b> once all flights have been added to receive the total CO₂
-            emissions.</h3>
-        <div class="contentCalc">
+
+        <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card" style="margin-bottom:4%; background-color:white;">
-                                <div class="btn-group" style="margin: auto; width:110%;">
-                                    <a href="addFoodView" class="btn btn-arrows">FOOD</a>
-                                    <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
-                                    <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
-                                    <a href="addFlightView" class="btn btn-arrows active" style="padding-right:5.2%;">FLIGHT</a>
+                    <div class="col-sm-12">
+                        <div class="card" style="margin-top:-2%; padding:1%;">
+                            <h2 id="h1">How do your flights impact the environment?</h2>
+                            <h3 id="h2">Simply select the distance travelled and click <b>add flight</b>.
+                                Repeat as many times as necessary.
+                                <br> Only click <b>calculate total</b> once all flights have been added to receive the
+                                total CO₂
+                                emissions.</h3>
+                            <div class="contentCalc">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card" style="margin:1% 0 4% 0; background-color:white;">
+                                                <div class="btn-group" style="margin: auto; width:107.5%;">
+                                                    <a href="addFoodView" class="btn btn-arrows">FOOD</a>
+                                                    <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
+                                                    <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
+                                                    <a href="addFlightView" class="btn btn-arrows active"
+                                                       style="padding-right:5.2%;">FLIGHT</a>
+                                                </div>
+                                                <div class="clipArt">
+                                                    <img src="images/plane.png" alt="bulb clip art"
+                                                         style="width:95%; height:120px; margin-bottom: -3%; margin-left:3%; margin-top:-2%;">
+                                                </div>
+                                                <div style="display:inline-block; margin-left:5%">
+                                                    <form action="#" th:action="@{/calcFlight}" method="post">
+                                                        <!-- call validate function in 'form' tag when user clicks submit button-->
+                                                        <table style="width: 135%">
+                                                            <tr>
+                                                                <td>
+                                                                    <h3 id="tableH3"> Enter distance travelled in
+                                                                        km</h3>
+                                                                    <input type="number" min="0" name="distance"
+                                                                           size="30" value="distance"
+                                                                           th:field="*{distance}"
+                                                                           th:object="${flightObject}">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <!-- submit button -->
+                                                                <td><input class="quantity" type="submit" name="add"
+                                                                           value="ADD FLIGHT"/>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div>
+                                                                        <p style="color:grey; margin-left: 35%; ">CO₂
+                                                                            (kg):</p>
+                                                                        <div class="res">
+                                                                            <p style="font-style: italic; font-weight: bold;"
+                                                                               th:text="*{res}"></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <!-- submit button -->
+                                                                <td><input th:object="${flightTotalObject}"
+                                                                           class="totalBtn" type="submit"
+                                                                           name="calc"
+                                                                           value="CALCULATE TOTAL"/></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="total">
+                                                                        <p>Total CO₂ (kg):</p>
+                                                                    </div>
+                                                                    <p style="font-style: italic; color: orangered;  font-weight: bold; margin-left: 67%; margin-top: -11%; margin-bottom: -11%;"
+                                                                       th:text="*{total}"></p>
+                                                                    <br>
+                                                                    <br>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            <div class="clipArt">
-                                <img src="images/plane.png" alt="bulb clip art"
-                                     style="width:95%; height:120px; margin-bottom: -3%; margin-left:3%; margin-top:-2%;">
                             </div>
-                            <div style="display:inline-block; margin-left:5%">
-                                <form action="#" th:action="@{/calcFlight}" method="post">
-                                    <!-- call validate function in 'form' tag when user clicks submit button-->
-                                    <table style="width: 135%">
-                                        <tr>
-                                            <td>
-                                                <h3 id="tableH3"> Enter distance travelled in km</h3>
-                                                <input type="number" min="0" name="distance" size="30" value="distance"
-                                                       th:field="*{distance}"
-                                                       th:object="${flightObject}">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <!-- submit button -->
-                                            <td><input class="quantity" type="submit" name="add" value="ADD FLIGHT"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div>
-                                                    <p style="color:grey; margin-left: 35%; ">CO₂ (kg):</p>
-                                                    <div class="res">
-                                                        <p style="font-style: italic; font-weight: bold;"
-                                                           th:text="*{res}"></p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
 
-                                        <tr>
-                                            <!-- submit button -->
-                                            <td><input th:object="${flightTotalObject}" class="totalBtn" type="submit"
-                                                       name="calc"
-                                                       value="CALCULATE TOTAL"/></td>
-                                        </tr>
+                            <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions
+                                will be added to your
+                                statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
 
-                                        <tr>
-                                            <td>
-                                                <div class="total">
-                                                    <p>Total CO₂ (kg):</p>
-                                                </div>
-                                                <p style="font-style: italic; color: orangered;  font-weight: bold; margin-left: 67%; margin-top: -11%; margin-bottom: -11%;"
-                                                   th:text="*{total}"></p>
-                                                <br>
-                                                <br>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions will be added to your
-            statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
-
         <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="pull-left">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    About Us
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Contact
-                                </a>
-                            </li>
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Contact
+                            </a>
+                        </li>
 
-                        </ul>
-                    </nav>
-                    <p class="copyright pull-right">
-                        &copy;
-                        <script>document.write(new Date().getFullYear())</script>
-                        <a href="#">SUSTAIN</a> What change will you make?
-                    </p>
-                </div>
-            </footer>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    <a href="#">SUSTAIN</a> What change will you make?
+                </p>
+            </div>
+        </footer>
 
-        </div>
     </div>
+</div>
 </div>
 
 </body>

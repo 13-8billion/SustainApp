@@ -114,7 +114,7 @@ p {
 }
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
-    color: #9A9A9A;
+    color: #dbdbdb;;
     font-weight: 300;
     line-height: 1.5;
 }
@@ -129,7 +129,7 @@ h1 .subtitle {
 }
 
 .text-muted {
-    color: #9A9A9A;
+   color: #dbdbdb;;
 }
 
 .text-primary, .text-primary:hover {
@@ -156,12 +156,19 @@ h1 .subtitle {
 body,
 .wrapper {
     min-height: 100vh;
+    height: auto;
     position: relative;
-    background-color:#2b2b2b;
+    background-color: #1e1e2f;
+    margin:0;
+    width:auto;
+    overflow: auto;
 }
 
 body {
     background: rgba(203, 203, 210, 0.15);
+    min-height: 100vh;
+    height:100vh;
+    margin:0;
 }
 
 a {
@@ -483,6 +490,7 @@ input:focus {
 .main-panel > .content {
     padding: 30px 15px;
     min-height: calc(100% - 123px);
+
 }
 
 .main-panel > .footer {
@@ -1661,6 +1669,7 @@ fieldset[disabled] .btn-neutral.active {
     margin: 5px 0px;
     padding: 15px 15px;
     font-size: 20px;
+    color: #dbdbdb;
 }
 
 .navbar .navbar-nav > li > a {
@@ -1787,7 +1796,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .navbar-transparent .btn-default.btn-fill, [class*="navbar-ct"] .btn-default.btn-fill {
-    color: #9A9A9A;
+    color: #dbdbdb;
     background-color: #FFFFFF;
     opacity: 0.9;
     filter: alpha(opacity=90);
@@ -1824,7 +1833,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .navbar-default .navbar-nav > li > a:not(.btn) {
-    color: #9A9A9A;
+    color: #dbdbdb;
 }
 
 .navbar-default .navbar-nav > .active > a,
@@ -1864,7 +1873,7 @@ fieldset[disabled] .btn-neutral.active {
 .navbar-default:not(.navbar-transparent) .btn-neutral,
 .navbar-default:not(.navbar-transparent) .btn-neutral:hover,
 .navbar-default:not(.navbar-transparent) .btn-neutral:active {
-    color: #9A9A9A;
+    color: #dbdbdb;
 }
 
 /*      Navbar with icons            */
@@ -1970,7 +1979,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .footer nav > ul a:not(.btn) {
-    color: #9A9A9A;
+    color: #dbdbdb;
     display: block;
     margin-bottom: 3px;
 }
@@ -1988,7 +1997,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .footer .social-area > a:not(.btn) {
-    color: #9A9A9A;
+    color: #dbdbdb;
     display: inline-block;
     vertical-align: top;
     padding: 10px 5px;
@@ -1999,11 +2008,11 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .footer .social-area > a:not(.btn):hover, .footer .social-area > a:not(.btn):focus {
-    color: #777777;
+    color: #dbdbdb;
 }
 
 .footer .copyright {
-    color: #777777;
+    color: #dbdbdb;
     padding: 10px 15px;
     margin: 10px 3px;
     line-height: 20px;
@@ -2015,7 +2024,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .footer .title {
-    color: #777777;
+    color: #dbdbdb;
 }
 
 .footer-default {
@@ -2179,10 +2188,9 @@ fieldset[disabled] .btn-neutral.active {
 .card {
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
-    background-color: #323232;
+    background:#27293d;
     margin-bottom: 30px;
     border: none;
-    margin-top:-3%;
 }
 
 .card .image {
@@ -3269,6 +3277,7 @@ fieldset[disabled] .btn-neutral.active {
 @media (max-width: 991px) {
     .main-panel {
         width: 100%;
+        height: 100%;
     }
     .navbar-transparent {
         padding-top: 15px;

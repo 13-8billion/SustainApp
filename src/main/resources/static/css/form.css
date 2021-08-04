@@ -18,7 +18,8 @@
 }
 
 .contentCalc {
-    margin-left: 33%;
+    margin-left: 30%;
+    margin-right: 34%;
     margin-top:2%;
 }
 
@@ -126,7 +127,7 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     font-size: 16px;
 }
 .quantity:hover, .totalBtn:hover {
-    background-color: #01BFECFF;
+    background-color: #01d8ec;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
@@ -184,9 +185,8 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
 /*}*/
 
 .btn-group{
-    margin-left: 35%;
-    margin-top: 1%;
-    margin-bottom: -1.5%;
+    /*margin-left: 34%;*/
+
 }
 
 .btn-primary{
