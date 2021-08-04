@@ -1,5 +1,5 @@
 
-.container,  #productList {
+.container,  #productList{
     display: grid;
     /*height: 700px;*/
     grid-template-columns: 440px 440px;
@@ -23,7 +23,22 @@
     grid-gap: 3%;
     text-align: center;
     font-size: 1.4em;
-    margin: 3% 5% 3% -45%;
+    margin: 3% 5% 3% -155%;
+    justify-content: space-around;
+    align-content: space-evenly;
+    list-style: none;
+}
+
+.container, #seasonalFood{
+    margin-left: -140%;
+    display: grid;
+    /*height: 700px;*/
+    grid-template-columns: 440px 440px;
+    /*270px 270px*/
+    grid-gap: 5%;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
     justify-content: space-around;
     align-content: space-evenly;
     list-style: none;

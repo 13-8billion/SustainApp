@@ -1,14 +1,18 @@
 package sustain.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 import sustain.project.models.User;
 import sustain.project.interfaces.UserRepo;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import javax.validation.Validator;
 
+
 @Service
+@Configurable
 public class UserService {
 
     @Autowired
@@ -32,4 +36,5 @@ public class UserService {
     public void delete(String username) {
         repo.deleteById(username);
     }
+
 }

@@ -1,12 +1,17 @@
 package sustain.project.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import sustain.project.interfaces.EmailConstraint;
 import sustain.project.interfaces.UsernameConstraint;
+import sustain.project.service.UserService;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.validation.constraints.*;
-
+@Configurable
 @Entity // mySQL entity
 @Table(name = "User")
 public class User implements Serializable {
@@ -16,10 +21,11 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userID")
     private String userID;
-//    @NotBlank(message = "*Username field cannot be empty")
-    @UsernameConstraint
+    @NotBlank(message = "*Username field cannot be empty")
+//    @UsernameConstraint
     @Column(name = "username")
     private String username;
+    //    @EmailConstraint
     @NotBlank(message = "*Email field cannot be empty")
     @Email(message = "*Invalid email")
     @Column(name = "email")
@@ -27,9 +33,10 @@ public class User implements Serializable {
     @Column(name = "location")
     private String location;
     @NotBlank(message = "*Password field cannot be empty!")
-    @Size(min=8, max=100, message="*Password must be at least 8 characters")
+    @Size(min = 8, max = 100, message = "*Password must be at least 8 characters")
     @Column(name = "password")
     private String password;
+
 
     public User() {
     }
@@ -73,6 +80,4 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
-
-
 }

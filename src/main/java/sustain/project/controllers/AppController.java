@@ -13,6 +13,7 @@ import sustain.project.service.*;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -168,7 +169,7 @@ public class AppController {
 
     // USER METHODS
 
-//    @PostMapping("/signUp")
+    //    @PostMapping("/signUp")
 //    public String checkPersonInfo(@Valid User username, BindingResult bindingResult) {
 //
 //        if (bindingResult.hasErrors()) {
@@ -178,13 +179,45 @@ public class AppController {
 //        return "signUp";
 //    }
     @PostMapping("/save")
-    public String processRegister(@Valid User user, BindingResult bindingResult) {
+    public String processRegister(@Valid User user, BindingResult bindingResult,
+                                  @ModelAttribute("username") String username,
+                                  @ModelAttribute("email") String email,
+                                  @ModelAttribute("uErr") String uErr,
+                                  @ModelAttribute("eErr") String eErr, Model model) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
+        ArrayList<String> names = new ArrayList<>();
+
+        for (int i = 0; i < service.listAll().size(); i++) {
+            names.add(service.listAll().get(i).getUsername());
+        }
+
+        ArrayList<String> emails = new ArrayList<>();
+
+        for (int i = 0; i < service.listAll().size(); i++) {
+            emails.add(service.listAll().get(i).getEmail());
+        }
+
+        model.addAttribute("username", username);
+        model.addAttribute("email", email);
+
         if (bindingResult.hasErrors()) {
+
             return "signUp";
+
+        } if (names.contains(username)) {
+            uErr = "*Username already exists!";
+            model.addAttribute("uErr", uErr);
+            return "signUp";
+
+        } if (emails.contains(email)) {
+
+                eErr = "*Email already exists!";
+                model.addAttribute("eErr", eErr);
+                return "signUp";
+
         } else {
             service.save(user);
             return "register_success";
@@ -212,8 +245,8 @@ public class AppController {
 
                 double oneG = food.getCo2g() / 100; // oneG = kg of co2 per 1gram of food.. co2g is kg co2 per 100 gram of food
                 res = g * oneG; // result is user input grams * oneG (kg of co2 per 1 gram of food item)
-                res = Math.round(res*100);
-                res = res/100; // get to the nearest 2 decimal place
+                res = Math.round(res * 100);
+                res = res / 100; // get to the nearest 2 decimal place
             }
         }
 
@@ -242,8 +275,8 @@ public class AppController {
             if (addUserFood.getUsername().equals(username)) {
 
                 total = total + addUserFood.getRes();
-                total = Math.round(total*100);
-                total = total/100;
+                total = Math.round(total * 100);
+                total = total / 100;
             }
         }
 
@@ -273,7 +306,7 @@ public class AppController {
 
     @PostMapping(value = "/calcTransport", params = "add")
     public ModelAndView calcTransport(@ModelAttribute("transObject") AddTransport transObject, @ModelAttribute("type") String type,
-                                 @ModelAttribute("distance") double d, Model model) {
+                                      @ModelAttribute("distance") double d, Model model) {
         double res = 0;
         List<Transport> tl = ts.listAll();
 
@@ -283,8 +316,8 @@ public class AppController {
             if (tran.getType().equals(type)) {
 
                 res = tran.getCo2km() * d;
-                res = Math.round(res*100);
-                res = res/100;
+                res = Math.round(res * 100);
+                res = res / 100;
             }
         }
 
@@ -300,8 +333,8 @@ public class AppController {
 
     @PostMapping(value = "/calcTransport", params = "calc")
     public ModelAndView calcTransportTotal(@ModelAttribute("transTotalObject") TransportTotal transTotalObject,
-                                      @ModelAttribute("transObject") AddTransport transObject, @ModelAttribute("type") String type,
-                                      @ModelAttribute("distance") double d, Model model) {
+                                           @ModelAttribute("transObject") AddTransport transObject, @ModelAttribute("type") String type,
+                                           @ModelAttribute("distance") double d, Model model) {
 
         String username = userDetails.returnUsername();
         List<AddTransport> tl = ats.listAll();
@@ -314,8 +347,8 @@ public class AppController {
             if (addTrans.getUsername().equals(username)) {
 
                 total = total + addTrans.getRes();
-                total = Math.round(total*100);
-                total = total/100;
+                total = Math.round(total * 100);
+                total = total / 100;
             }
         }
 
@@ -344,7 +377,7 @@ public class AppController {
 
     @PostMapping(value = "/calcHouse", params = "add")
     public ModelAndView calcHouse(@ModelAttribute("houseObject") AddHouse houseObject, @ModelAttribute("etype") String etype,
-                                      @ModelAttribute("kWh") double kWh, Model model) {
+                                  @ModelAttribute("kWh") double kWh, Model model) {
         double res = 0;
         List<HouseEnergy> hl = hes.listAll();
 
@@ -354,8 +387,8 @@ public class AppController {
             if (house.getEtype().equals(etype)) {
 
                 res = house.getCo2() * kWh;
-                res = Math.round(res*100);
-                res = res/100;
+                res = Math.round(res * 100);
+                res = res / 100;
             }
         }
 
@@ -371,8 +404,8 @@ public class AppController {
 
     @PostMapping(value = "/calcHouse", params = "calc")
     public ModelAndView calcHouseTotal(@ModelAttribute("houseTotalObject") HouseEnergyTotal houseTotalObject,
-                                           @ModelAttribute("houseObject") AddHouse houseObject, @ModelAttribute("etype") String etype,
-                                           @ModelAttribute("kWh") double kWh, Model model) {
+                                       @ModelAttribute("houseObject") AddHouse houseObject, @ModelAttribute("etype") String etype,
+                                       @ModelAttribute("kWh") double kWh, Model model) {
 
         String username = userDetails.returnUsername();
         List<AddHouse> hl = ahs.listAll();
@@ -385,8 +418,8 @@ public class AppController {
             if (addHouse.getUsername().equals(username)) {
 
                 total = total + addHouse.getRes();
-                total = Math.round(total*100);
-                total = total/100;
+                total = Math.round(total * 100);
+                total = total / 100;
             }
         }
 
@@ -419,8 +452,8 @@ public class AppController {
                                    Model model) {
 
         double res = 0.115 * distance;
-        res = Math.round(res*100);
-        res = res/100;
+        res = Math.round(res * 100);
+        res = res / 100;
 
         flightObject.setRes(res);
         flightObject.setUsername(userDetails.returnUsername());
@@ -433,8 +466,8 @@ public class AppController {
 
     @PostMapping(value = "/calcFlight", params = "calc")
     public ModelAndView calcFlightTotal(@ModelAttribute("flightTotalObject") FlightTotal flightTotalObject,
-                                       @ModelAttribute("flightObject") AddFlight flightObject, @ModelAttribute("distance") double distance,
-                                       Model model) {
+                                        @ModelAttribute("flightObject") AddFlight flightObject, @ModelAttribute("distance") double distance,
+                                        Model model) {
 
         String username = userDetails.returnUsername();
         List<AddFlight> fl = afs.listAll();
@@ -447,8 +480,8 @@ public class AppController {
             if (addFlight.getUsername().equals(username)) {
 
                 total = total + addFlight.getRes();
-                total = Math.round(total*100);
-                total = total/100;
+                total = Math.round(total * 100);
+                total = total / 100;
             }
         }
 
@@ -465,11 +498,6 @@ public class AppController {
 
         return new ModelAndView("addFlight");
     }
-
-
-
-
-
 
 
     // SECURITY
@@ -501,6 +529,5 @@ public class AppController {
 
         return "redirect:/"; //eg. homepage
     }
-
 
 }

@@ -3,31 +3,30 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" href="images/logoIcon.png">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <script src="js/jquery-1.6.1.min.js"></script>
-    <script src="echart/echarts.min.js"></script>
-    <script src="echart/drawchart.js"></script>
+    <script src="js/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <script src="js/echart/echarts.min.js"></script>
+    <script src="js/echart/drawchart.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="icon" type="image/png" href="images/logoIcon.png">
 
     <title>Autumn</title>
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-    <meta name="viewport" content="width=device-width"/>
-
-
-    <!-- Bootstrap core CSS     -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <!-- Animation library for notifications   -->
-    <link href="assets/css/animate.min.css" rel="stylesheet"/>
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
     <link th:href="@{css/form.css}" rel="stylesheet"/>
     <link th:href="@{css/mealPlanner.css}" rel="stylesheet"/>
+    <!-- Bootstrap core CSS     -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/pe-icon-7-stroke.css" rel="stylesheet"/>
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
 
 </head>
 <body>
@@ -35,8 +34,8 @@
 <div class="wrapper">
 
     <img src="images/sideLogo.png" alt="sideLogo"
-         style="width:8%; margin-top:-1.8%; margin-left:1.5%;">
-    <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
+         style="width:8%; margin-top:-1.8%; margin-left:1.5%; position: fixed;">
+    <div class="sidebar" data-color="azure" data-image="images/sidebar-5.jpg">
 
 
         <div class="sidebar-wrapper">
@@ -70,10 +69,10 @@
                     </a>
                 </li>
                 <li>
-                <a href="statistics">
-                    <i class="pe-7s-graph"></i>
-                    <p>My Statistics</p>
-                </a>
+                    <a href="statistics">
+                        <i class="pe-7s-graph"></i>
+                        <p>My Statistics</p>
+                    </a>
                 </li>
                 <li class="active">
                     <a href="mealPlanner">
@@ -123,163 +122,151 @@
         </nav>
 
 
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card" style="padding-bottom:15%; margin-top:-2%">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card" style="padding-bottom:15%; margin-top:-2%">
 
-                        <table>
-                            <tr>
-                                <td>
-                                    <select type="text" id="input">
-                                        <option value="" disabled="disabled" selected="selected">Dietary Preference
-                                        </option>
-                                        <option value="Vegan">Vegan</option>
-                                        <option value="Vegetarian">Vegetarian</option>
-                                        <option value="Gluten-Free">Gluten-Free</option>
-                                    </select>
-                                    <button onclick="searchFunction()" class="dropbtn">select</button>
-                                </td>
-                            </tr>
-                        </table>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <select type="text" id="input">
+                                            <option value="" disabled="disabled" selected="selected">Dietary Preference
+                                            </option>
+                                            <option value="Vegan">Vegan</option>
+                                            <option value="Vegetarian">Vegetarian</option>
+                                            <option value="Gluten-Free">Gluten-Free</option>
+                                        </select>
+                                        <button onclick="searchFunction()" class="dropbtn">select</button>
+                                    </td>
+                                </tr>
+                            </table>
 
-                        <div class="container">
-                            <ul id="foodList">
-                                <div class="item">
-                                    <li>
-                                        <a href="https://www.bbcgoodfood.com/recipes/warm-artichoke-blood-orange-feta-salad-0"
-                                           style="color:white; font-size:0.1%">Vegetarian Gluten-Free<img
-                                                src="images/food/autumn-winter/artichokeSalad.png"
-                                                alt="artichokeSalad"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li><a href="https://www.wwf.org.uk/recipes/quinoa-bean-burger" style="color:white; font-size:.1%">Vegan<img
-                                            src="images/food/autumn-winter/beanBurger.png"
-                                            alt="beanBurger"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li>
-                                        <a href="https://www.wwf.org.uk/recipes/shepherds-pie" style="color:white; font-size:.1%">Vegan Gluten-Free<img
-                                                src="images/food/autumn-winter/beanPie.png"
-                                                alt="beanPie"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li>
-                                        <a href="https://www.bbcgoodfood.com/recipes/black-white-rice-salad-cumin-roasted-butternut-squash" style="color:white; font-size:.1%">Vegan<img
-                                                src="images/food/autumn-winter/butternutRice.png"
-                                                alt="butternutSquashSalad"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li><a href="https://www.wwf.org.uk/recipes/red-cabbage-soup" style="color:white; font-size:.1%">Vegan Gluten-Free<img
-                                            src="images/food/autumn-winter/cabbageSoup.png"
-                                            alt="redCabbageSoup"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li>
-                                        <a href="https://www.bbcgoodfood.com/recipes/curried-carrot-soup-cashew-coriander-salsa" style="color:white; font-size:.1%">Vegan Gluten-Free<img
-                                                src="images/food/autumn-winter/currySoup.png"
-                                                alt="curriedSoup"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li><a href="https://www.bbcgoodfood.com/recipes/lentil-cauliflower-curry" style="color:white; font-size:.01%">Vegan Gluten-Free<img
-                                            src="images/food/autumn-winter/lentilCurry.png"
-                                            alt="lentilCurry"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li><a href="https://www.bbcgoodfood.com/recipes/boxing-day-sprout-pad-thai" style="color:white; font-size:.1%">Vegan<img
-                                            src="images/food/autumn-winter/padThai.png"
-                                            alt="padThai"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li>
-                                        <a href="https://www.bbcgoodfood.com/recipes/spicy-roasted-parsnip-soup" style="color:white; font-size:.1%">Vegan Gluten-Free<img
-                                                src="images/food/autumn-winter/parsnipSoup.png"
-                                                alt="veggieSpring"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li>
-                                        <a href="https://www.bbcgoodfood.com/recipes/roasted-winter-vegetables-smoked-mayo" style="color:white; font-size:.1%">Vegetarian Gluten-Free<img
-                                                src="images/food/autumn-winter/roastedVeg.png"
-                                                alt="roastedVeg"></a></li>
-                                </div>
-                                <div class="item">
-                                    <li>
-                                        <a href="https://www.wwf.org.uk/recipes/quorn-toad-in-the-hole" style="color:white; font-size:.1%">Vegetarian<img
-                                                src="images/food/autumn-winter/toadInHole.png"
-                                                alt="toadInHole"></a></li>
-                                </div>
+                            <div class="container">
+                                <ul id="foodList">
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.bbcgoodfood.com/recipes/warm-artichoke-blood-orange-feta-salad-0"
+                                               style="color:white; font-size:0.1%">Vegetarian Gluten-Free<img
+                                                    src="images/food/autumn-winter/artichokeSalad.png"
+                                                    alt="artichokeSalad"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li><a href="https://www.wwf.org.uk/recipes/quinoa-bean-burger"
+                                               style="color:white; font-size:.1%">Vegan<img
+                                                src="images/food/autumn-winter/beanBurger.png"
+                                                alt="beanBurger"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.wwf.org.uk/recipes/shepherds-pie"
+                                               style="color:white; font-size:.1%">Vegan Gluten-Free<img
+                                                    src="images/food/autumn-winter/beanPie.png"
+                                                    alt="beanPie"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.bbcgoodfood.com/recipes/black-white-rice-salad-cumin-roasted-butternut-squash"
+                                               style="color:white; font-size:.1%">Vegan<img
+                                                    src="images/food/autumn-winter/butternutRice.png"
+                                                    alt="butternutSquashSalad"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li><a href="https://www.wwf.org.uk/recipes/red-cabbage-soup"
+                                               style="color:white; font-size:.1%">Vegan Gluten-Free<img
+                                                src="images/food/autumn-winter/cabbageSoup.png"
+                                                alt="redCabbageSoup"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.bbcgoodfood.com/recipes/curried-carrot-soup-cashew-coriander-salsa"
+                                               style="color:white; font-size:.1%">Vegan Gluten-Free<img
+                                                    src="images/food/autumn-winter/currySoup.png"
+                                                    alt="curriedSoup"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li><a href="https://www.bbcgoodfood.com/recipes/lentil-cauliflower-curry"
+                                               style="color:white; font-size:.01%">Vegan Gluten-Free<img
+                                                src="images/food/autumn-winter/lentilCurry.png"
+                                                alt="lentilCurry"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li><a href="https://www.bbcgoodfood.com/recipes/boxing-day-sprout-pad-thai"
+                                               style="color:white; font-size:.1%">Vegan<img
+                                                src="images/food/autumn-winter/padThai.png"
+                                                alt="padThai"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.bbcgoodfood.com/recipes/spicy-roasted-parsnip-soup"
+                                               style="color:white; font-size:.1%">Vegan Gluten-Free<img
+                                                    src="images/food/autumn-winter/parsnipSoup.png"
+                                                    alt="veggieSpring"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.bbcgoodfood.com/recipes/roasted-winter-vegetables-smoked-mayo"
+                                               style="color:white; font-size:.1%">Vegetarian Gluten-Free<img
+                                                    src="images/food/autumn-winter/roastedVeg.png"
+                                                    alt="roastedVeg"></a></li>
+                                    </div>
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.wwf.org.uk/recipes/quorn-toad-in-the-hole"
+                                               style="color:white; font-size:.1%">Vegetarian<img
+                                                    src="images/food/autumn-winter/toadInHole.png"
+                                                    alt="toadInHole"></a></li>
+                                    </div>
 
-                                <div class="item">
-                                    <li>
-                                        <a href="https://www.bbcgoodfood.com/recipes/winter-vegetable-curry-fruity-raita" style="color:white; font-size:.1%">Vegetarian<img
-                                                src="images/food/autumn-winter/winterCurry.png"
-                                                alt="vegCurry"></a></li>
-                                </div>
+                                    <div class="item">
+                                        <li>
+                                            <a href="https://www.bbcgoodfood.com/recipes/winter-vegetable-curry-fruity-raita"
+                                               style="color:white; font-size:.1%">Vegetarian<img
+                                                    src="images/food/autumn-winter/winterCurry.png"
+                                                    alt="vegCurry"></a></li>
+                                    </div>
 
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    <a href="#">SUSTAIN</a> What change will you make?
+                </p>
+            </div>
+        </footer>
     </div>
-
-
-
-    <footer class="footer">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul>
-                    <li>
-                        <a href="#">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Contact
-                        </a>
-                    </li>
-
-                </ul>
-            </nav>
-            <p class="copyright pull-right">
-                &copy;
-                <script>document.write(new Date().getFullYear())</script>
-                <a href="#">SUSTAIN</a> What change will you make?
-            </p>
-        </div>
-    </footer>
-
-</div>
 </div>
 </body>
-
-<!--   Core JS Files   -->
-<script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="assets/js/chartist.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="assets/js/bootstrap-notify.js"></script>
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        demo.initChartist();
-
-    });
-</script>
 
 </html>

@@ -93,8 +93,6 @@ input[type=text], input[type=number], #select, .activity{
     color: grey;
     font-family: Helvetica, sans-serif;
     text-align: left;
-    /*box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25)*/
-    /*text-shadow: 2px 2px 5px black;*/
 }
 /**/
 
@@ -168,7 +166,7 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     transition: all .4s ease-in-out;
     color: #727171;
 }
-.btn.btn-arrows.active{
+.btn.btn-arrows.active {
     background-color: #ffffff;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
@@ -176,13 +174,6 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     transition: all .4s ease-in-out;
     color: #727171;
 }
-
-/*.btn-group-arrow{*/
-/*    margin-bottom: -1.5%;*/
-/*    !*width:110%;*!*/
-/*    margin-top: 1%;*/
-/*    margin-left: 15%;*/
-/*}*/
 
 .btn-group{
     /*margin-left: 34%;*/
@@ -196,15 +187,10 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     color: #fff;
     border: none;
     border-radius: 40px;
-    /*margin-left:40%;*/
     position: relative;
     font-weight: bold;
     padding-top:1.5%;
     padding-bottom:1.5%;
-    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
-    /*box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
-    /*font-size: 16px;*/
-    /*font-weight: 600;*/
 }
 
 .btn-primary.active{

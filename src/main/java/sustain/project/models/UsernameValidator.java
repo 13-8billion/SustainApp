@@ -1,7 +1,8 @@
 package sustain.project.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Configurable;
+import sustain.project.controllers.AppController;
 import sustain.project.interfaces.UsernameConstraint;
 import sustain.project.service.UserService;
 
@@ -9,11 +10,10 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
 
-@Component
+
+@Configurable
 public class UsernameValidator implements ConstraintValidator<UsernameConstraint, String> {
 
-
-//    private UserService service;
     @Autowired
     private UserService service;
 
@@ -26,7 +26,6 @@ public class UsernameValidator implements ConstraintValidator<UsernameConstraint
                            ConstraintValidatorContext cxt) {
 
         ArrayList<String> names = new ArrayList<>();
-//        List<User> users = service.listAll();
 
         for (int i = 0; i < service.listAll().size(); i++) {
             names.add(service.listAll().get(i).getUsername());

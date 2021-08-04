@@ -3,17 +3,12 @@
 <head>
     <title>Sign Up</title>
     <meta charset="UTF-8"/>
-    <link rel="icon" type="image/png" href="images/logoIcon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="css/external.css" th:href="@{../css/external.css}" rel="stylesheet"/>
-    <!--link to external .css stylesheet-->
-
-    <script src="js/mainAmyPercival.js"></script><!--link external JavaScript-->
+    <link rel="icon" type="image/png" href="images/logoIcon.png">
+    <link th:href="@{../css/external.css}" rel="stylesheet"/>
 
     <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script><!-- jquery for alerts plugin-->
 
-    <script src="jQueryPlugin/jquery.alerts.js"></script><!-- jquery alerts plugin1-->
-    <link href="jQueryPlugin/jquery.alerts.css" rel="stylesheet"/><!-- js alert plugin1 .css stylesheet-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
 </head>
@@ -40,14 +35,21 @@
                                            th:field="*{email}"/></td>
                             </tr>
                             <tr>
-                                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="inputValidation"></td>
+                                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                    class="inputValidation"></td>
+                                <td><p th:text="${eErr}" class="inputValidation"></p></td>
+
                             </tr>
                             <tr>
                                 <td><input type="text" name="username" size="20" placeholder="Username"
                                            th:field="*{username}" class="form-control" id="inputdefault1"/></td>
                             </tr>
                             <tr>
-                                <td th:if="${#fields.hasErrors('username')}" class="inputValidation" th:errors="*{username}">Username Error</td>
+                                <td th:if="${#fields.hasErrors('username')}" class="inputValidation"
+                                    th:errors="*{username}">
+                                </td>
+                                <td> <p th:text="${uErr}" class="inputValidation"></p></td>
+
                             </tr>
                             <tr>
                                 <td><select name="country" th:field="*{location}" class="form-select" id="select">
@@ -789,11 +791,13 @@
                                 </select></td>
                             </tr>
                             <tr>
-                                <td><input type="password" name="password" size="30" placeholder="Password" th:field="*{password}" class="form-control"  id="inputdefault2"/>
+                                <td><input type="password" name="password" size="30" placeholder="Password"
+                                           th:field="*{password}" class="form-control" id="inputdefault2"/>
                                     <!-- 'size' changes length of input box--></td>
                             </tr>
                             <tr>
-                                <td th:if="${#fields.hasErrors('password')}" class="inputValidation" th:errors="*{password}"></td>
+                                <td th:if="${#fields.hasErrors('password')}" class="inputValidation"
+                                    th:errors="*{password}"></td>
                             </tr>
                             <tr>
                                 <!-- submit button -->
@@ -802,11 +806,9 @@
                                         CREATE ACCOUNT
                                     </button>
                                     <p id="copy2">&copy; 2020-2021</p>
-                                </td><!--   <td>
-                    <a href="addFoodPage"><input id="addFoodPage" type="button" name="addFoodPage" value="ADD FOOD" /></a>
-                  </td> -->
+                                </td>
                             </tr>
-                        </table><!--form ends-->
+                        </table>
                     </div>
                 </form>
             </div>
