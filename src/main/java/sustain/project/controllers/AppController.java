@@ -207,16 +207,18 @@ public class AppController {
 
             return "signUp";
 
-        } if (names.contains(username)) {
+        }
+        if (names.contains(username)) {
             uErr = "*Username already exists!";
             model.addAttribute("uErr", uErr);
             return "signUp";
 
-        } if (emails.contains(email)) {
+        }
+        if (emails.contains(email)) {
 
-                eErr = "*Email already exists!";
-                model.addAttribute("eErr", eErr);
-                return "signUp";
+            eErr = "*Email already exists!";
+            model.addAttribute("eErr", eErr);
+            return "signUp";
 
         } else {
             service.save(user);
@@ -250,13 +252,26 @@ public class AppController {
             }
         }
 
-        foodObject.setRes(res);
-        foodObject.setUsername(username);
-        auf.save(foodObject);
-        model.addAttribute("res", res);
-        model.addAttribute("foodName", foodN);
-        model.addAttribute("grams", g);
-        return new ModelAndView("addFood");
+        if (foodN.equals("")) {
+            String fErr = "*food/drink required!";
+            model.addAttribute("fErr", fErr);
+            return new ModelAndView("addFood");
+        }
+
+        if (g == 0.0 || String.valueOf(g).equals(" ")) {
+            String gErr = "*quantity required!";
+            model.addAttribute("gErr", gErr);
+            return new ModelAndView("addFood");
+
+        } else {
+            foodObject.setRes(res);
+            foodObject.setUsername(username);
+            auf.save(foodObject);
+            model.addAttribute("res", "CO₂ emissions: "+res+"kg");
+            model.addAttribute("foodName", foodN);
+            model.addAttribute("grams", g);
+            return new ModelAndView("addFood");
+        }
     }
 
     @PostMapping(value = "/calcFood", params = "calc")
@@ -284,7 +299,7 @@ public class AppController {
         foodTotalObject.setDate(date);
         fts.save(foodTotalObject);
 
-        model.addAttribute("total", total);
+        model.addAttribute("total", "Total CO₂ emissions: "+total+"kg");
         // have to add above /calcFood method attributes here too
         // and in method parameters else form submit won't work
         model.addAttribute("foodName", foodN);
@@ -321,14 +336,28 @@ public class AppController {
             }
         }
 
-        transObject.setRes(res);
-        transObject.setUsername(userDetails.returnUsername());
-        ats.save(transObject);
-        model.addAttribute("res", res);
-        model.addAttribute("type", type);
-        model.addAttribute("distance", d);
+        if (type.equals("")) {
+            String Err = "*vehicle required!";
+            model.addAttribute("Err", Err);
+            return new ModelAndView("addTransport");
+        }
 
-        return new ModelAndView("addTransport");
+        if (d == 0.0 || String.valueOf(d).equals(" ")) {
+            String tErr = "*distance required!";
+            model.addAttribute("tErr", tErr);
+            return new ModelAndView("addTransport");
+
+        } else {
+
+            transObject.setRes(res);
+            transObject.setUsername(userDetails.returnUsername());
+            ats.save(transObject);
+            model.addAttribute("res", "CO₂ emissions: " +res + "kg");
+            model.addAttribute("type", type);
+            model.addAttribute("distance", d);
+
+            return new ModelAndView("addTransport");
+        }
     }
 
     @PostMapping(value = "/calcTransport", params = "calc")
@@ -356,7 +385,7 @@ public class AppController {
         transTotalObject.setDate(date);
         tts.save(transTotalObject);
 
-        model.addAttribute("total", total);
+        model.addAttribute("total", "Total CO₂ emissions: " +total+"kg");
         // have to add above /calcFood method attributes here too
         // and in method parameters else form submit won't work
         model.addAttribute("type", type);

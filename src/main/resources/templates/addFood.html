@@ -131,7 +131,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="card" style="margin:1% 0 4% 0; background-color:white;">
-                                                <div class="btn-group" style="margin: auto; width:109%;">
+                                                <div class="btn-group" style="margin: auto; width:107%;">
                                                     <a href="addFoodView" class="btn btn-arrows active">FOOD</a>
                                                     <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
                                                     <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
@@ -210,8 +210,10 @@
                                                                         <option value="tomatoes">Tomatoes</option>
                                                                         <option value="wine">Wine</option>
                                                                     </select>
-                                                                    <!-- 'size' changes length of input box-->
                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <p th:text="${fErr}" class="inputValidation" style="text-align: right;"></p></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
@@ -221,6 +223,9 @@
                                                                            th:field="*{grams}"
                                                                            th:object="${foodObject}">
                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                            <td> <p th:text="${gErr}" class="inputValidation" style="text-align: right;"></p></td>
                                                             </tr>
                                                             <tr>
                                                                 <!-- submit button -->
@@ -235,8 +240,6 @@
                                                             <tr>
                                                                 <td>
                                                                     <div>
-                                                                        <p style="color:grey; margin-left: 35%; ">CO₂
-                                                                            (kg):</p>
                                                                         <div class="res">
                                                                             <p style="font-style: italic;  font-weight: bold;"
                                                                                th:text="*{res}"></p>
@@ -251,16 +254,11 @@
                                                                            name="calc"
                                                                            value="CALCULATE TOTAL"/></td>
                                                             </tr>
-
                                                             <tr>
                                                                 <td>
                                                                     <div class="total">
-                                                                        <!--                                                        margin-left: 30%; padding-bottom: 5%; padding-top: 5%;-->
-                                                                        <p>Total CO₂ (kg):</p>
+                                                                    <p th:text="*{total}" style="font-weight: bold; font-size:100%;"></p>
                                                                     </div>
-                                                                    <p style="font-style: italic; color: orangered;  font-weight: bold; margin-left: 67%; margin-top: -11%; margin-bottom: -11%;"
-                                                                       th:text="*{total}"></p>
-
                                                                     <br>
                                                                     <br>
                                                                 </td>

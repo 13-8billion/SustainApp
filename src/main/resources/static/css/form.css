@@ -1,16 +1,17 @@
 
 .calcTable {
-    width: 170%;
+    width: 185%;
+    max-width: 185%;
 }
 
 .avatar{
     width: 100px;
     height: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     border: 3px solid #FFFFFF;
 }
 
-/* main form stylings */
+
 .calcForm{
     font-family: Helvetica, sans-serif;
     display: inline-block;
@@ -29,7 +30,6 @@
     font-size: 120%;
     color: grey;
     text-align: center;
-    padding-left:6%
 }
 
 #h1{
@@ -58,24 +58,33 @@
 .res{
     text-align: center;
     color: orangered;
-    margin-left:25%;
+    margin-left:5%;
     margin-top:-11.5%;
+    max-width: 100%;
 }
 
 .resTran{
 
     text-align: center;
     color: orangered;
-    margin-left:25%;
+    margin-left:5%;
     margin-top:-10.5%;
+    max-width: 100%;
 }
 
 .total{
     text-align: center;
-    font-size: 1%;
-    color:grey;
-    margin-left:-6%;
-    margin-top:7%;
+    font-style: italic;
+    color: orangered;
+    margin-top: 5%;
+    margin-bottom: -11%;
+    max-width: 100%;
+}
+
+.inputValidation{
+    font-size: 90%;
+    color: red;
+    /*font-weight:bold;*/
 }
 
 
@@ -93,6 +102,8 @@ input[type=text], input[type=number], #select, .activity{
     color: grey;
     font-family: Helvetica, sans-serif;
     text-align: left;
+    max-width: 100%;
+
 }
 /**/
 
@@ -123,6 +134,7 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     font-weight: bold;
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25);
     font-size: 16px;
+    max-width: 100%;
 }
 .quantity:hover, .totalBtn:hover {
     background-color: #01d8ec;
@@ -147,6 +159,7 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     font-weight: bold;
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25);
     font-size: 16px;
+    max-width: 100%;
 }
 
 .btn.btn-arrows{
@@ -197,7 +210,7 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     background-image: linear-gradient(to bottom right, #f60081, #87009DFF);
     border: none;
     color: white;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 #logout{

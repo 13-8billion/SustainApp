@@ -1,6 +1,8 @@
 package sustain.project.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity // so java knows it's an entity(obvs)
