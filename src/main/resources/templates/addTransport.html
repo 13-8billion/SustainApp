@@ -132,7 +132,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="card" style="margin:1% 0 4% 0; background-color:white;">
-                                                <div class="btn-group" style="margin: auto; width:109.5%;">
+                                                <div class="btn-group" style="margin: auto; width:107%;">
                                                     <a href="addFoodView" class="btn btn-arrows">FOOD</a>
                                                     <a href="addTransportView"
                                                        class="btn btn-arrows active">TRANSPORT</a>
@@ -149,7 +149,7 @@
                                                 <div style="display:inline-block; margin-left:5%">
                                                     <form action="#" th:action="@{/calcTransport}" method="post">
                                                         <!-- call validate function in 'form' tag when user clicks submit button-->
-                                                        <table style="width: 120%">
+                                                        <table style="width: 130%;">
                                                             <tr>
                                                                 <td>
                                                                     <h3 id="tableH2"> Select a vehicle</h3>
@@ -280,6 +280,9 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td> <p th:text="${Err}" class="inputValidation" style="text-align: right;"></p></td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td>
                                                                     <h3 id="tableH3"> Enter distance travelled in
                                                                         km</h3>
@@ -290,6 +293,9 @@
                                                                            th:field="*{distance}"
                                                                            th:object="${transObject}">
                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <p th:text="${tErr}" class="inputValidation" style="text-align: right;"></p></td>
                                                             </tr>
                                                             <tr>
                                                                 <!-- submit button -->
@@ -303,8 +309,6 @@
                                                             <tr>
                                                                 <td>
                                                                     <div>
-                                                                        <p style="color:grey; margin-left: 35%; ">CO₂
-                                                                            (kg):</p>
                                                                         <div class="resTran">
                                                                             <p style="font-style: italic; font-weight: bold"
                                                                                th:text="*{res}"></p>
@@ -325,10 +329,9 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="total">
-                                                                        <p>Total CO₂ (kg):</p>
+                                                                        <p style="font-weight: bold;"
+                                                                           th:text="*{total}"></p>
                                                                     </div>
-                                                                    <p style="font-style: italic; color: orangered;  font-weight: bold; margin-left: 67%; margin-top: -11%; margin-bottom: -11%;"
-                                                                       th:text="*{total}"></p>
 
                                                                     <br>
                                                                     <br>

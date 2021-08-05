@@ -123,12 +123,12 @@
                     <div class="col-sm-4">
                         <div class="card" style="margin-top:-6%; margin-left:-3%;">
 
-                            <div id="main2"
-                                 style="height: 500px; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
+                            <div id="main0"
+                                 style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
 
                             <script type="text/javascript">
 
-                                var chartDom = document.getElementById('main2');
+                                var chartDom = document.getElementById('main0');
                                 var myChart = echarts.init(chartDom);
                                 var option;
 
@@ -137,7 +137,7 @@
 
                                     legend: {
                                         top: 'bottom',
-                                        textStyle: {color: 'white'},
+                                        textStyle: {fontSize: 12, color: 'white'},
                                         // orient: 'horizontal',
                                         // left: 'center',
                                         data: ["Food", "Transport", "House", "Flight"],
@@ -147,7 +147,7 @@
                                         left: '3%',
                                         itemGap: 5,
                                         text: 'CO₂ Statistics',
-                                        subtext: new Date().getFullYear() + ' Emissions By Source (kg)',
+                                        subtext: new Date().getFullYear() + ' - Emissions By Source',
                                         textStyle: {fontSize: 22, fontWeight: 'lighter', color: 'white'},
                                         subtextStyle: {fontSize: 15, align: 'center'},
                                     },
@@ -189,10 +189,10 @@
                     </div>
 
                     <div class="col-md-8">
-                        <div class="card" style="margin-top: -3%">
+                        <div class="card" style="margin-top:-3%;">
 
                             <div id="main"
-                                 style="height: 500px; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
+                                 style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
 
                             <script type="text/javascript">
 
@@ -205,7 +205,7 @@
                                             left: '2.3%',
                                             itemGap: 4,
                                             text: 'Cumulative CO₂ Emissions',
-                                            subtext: new Date().getFullYear() + ' Emissions By Source (kg)',
+                                            subtext: new Date().getFullYear() + ' - Emissions By Source',
                                             textStyle: {fontSize: 22, fontWeight: 'lighter', color: 'white'},
                                             subtextStyle: {fontSize: 15, align: 'center'},
                                         },
@@ -225,9 +225,9 @@
                                         },
                                         grid: {
 
-                                            left: '3%',
-                                            right: '4%',
-                                            bottom: '11%',
+                                            left: '6%',
+                                            right: '6%',
+                                            bottom: '8%',
                                             top: '17%',
                                             containLabel: true
                                         },
@@ -248,13 +248,19 @@
                                             boundaryGap: false,
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
+
                                         },
 
                                         yAxis: {
                                             type: 'value',
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                            splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                            splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                            name:"CO₂ (kg)",
+                                            nameLocation:'middle',
+                                            nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                            align: 'left',
+                                            nameGap: 35
                                         },
                                         series: [{
                                             name: 'Food',

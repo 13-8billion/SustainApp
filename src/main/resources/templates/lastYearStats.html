@@ -80,9 +80,9 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
                         <div class="btn-group">
-                            <a href="statistics" class="btn btn-primary">LAST WEEK</a>
-                            <a href="lastMonthStats" class="btn btn-primary">LAST MONTH</a>
-                            <a href="lastYearStats" class="btn btn-primary active">LAST YEAR</a>
+                            <a href="statistics" class="btn btn-primary">THIS WEEK</a>
+                            <a href="lastMonthStats" class="btn btn-primary">THIS MONTH</a>
+                            <a href="lastYearStats" class="btn btn-primary active">THIS YEAR</a>
                         </div></a>
                 </div>
                 <div class="collapse navbar-collapse">
@@ -123,7 +123,7 @@
                         <div class="card" style="margin-top:-6%; margin-left:-3%;">
 
                             <div id="main0"
-                                 style="height: 500px; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
+                                 style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
 
                             <script type="text/javascript">
 
@@ -146,7 +146,7 @@
                                         left: '3%',
                                         itemGap: 5,
                                         text: 'CO₂ Statistics',
-                                        subtext: new Date().getFullYear() + ' Emissions By Source (kg)',
+                                        subtext: new Date().getFullYear() + ' - Emissions By Source',
                                         textStyle: {fontSize: 22, fontWeight: 'lighter', color: 'white'},
                                         subtextStyle: {fontSize: 15, align: 'center'},
                                     },
@@ -191,7 +191,7 @@
                         <div class="card" style="margin-top:-3%;">
 
                             <div id="main"
-                                 style="height: 500px; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
+                                 style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
 
                             <script type="text/javascript">
 
@@ -204,7 +204,7 @@
                                             left: '2.3%',
                                             itemGap: 4,
                                             text: 'Cumulative CO₂ Emissions',
-                                            subtext: new Date().getFullYear() + ' Emissions By Source (kg)',
+                                            subtext: new Date().getFullYear() + ' - Emissions By Source',
                                             textStyle: {fontSize: 22, fontWeight: 'lighter', color: 'white'},
                                             subtextStyle: {fontSize: 15, align: 'center'},
                                         },
@@ -224,9 +224,9 @@
                                         },
                                         grid: {
 
-                                            left: '3%',
-                                            right: '4%',
-                                            bottom: '11%',
+                                            left: '6%',
+                                            right: '6%',
+                                            bottom: '8%',
                                             top: '17%',
                                             containLabel: true
                                         },
@@ -247,13 +247,19 @@
                                             boundaryGap: false,
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
+
                                         },
 
                                         yAxis: {
                                             type: 'value',
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                            splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                            splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                            name:"CO₂ (kg)",
+                                            nameLocation:'middle',
+                                            nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                            align: 'left',
+                                            nameGap: 35
                                         },
                                         series: [{
                                             name: 'Food',
@@ -365,10 +371,10 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card">
+                            <div class="card" style="margin-left:-1%">
 
                                 <div id="main14"
-                                     style="height: 400px;padding: 30px;"></div>
+                                     style="height: 400px;padding: 20px;"></div>
                                 <script type="text/javascript">
 
                                     var myChart = echarts.init(document.getElementById('main14'));
@@ -378,8 +384,8 @@
                                         title: {
                                             left: '2.3%',
                                             itemGap: 4,
-                                            text: 'Cumulative CO₂ Emissions',
-                                            subtext: new Date().getFullYear() + ' Food Emissions (kg)',
+                                            text: 'Food CO₂ Emissions',
+                                            subtext: new Date().getFullYear(),
                                             textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                             subtextStyle: {fontSize: 15, align: 'center'},
                                         },
@@ -396,9 +402,9 @@
                                         },
                                         grid: {
                                             left: '3%',
-                                            right: '4%',
-                                            bottom: '3%',
-                                            top: '25%',
+                                            right: '3%',
+                                            bottom: '9%',
+                                            top: '20%',
                                             containLabel: true
                                         },
                                         legend: {
@@ -415,11 +421,21 @@
                                             boundaryGap: false,
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                            name: "Month",
+                                            nameLocation:'middle',
+                                            nameTextStyle:{fontSize: 14},
+                                            align: 'middle',
+                                            nameGap: 30
                                         },
                                         yAxis: {
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                            splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                            splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                            name:"CO₂ (kg)",
+                                            nameLocation:'middle',
+                                            nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                            align: 'left',
+                                            nameGap: 35
                                         },
                                         series: [{
                                             name: 'Food',
@@ -457,9 +473,9 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="card">
+                                <div class="card" style="margin-left:-1%">
                                     <div id="main2"
-                                         style="height: 400px; padding: 30px;"></div>
+                                         style="height: 400px; padding: 20px;"></div>
                                     <script type="text/javascript">
 
                                         var myChart = echarts.init(document.getElementById('main2'));
@@ -469,8 +485,8 @@
                                             title: {
                                                 left: '2.3%',
                                                 itemGap: 4,
-                                                text: 'Cumulative CO₂ Emissions',
-                                                subtext: new Date().getFullYear() + ' Transport Emissions (kg)',
+                                                text: 'Transport CO₂ Emissions',
+                                                subtext: new Date().getFullYear(),
                                                 textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                                 subtextStyle: {fontSize: 15, align: 'center'},
                                             },
@@ -488,8 +504,8 @@
                                             grid: {
                                                 left: '3%',
                                                 right: '4%',
-                                                bottom: '3%',
-                                                top: '25%',
+                                                bottom: '9%',
+                                                top: '20%',
                                                 containLabel: true
                                             },
                                             legend: {
@@ -506,11 +522,21 @@
                                                 boundaryGap: false,
                                                 axisLabel: {color: 'white'},
                                                 axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                name: "Month",
+                                                nameLocation:'middle',
+                                                nameTextStyle:{fontSize: 14},
+                                                align: 'middle',
+                                                nameGap: 30
                                             },
                                             yAxis: {
                                                 axisLabel: {color: 'white'},
                                                 axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                                splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                                splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                                name:"CO₂ (kg)",
+                                                nameLocation:'middle',
+                                                nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                                align: 'left',
+                                                nameGap: 35
                                             },
                                             series: [{
                                                 name: 'Transport',
@@ -549,10 +575,10 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="card">
+                                    <div class="card" style="margin-left:-1%">
 
                                         <div id="main3"
-                                             style="height: 400px;  padding: 30px;"></div>
+                                             style="height: 400px;  padding: 20px;"></div>
                                         <script type="text/javascript">
 
                                             var myChart = echarts.init(document.getElementById('main3'));
@@ -562,8 +588,8 @@
                                                 title: {
                                                     left: '2.3%',
                                                     itemGap: 4,
-                                                    text: 'Cumulative CO₂ Emissions',
-                                                    subtext: new Date().getFullYear() + ' House Energy Emissions (kg)',
+                                                    text: 'House CO₂ Emissions',
+                                                    subtext: new Date().getFullYear(),
                                                     textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                                     subtextStyle: {fontSize: 15, align: 'center'},
                                                 },
@@ -581,8 +607,8 @@
                                                 grid: {
                                                     left: '3%',
                                                     right: '4%',
-                                                    bottom: '3%',
-                                                    top: '25%',
+                                                    bottom: '9%',
+                                                    top: '20%',
                                                     containLabel: true
                                                 },
                                                 legend: {
@@ -599,11 +625,21 @@
                                                     boundaryGap: false,
                                                     axisLabel: {color: 'white'},
                                                     axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                    name: "Month",
+                                                    nameLocation:'middle',
+                                                    nameTextStyle:{fontSize: 14},
+                                                    align: 'middle',
+                                                    nameGap: 30
                                                 },
                                                 yAxis: {
                                                     axisLabel: {color: 'white'},
                                                     axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                                    splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                                    splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                                    name:"CO₂ (kg)",
+                                                    nameLocation:'middle',
+                                                    nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                                    align: 'left',
+                                                    nameGap: 35
                                                 },
                                                 series: [{
                                                     name: 'House Energy',
@@ -640,10 +676,10 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="card">
+                                        <div class="card" style="margin-left:-1%">
 
                                             <div id="main4"
-                                                 style="height: 400px; padding: 30px;"></div>
+                                                 style="height: 400px; padding: 20px;"></div>
                                             <script type="text/javascript">
 
                                                 var myChart = echarts.init(document.getElementById('main4'));
@@ -653,8 +689,8 @@
                                                     title: {
                                                         left: '2.3%',
                                                         itemGap: 4,
-                                                        text: 'Cumulative CO₂ Emissions',
-                                                        subtext: new Date().getFullYear() + ' Flight Emissions (kg)',
+                                                        text: 'Flight CO₂ Emissions',
+                                                        subtext: new Date().getFullYear(),
                                                         textStyle: {
                                                             fontSize: 20,
                                                             fontWeight: 'lighter',
@@ -676,8 +712,8 @@
                                                     grid: {
                                                         left: '3%',
                                                         right: '4%',
-                                                        bottom: '3%',
-                                                        top: '25%',
+                                                        bottom: '9%',
+                                                        top: '20%',
                                                         containLabel: true
                                                     },
                                                     legend: {
@@ -688,18 +724,25 @@
                                                         icon: 'roundRect',
                                                     },
                                                     xAxis: {
-                                                        // name: 'Month',
                                                         data: [[${dateFl}]],
-                                                        // type: 'time',
-                                                        // data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                                                         boundaryGap: false,
                                                         axisLabel: {color: 'white'},
                                                         axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                        name: "Month",
+                                                        nameLocation:'middle',
+                                                        nameTextStyle:{fontSize: 14},
+                                                        align: 'middle',
+                                                        nameGap: 30
                                                     },
                                                     yAxis: {
                                                         axisLabel: {color: 'white'},
                                                         axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                                        splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                                        splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                                        name:"CO₂ (kg)",
+                                                        nameLocation:'middle',
+                                                        nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                                        align: 'left',
+                                                        nameGap: 35
                                                     },
                                                     series: [{
 

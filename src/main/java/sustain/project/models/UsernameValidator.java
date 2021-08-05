@@ -2,7 +2,6 @@ package sustain.project.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
-import sustain.project.controllers.AppController;
 import sustain.project.interfaces.UsernameConstraint;
 import sustain.project.service.UserService;
 

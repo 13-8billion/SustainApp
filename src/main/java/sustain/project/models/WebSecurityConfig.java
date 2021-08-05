@@ -61,8 +61,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .antMatchers("/index").permitAll()
                 .antMatchers("/signUp").permitAll()
                 .antMatchers("/register_success").permitAll()
+                .antMatchers("/save").permitAll()
                 // must keep permitall() if reg user method is to work correctly...BUG
-                .anyRequest().permitAll()
+                .anyRequest().fullyAuthenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -71,7 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/index.done").deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/logout.done").deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
     }
 
