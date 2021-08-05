@@ -27,22 +27,33 @@
     text-align: center;
 }
 
-#h1{
+#h1, #h11{
     font-family: Helvetica, sans-serif;
-    font-size: 250%;
+    font-size: 180%;
     color: grey;
     text-align: center;
     margin-top:2%;
     /*font-weight: bold;*/
 }
 
-#h2, #h3  {
+#h2, #h3{
     font-family: Helvetica, sans-serif;
     font-size: 100%;
     color: grey;
     text-align: center;
     margin-top:1%;
     line-height: 150%;
+    /*font-weight: bold;*/
+}
+
+#h33  {
+    font-family: Helvetica, sans-serif;
+    font-size: 100%;
+    color: grey;
+    text-align: left;
+    margin-top:1%;
+    line-height: 150%;
+    margin-left:36%;
     /*font-weight: bold;*/
 }
 
@@ -162,6 +173,7 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     font-weight: bold;
     padding:1.5% 4.85% 1.5% 4.9%;
 }
+
 .btn-arrows:hover{
     background-color: #fffefe;
     moz-transition: all .4s ease-in-out;
@@ -180,28 +192,39 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
 }
 
 .btn-group{
-    /*margin-left: 34%;*/
-
+    margin-left: 27%;
+    margin-top: -7%;
+    padding: 0 0 0 0;
 }
 
-.btn-primary{
-    background-image: linear-gradient(to bottom right, #fa4ea5, #8a4b9f);
+.btn.btn-primary{
     /*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
     /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
-    color: #fff;
-    border: none;
+    color: #1ff394;
+    border: .5px solid #1ff394;
     border-radius: 40px;
-    position: relative;
+    /*position: fixed;*/
     font-weight: bold;
-    padding-top:1.5%;
-    padding-bottom:1.5%;
+    padding-top:1.2%;
+    padding-bottom:1.2%;
+    background: transparent;
 }
 
-.btn-primary.active{
-    background-image: linear-gradient(to bottom right, #f60081, #87009DFF);
-    border: none;
+.btn.btn-primary.active{
+    background-image: linear-gradient(to bottom right, #1ff394, #365eff);
+    border: .5px solid #1ff394;
     color: white;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover{
+    background-color: transparent;
+    color: #fff;
+    border: .5px solid #1ff394;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
 }
 
 #logout{
@@ -226,16 +249,6 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
 
 #login:hover, #signUpp:hover, .regButton:hover {
     background-image: linear-gradient(to bottom right, #365eff, #4dffa6);
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-}
-
-.btn-primary:hover{
-    background-image: linear-gradient(to bottom right, #87009DFF, #FF0087FF);
-    color: #fff;
-    border: none;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;

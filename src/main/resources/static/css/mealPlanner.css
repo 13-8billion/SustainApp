@@ -30,7 +30,7 @@
 }
 
 .container, #seasonalFood{
-    /*margin-left: -10%;*/
+    margin-left: -3%;
     display: grid;
     /*height: 700px;*/
     grid-template-columns: 440px 440px;

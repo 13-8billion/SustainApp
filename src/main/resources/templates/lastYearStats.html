@@ -79,11 +79,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
-                        <div class="btn-group">
-                            <a href="statistics" class="btn btn-primary">THIS WEEK</a>
-                            <a href="lastMonthStats" class="btn btn-primary">THIS MONTH</a>
-                            <a href="lastYearStats" class="btn btn-primary active">THIS YEAR</a>
-                        </div></a>
+                       </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <form th:action="@{/logout}" method="post">
@@ -115,12 +111,18 @@
             </div>
         </nav>
 
+        <div class="btn-group">
+            <a href="statistics" class="btn btn-primary">THIS WEEK</a>
+            <a href="lastMonthStats" class="btn btn-primary">THIS MONTH</a>
+            <a href="lastYearStats" class="btn btn-primary active">THIS YEAR</a>
+        </div>
+
 
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="card" style="margin-top:-6%; margin-left:-3%;">
+                        <div class="card" style="margin-top:-12.5%; margin-left:-3%;">
 
                             <div id="main0"
                                  style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
@@ -188,7 +190,7 @@
                     </div>
 
                     <div class="col-md-8">
-                        <div class="card" style="margin-top:-3%;">
+                        <div class="card" style="margin-top:-6%;">
 
                             <div id="main"
                                  style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
