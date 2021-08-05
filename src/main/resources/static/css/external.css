@@ -8,7 +8,7 @@ body {
     background-size: cover;
     opacity: 90%;
     min-height: 100vh; /* so background stays full size of viewport*/
-    background-image: url('../images/glacier.jpeg');
+    background-image: url('../images/glacier2.png');
     width: 100%;
 }
 
@@ -45,7 +45,7 @@ body {
     text-align: center;
     text-shadow: 2px 2px 2px 2px;
 /*   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
-    margin: 0 33% 3%;
+    margin: 1% 33% 3%;
     font-weight: bold;
 }
 #logoCaption2{
@@ -90,26 +90,42 @@ input[type=text], input[type=password], input[type=email], #select, #foodName{
     width: 110%;
     padding: 5%;
     margin: 3% 0;
-    border-radius: 50px;
-    box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, .1);
-    transition: 0.5s;
+    /*border-radius: 50px;*/
+    /*box-sizing: border-box;*/
+    /*border: 2px solid rgba(0, 0, 0, .1);*/
+    /*transition: 0.5s;*/
     outline: none; /*removes deault 'blue' outline when field is selected*/
-    background-color: rgba(255, 255, 255, .8); /* allows change in opacity without affected text */
-    color: grey;
+    /*background-color: rgba(255, 255, 255, .8); !* allows change in opacity without affected text *!*/
     font-family: Helvetica, sans-serif;
     text-align: left;
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75)
+    /*box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #454545;
+    /*background-color: #26263b;*/
+}
+
+::placeholder{
+    color: #454545;
+    opacity: 1;
 }
 /**/
 
 
-input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #select:focus {
-    border: 2px solid white;
-    background-color: rgba(255, 255, 255, 1);
-    color: grey;
-  
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #select:focus{
+    /*border: 2px solid white;*/
+    background: transparent;
+    /*background-color: rgba(255, 255, 255, 1);*/
+    color:#454545;
 }
+
+/*input:invalid {*/
+/*    background-color: #FFAAAA;*/
+/*}*/
+
+/*input:valid {*/
+/*    background-color: #AAFFAA;*/
+/*}*/
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -158,7 +174,6 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #se
 
 #login:hover, #signUpp:hover, .regButton:hover {
    background-image: linear-gradient(to bottom right, #365eff, #4dffa6);
-  
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
@@ -216,14 +231,14 @@ input[type=reset]:hover {
 
 
 #copy{
-    color: grey;
+    color: #454545;
     padding-top: 15%;
     padding-left: 10%;
 
 }
 
 #copy2{
-    color: grey;
+    color: #454545;
     padding-top: 13%;
     padding-left: 10%;
 

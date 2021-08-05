@@ -80,9 +80,9 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
                         <div class="btn-group">
-                            <a href="statistics" class="btn btn-primary active">LAST WEEK</a>
-                            <a href="lastMonthStats" class="btn btn-primary">LAST MONTH</a>
-                            <a href="lastYearStats" class="btn btn-primary">LAST YEAR</a>
+                            <a href="statistics" class="btn btn-primary active">THIS WEEK</a>
+                            <a href="lastMonthStats" class="btn btn-primary">THIS MONTH</a>
+                            <a href="lastYearStats" class="btn btn-primary">THIS YEAR</a>
                         </div>
 
                     </a>
@@ -127,7 +127,7 @@
                         <div class="card" style="margin-top:-6%; margin-left:-3%;">
 
                             <div id="main12"
-                                 style="height: 500px; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
+                                 style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
 
                             <script type="text/javascript">
 
@@ -150,7 +150,7 @@
                                         left: '3%',
                                         itemGap: 5,
                                         text: 'CO₂ Statistics',
-                                        subtext: 'Last Week Emissions By Source (kg)',
+                                        subtext: 'This Week',
                                         textStyle: {fontSize: 22, fontWeight: 'lighter', color: 'white'},
                                         subtextStyle: {fontSize: 15, align: 'center'},
                                     },
@@ -195,20 +195,20 @@
                         <div class="card" style="margin-top: -3%;">
 
                             <div id="main11"
-                                 style="height: 500px; padding-top: 30px; padding-right: 10px; padding-bottom: 20px;"></div>
+                                 style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
 
                             <script type="text/javascript">
 
                                 var myChart = echarts.init(document.getElementById('main11'));
-
+                                const today5 = new Date();
                                 var option = {
                                         color: ['#44e394', 'rgb(88,175,248)', 'rgba(255, 0, 135)', 'rgba(255, 191, 0)'],
                                         // backgroundColor: 'white',
                                         title: {
                                             left: '2.3%',
                                             itemGap: 4,
-                                            text: 'Cumulative CO₂ Emissions',
-                                            subtext: 'Last Week Emissions By Source (kg)',
+                                            text: 'Cumulative CO₂ Emissions By Source',
+                                            subtext: 'This Week',
                                             textStyle: {fontSize: 22, fontWeight: 'lighter', color: 'white'},
                                             subtextStyle: {fontSize: 15, align: 'center'},
                                         },
@@ -227,11 +227,10 @@
                                             }
                                         },
                                         grid: {
-
-                                            left: '3%',
-                                            right: '4%',
-                                            bottom: '11%',
-                                            top: '17%',
+                                            left: '6%',
+                                            right: '8%',
+                                            bottom: '15%',
+                                            top: '20%',
                                             containLabel: true
                                         },
                                         legend: {
@@ -251,13 +250,23 @@
                                             boundaryGap: false,
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                            name: today5.toLocaleString('default', { month: 'long' }) + " (Date of Week)",
+                                            nameLocation:'middle',
+                                            nameTextStyle:{fontSize: 14},
+                                            align: 'middle',
+                                            nameGap: 30
                                         },
 
                                         yAxis: {
                                             type: 'value',
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                            splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                            splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                            name:"CO₂ (kg)",
+                                            nameLocation:'middle',
+                                            nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                            align: 'left',
+                                            nameGap: 35
                                         },
                                         series: [{
                                             name: 'Food',
@@ -372,18 +381,18 @@
                             <div class="card" style="margin-left:-1%">
 
                                 <div id="main"
-                                     style="height: 400px; padding: 30px;"></div>
+                                     style="height: 400px; padding: 20px;"></div>
                                 <script type="text/javascript">
 
                                     var myChart = echarts.init(document.getElementById('main'));
-
+                                    const today4 = new Date();
                                     var option = {
                                         color: ['#44e394', '#44e394'],
                                         title: {
                                             left: '2.3%',
                                             itemGap: 4,
                                             text: 'Food CO₂ Emissions',
-                                            subtext: 'Last Week',
+                                            subtext: 'This Week',
                                             textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                             subtextStyle: {fontSize: 15, align: 'center'},
                                         },
@@ -400,9 +409,9 @@
                                         },
                                         grid: {
                                             left: '3%',
-                                            right: '4%',
-                                            bottom: '3%',
-                                            top: '25%',
+                                            right: '6%',
+                                            bottom: '10%',
+                                            top: '20%',
                                             containLabel: true
                                         },
                                         legend: {
@@ -419,11 +428,21 @@
                                             boundaryGap: false,
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                            name: today4.toLocaleString('default', { month: 'long' }) + " (Date of Week)",
+                                            nameLocation:'middle',
+                                            nameTextStyle:{fontSize: 14},
+                                            align: 'middle',
+                                            nameGap: 30
                                         },
                                         yAxis: {
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                            splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                            splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                            name:"CO₂ (kg)",
+                                            nameLocation:'middle',
+                                            nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                            align: 'left',
+                                            nameGap: 35
                                         },
                                         series: [{
                                             name: 'Food',
@@ -463,18 +482,18 @@
                             <div class="col-lg-12">
                                 <div class="card" style="margin-left:-1%">
                                     <div id="main2"
-                                         style="height: 400px;padding: 30px;"></div>
+                                         style="height: 400px;padding: 20px;"></div>
                                     <script type="text/javascript">
 
                                         var myChart = echarts.init(document.getElementById('main2'));
-
+                                        const today3 = new Date();
                                         var option = {
                                             color: ['rgba(116, 21, 219)', 'rgba(116, 21, 219)'],
                                             title: {
                                                 left: '2.3%',
                                                 itemGap: 4,
                                                 text: 'Transport CO₂ Emissions',
-                                                subtext: 'Last Week',
+                                                subtext: 'This Week',
                                                 textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                                 subtextStyle: {fontSize: 15, align: 'center'},
                                             },
@@ -491,9 +510,9 @@
                                             },
                                             grid: {
                                                 left: '3%',
-                                                right: '4%',
-                                                bottom: '3%',
-                                                top: '25%',
+                                                right: '6%',
+                                                bottom: '10%',
+                                                top: '20%',
                                                 containLabel: true
                                             },
                                             legend: {
@@ -506,15 +525,24 @@
                                             xAxis: {
                                                 type: 'category',
                                                 data: [[${datetw}]],
-                                                // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                                 boundaryGap: false,
                                                 axisLabel: {color: 'white'},
                                                 axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                name: today3.toLocaleString('default', { month: 'long' }) + " (Date of Week)",
+                                                nameLocation:'middle',
+                                                nameTextStyle:{fontSize: 14},
+                                                align: 'middle',
+                                                nameGap: 30
                                             },
                                             yAxis: {
                                                 axisLabel: {color: 'white'},
                                                 axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                                splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                                splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                                name:"CO₂ (kg)",
+                                                nameLocation:'middle',
+                                                nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                                align: 'left',
+                                                nameGap: 35
                                             },
                                             series: [{
                                                 name: 'Transport',
@@ -556,18 +584,18 @@
                                     <div class="card" style="margin-left:-1%">
 
                                         <div id="main3"
-                                             style="height: 400px; padding: 30px;"></div>
+                                             style="height: 400px; padding: 20px;"></div>
                                         <script type="text/javascript">
 
                                             var myChart = echarts.init(document.getElementById('main3'));
-
+                                            const today2 = new Date();
                                             var option = {
                                                 color: ['rgba(255, 0, 135)', 'rgba(255, 0, 135)'],
                                                 title: {
                                                     left: '2.3%',
                                                     itemGap: 4,
                                                     text: 'House CO₂ Emissions',
-                                                    subtext: 'Last Week',
+                                                    subtext: 'This Week',
                                                     textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                                     subtextStyle: {fontSize: 15, align: 'center'},
                                                 },
@@ -584,9 +612,9 @@
                                                 },
                                                 grid: {
                                                     left: '3%',
-                                                    right: '4%',
-                                                    bottom: '3%',
-                                                    top: '25%',
+                                                    right: '6%',
+                                                    bottom: '15%',
+                                                    top: '20%',
                                                     containLabel: true
                                                 },
                                                 legend: {
@@ -603,10 +631,21 @@
                                                     boundaryGap: false,
                                                     axisLabel: {color: 'white'},
                                                     axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                    name: today2.toLocaleString('default', { month: 'long' }) + " (Date of Week)",
+                                                    nameLocation:'middle',
+                                                    nameTextStyle:{fontSize: 14},
+                                                    align: 'middle',
+                                                    nameGap: 30
+
                                                 },
                                                 yAxis: { axisLabel: {color: 'white'},
                                                     axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                                    splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                                    splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                                    name:"CO₂ (kg)",
+                                                    nameLocation:'middle',
+                                                    nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                                    align: 'left',
+                                                    nameGap: 35
                                                 },
                                                 series: [{
                                                     name: 'House Energy',
@@ -639,25 +678,27 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="content">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="card" style="margin-left:-1%">
+                                        <div class="card" style="margin-left:-1%;">
 
                                             <div id="main4"
-                                                 style="height: 400px; padding: 30px;"></div>
+                                                 style="height: 400px; padding: 20px;"></div>
                                             <script type="text/javascript">
 
                                                 var myChart = echarts.init(document.getElementById('main4'));
-
+                                                const today = new Date();
                                                 var option = {
                                                     color: ['rgba(255, 191, 0)', 'rgba(255, 191, 0)'],
                                                     title: {
                                                         left: '2.3%',
                                                         itemGap: 4,
                                                         text: 'Flight CO₂ Emissions',
-                                                        subtext: 'Last Week',
+                                                        subtext: 'This Week',
                                                         textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
                                                         subtextStyle: {fontSize: 15, align: 'center'},
                                                     },
@@ -674,9 +715,9 @@
                                                     },
                                                     grid: {
                                                         left: '3%',
-                                                        right: '4%',
-                                                        bottom: '3%',
-                                                        top: '25%',
+                                                        right: '6%',
+                                                        bottom: '10%',
+                                                        top: '20%',
                                                         containLabel: true
                                                     },
                                                     legend: {
@@ -685,29 +726,33 @@
                                                         left: 'center',
                                                         data: ["Flight"],
                                                         icon: 'roundRect',
-
-
                                                     },
                                                     xAxis: {
-                                                        // name: 'Month',
                                                         data: [[${dateflw}]],
-                                                        // type: 'time',
-                                                        // data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                                                         boundaryGap: false,
                                                         axisLabel: {color: 'white'},
                                                         axisLine: {lineStyle: {color: '#7f7e7e'}},
+                                                        name: today.toLocaleString('default', { month: 'long' }) + " (Date of Week)",
+                                                        nameLocation:'middle',
+                                                        nameTextStyle:{fontSize: 14},
+                                                        align: 'middle',
+                                                        nameGap: 30
                                                     },
                                                     yAxis: {
                                                         axisLabel: {color: 'white'},
                                                         axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                                        splitLine: {lineStyle: {color: '#4c4b4b'}}
+                                                        splitLine: {lineStyle: {color: '#4c4b4b'}},
+                                                        name:"CO₂ (kg)",
+                                                        nameLocation:'middle',
+                                                        nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                                        align: 'left',
+                                                        nameGap: 35
                                                     },
                                                     series: [{
 
                                                         name: 'Flight',
                                                         type: 'line',
                                                         smooth: 'true',
-                                                        // markLine: {
                                                         itemStyle: {
                                                             normal: {
                                                                 areaStyle: {
@@ -718,7 +763,6 @@
                                                                         offset: 1,
                                                                         color: 'rgba(224, 62, 76)'
                                                                     }])
-                                                                    // }
                                                                 }
                                                             }
                                                         },
