@@ -62,7 +62,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .antMatchers("/signUp").permitAll()
                 .antMatchers("/register_success").permitAll()
                 .antMatchers("/save").permitAll()
-                // must keep permitall() if reg user method is to work correctly...BUG
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .formLogin()

@@ -8,7 +8,15 @@ body {
     background-size: cover;
     opacity: 90%;
     min-height: 100vh; /* so background stays full size of viewport*/
-    background-image: url('../images/glacier2.png');
+    background-image: url('../images/glacier.jpeg');
+    width: 100%;
+}
+
+.backgroundSignUp {
+    background-size: cover;
+    opacity: 90%;
+    min-height: 100vh; /* so background stays full size of viewport*/
+    background-image: url('../images/lake.jpeg');
     width: 100%;
 }
 
@@ -23,15 +31,14 @@ body {
 }
 
 .inputValidation{
-    font-size: 90%;
+    display: inline-block;
+    font-size: 100%;
     color: red;
+    font-family: Helvetica, sans-serif;
+    /*background: rgb(243, 119, 110);*/
+    max-width:43vh;
+    background-color: rgba(255, 255, 255, .6);
     /*font-weight:bold;*/
-}
-
-#loginError{
-    margin-left: 40%;
-    margin-right: 40%;
-    padding: 0.3%;
 }
 
 #logo2 {
@@ -44,8 +51,7 @@ body {
     color: #4dffa6;
     text-align: center;
     text-shadow: 2px 2px 2px 2px;
-/*   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
-    margin: 1% 33% 3%;
+    margin: 1% 0 3%;
     font-weight: bold;
 }
 #logoCaption2{
@@ -54,17 +60,8 @@ body {
     color: #4dffa6;
     text-align: center;
     text-shadow: 2px 2px 2px 2px;
-    /*   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
     margin: 0 33%;
     font-weight: bold;
-}
-
-
-/* main form stylings */
-.form {
-      font-family: Helvetica, sans-serif;
-      display: inline-block;
-      padding-left: 2%;
 }
 
 /* first header in form */
@@ -80,29 +77,31 @@ body {
 #formP3{
     font-size: 110%;
     color: white;
-    margin: 4% 0 0 0;
     text-shadow: 2px 2px 3px black;
-    padding-left: 10%;
     font-family: Helvetica, sans-serif;
 }
 /* form stylings for input of type text boxes*/
-input[type=text], input[type=password], input[type=email], #select, #foodName{
-    width: 110%;
-    padding: 5%;
-    margin: 3% 0;
-    /*border-radius: 50px;*/
-    /*box-sizing: border-box;*/
-    /*border: 2px solid rgba(0, 0, 0, .1);*/
-    /*transition: 0.5s;*/
+input[type=text], input[type=password], input[type=email], select, #foodName{
+    min-height: 6vh;
+    min-width:43vh;
+    padding: 1%;
+    margin: 1% 0;
+    border-radius: 50px;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, .1);
+    transition: 0.5s;
     outline: none; /*removes deault 'blue' outline when field is selected*/
-    /*background-color: rgba(255, 255, 255, .8); !* allows change in opacity without affected text *!*/
+    background-color: rgba(255, 255, 255, .8); /* allows change in opacity without affected text */
     font-family: Helvetica, sans-serif;
     text-align: left;
-    /*box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid #454545;
-    /*background-color: #26263b;*/
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    display: inline-block;
+}
+
+select{
+    max-width: 43vh;
+    min-height: 6vh;
+    margin: 1%;
 }
 
 ::placeholder{
@@ -111,11 +110,9 @@ input[type=text], input[type=password], input[type=email], #select, #foodName{
 }
 /**/
 
-
-input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #select:focus{
-    /*border: 2px solid white;*/
-    background: transparent;
-    /*background-color: rgba(255, 255, 255, 1);*/
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, select:focus{
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 1);
     color:#454545;
 }
 
@@ -133,14 +130,14 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #se
 }
 
 
-#login, #signUpp, #addFoodItem, #foodTotal{
-    width: 110%;
+#login, #createAcc, #addFoodItem, #foodTotal{
+    min-width:43vh;
+    display: inline-block;
     background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
-/*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
-/*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
     color: #fff;
-    padding: 5%;
-    margin: 3% 0;
+    padding: 1%;
+    min-height: 6vh;
+    margin: 1% 0;
     border: none;
     border-radius: 40px;
     cursor: pointer;
@@ -154,25 +151,23 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #se
 #logout{
     margin-top: 50%;
 }
-.regButton{
-    background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
-    /*    background-color: #4dffa6; !*rgba(255, 255, 255, .8);*/
-    /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
-    color: #fff;
-    padding: 10%;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    outline: none;
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
-}
+/*.regButton{*/
+/*    background-image: linear-gradient(to bottom right, #4dffa6, #365eff);*/
+/*    !*    background-color: #4dffa6; !*rgba(255, 255, 255, .8);*!*/
+/*    !*    color: rgba(255, 255, 255, 1);*! !*rgba(55, 158, 190, 1);*!*/
+/*    color: #fff;*/
+/*    padding: 10%;*/
+/*    border: none;*/
+/*    border-radius: 40px;*/
+/*    cursor: pointer;*/
+/*    outline: none;*/
+/*    font-family: Helvetica, sans-serif;*/
+/*    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);*/
+/*    font-size: 15px;*/
+/*    font-weight: 600;*/
+/*}*/
 
-#login:hover, #signUpp:hover, .regButton:hover {
+#login:hover, #createAcc:hover, .regButton:hover {
    background-image: linear-gradient(to bottom right, #365eff, #4dffa6);
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
@@ -181,13 +176,12 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, #se
 }
 
 #signUp{
-      width: 110%;
- /*   background-image: linear-gradient(to bottom right, #4dffa6, #365eff);*/
-/*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
-    color: rgba(255, 255, 255, 1); /*rgba(55, 158, 190, 1);*/
+    min-height: 6vh;
+    background-color: white;
+    min-width:43vh;
     color: #4dffa6;
-    padding: 5%;
-    margin: 3% 0;
+    padding: 1%;
+    margin: 1% 0;
     border: none;
     border-radius: 40px;
     cursor: pointer;
@@ -232,17 +226,9 @@ input[type=reset]:hover {
 
 #copy{
     color: #454545;
-    padding-top: 15%;
-    padding-left: 10%;
-
+    font-family: Helvetica, sans-serif;
 }
 
-#copy2{
-    color: #454545;
-    padding-top: 13%;
-    padding-left: 10%;
-
-}
 
 #page-container {
     position: relative;
