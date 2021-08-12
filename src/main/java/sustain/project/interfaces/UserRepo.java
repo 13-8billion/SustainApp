@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Repository
-public interface UserRepo extends JpaRepository<User, String> {
+public interface UserRepo extends JpaRepository<User, Integer> {
     @Query("SELECT u FROM User u WHERE u.email = ?1")
     User findByEmail(String email);
 

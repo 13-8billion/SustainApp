@@ -13,11 +13,15 @@ import sustain.project.models.CustomUserDetails;
 import sustain.project.models.User;
 import sustain.project.interfaces.UserRepo;
 
+import java.util.List;
+
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepo userRepo;
+
+    private User user;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

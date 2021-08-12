@@ -117,12 +117,15 @@
             </div>
         </nav>
 
+        <button><a href="test">click me</a></button>
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="card" style="margin-top:-6%; margin-left:-3%;">
 
+<!--                            <div class="col-sm-12">-->
                             <div id="main0"
                                  style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
 
@@ -153,11 +156,11 @@
                                     },
                                     toolbox: {
                                         show: true,
+                                        right: 15,
+                                        itemGap:10,
                                         feature: {
-                                            mark: {show: true},
-                                            dataView: {show: true, readOnly: false},
-                                            restore: {show: true},
-                                            saveAsImage: {show: true}
+                                            saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                            dataView: {show: true, readOnly: true, title: 'View Data'}
                                         }
                                     },
 
@@ -196,11 +199,13 @@
 
                             <script type="text/javascript">
 
+
                                 var myChart = echarts.init(document.getElementById('main'));
 
                                 var option = {
                                         color: ['#44e394', 'rgb(88,175,248)', 'rgba(255, 0, 135)', 'rgba(255, 191, 0)'],
                                         // backgroundColor: 'white',
+
                                         title: {
                                             left: '2.3%',
                                             itemGap: 4,
@@ -216,11 +221,11 @@
 
                                         toolbox: {
                                             show: true,
+                                            right: 15,
+                                            itemGap:10,
                                             feature: {
-                                                mark: {show: true},
-                                                dataView: {show: true, readOnly: false},
-                                                restore: {show: true},
-                                                saveAsImage: {show: true}
+                                                saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                                dataView: {show: true, readOnly: true, title: 'View Data'}
                                             }
                                         },
                                         grid: {
@@ -360,6 +365,8 @@
                                     }
                                 ;
                                 myChart.setOption(option);
+
+
                             </script>
 
                         </div>

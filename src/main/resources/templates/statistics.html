@@ -42,7 +42,8 @@
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
                 <div style="display: flex; justify-content: center; margin-left:-5%;">
-                    <p style= "font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]</p>
+                    <p style="font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]
+                    </p>
                 </div>
             </div>
             <ul class="nav">
@@ -111,17 +112,26 @@
             </div>
         </nav>
 
-        <div class="btn-group">
-            <a href="statistics" class="btn btn-primary active">THIS WEEK</a>
-            <a href="lastMonthStats" class="btn btn-primary">THIS MONTH</a>
-            <a href="lastYearStats" class="btn btn-primary">THIS YEAR</a>
-        </div>
 
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card" style="margin-top: -2%; margin-left:-1%">
+                            <div class="btn-group">
+                                <p style="color:white;margin-left:-10%" class="btn"> FILTER BY: </p>
+                                <a href="statistics" class="btn btn-primary active">THIS WEEK</a>
+                                <a href="lastMonthStats" class="btn btn-primary">THIS MONTH</a>
+                                <a href="lastYearStats" class="btn btn-primary">THIS YEAR</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
                     <div class="col-sm-4">
-                        <div class="card" style="margin-top:-12.5%; margin-left:-3%;">
+                        <div class="card" style=" margin-left:-3%;">
 
                             <div id="main12"
                                  style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
@@ -153,11 +163,15 @@
                                     },
                                     toolbox: {
                                         show: true,
+                                        right: 15,
+                                        itemGap: 10,
                                         feature: {
-                                            mark: {show: true},
-                                            dataView: {show: true, readOnly: false},
-                                            restore: {show: true},
-                                            saveAsImage: {show: true}
+                                            saveAsImage: {
+                                                show: true,
+                                                title: 'Save As Image',
+                                                backgroundColor: '#27293d'
+                                            },
+                                            dataView: {show: true, readOnly: true, title: 'View Data'}
                                         }
                                     },
 
@@ -189,7 +203,7 @@
                     </div>
 
                     <div class="col-md-8">
-                        <div class="card" style="margin-top: -6%;">
+                        <div class="card">
 
                             <div id="main11"
                                  style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
@@ -217,11 +231,15 @@
 
                                         toolbox: {
                                             show: true,
+                                            right: 15,
+                                            itemGap: 10,
                                             feature: {
-                                                mark: {show: true},
-                                                dataView: {show: true, readOnly: false},
-                                                restore: {show: true},
-                                                saveAsImage: {show: true}
+                                                saveAsImage: {
+                                                    show: true,
+                                                    title: 'Save As Image',
+                                                    backgroundColor: '#27293d'
+                                                },
+                                                dataView: {show: true, readOnly: true, title: 'View Data'}
                                             }
                                         },
                                         grid: {
@@ -238,7 +256,7 @@
                                             data: ["Food", "Transport", "House Energy", "Flight"],
                                             // bottom: 'bottom',
                                             top: 'bottom',
-                                            icon:'roundRect',
+                                            icon: 'roundRect',
 
                                         },
                                         xAxis: {
@@ -248,9 +266,9 @@
                                             boundaryGap: false,
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                            name: today5.toLocaleString('default', { month: 'long' }) + space + " (Date of Week)",
-                                            nameLocation:'middle',
-                                            nameTextStyle:{fontSize: 14},
+                                            name: today5.toLocaleString('default', {month: 'long'}) + space + " (Date of Week)",
+                                            nameLocation: 'middle',
+                                            nameTextStyle: {fontSize: 14},
                                             align: 'middle',
                                             nameGap: 20
                                         },
@@ -260,9 +278,9 @@
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
                                             splitLine: {lineStyle: {color: '#4c4b4b'}},
-                                            name:"CO₂ (kg)",
-                                            nameLocation:'middle',
-                                            nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                            name: "CO₂ (kg)",
+                                            nameLocation: 'middle',
+                                            nameTextStyle: {verticaLAlign: 'middle', fontSize: 14},
                                             align: 'left',
                                             nameGap: 35
                                         },
@@ -400,9 +418,16 @@
                                         },
 
                                         toolbox: {
-                                            text: 'Download',
+                                            show: true,
+                                            right: 15,
+                                            itemGap: 10,
                                             feature: {
-                                                saveAsImage: {}
+                                                saveAsImage: {
+                                                    show: true,
+                                                    title: 'Save As Image',
+                                                    backgroundColor: '#27293d'
+                                                },
+                                                dataView: {show: true, readOnly: true, title: 'View Data'}
                                             },
                                         },
                                         grid: {
@@ -426,9 +451,9 @@
                                             boundaryGap: false,
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                            name: today4.toLocaleString('default', { month: 'long' }) + space + " (Date of Week)",
-                                            nameLocation:'middle',
-                                            nameTextStyle:{fontSize: 14},
+                                            name: today4.toLocaleString('default', {month: 'long'}) + space + " (Date of Week)",
+                                            nameLocation: 'middle',
+                                            nameTextStyle: {fontSize: 14},
                                             align: 'middle',
                                             nameGap: 30
                                         },
@@ -436,9 +461,9 @@
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
                                             splitLine: {lineStyle: {color: '#4c4b4b'}},
-                                            name:"CO₂ (kg)",
-                                            nameLocation:'middle',
-                                            nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                            name: "CO₂ (kg)",
+                                            nameLocation: 'middle',
+                                            nameTextStyle: {verticaLAlign: 'middle', fontSize: 14},
                                             align: 'left',
                                             nameGap: 35
                                         },
@@ -501,9 +526,16 @@
                                             },
 
                                             toolbox: {
-                                                text: 'Download',
+                                                show: true,
+                                                right: 15,
+                                                itemGap: 10,
                                                 feature: {
-                                                    saveAsImage: {}
+                                                    saveAsImage: {
+                                                        show: true,
+                                                        title: 'Save As Image',
+                                                        backgroundColor: '#27293d'
+                                                    },
+                                                    dataView: {show: true, readOnly: true, title: 'View Data'}
                                                 },
                                             },
                                             grid: {
@@ -514,7 +546,7 @@
                                                 containLabel: true
                                             },
                                             legend: {
-                                                textStyle: {fontSize: 12, color:'white'},
+                                                textStyle: {fontSize: 12, color: 'white'},
                                                 orient: 'vertical',
                                                 left: 'center',
                                                 data: ["Transport"],
@@ -526,9 +558,9 @@
                                                 boundaryGap: false,
                                                 axisLabel: {color: 'white'},
                                                 axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                                name: today3.toLocaleString('default', { month: 'long' }) + space + " (Date of Week)",
-                                                nameLocation:'middle',
-                                                nameTextStyle:{fontSize: 14},
+                                                name: today3.toLocaleString('default', {month: 'long'}) + space + " (Date of Week)",
+                                                nameLocation: 'middle',
+                                                nameTextStyle: {fontSize: 14},
                                                 align: 'middle',
                                                 nameGap: 30
                                             },
@@ -536,9 +568,9 @@
                                                 axisLabel: {color: 'white'},
                                                 axisLine: {lineStyle: {color: '#7f7e7e'}},
                                                 splitLine: {lineStyle: {color: '#4c4b4b'}},
-                                                name:"CO₂ (kg)",
-                                                nameLocation:'middle',
-                                                nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                                name: "CO₂ (kg)",
+                                                nameLocation: 'middle',
+                                                nameTextStyle: {verticaLAlign: 'middle', fontSize: 14},
                                                 align: 'left',
                                                 nameGap: 35
                                             },
@@ -603,9 +635,16 @@
                                                 },
 
                                                 toolbox: {
-                                                    text: 'Download',
+                                                    show: true,
+                                                    right: 15,
+                                                    itemGap: 10,
                                                     feature: {
-                                                        saveAsImage: {}
+                                                        saveAsImage: {
+                                                            show: true,
+                                                            title: 'Save As Image',
+                                                            backgroundColor: '#27293d'
+                                                        },
+                                                        dataView: {show: true, readOnly: true, title: 'View Data'}
                                                     },
                                                 },
                                                 grid: {
@@ -616,7 +655,7 @@
                                                     containLabel: true
                                                 },
                                                 legend: {
-                                                    textStyle: {fontSize: 12, color:'white'},
+                                                    textStyle: {fontSize: 12, color: 'white'},
                                                     orient: 'vertical',
                                                     left: 'center',
                                                     data: ["House Energy"],
@@ -629,19 +668,20 @@
                                                     boundaryGap: false,
                                                     axisLabel: {color: 'white'},
                                                     axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                                    name: today2.toLocaleString('default', { month: 'long' }) + space + " (Date of Week)",
-                                                    nameLocation:'middle',
-                                                    nameTextStyle:{fontSize: 14},
+                                                    name: today2.toLocaleString('default', {month: 'long'}) + space + " (Date of Week)",
+                                                    nameLocation: 'middle',
+                                                    nameTextStyle: {fontSize: 14},
                                                     align: 'middle',
                                                     nameGap: 30
 
                                                 },
-                                                yAxis: { axisLabel: {color: 'white'},
+                                                yAxis: {
+                                                    axisLabel: {color: 'white'},
                                                     axisLine: {lineStyle: {color: '#7f7e7e'}},
                                                     splitLine: {lineStyle: {color: '#4c4b4b'}},
-                                                    name:"CO₂ (kg)",
-                                                    nameLocation:'middle',
-                                                    nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                                    name: "CO₂ (kg)",
+                                                    nameLocation: 'middle',
+                                                    nameTextStyle: {verticaLAlign: 'middle', fontSize: 14},
                                                     align: 'left',
                                                     nameGap: 35
                                                 },
@@ -697,7 +737,11 @@
                                                         itemGap: 4,
                                                         text: 'Flight CO₂ Emissions',
                                                         subtext: 'This Week',
-                                                        textStyle: {fontSize: 20, fontWeight: 'lighter', color: 'white'},
+                                                        textStyle: {
+                                                            fontSize: 20,
+                                                            fontWeight: 'lighter',
+                                                            color: 'white'
+                                                        },
                                                         subtextStyle: {fontSize: 15, align: 'center'},
                                                     },
                                                     tooltip: {
@@ -706,9 +750,16 @@
                                                     },
 
                                                     toolbox: {
-                                                        text: 'Download',
+                                                        show: true,
+                                                        right: 15,
+                                                        itemGap: 10,
                                                         feature: {
-                                                            saveAsImage: {}
+                                                            saveAsImage: {
+                                                                show: true,
+                                                                title: 'Save As Image',
+                                                                backgroundColor: '#27293d'
+                                                            },
+                                                            dataView: {show: true, readOnly: true, title: 'View Data'}
                                                         },
                                                     },
                                                     grid: {
@@ -719,7 +770,7 @@
                                                         containLabel: true
                                                     },
                                                     legend: {
-                                                        textStyle: {fontSize: 12, color:'white'},
+                                                        textStyle: {fontSize: 12, color: 'white'},
                                                         orient: 'vertical',
                                                         left: 'center',
                                                         data: ["Flight"],
@@ -730,9 +781,9 @@
                                                         boundaryGap: false,
                                                         axisLabel: {color: 'white'},
                                                         axisLine: {lineStyle: {color: '#7f7e7e'}},
-                                                        name: today.toLocaleString('default', { month: 'long' }) + space + " (Date of Week)",
-                                                        nameLocation:'middle',
-                                                        nameTextStyle:{fontSize: 14},
+                                                        name: today.toLocaleString('default', {month: 'long'}) + space + " (Date of Week)",
+                                                        nameLocation: 'middle',
+                                                        nameTextStyle: {fontSize: 14},
                                                         align: 'middle',
                                                         nameGap: 30
                                                     },
@@ -740,9 +791,9 @@
                                                         axisLabel: {color: 'white'},
                                                         axisLine: {lineStyle: {color: '#7f7e7e'}},
                                                         splitLine: {lineStyle: {color: '#4c4b4b'}},
-                                                        name:"CO₂ (kg)",
-                                                        nameLocation:'middle',
-                                                        nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                                        name: "CO₂ (kg)",
+                                                        nameLocation: 'middle',
+                                                        nameTextStyle: {verticaLAlign: 'middle', fontSize: 14},
                                                         align: 'left',
                                                         nameGap: 35
                                                     },

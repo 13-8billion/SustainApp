@@ -1,6 +1,7 @@
 package sustain.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,18 +59,26 @@ public class AppController {
     @Autowired
     private FlightTotalService flts;
 
-
     // VIEWS
 
     @RequestMapping("/test")
     public String viewHomePage(Model model) {
 
-        List<AddUserFood> listFood = auf.listAll();
-        model.addAttribute("listFood", listFood);
+        List<User> listUser = service.listAll();
+        String username = userDetails.returnUsername();
+        User user = null;
+
+        for (int i = 0; i < listUser.size(); i++) {
+            if (listUser.get(i).getUsername().equals(username)) {
+                user = listUser.get(i);
+            }
+        }
+        model.addAttribute("userInfo", user);
 
         return "list"; // return is how the method takes you to the html page
         // must be same name as page
     }
+
 
     @RequestMapping(value = "/login")
     public ModelAndView showLogin() {
@@ -80,6 +89,7 @@ public class AppController {
     public ModelAndView showLanding() {
         return new ModelAndView("index");
     }
+
 
     @RequestMapping("/logout")
     public ModelAndView viewLogout() {
@@ -168,16 +178,6 @@ public class AppController {
 
 
     // USER METHODS
-
-    //    @PostMapping("/signUp")
-//    public String checkPersonInfo(@Valid User username, BindingResult bindingResult) {
-//
-//        if (bindingResult.hasErrors()) {
-//            return "signUp";
-//        }
-//
-//        return "signUp";
-//    }
     @PostMapping("/save")
     public String processRegister(@Valid User user, BindingResult bindingResult,
                                   @ModelAttribute("username") String username,
@@ -622,19 +622,19 @@ public class AppController {
     }
 
 
-    @RequestMapping("/edit/{username}")
-    public ModelAndView showEditUserForm(@PathVariable(name = "username") String username) {
+    @RequestMapping("/edit/{userID}")
+    public ModelAndView showEditUserForm(@PathVariable(name = "userID") int userID) {
 
-        ModelAndView mav = new ModelAndView("edit_user"); // name of html page
-        User user = service.get(username);
+        ModelAndView mav = new ModelAndView("editActivity"); // name of html page
+        User user = service.get(userID);
         mav.addObject("user", user);
 
         return mav;
     }
 
-    @RequestMapping("/delete/{username}")
-    public String deleteUser(@PathVariable(name = "username") String username) {
-        service.delete(username);
+    @RequestMapping("/delete/{userID}")
+    public String deleteUser(@PathVariable(name = "userID") int userID) {
+        service.delete(userID);
 
         return "redirect:/"; //eg. homepage
     }

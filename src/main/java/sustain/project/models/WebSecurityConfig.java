@@ -62,6 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .antMatchers("/signUp").permitAll()
                 .antMatchers("/register_success").permitAll()
                 .antMatchers("/save").permitAll()
+                .antMatchers("/logout").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .formLogin()

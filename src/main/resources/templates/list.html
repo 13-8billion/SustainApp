@@ -9,18 +9,23 @@
     <table border="1">
         <thead>
         <tr>
-            <th>Person ID</th>
-            <th>Last Name</th>
-            <th>First Name</th>
+            <th>User ID</th>
+            <th>email</th>
+            <th>username</th>
+            <th>location</th>
+            <th>password</th>
+            <th>edit/delete</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="addUserFood : ${listFood}">
-            <td th:text="${addUserFood.ID}">Food ID</td>
-            <td th:text="${addUserFood.username}">username</td>
-            <td th:text="${addUserFood.grams}">grams</td>
-            <td th:text="${addUserFood.foodName}">foodname</td>
-            <td th:text="${addUserFood.res}">res</td>
+        <tr th:each="user : ${userInfo}">
+            <td th:text="${user.userID}">user ID</td>
+            <td th:text="${user.email}">email</td>
+            <td th:text="${user.username}">username</td>
+            <td th:text="${user.location}">location</td>
+            <td th:text="${user.password}">password</td>
+
+            <a th:href="@{'/edit/' + ${user.userID}}">Edit</a>
 
         </tr>
         </tbody>

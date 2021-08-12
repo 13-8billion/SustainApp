@@ -14,7 +14,7 @@
 <div id="page-container">
     <div id="content-wrap">
         <!--background image-->
-        <div class="background">
+        <div class="backgroundReg">
             <div class="header">
                 <figure>
                     <img id="logo2" src="images/sideLogo.png" alt="images/image of logo"/>
@@ -24,38 +24,38 @@
                     </figcaption>
                 </figure>
             </div><!-- form begins here-->
-            <div class="form">
-                <form name="loginForm" th:action="@{/login}"
-                      method="post" id="loginForm" action="#" onsubmit="return !! validateForm()">
-                    <!-- call validate function in 'form' tag when user clicks submit button-->
-                    <div class="content">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div th:if="${param.error}" class="inputValidation">
-                                        *Invalid username or password.
-                                    </div>
+            <form th:action="@{/login}"
+                  method="post" action="#">
+                <!-- call validate function in 'form' tag when user clicks submit button-->
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div th:if="${param.error}" class="inputValidation">
+                                    *Invalid username or password.
                                 </div>
-                                <div class="col-sm-12">
-                                    <input type="text" name="username" id="username"
-                                           placeholder="Email"/></div>
-                                <div class="col-sm-12">
-                                           <input type="password" name="password" id="password"
-                                                  placeholder="Password"/></div>
+                            </div>
+                            <div class="col-sm-12">
+                                <input type="text" name="username" id="username"
+                                       placeholder="Email"/></div>
+                            <div class="col-sm-12">
+                                <input type="password" name="password" id="password"
+                                       placeholder="Password"/></div>
 
-                                <div class="col-sm-12">
-                                                    <label id="formP3"><input type="checkbox" value="remember-me"/>Remember
-                                                        me</label>
-                                                </div>
-                                <div class="col-sm-12">
-                                    <input id="login" type="submit" name="login" value="LOGIN"/></div>
+                            <div class="col-sm-12">
+                                <label id="formP3"><input type="checkbox" value="remember-me"/>Remember
+                                    me</label>
+                            </div>
+                            <div class="col-sm-12">
+                                <input id="login" type="submit" name="login" value="LOGIN"/></div>
 
-                                <div class="col-sm-12">
-                                    <p id="copy">&copy; 2020-2021</p></div>
-
-                </form>
-            </div>
-        </div><!--    <footer class="footer">-->
+                            <div class="col-sm-12">
+                                <p id="copy">&copy; 2020-2021</p></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

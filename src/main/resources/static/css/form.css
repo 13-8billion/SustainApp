@@ -192,9 +192,9 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
 }
 
 .btn-group{
-    margin-left: 27%;
-    margin-top: -7%;
-    padding: 0 0 0 0;
+    margin-left: 33%;
+    /*margin-top: -7%;*/
+    padding: 10px 10px 10px 10px;
 }
 
 .btn.btn-primary{
@@ -202,7 +202,7 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus {
     /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
     color: #1ff394;
     border: .5px solid #1ff394;
-    border-radius: 40px;
+    border-radius: 10px;
     /*position: fixed;*/
     font-weight: bold;
     padding-top:1.2%;

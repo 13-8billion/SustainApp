@@ -2,6 +2,7 @@ package sustain.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
+import sustain.project.controllers.AppController;
 import sustain.project.models.User;
 import sustain.project.interfaces.UserRepo;
 
@@ -29,12 +30,12 @@ public class UserService {
         repo.save(user);
     }
 
-    public User get(String username) {
-        return repo.findById(username).get();
+    public User get(int userID) {
+        return repo.findById(userID).get();
     }
 
-    public void delete(String username) {
-        repo.deleteById(username);
+    public void delete(int userID) {
+        repo.deleteById(userID);
     }
 
 }

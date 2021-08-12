@@ -154,11 +154,11 @@
                                     },
                                     toolbox: {
                                         show: true,
+                                        right: 15,
+                                        itemGap:10,
                                         feature: {
-                                            mark: {show: true},
-                                            dataView: {show: true, readOnly: false},
-                                            restore: {show: true},
-                                            saveAsImage: {show: true}
+                                            saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                            dataView: {show: true, readOnly: true, title: 'View Data'}
                                         }
                                     },
 
@@ -217,11 +217,11 @@
 
                                         toolbox: {
                                             show: true,
+                                            right: 15,
+                                            itemGap:10,
                                             feature: {
-                                                mark: {show: true},
-                                                dataView: {show: true, readOnly: false},
-                                                restore: {show: true},
-                                                saveAsImage: {show: true}
+                                                saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                                dataView: {show: true, readOnly: true, title: 'View Data'}
                                             }
                                         },
                                         grid: {
@@ -397,9 +397,12 @@
                                         },
 
                                         toolbox: {
-                                            text: 'Download',
+                                            show: true,
+                                            right: 15,
+                                            itemGap:10,
                                             feature: {
-                                                saveAsImage: {}
+                                                saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                                dataView: {show: true, readOnly: true, title: 'View Data'}
                                             },
                                         },
                                         grid: {
@@ -498,9 +501,12 @@
                                             },
 
                                             toolbox: {
-                                                text: 'Download',
+                                                show: true,
+                                                right: 15,
+                                                itemGap:10,
                                                 feature: {
-                                                    saveAsImage: {}
+                                                    saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                                    dataView: {show: true, readOnly: true, title: 'View Data'}
                                                 },
                                             },
                                             grid: {
@@ -599,11 +605,13 @@
                                                     trigger: 'axis',
                                                     axisPointer: {type: 'shadow', label: {color: '#fff'}}
                                                 },
-
-                                                toolbox: {
-                                                    text: 'Download',
+                                                toobox:{
+                                                    show: true,
+                                                    right: 15,
+                                                    itemGap:10,
                                                     feature: {
-                                                        saveAsImage: {}
+                                                        saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                                        dataView: {show: true, readOnly: true, title: 'View Data'}
                                                     },
                                                 },
                                                 grid: {
@@ -706,9 +714,12 @@
                                                     },
 
                                                     toolbox: {
-                                                        text: 'Download',
+                                                        show: true,
+                                                        right: 15,
+                                                        itemGap:10,
                                                         feature: {
-                                                            saveAsImage: {}
+                                                            saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                                            dataView: {show: true, readOnly: true, title: 'View Data'}
                                                         },
                                                     },
                                                     grid: {

@@ -14,9 +14,16 @@ body {
 
 .backgroundSignUp {
     background-size: cover;
-    opacity: 90%;
     min-height: 100vh; /* so background stays full size of viewport*/
     background-image: url('../images/lake.jpeg');
+    width: 100%;
+}
+
+.backgroundReg {
+    background-size: cover;
+    opacity: 90%;
+    min-height: 100vh; /* so background stays full size of viewport*/
+    background-image: url('../images/Northern-Lights2.jpeg');
     width: 100%;
 }
 

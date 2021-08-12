@@ -20,9 +20,9 @@ public class User implements Serializable {
     @Id // mySQL primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userID")
-    private String userID;
+    private int userID;
     @NotBlank(message = "*Username field cannot be empty")
-//    @UsernameConstraint
+    @Size(min = 3, max = 15, message = "*Username must be between 3-15 characters")
     @Column(name = "username")
     private String username;
     //    @EmailConstraint
@@ -41,11 +41,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 
