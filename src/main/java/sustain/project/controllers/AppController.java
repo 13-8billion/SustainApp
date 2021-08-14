@@ -70,17 +70,15 @@ public class AppController {
         // must be same name as page
     }
 
-
-    @RequestMapping(value = "/login")
-    public ModelAndView showLogin() {
-        return new ModelAndView("index");
-    }
-
     @RequestMapping(value = "/")
     public ModelAndView showLanding() {
         return new ModelAndView("index");
     }
 
+    @RequestMapping(value = "/login")
+    public ModelAndView showLogin() {
+        return new ModelAndView("index");
+    }
 
     @RequestMapping("/logout")
     public ModelAndView viewLogout() {
@@ -225,16 +223,10 @@ public class AppController {
         }
     }
 
-    // FOOD
-
-    @PostMapping("/addFoodItems")
-    public String AddUserFood(@ModelAttribute("foodItems") AddEmission foodItems) {
-        aes.save(foodItems);
-        return "addFood";
-    }
+    // CALC FOOD
 
     @PostMapping(value = "/calcFood", params = "add")
-    public ModelAndView calcFood(@ModelAttribute("foodObject") AddEmission foodObject, @ModelAttribute("type") String foodN,
+    public ModelAndView addFood(@ModelAttribute("foodObject") AddEmission foodObject, @ModelAttribute("type") String foodN,
                                  @ModelAttribute("quantity") double g, Model model) {
         double res = 0;
         String username = userDetails.returnUsername();
@@ -245,6 +237,7 @@ public class AppController {
             if (food.getFoodName().equals(foodN)) {
 
                 double oneG = food.getCo2g() / 100; // oneG = kg of co2 per 1gram of food.. co2g is kg co2 per 100 gram of food
+
                 res = g * oneG; // result is user input grams * oneG (kg of co2 per 1 gram of food item)
                 res = Math.round(res * 100);
                 res = res / 100; // get to the nearest 2 decimal place
@@ -257,7 +250,7 @@ public class AppController {
             return new ModelAndView("addFood");
         }
 
-        if (g == 0.0 || String.valueOf(g).equals(" ")) {
+        if (g == 0.0 || String.valueOf(g).equals("")) {
             String gErr = "*quantity required!";
             model.addAttribute("gErr", gErr);
             return new ModelAndView("addFood");
@@ -324,13 +317,7 @@ public class AppController {
     }
 
 
-    // TRANSPORT
-
-    @PostMapping("/addTransportActivity")
-    public String AddTransport(@ModelAttribute("transportActivity") AddEmission transportActivity) {
-        aes.save(transportActivity);
-        return "addTransport";
-    }
+    // CALC TRANSPORT
 
     @PostMapping(value = "/calcTransport", params = "add")
     public ModelAndView calcTransport(@ModelAttribute("transObject") AddEmission transObject, @ModelAttribute("type") String type,
@@ -423,13 +410,7 @@ public class AppController {
         }
     }
 
-    // HOUSE ENERGY
-
-    @PostMapping("/addHouseActivity")
-    public String AddHouse(@ModelAttribute("houseObject") AddEmission houseObject) {
-        aes.save(houseObject);
-        return "addHouse";
-    }
+    // CALC HOUSE ENERGY
 
     @PostMapping(value = "/calcHouse", params = "add")
     public ModelAndView calcHouse(@ModelAttribute("houseObject") AddEmission houseObject, @ModelAttribute("type") String etype,
@@ -523,12 +504,6 @@ public class AppController {
 
 
     // FLIGHT
-
-    @PostMapping("/addFlightActivity")
-    public String AddFlight(@ModelAttribute("flightObject") AddEmission flightObject) {
-        aes.save(flightObject);
-        return "addFlight";
-    }
 
     @PostMapping(value = "/calcFlight", params = "add")
     public ModelAndView calcFlight(@ModelAttribute("flightObject") AddEmission flightObject, @ModelAttribute("quantity") double distance,

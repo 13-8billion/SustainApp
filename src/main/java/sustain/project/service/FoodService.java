@@ -11,8 +11,6 @@ public class FoodService {
 
     @Autowired
     private FoodRepo repo;
-    private String foodName;
-    private double grams;
 
     public List<Food> listAll() {
         return repo.findAll();

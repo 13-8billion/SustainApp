@@ -17,9 +17,6 @@ import javax.validation.Validator;
 public class UserService {
 
     @Autowired
-    private Validator validator;
-
-    @Autowired
     private UserRepo repo;
 
     public List<User> listAll() {
