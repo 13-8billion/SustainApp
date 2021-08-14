@@ -275,7 +275,7 @@ public class AppController {
             foodObject.setRes(res);
             foodObject.setUsername(username);
             auf.save(foodObject);
-            model.addAttribute("res", "CO₂ emissions: " + res + "kg");
+            model.addAttribute("res", "CO₂ emissions: " + res + " kg");
             model.addAttribute("foodName", foodN);
             model.addAttribute("grams", g);
             return new ModelAndView("addFood");
@@ -320,7 +320,7 @@ public class AppController {
             foodTotalObject.setDate(date);
             fts.save(foodTotalObject);
 
-            model.addAttribute("total", "Total CO₂ emissions: " + total + "kg");
+            model.addAttribute("total", "Total CO₂ emissions: " + total + " kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("foodName", foodN);
@@ -374,7 +374,7 @@ public class AppController {
             transObject.setRes(res);
             transObject.setUsername(userDetails.returnUsername());
             ats.save(transObject);
-            model.addAttribute("res", "CO₂ emissions: " + res + "kg");
+            model.addAttribute("res", "CO₂ emissions: " + res + " kg");
             model.addAttribute("type", type);
             model.addAttribute("distance", d);
 
@@ -420,7 +420,7 @@ public class AppController {
             transTotalObject.setDate(date);
             tts.save(transTotalObject);
 
-            model.addAttribute("total", "Total CO₂ emissions: " + total + "kg");
+            model.addAttribute("total", "Total CO₂ emissions: " + total + " kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("type", type);
@@ -473,7 +473,7 @@ public class AppController {
             houseObject.setRes(res);
             houseObject.setUsername(userDetails.returnUsername());
             ahs.save(houseObject);
-            model.addAttribute("res", "CO₂ emissions: "+ res+"kg");
+            model.addAttribute("res", "CO₂ emissions: "+ res+" kg");
             model.addAttribute("etype", etype);
             model.addAttribute("kWh", kWh);
 
@@ -518,7 +518,7 @@ public class AppController {
             houseTotalObject.setDate(date);
             hets.save(houseTotalObject);
 
-            model.addAttribute("total", "Total CO₂ emissions: " + total + "kg");
+            model.addAttribute("total", "Total CO₂ emissions: " + total + " kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("etype", etype);
@@ -558,7 +558,7 @@ public class AppController {
             flightObject.setRes(res);
             flightObject.setUsername(userDetails.returnUsername());
             afs.save(flightObject);
-            model.addAttribute("res", "CO₂ emissions: "+res+"kg");
+            model.addAttribute("res", "CO₂ emissions: "+res+" kg");
             model.addAttribute("distance", distance);
 
             return new ModelAndView("addFlight");
@@ -597,7 +597,7 @@ public class AppController {
             flightTotalObject.setDate(date);
             flts.save(flightTotalObject);
 
-            model.addAttribute("total", "Total CO₂ emissions: "+ total+"kg");
+            model.addAttribute("total", "Total CO₂ emissions: "+ total+" kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("distance", distance);

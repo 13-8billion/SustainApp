@@ -48,10 +48,12 @@ body {
     /*font-weight:bold;*/
 }
 
-#logo2 {
-   width: 20%;
-   margin: -3% 0 -5% 0;
+#logo {
+   width: 30%;
+   padding: 2%;
+    margin-top:2%;
 }
+
 #logoCaption{
     font-family: Andale Mono, monospace;
     font-size: 180%;

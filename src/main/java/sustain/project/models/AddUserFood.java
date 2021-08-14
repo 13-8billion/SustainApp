@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Entity // so java knows it's an entity(obvs)
+@Entity // so java knows this is an SQL entity
 @Table(name = "AddUserFood")
 public class AddUserFood implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class AddUserFood implements Serializable {
     public AddUserFood() {
     }
 
-    @Id // so mySQL knows this is primary key
+    @Id // so mySQL knows this is the primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public String getID() {
         return ID;

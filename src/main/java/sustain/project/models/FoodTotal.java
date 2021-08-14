@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "FoodTotal")
 public class FoodTotal implements Serializable {
-        private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     // VARIABLES
 
@@ -72,7 +72,6 @@ public class FoodTotal implements Serializable {
         this.totalCo2 = totalCo2;
     }
 
-        // was of type LocalDate
     public LocalDate getDate() {
         return date;
     }

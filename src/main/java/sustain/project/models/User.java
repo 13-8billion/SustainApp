@@ -1,15 +1,9 @@
 package sustain.project.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
-import sustain.project.interfaces.EmailConstraint;
-import sustain.project.interfaces.UsernameConstraint;
-import sustain.project.service.UserService;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.validation.constraints.*;
 @Configurable
 @Entity // mySQL entity
@@ -25,7 +19,6 @@ public class User implements Serializable {
     @Size(min = 3, max = 15, message = "*Username must be between 3-15 characters")
     @Column(name = "username")
     private String username;
-    //    @EmailConstraint
     @NotBlank(message = "*Email field cannot be empty")
     @Email(message = "*Invalid email")
     @Column(name = "email")
