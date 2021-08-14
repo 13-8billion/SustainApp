@@ -148,7 +148,7 @@
                                                                 <td>
                                                                     <h3 id="tableH2"> Select energy source</h3>
                                                                     <select class="activity" name="etype"
-                                                                            th:field="*{etype}"
+                                                                            th:field="*{type}"
                                                                             th:object="${houseObject}">
                                                                         <option label="Select energy source" value="">
                                                                         </option>
@@ -174,7 +174,7 @@
                                                                     <h3 id="tableH3"> Enter energy consumed in kWh</h3>
                                                                     <input type="number" min="0" name="kWh" size="30"
                                                                            value="kWh"
-                                                                           th:field="*{kWh}" th:object="${houseObject}">
+                                                                           th:field="*{quantity}" th:object="${houseObject}">
                                                                 </td>
                                                             </tr>
                                                             <tr>

@@ -2,37 +2,36 @@ package sustain.project.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "AddHouse")
-public class AddHouse implements Serializable {
+@Table(name = "AddEmission")
+public class AddEmission implements Serializable {
     private static final long serialVersionUID = 1L;
 
     // VARIABLES
 
-    @Column(name = "ID")
-    private int ID;
+    @Column(name = "id")
+    private int id;
     @Column(name = "username")
     private String username;
-    @Column(name = "etype")
-    private String etype;
+    @Column(name = "type")
+    private String type;
     @Column(name = "res")
     private double res;
-    @Column(name = "kWh")
-    private double kWh;
+    @Column(name = "quantity")
+    private double quantity;
 
 
     @Id //  mySQL primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    public int getID() {
-        return ID;
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -43,12 +42,12 @@ public class AddHouse implements Serializable {
         this.username = username;
     }
 
-    public String getEtype() {
-        return etype;
+    public String getType() {
+        return type;
     }
 
-    public void setEtype(String etype) {
-        this.etype = etype;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getRes() {
@@ -59,11 +58,11 @@ public class AddHouse implements Serializable {
         this.res = res;
     }
 
-    public double getkWh() {
-        return kWh;
+    public double getQuantity() {
+        return quantity;
     }
 
-    public void setkWh(double kWh) {
-        this.kWh = kWh;
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
     }
 }

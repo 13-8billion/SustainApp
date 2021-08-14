@@ -3,9 +3,7 @@ package sustain.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sustain.project.interfaces.AddTransportRepo;
 import sustain.project.interfaces.TransportTotalRepo;
-import sustain.project.models.AddTransport;
 import sustain.project.models.TransportTotal;
 
 import java.util.List;

@@ -24,7 +24,7 @@ public class AppController {
     private UserService service;
 
     @Autowired
-    private AddUserFoodService auf;
+    private AddEmissionService aes;
 
     @Autowired
     private FoodService f;
@@ -39,22 +39,13 @@ public class AppController {
     private TransportService ts;
 
     @Autowired
-    private AddTransportService ats;
-
-    @Autowired
     private TransportTotalService tts;
 
     @Autowired
     private HouseEnergyService hes;
 
     @Autowired
-    private AddHouseService ahs;
-
-    @Autowired
     private HouseEnergyTotalService hets;
-
-    @Autowired
-    private AddFlightService afs;
 
     @Autowired
     private FlightTotalService flts;
@@ -146,7 +137,7 @@ public class AppController {
 
     @RequestMapping(value = "/addFoodView", method = RequestMethod.GET)
     public String showAddFoodForm(Model model) {
-        AddUserFood foodObject = new AddUserFood();
+        AddEmission foodObject = new AddEmission();
         model.addAttribute("foodObject", foodObject);
 
         return "addFood";
@@ -154,7 +145,7 @@ public class AppController {
 
     @RequestMapping("/addTransportView")
     public String showTransportForm(Model model) {
-        AddTransport transObject = new AddTransport();
+        AddEmission transObject = new AddEmission();
         model.addAttribute("transObject", transObject);
 
         return "addTransport";
@@ -162,7 +153,7 @@ public class AppController {
 
     @RequestMapping("/addHouseEnergyView")
     public String showHouseEnergyForm(Model model) {
-        AddHouse houseObject = new AddHouse();
+        AddEmission houseObject = new AddEmission();
         model.addAttribute("houseObject", houseObject);
 
         return "addHouse";
@@ -170,7 +161,7 @@ public class AppController {
 
     @RequestMapping("/addFlightView")
     public String showFlightForm(Model model) {
-        AddFlight flightObject = new AddFlight();
+        AddEmission flightObject = new AddEmission();
         model.addAttribute("flightObject", flightObject);
 
         return "addFlight";
@@ -237,14 +228,14 @@ public class AppController {
     // FOOD
 
     @PostMapping("/addFoodItems")
-    public String AddUserFood(@ModelAttribute("foodItems") AddUserFood foodItems) {
-        auf.save(foodItems);
+    public String AddUserFood(@ModelAttribute("foodItems") AddEmission foodItems) {
+        aes.save(foodItems);
         return "addFood";
     }
 
     @PostMapping(value = "/calcFood", params = "add")
-    public ModelAndView calcFood(@ModelAttribute("foodObject") AddUserFood foodObject, @ModelAttribute("foodName") String foodN,
-                                 @ModelAttribute("grams") double g, Model model) {
+    public ModelAndView calcFood(@ModelAttribute("foodObject") AddEmission foodObject, @ModelAttribute("type") String foodN,
+                                 @ModelAttribute("quantity") double g, Model model) {
         double res = 0;
         String username = userDetails.returnUsername();
         List<Food> fl = f.listAll();
@@ -274,26 +265,26 @@ public class AppController {
         } else {
             foodObject.setRes(res);
             foodObject.setUsername(username);
-            auf.save(foodObject);
+            aes.save(foodObject);
             model.addAttribute("res", "CO₂ emissions: " + res + " kg");
-            model.addAttribute("foodName", foodN);
-            model.addAttribute("grams", g);
+            model.addAttribute("type", foodN);
+            model.addAttribute("quantity", g);
             return new ModelAndView("addFood");
         }
     }
 
     @PostMapping(value = "/calcFood", params = "calc")
     public ModelAndView calcFoodTotal(@ModelAttribute("foodTotalObject") FoodTotal foodTotalObject,
-                                      @ModelAttribute("foodObject") AddUserFood foodObject, @ModelAttribute("foodName") String foodN,
-                                      @ModelAttribute("grams") double g, Model model) {
+                                      @ModelAttribute("foodObject") AddEmission foodObject, @ModelAttribute("type") String foodN,
+                                      @ModelAttribute("quantity") double g, Model model) {
 
-        List<AddUserFood> ufl = auf.listAll();
+        List<AddEmission> ufl = aes.listAll();
         String username = userDetails.returnUsername();
         foodTotalObject.setUsername(username);
         LocalDate date = LocalDate.now();
         double total = 0.0;
 
-        for (AddUserFood addUserFood : ufl) {
+        for (AddEmission addUserFood : ufl) {
 
             if (addUserFood.getUsername().equals(username)) {
 
@@ -323,10 +314,10 @@ public class AppController {
             model.addAttribute("total", "Total CO₂ emissions: " + total + " kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
-            model.addAttribute("foodName", foodN);
-            model.addAttribute("grams", g);
-            Iterable<AddUserFood> deleteFoodObject = auf.listAll();
-            auf.deleteAll(deleteFoodObject);
+            model.addAttribute("type", foodN);
+            model.addAttribute("quantity", g);
+            Iterable<AddEmission> deleteFoodObject = aes.listAll();
+            aes.deleteAll(deleteFoodObject);
 
             return new ModelAndView("addFood");
         }
@@ -336,14 +327,14 @@ public class AppController {
     // TRANSPORT
 
     @PostMapping("/addTransportActivity")
-    public String AddTransport(@ModelAttribute("transportActivity") AddTransport transportActivity) {
-        ats.save(transportActivity);
+    public String AddTransport(@ModelAttribute("transportActivity") AddEmission transportActivity) {
+        aes.save(transportActivity);
         return "addTransport";
     }
 
     @PostMapping(value = "/calcTransport", params = "add")
-    public ModelAndView calcTransport(@ModelAttribute("transObject") AddTransport transObject, @ModelAttribute("type") String type,
-                                      @ModelAttribute("distance") double d, Model model) {
+    public ModelAndView calcTransport(@ModelAttribute("transObject") AddEmission transObject, @ModelAttribute("type") String type,
+                                      @ModelAttribute("quantity") double d, Model model) {
         double res = 0;
         List<Transport> tl = ts.listAll();
 
@@ -373,10 +364,10 @@ public class AppController {
 
             transObject.setRes(res);
             transObject.setUsername(userDetails.returnUsername());
-            ats.save(transObject);
+            aes.save(transObject);
             model.addAttribute("res", "CO₂ emissions: " + res + " kg");
             model.addAttribute("type", type);
-            model.addAttribute("distance", d);
+            model.addAttribute("quantity", d);
 
             return new ModelAndView("addTransport");
         }
@@ -384,16 +375,16 @@ public class AppController {
 
     @PostMapping(value = "/calcTransport", params = "calc")
     public ModelAndView calcTransportTotal(@ModelAttribute("transTotalObject") TransportTotal transTotalObject,
-                                           @ModelAttribute("transObject") AddTransport transObject, @ModelAttribute("type") String type,
-                                           @ModelAttribute("distance") double d, Model model) {
+                                           @ModelAttribute("transObject") AddEmission transObject, @ModelAttribute("type") String type,
+                                           @ModelAttribute("quantity") double d, Model model) {
 
         String username = userDetails.returnUsername();
-        List<AddTransport> tl = ats.listAll();
+        List<AddEmission> tl = aes.listAll();
         transTotalObject.setUsername(username);
         LocalDate date = LocalDate.now();
         double total = 0.0;
 
-        for (AddTransport addTrans : tl) {
+        for (AddEmission addTrans : tl) {
 
             if (addTrans.getUsername().equals(username)) {
 
@@ -424,9 +415,9 @@ public class AppController {
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("type", type);
-            model.addAttribute("distance", d);
-            Iterable<AddTransport> deleteTransObject = ats.listAll();
-            ats.deleteAll(deleteTransObject);
+            model.addAttribute("quantity", d);
+            Iterable<AddEmission> deleteTransObject = aes.listAll();
+            aes.deleteAll(deleteTransObject);
 
             return new ModelAndView("addTransport");
         }
@@ -435,14 +426,14 @@ public class AppController {
     // HOUSE ENERGY
 
     @PostMapping("/addHouseActivity")
-    public String AddHouse(@ModelAttribute("houseObject") AddHouse houseObject) {
-        ahs.save(houseObject);
+    public String AddHouse(@ModelAttribute("houseObject") AddEmission houseObject) {
+        aes.save(houseObject);
         return "addHouse";
     }
 
     @PostMapping(value = "/calcHouse", params = "add")
-    public ModelAndView calcHouse(@ModelAttribute("houseObject") AddHouse houseObject, @ModelAttribute("etype") String etype,
-                                  @ModelAttribute("kWh") double kWh, Model model) {
+    public ModelAndView calcHouse(@ModelAttribute("houseObject") AddEmission houseObject, @ModelAttribute("type") String etype,
+                                  @ModelAttribute("quantity") double kWh, Model model) {
         double res = 0;
         List<HouseEnergy> hl = hes.listAll();
 
@@ -472,10 +463,10 @@ public class AppController {
 
             houseObject.setRes(res);
             houseObject.setUsername(userDetails.returnUsername());
-            ahs.save(houseObject);
+            aes.save(houseObject);
             model.addAttribute("res", "CO₂ emissions: "+ res+" kg");
-            model.addAttribute("etype", etype);
-            model.addAttribute("kWh", kWh);
+            model.addAttribute("type", etype);
+            model.addAttribute("quantity", kWh);
 
             return new ModelAndView("addHouse");
         }
@@ -483,16 +474,16 @@ public class AppController {
 
     @PostMapping(value = "/calcHouse", params = "calc")
     public ModelAndView calcHouseTotal(@ModelAttribute("houseTotalObject") HouseEnergyTotal houseTotalObject,
-                                       @ModelAttribute("houseObject") AddHouse houseObject, @ModelAttribute("etype") String etype,
-                                       @ModelAttribute("kWh") double kWh, Model model) {
+                                       @ModelAttribute("houseObject") AddEmission houseObject, @ModelAttribute("type") String etype,
+                                       @ModelAttribute("quantity") double kWh, Model model) {
 
         String username = userDetails.returnUsername();
-        List<AddHouse> hl = ahs.listAll();
+        List<AddEmission> hl = aes.listAll();
         houseTotalObject.setUsername(username);
         LocalDate date = LocalDate.now();
         double total = 0.0;
 
-        for (AddHouse addHouse : hl) {
+        for (AddEmission addHouse : hl) {
 
             if (addHouse.getUsername().equals(username)) {
 
@@ -521,10 +512,10 @@ public class AppController {
             model.addAttribute("total", "Total CO₂ emissions: " + total + " kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
-            model.addAttribute("etype", etype);
-            model.addAttribute("kWh", kWh);
-            Iterable<AddHouse> deleteHouseObject = ahs.listAll();
-            ahs.deleteAll(deleteHouseObject);
+            model.addAttribute("type", etype);
+            model.addAttribute("quantity", kWh);
+            Iterable<AddEmission> deleteHouseObject = aes.listAll();
+            aes.deleteAll(deleteHouseObject);
 
             return new ModelAndView("addHouse");
         }
@@ -534,13 +525,13 @@ public class AppController {
     // FLIGHT
 
     @PostMapping("/addFlightActivity")
-    public String AddFlight(@ModelAttribute("flightObject") AddFlight flightObject) {
-        afs.save(flightObject);
+    public String AddFlight(@ModelAttribute("flightObject") AddEmission flightObject) {
+        aes.save(flightObject);
         return "addFlight";
     }
 
     @PostMapping(value = "/calcFlight", params = "add")
-    public ModelAndView calcFlight(@ModelAttribute("flightObject") AddFlight flightObject, @ModelAttribute("distance") double distance,
+    public ModelAndView calcFlight(@ModelAttribute("flightObject") AddEmission flightObject, @ModelAttribute("quantity") double distance,
                                    Model model) {
 
         double res = 0.115 * distance;
@@ -555,11 +546,12 @@ public class AppController {
 
         } else {
 
+            flightObject.setType("plane");
             flightObject.setRes(res);
             flightObject.setUsername(userDetails.returnUsername());
-            afs.save(flightObject);
+            aes.save(flightObject);
             model.addAttribute("res", "CO₂ emissions: "+res+" kg");
-            model.addAttribute("distance", distance);
+            model.addAttribute("quantity", distance);
 
             return new ModelAndView("addFlight");
         }
@@ -567,16 +559,16 @@ public class AppController {
 
     @PostMapping(value = "/calcFlight", params = "calc")
     public ModelAndView calcFlightTotal(@ModelAttribute("flightTotalObject") FlightTotal flightTotalObject,
-                                        @ModelAttribute("flightObject") AddFlight flightObject, @ModelAttribute("distance") double distance,
+                                        @ModelAttribute("flightObject") AddEmission flightObject, @ModelAttribute("quantity") double distance,
                                         Model model) {
 
         String username = userDetails.returnUsername();
-        List<AddFlight> fl = afs.listAll();
+        List<AddEmission> fl = aes.listAll();
         flightTotalObject.setUsername(username);
         LocalDate date = LocalDate.now();
         double total = 0.0;
 
-        for (AddFlight addFlight : fl) {
+        for (AddEmission addFlight : fl) {
 
             if (addFlight.getUsername().equals(username)) {
 
@@ -600,9 +592,9 @@ public class AppController {
             model.addAttribute("total", "Total CO₂ emissions: "+ total+" kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
-            model.addAttribute("distance", distance);
-            Iterable<AddFlight> deleteFlightObject = afs.listAll();
-            afs.deleteAll(deleteFlightObject);
+            model.addAttribute("quantity", distance);
+            Iterable<AddEmission> deleteFlightObject = aes.listAll();
+            aes.deleteAll(deleteFlightObject);
 
             return new ModelAndView("addFlight");
         }

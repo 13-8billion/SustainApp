@@ -150,8 +150,8 @@
                                                             <tr>
                                                                 <td>
                                                                     <h3 id="tableH2"> Select a food or drink</h3>
-                                                                    <select class="activity" name="foodName"
-                                                                            th:field="*{foodName}"
+                                                                    <select class="activity" name="type"
+                                                                            th:field="*{type}"
                                                                             th:object="${foodObject}">
                                                                         <option label="Select food" value="">
                                                                         </option>
@@ -221,7 +221,7 @@
                                                                     <h3 id="tableH3"> Enter quantity in grams</h3>
                                                                     <input type="number" min="0" name="grams" size="30"
                                                                            value="Grams"
-                                                                           th:field="*{grams}"
+                                                                           th:field="*{quantity}"
                                                                            th:object="${foodObject}">
                                                                 </td>
                                                             </tr>

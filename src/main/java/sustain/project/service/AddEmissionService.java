@@ -1,27 +1,27 @@
 package sustain.project.service;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sustain.project.models.AddUserFood;
-import sustain.project.interfaces.AddUserFoodRepo;
-
+import sustain.project.interfaces.AddEmissionRepo;
+import sustain.project.models.AddEmission;
 import java.util.List;
 
 @Service
 @Transactional
-public class AddUserFoodService {
+public class  AddEmissionService {
     @Autowired
-    private AddUserFoodRepo repo;
+    private AddEmissionRepo repo;
 
-    public List<AddUserFood> listAll() {
+    public List<AddEmission> listAll() {
         return repo.findAll();
     }
 
-    public void save(AddUserFood foodItems) {
-        repo.save(foodItems);
+    public void save(AddEmission emissionObj) {
+        repo.save(emissionObj);
     }
 
-    public AddUserFood get(String username) {
+    public AddEmission get(String username) {
         return repo.findById(username).get();
     }
 
@@ -29,10 +29,9 @@ public class AddUserFoodService {
         repo.deleteById(username);
     }
 
-    public void deleteAll(Iterable<AddUserFood> foodObject){
-        repo.deleteAllInBatch(foodObject);
+    public void deleteAll(Iterable<AddEmission> emissionObj){
+        repo.deleteAllInBatch(emissionObj);
     }
 
 
 }
-
