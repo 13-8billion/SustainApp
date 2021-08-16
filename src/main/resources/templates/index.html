@@ -16,7 +16,7 @@
 
 </head>
 <body>
-<div id="page-container">
+<div class="page-container">
     <div id="content-wrap">
         <div class="background" data-color="azure">
             <div class="header">
@@ -26,14 +26,14 @@
                         <p id="logoCaption">WHAT CHANGE WILL YOU MAKE?</p>
                     </figcaption>
                 </figure>
-            </div><!-- form begins here-->
+            </div>
 
-            <!--        <div th:if="${param.logout}" class="alert alert-success">-->
-            <!--            You have been logged out successfully.-->
-            <!--          </div>-->
+            <div th:if="${param.logout}" class="alert alert-success">
+                You have been logged out successfully.
+            </div>
 
             <form name="loginForm" th:action="@{/login}"
-                  method="post" id="loginForm" action="#">
+                  method="post" action="#">
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
@@ -63,7 +63,8 @@
 
                                                     value="SIGN UP"/></a></div>
                         <div class="col-sm-6">
-                            <p id="copy">&copy; 2020-2021</p><script type="text/javascript">new Date().getFullYear()</script>
+                            <p id="copy">&copy; 2020-2021</p>
+                            <script type="text/javascript">new Date().getFullYear()</script>
                         </div>
                     </div>
                 </div>

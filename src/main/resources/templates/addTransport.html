@@ -127,224 +127,203 @@
                                 <br> Only click <b>calculate total</b> once all your journeys have been added to receive
                                 the total CO₂
                                 emissions.</h3>
-                            <div class="contentCalc">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="card" style="margin:1% 0 4% 0; background-color:white;">
-                                                <div class="btn-group" style="margin: auto; width:107%;">
-                                                    <a href="addFoodView" class="btn btn-arrows">FOOD</a>
-                                                    <a href="addTransportView"
-                                                       class="btn btn-arrows active">TRANSPORT</a>
-                                                    <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
-                                                    <a href="addFlightView" class="btn btn-arrows"
-                                                       style="padding-right:4.7%;">FLIGHT</a>
+
+                            <form action="#" th:action="@{/calcTransport}" method="post">
+                                <div class="content" style="display: block">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="card" style="background-color:white;">
+                                                    <div class="btn-group" style="margin: auto; width:118%;">
+                                                        <a href="addFoodView" class="btn btn-arrows">FOOD</a>
+                                                        <a href="addTransportView"
+                                                           class="btn btn-arrows active">TRANSPORT</a>
+                                                        <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
+                                                        <a href="addFlightView" class="btn btn-arrows"
+                                                           style="padding-right:4.7%;">FLIGHT</a>
+                                                    </div>
+                                                    <div class="card" style=" background-color:white; padding:4%">
+
+                                                        <div class="clipArt">
+                                                            <img src="images/car.png"
+                                                                 style="width:80%; margin-bottom:-10%; margin-top:-10%; margin-left:11%"
+                                                                 alt="car clip art">
+                                                        </div>
+                                                        <h3 id="tableH2"> Select a vehicle</h3>
+
+                                                        <select id="type" class="activity"
+                                                                th:field="*{type}"
+                                                                th:object="${transObject}">
+                                                            <option label="Select vehicle" value="">
+                                                            </option>
+
+                                                            <option value="" disabled="disabled"
+                                                                    selected="selected">--- BUS
+                                                                ---
+                                                            </option>
+                                                            <option value="bus (local)">Bus (local)</option>
+                                                            <option value="coach">Bus (coach)</option>
+                                                            <option value="" disabled="disabled"
+                                                                    selected="selected">--- CAR
+                                                                -
+                                                                DIESEL ---
+                                                            </option>
+                                                            <option value="car (diesel/small)">Car - small
+                                                                (up tp 1.7 litre
+                                                                engine)
+                                                            </option>
+                                                            <option value="car (diesel/medium)">Car - medium
+                                                                (1.7 - 2.0
+                                                                litre
+                                                                engine)
+                                                            </option>
+                                                            <option value="car (diesel/large)">Car - large
+                                                                (2.0+ litre
+                                                                engine)
+                                                            </option>
+                                                            <option value="car (diesel/average)">Car -
+                                                                average (unknown)
+                                                            </option>
+                                                            <option value="" disabled="disabled"
+                                                                    selected="selected">--- CAR
+                                                                -
+                                                                PETROL ---
+                                                            </option>
+                                                            <option value="car (petrol/small)">Car - small
+                                                                (up tp 1.4 litre
+                                                                engine)
+                                                            </option>
+                                                            <option value="car (petrol/medium)">Car - medium
+                                                                (1.4 - 2.0
+                                                                litre
+                                                                engine)
+                                                            </option>
+                                                            <option value="car (petrol/large)">Car - large
+                                                                (2.0+ litre
+                                                                engine)
+                                                            </option>
+                                                            <option value="car (petrol/average)">Car -
+                                                                average (unknown)
+                                                            </option>
+                                                            <option value="" disabled="disabled"
+                                                                    selected="selected">--- CAR
+                                                                -
+                                                                HYBRID ---
+                                                            </option>
+                                                            <option value="car (hybrid/small)">Car - small
+                                                                (up tp 1.4 litre
+                                                                engine)
+                                                            </option>
+                                                            <option value="car (hybrid/medium)">Car - medium
+                                                                (1.4 - 2.0
+                                                                litre
+                                                                engine)
+                                                            </option>
+                                                            <option value="car (hybrid/large)">Car - large
+                                                                (2.0+ litre
+                                                                engine)
+                                                            </option>
+                                                            <option value="car (hybrid/average)">Car -
+                                                                average (unknown)
+                                                            </option>
+                                                            <option value="" disabled="disabled"
+                                                                    selected="selected">---
+                                                                FERRY ---
+                                                            </option>
+                                                            <option value="ferry (foot)">Ferry (foot
+                                                                passenger)
+                                                            </option>
+                                                            <
+                                                            <option value="ferry (car)">Ferry (car
+                                                                passenger)
+                                                            </option>
+                                                            <option value="" disabled="disabled"
+                                                                    selected="selected">
+                                                                --- MOTORBIKE -
+                                                                PETROL ---
+                                                            </option>
+                                                            <option value="motorbike (petrol/small)">
+                                                                Motorbike - small
+                                                                (125cc)
+                                                            </option>
+                                                            <option value="motorbike (petrol/medium)">
+                                                                Motorbike - medium
+                                                                (125 -
+                                                                500cc)
+                                                            </option>
+                                                            <option value="motorbike (petrol/large)">
+                                                                Motorbike - large
+                                                                (500cc)
+                                                            </option>
+                                                            <option value="motorbike (petrol/average)">
+                                                                Motorbike - average
+                                                                (unknown)
+                                                            </option>
+                                                            <option value="" disabled="disabled"
+                                                                    selected="selected">---
+                                                                RAIL ---
+                                                            </option>
+                                                            <option value="rail (national)">Rail
+                                                                (national)
+                                                            </option>
+                                                            <option value="rail (international)">Rail
+                                                                (international)
+                                                            </option>
+                                                            <option value="rail (light/tram)">Rail
+                                                                (light/tram)
+                                                            </option>
+                                                        </select>
+                                                        <!-- 'size' changes length of input box-->
+                                                        <p th:text="${Err}" class="inputValidation"
+                                                           style="text-align: right;"></p>
+
+                                                        <h3 id="tableH3"> Enter distance travelled in
+                                                            km</h3>
+
+                                                        <input type="number" min="0" name="distance"
+                                                               size="30"
+                                                               value="distance"
+                                                               th:field="*{quantity}"
+                                                               th:object="${transObject}">
+
+                                                        <p th:text="${tErr}" class="inputValidation"
+                                                           style="text-align: right;"></p>
+
+                                                        <br>
+                                                        <button class="calcBtn"
+                                                                name="add"
+                                                                value="ADD FOOD">ADD JOURNEY
+                                                        </button>
+
+                                                        <div>
+                                                            <div class="res">
+                                                                <p th:text="*{res}" style=" font-weight: bold;"></p>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- submit button -->
+                                                        <input th:object="${transTotalObject}"
+                                                               class="calcBtn"
+                                                               type="submit"
+                                                               name="calc"
+                                                               value="CALCULATE TOTAL"/>
+
+                                                        <div class="total">
+                                                            <p th:text="*{total}" style=" font-weight: bold;"></p>
+                                                        </div>
+
+                                                        <br>
+                                                    </div>
                                                 </div>
-                                                <div class="clipArt">
-                                                    <img src="images/car.png"
-                                                         style="width:60%; margin-bottom:-10%; margin-top:-8%; margin-left:19%"
-                                                         alt="car clip art">
-                                                </div>
-
-                                                <div style="display:inline-block; margin-left:5%">
-                                                    <form action="#" th:action="@{/calcTransport}" method="post">
-                                                        <!-- call validate function in 'form' tag when user clicks submit button-->
-                                                        <table style="width: 130%;">
-                                                            <tr>
-                                                                <td>
-                                                                    <h3 id="tableH2"> Select a vehicle</h3>
-
-                                                                    <select id="type" class="activity"
-                                                                            th:field="*{type}"
-                                                                            th:object="${transObject}">
-                                                                        <option label="Select vehicle" value="">
-                                                                        </option>
-
-                                                                        <option value="" disabled="disabled"
-                                                                                selected="selected">--- BUS
-                                                                            ---
-                                                                        </option>
-                                                                        <option value="bus (local)">Bus (local)</option>
-                                                                        <option value="coach">Bus (coach)</option>
-                                                                        <option value="" disabled="disabled"
-                                                                                selected="selected">--- CAR
-                                                                            -
-                                                                            DIESEL ---
-                                                                        </option>
-                                                                        <option value="car (diesel/small)">Car - small
-                                                                            (up tp 1.7 litre
-                                                                            engine)
-                                                                        </option>
-                                                                        <option value="car (diesel/medium)">Car - medium
-                                                                            (1.7 - 2.0
-                                                                            litre
-                                                                            engine)
-                                                                        </option>
-                                                                        <option value="car (diesel/large)">Car - large
-                                                                            (2.0+ litre
-                                                                            engine)
-                                                                        </option>
-                                                                        <option value="car (diesel/average)">Car -
-                                                                            average (unknown)
-                                                                        </option>
-                                                                        <option value="" disabled="disabled"
-                                                                                selected="selected">--- CAR
-                                                                            -
-                                                                            PETROL ---
-                                                                        </option>
-                                                                        <option value="car (petrol/small)">Car - small
-                                                                            (up tp 1.4 litre
-                                                                            engine)
-                                                                        </option>
-                                                                        <option value="car (petrol/medium)">Car - medium
-                                                                            (1.4 - 2.0
-                                                                            litre
-                                                                            engine)
-                                                                        </option>
-                                                                        <option value="car (petrol/large)">Car - large
-                                                                            (2.0+ litre
-                                                                            engine)
-                                                                        </option>
-                                                                        <option value="car (petrol/average)">Car -
-                                                                            average (unknown)
-                                                                        </option>
-                                                                        <option value="" disabled="disabled"
-                                                                                selected="selected">--- CAR
-                                                                            -
-                                                                            HYBRID ---
-                                                                        </option>
-                                                                        <option value="car (hybrid/small)">Car - small
-                                                                            (up tp 1.4 litre
-                                                                            engine)
-                                                                        </option>
-                                                                        <option value="car (hybrid/medium)">Car - medium
-                                                                            (1.4 - 2.0
-                                                                            litre
-                                                                            engine)
-                                                                        </option>
-                                                                        <option value="car (hybrid/large)">Car - large
-                                                                            (2.0+ litre
-                                                                            engine)
-                                                                        </option>
-                                                                        <option value="car (hybrid/average)">Car -
-                                                                            average (unknown)
-                                                                        </option>
-                                                                        <option value="" disabled="disabled"
-                                                                                selected="selected">---
-                                                                            FERRY ---
-                                                                        </option>
-                                                                        <option value="ferry (foot)">Ferry (foot
-                                                                            passenger)
-                                                                        </option>
-                                                                        <
-                                                                        <option value="ferry (car)">Ferry (car
-                                                                            passenger)
-                                                                        </option>
-                                                                        <option value="" disabled="disabled"
-                                                                                selected="selected">
-                                                                            --- MOTORBIKE -
-                                                                            PETROL ---
-                                                                        </option>
-                                                                        <option value="motorbike (petrol/small)">
-                                                                            Motorbike - small
-                                                                            (125cc)
-                                                                        </option>
-                                                                        <option value="motorbike (petrol/medium)">
-                                                                            Motorbike - medium
-                                                                            (125 -
-                                                                            500cc)
-                                                                        </option>
-                                                                        <option value="motorbike (petrol/large)">
-                                                                            Motorbike - large
-                                                                            (500cc)
-                                                                        </option>
-                                                                        <option value="motorbike (petrol/average)">
-                                                                            Motorbike - average
-                                                                            (unknown)
-                                                                        </option>
-                                                                        <option value="" disabled="disabled"
-                                                                                selected="selected">---
-                                                                            RAIL ---
-                                                                        </option>
-                                                                        <option value="rail (national)">Rail
-                                                                            (national)
-                                                                        </option>
-                                                                        <option value="rail (international)">Rail
-                                                                            (international)
-                                                                        </option>
-                                                                        <option value="rail (light/tram)">Rail
-                                                                            (light/tram)
-                                                                        </option>
-                                                                    </select>
-                                                                    <!-- 'size' changes length of input box-->
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td> <p th:text="${Err}" class="inputValidation" style="text-align: right;"></p></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h3 id="tableH3"> Enter distance travelled in
-                                                                        km</h3>
-
-                                                                    <input type="number" min="0" name="distance"
-                                                                           size="30"
-                                                                           value="distance"
-                                                                           th:field="*{quantity}"
-                                                                           th:object="${transObject}">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td> <p th:text="${tErr}" class="inputValidation" style="text-align: right;"></p></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <!-- submit button -->
-                                                                <td>
-                                                                    <button class="quantity" onclick="TestsFunction()"
-                                                                            name="add"
-                                                                            value="ADD FOOD">ADD JOURNEY
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="resTran">
-                                                                            <p style="font-style: italic; font-weight: bold"
-                                                                               th:text="*{res}"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <!-- submit button -->
-                                                                <td><input th:object="${transTotalObject}"
-                                                                           class="totalBtn"
-                                                                           type="submit"
-                                                                           name="calc"
-                                                                           value="CALCULATE TOTAL"/></td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="total">
-                                                                        <p style="font-weight: bold;"
-                                                                           th:text="*{total}"></p>
-                                                                    </div>
-
-                                                                    <br>
-                                                                    <br>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </form>
-                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                            </form>
+
 
                             <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions
                                 will be added to your

@@ -29,7 +29,8 @@ public class User implements Serializable {
     @Size(min = 8, max = 100, message = "*Password must be at least 8 characters")
     @Column(name = "password")
     private String password;
-
+    @Column(name = "profilePic", length = 64)
+    private String profilePic;
 
     public User() {
     }
@@ -72,5 +73,11 @@ public class User implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setProfilePic(String fileName) {
+    }
+    public String getProfilePic() {
+        return profilePic;
     }
 }

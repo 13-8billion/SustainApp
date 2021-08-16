@@ -5,13 +5,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 import sustain.project.models.*;
 import sustain.project.service.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -223,6 +227,22 @@ public class AppController {
         }
     }
 
+//    @PostMapping("/users/save")
+//    public RedirectView saveUser(User user,
+//                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
+//
+//        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//        user.setProfilePic(fileName);
+//
+//        User savedUser = service.save(user);
+//
+//        String uploadDir = "user-photos/" + savedUser.getId();
+//
+//        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+//
+//        return new RedirectView("/users", true);
+//    }
+
     // CALC FOOD
 
     @PostMapping(value = "/calcFood", params = "add")
@@ -259,7 +279,7 @@ public class AppController {
             foodObject.setRes(res);
             foodObject.setUsername(username);
             aes.save(foodObject);
-            model.addAttribute("res", "CO₂ emissions: " + res + " kg");
+            model.addAttribute("res", g + "g "+"of "+ foodN + " = " + res + " kg of CO₂");
             model.addAttribute("type", foodN);
             model.addAttribute("quantity", g);
             return new ModelAndView("addFood");
@@ -304,7 +324,7 @@ public class AppController {
             foodTotalObject.setDate(date);
             fts.save(foodTotalObject);
 
-            model.addAttribute("total", "Total CO₂ emissions: " + total + " kg");
+            model.addAttribute("total", "Total CO₂ = " + total + " kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("type", foodN);
@@ -352,7 +372,7 @@ public class AppController {
             transObject.setRes(res);
             transObject.setUsername(userDetails.returnUsername());
             aes.save(transObject);
-            model.addAttribute("res", "CO₂ emissions: " + res + " kg");
+            model.addAttribute("res", d + " km "+"in a "+ type + " = " + res + " kg of CO₂");
             model.addAttribute("type", type);
             model.addAttribute("quantity", d);
 
@@ -398,7 +418,7 @@ public class AppController {
             transTotalObject.setDate(date);
             tts.save(transTotalObject);
 
-            model.addAttribute("total", "Total CO₂ emissions: " + total + " kg");
+            model.addAttribute("total", "Total CO₂ = " + total + " kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("type", type);
@@ -445,7 +465,7 @@ public class AppController {
             houseObject.setRes(res);
             houseObject.setUsername(userDetails.returnUsername());
             aes.save(houseObject);
-            model.addAttribute("res", "CO₂ emissions: "+ res+" kg");
+            model.addAttribute("res", kWh + " kWh "+"of "+ etype + " = " + res + " kg of CO₂");
             model.addAttribute("type", etype);
             model.addAttribute("quantity", kWh);
 
@@ -490,7 +510,7 @@ public class AppController {
             houseTotalObject.setDate(date);
             hets.save(houseTotalObject);
 
-            model.addAttribute("total", "Total CO₂ emissions: " + total + " kg");
+            model.addAttribute("total", "Total CO₂ = " + total + " kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("type", etype);
@@ -525,7 +545,7 @@ public class AppController {
             flightObject.setRes(res);
             flightObject.setUsername(userDetails.returnUsername());
             aes.save(flightObject);
-            model.addAttribute("res", "CO₂ emissions: "+res+" kg");
+            model.addAttribute("res", distance + " km "+" flight "+ " = " + res + " kg of CO₂");
             model.addAttribute("quantity", distance);
 
             return new ModelAndView("addFlight");
@@ -564,7 +584,7 @@ public class AppController {
             flightTotalObject.setDate(date);
             flts.save(flightTotalObject);
 
-            model.addAttribute("total", "Total CO₂ emissions: "+ total+" kg");
+            model.addAttribute("total", "Total CO₂ = "+ total+" kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("quantity", distance);

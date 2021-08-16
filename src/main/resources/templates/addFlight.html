@@ -31,7 +31,7 @@
 <div class="wrapper">
 
     <img src="images/sideLogo.png" alt="sideLogo"
-         id="smallLogo">
+         id="smallLogo" height="auto">
     <div class="sidebar" data-color="azure" data-image="images/sidebar-5.jpg">
         <div class="sidebar-wrapper">
             <div class="logo">
@@ -120,80 +120,58 @@
                                 <br> Only click <b>calculate total</b> once all flights have been added to receive the
                                 total CO₂
                                 emissions.</h3>
-                            <div class="contentCalc">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="card" style="margin:1% 0 4% 0; background-color:white;">
-                                                <div class="btn-group" style="margin: auto; width:105%;">
-                                                    <a href="addFoodView" class="btn btn-arrows">FOOD</a>
-                                                    <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
-                                                    <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
-                                                    <a href="addFlightView" class="btn btn-arrows active"
-                                                       style="padding-right:5.2%;">FLIGHT</a>
-                                                </div>
-                                                <div class="clipArt">
-                                                    <img src="images/plane.png" alt="bulb clip art"
-                                                         style="width:95%; height:120px; margin-bottom: 5%; margin-left:3%; margin-top:5%;">
-                                                </div>
-                                                <div style="display:inline-block; margin-left:5%">
-                                                    <form action="#" th:action="@{/calcFlight}" method="post">
-                                                        <!-- call validate function in 'form' tag when user clicks submit button-->
-                                                        <table style="width: 145%">
-                                                            <tr>
-                                                                <td>
-                                                                    <h3 id="tableH3"> Enter distance travelled in
-                                                                        km</h3>
-                                                                    <input type="number" min="0" name="distance"
-                                                                           size="30" value="distance"
-                                                                           th:field="*{quantity}"
-                                                                           th:object="${flightObject}">
-                                                                </td>
-                                                            </tr>
 
-                                                            <tr>
-                                                                <td> <p th:text="${fErr}" class="inputValidation" style="text-align: right;"></p></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><input class="quantity" type="submit" name="add"
-                                                                           value="ADD FLIGHT"/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="res">
-                                                                        <p style="font-style: italic; font-weight: bold;"
-                                                                           th:text="*{res}"></p>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
+                            <form action="#" th:action="@{/calcFlight}" method="post">
+                                <div class="content" style="display: block">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="card" style="background-color:white;">
+                                                    <div class="btn-group" style="margin: auto; width:115%;">
+                                                        <a href="addFoodView" class="btn btn-arrows">FOOD</a>
+                                                        <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
+                                                        <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
+                                                        <a href="addFlightView" class="btn btn-arrows active">FLIGHT</a>
+                                                    </div>
+                                                    <div class="card" style=" background-color:white; padding:4%">
+                                                        <div class="clipArt">
+                                                            <img src="images/plane.png" alt="bulb clip art"
+                                                                 style="width:105%;margin-bottom: 5%; margin-left:-3%; margin-top:5%;">
+                                                        </div>
+                                                        <h3 id="tableH3"> Enter distance travelled in
+                                                            km</h3>
+                                                        <input type="number" min="0" name="distance"
+                                                               value="distance"
+                                                               th:field="*{quantity}"
+                                                               th:object="${flightObject}">
+                                                        <p th:text="${fErr}" class="inputValidation"
+                                                           style="text-align: right;"></p>
+                                                        <br>
+                                                        <button class="calcBtn" type="submit" name="add"
+                                                                value="ADD FLIGHT">ADD FLIGHT</button>
 
-                                                            <tr>
-                                                                <!-- submit button -->
-                                                                <td><input th:object="${flightTotalObject}"
-                                                                           class="totalBtn" type="submit"
-                                                                           name="calc"
-                                                                           value="CALCULATE TOTAL"/></td>
-                                                            </tr>
+                                                        <div class="res">
+                                                            <p th:text="*{res}" style=" font-weight: bold;"></p>
+                                                        </div>
+                                                        <input th:object="${flightTotalObject}"
+                                                               class="calcBtn" type="submit"
+                                                               name="calc"
+                                                               value="CALCULATE TOTAL"/>
 
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="total">
-                                                                        <p
-                                                                                th:text="*{total}" style="font-weight: bold;"></p>
-                                                                        <br>
-                                                                        <br>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </form>
+                                                        <div class="total">
+                                                            <p th:text="*{total}" style=" font-weight: bold;"></p>
+                                                            <br>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
+
 
                             <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions
                                 will be added to your

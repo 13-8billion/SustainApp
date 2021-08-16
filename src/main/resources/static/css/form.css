@@ -1,104 +1,107 @@
 
-.avatar{
+.avatar {
     width: 100px;
     height: 100px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     border: 3px solid #FFFFFF;
 }
 
 
-.calcForm{
-    font-family: Helvetica, sans-serif;
-    display: inline-block;
-    margin-left: 5%;
-}
+/*.calcForm{*/
+/*    font-family: Helvetica, sans-serif;*/
+/*    display: inline-block;*/
+/*    margin-left: 5%;*/
+/*}*/
 
-.contentCalc {
-    margin-left: 30%;
-    margin-right: 34%;
-    margin-top:2%;
-}
+/*.contentCalc {*/
+/*    margin-left: 30%;*/
+/*    margin-right: 34%;*/
+/*    margin-top:2%;*/
+/*}*/
 
-#smallLogo{
-    width:11.5%;
-    margin-top:1.3%;
-    margin-left:1.3%;
+/*div.container1{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*div.container1 form{*/
+/*   margin:0;*/
+/*}*/
+
+#smallLogo {
+    width: 11.5%;
+    margin-top: 1.3%;
+    margin-left: 1.3%;
     position: fixed;
 }
 
-/* first header in form */
-#tableH2, #tableH3{
+/* calc form headings*/
+#tableH2, #tableH3 {
     font-family: Helvetica, sans-serif;
     font-size: 120%;
     color: grey;
     text-align: center;
 }
 
-#h1, #h11{
+/*calculator info text*/
+#h1, #h11 {
     font-family: Helvetica, sans-serif;
     font-size: 180%;
     color: grey;
     text-align: center;
-    margin-top:2%;
-    /*font-weight: bold;*/
+    margin-top: 2%;
 }
 
-#h2, #h3{
+/*calculator info text*/
+#h2, #h3 {
     font-family: Helvetica, sans-serif;
     font-size: 100%;
     color: grey;
     text-align: center;
-    margin-top:1%;
+    margin-top: 1%;
     line-height: 150%;
-    /*font-weight: bold;*/
 }
 
-#h33  {
+#h33 {
     font-family: Helvetica, sans-serif;
     font-size: 100%;
     color: grey;
     text-align: left;
-    margin-top:1%;
+    margin-top: 1%;
     line-height: 150%;
-    margin-left:36%;
-    /*font-weight: bold;*/
+    margin-left: 36%;
 }
 
-.clipArt img{
+.clipArt img {
     width: 100%;
-    margin-bottom: 3%;
+    height: auto;
 }
-.res{
+
+.res {
     text-align: center;
-    color: orangered;
+    color: #00bbff;
     max-width: 100%;
     font-style: italic;
 }
 
-.resTran{
+.total {
     text-align: center;
     color: orangered;
+    margin-top: 3%;
+    margin-bottom: -9%;
     max-width: 100%;
+    font-size: 20px;
 }
 
-.total{
-    text-align: center;
-    font-style: italic;
+.inputValidation {
+    font-size: 100%;
     color: orangered;
-    margin-top: 5%;
-    margin-bottom: -11%;
-    max-width: 100%;
+    margin: 0;
 }
-
-.inputValidation{
-    font-size: 90%;
-    color: red;
-    /*font-weight:bold;*/
-}
-
 
 /* form stylings for input of type text boxes*/
-input[type=text], input[type=number], #select, .activity{
+input[type=text], input[type=number], #select, .activity {
     width: 110%;
     padding: 3%;
     margin-bottom: 1%;
@@ -106,7 +109,7 @@ input[type=text], input[type=number], #select, .activity{
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, .1);
     transition: 0.5s;
-    outline: none; /*removes deault 'blue' outline when field is selected*/
+    outline: none; /*removes default 'blue' outline when field is selected*/
     background-color: rgba(255, 255, 255, .8); /* allows change in opacity without affected text */
     color: grey;
     font-family: Helvetica, sans-serif;
@@ -114,38 +117,24 @@ input[type=text], input[type=number], #select, .activity{
     max-width: 100%;
 
 }
+
 /**/
 
 
-input[type=text]:focus, input[type=number]:focus,  #select:focus, option:focus {
+input[type=text]:focus, input[type=number]:focus, #select:focus, option:focus {
     border: 2px solid #4dffa6;
     background-color: rgba(255, 255, 255, 1);
     color: grey;
 
 }
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.quantity{
-    width: 110%;
-    background-color:#4dffa6 ;
-    color: #fff;
-    padding: 3%;
-    margin: 5% 0;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    outline: none;
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25);
-    font-size: 16px;
-    max-width: 100%;
-}
-.quantity:hover, .totalBtn:hover {
+.calcBtn:hover {
     background-color: #01d8ec;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
@@ -154,12 +143,12 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus, option:focus {
     color: white;
 }
 
-.totalBtn{
-    width: 110%;
-    background-color:#4dffa6 ;
+.calcBtn {
+    width: 100%;
+    background-color: #4dffa6;
     color: #fff;
     padding: 3%;
-    margin-top: -1%;
+    margin: 0 2% 3% 0;
     border: none;
     border-radius: 40px;
     cursor: pointer;
@@ -168,20 +157,18 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus, option:focus {
     font-weight: bold;
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.25);
     font-size: 16px;
-    max-width: 100%;
 }
 
-.btn.btn-arrows{
+.btn.btn-arrows {
     background-color: #cbc8c8;
     color: #fff;
     border: none;
-    /*border-radius: 50px;*/
     position: relative;
     font-weight: bold;
-    padding:1.5% 4.85% 1.5% 4.9%;
+    padding: 1.5% 4.25% 1.5% 4.25%;
 }
 
-.btn-arrows:hover{
+.btn-arrows:hover {
     background-color: #fffefe;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
@@ -189,6 +176,7 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus, option:focus {
     transition: all .4s ease-in-out;
     color: #727171;
 }
+
 .btn.btn-arrows.active {
     background-color: #ffffff;
     moz-transition: all .4s ease-in-out;
@@ -198,33 +186,66 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus, option:focus {
     color: #727171;
 }
 
-.btn-group{
-    margin-left: 33%;
-    /*margin-top: -7%;*/
-    /*padding: 10px 10px 10px 10px;*/
-}
+/*@media screen and (max-width:576px) {*/
+/*    .btn-group {*/
+/*        margin-left: 33%;*/
+/*        display: flex;*/
+/*        flex-direction: column;*/
+/*        !*margin-top: -7%;*!*/
+/*        !*padding: 10px 10px 10px 10px;*!*/
+/*    }*/
+/*}*/
 
-.btn.btn-primary{
-    /*    background-color: #4dffa6; /*rgba(255, 255, 255, .8);*/
-    /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
+/*@media (max-width: 991px) {*/
+/*    .btn-group > .btn {*/
+/*        display: block;*/
+/*        width: 100%;*/
+/*    }*/
+
+/*    !* making the border-radius correct *!*/
+/*    .btn-group > .btn:first-child {*/
+/*        border-radius: 6px 6px 0 0;*/
+/*    }*/
+/*    .btn-group> .btn:first-child:not(:last-child):not(.dropdown-toggle) {*/
+/*        border-top-right-radius: 6px;*/
+/*    }*/
+/*    .btn-group> .btn:last-child:not(:first-child) {*/
+/*        border-radius: 0 0 6px 6px;*/
+/*    }*/
+
+/*    !* fixing margin *!*/
+/*    .btn-group.btn + .btn {*/
+/*        margin-left: 0;*/
+/*    }*/
+
+/*}*/
+
+/*.btn-group.special {*/
+/*    display: flex;*/
+/*}*/
+
+/*!*.special .btn {*!*/
+/*!*    flex: 1;*!*/
+/*!*}*!*/
+
+.btn.btn-primary {
     color: #1ff394;
     border: .5px solid #1ff394;
     border-radius: 10px;
-    /*position: fixed;*/
     font-weight: bold;
-    padding-top:1.2%;
-    padding-bottom:1.2%;
+    padding-top: 1.2%;
+    padding-bottom: 1.2%;
     background: transparent;
 }
 
-.btn.btn-primary.active{
+.btn.btn-primary.active {
     background-image: linear-gradient(to bottom right, #1ff394, #365eff);
     border: .5px solid #1ff394;
     color: white;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
     background-color: transparent;
     color: #fff;
     border: .5px solid #1ff394;
@@ -234,13 +255,12 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus, option:focus {
     transition: all .4s ease-in-out;
 }
 
-#logout{
+#logout {
     margin-top: 50%;
 }
-.regButton{
+
+.regButton {
     background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
-    /*    background-color: #4dffa6; !*rgba(255, 255, 255, .8);*/
-    /*    color: rgba(255, 255, 255, 1);*/ /*rgba(55, 158, 190, 1);*/
     color: #fff;
     padding: 10%;
     border: none;
@@ -251,7 +271,6 @@ input[type=text]:focus, input[type=number]:focus,  #select:focus, option:focus {
     font-weight: bold;
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
     font-size: 15px;
-
 }
 
 #login:hover, #signUpp:hover, .regButton:hover {

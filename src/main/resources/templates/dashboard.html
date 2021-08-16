@@ -25,22 +25,26 @@
     <!--  Light Bootstrap Table core CSS    -->
     <link href="css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
 <div class="wrapper">
 
     <img src="images/sideLogo.png" alt="sideLogo" id="smallLogo">
-
     <div class="sidebar" data-color="azure" data-image="images/sidebar-5.jpg">
         <div class="sidebar-wrapper">
             <div class="logo">
-                <img src="images/profile.png" alt="Avatar" class="avatar" id="profile-pic">
+                <form th:action="@{/users/save}"
+                      th:object="${user}" method="post"
+                      enctype="multipart/form-data">
+                    <img src="images/profile.png" alt="Avatar" class="avatar" id="profile-pic">
+                    <div style="margin-top:-15%; margin-left: 62%;">
+                        <i class="fa fa-camera upload-button" style="color:#ffffff"></i>
+                        <input class="file-upload" style="display: none" type="file" accept="images/*"/>
+                    </div>
+                </form>
 
-                <div style="margin-top:-15%; margin-left: 62%;">
-                    <i class="fa fa-camera upload-button" style="color:#ffffff"></i>
-                    <input class="file-upload" style="display: none" type="file" accept="images/*"/>
-                </div>
                 <a href="#" class="simple-text" style="margin-top:5%;">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
                 </a>
@@ -106,7 +110,7 @@
                                     <li><a href="#">Another action</a></li>
                                     <li><a href="#">Something</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="logout">Log out</a></li>
+                                    <li><a href="/logout">Log out</a></li>
                                 </ul>
                             </li>
                             <li class="separator hidden-lg"></li>
@@ -123,7 +127,7 @@
                     <div class="col-sm-4">
                         <div class="card" style="margin-top:-6%; margin-left:-3%;">
 
-<!--                            <div class="col-sm-12">-->
+                            <!--                            <div class="col-sm-12">-->
                             <div id="main0"
                                  style="height: 500px; padding-top: 20px; padding-right: 10px; padding-bottom: 20px;"></div>
 
@@ -155,9 +159,13 @@
                                     toolbox: {
                                         show: true,
                                         right: 15,
-                                        itemGap:10,
+                                        itemGap: 10,
                                         feature: {
-                                            saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                            saveAsImage: {
+                                                show: true,
+                                                title: 'Save As Image',
+                                                backgroundColor: '#27293d'
+                                            },
                                             dataView: {show: true, readOnly: true, title: 'View Data'}
                                         }
                                     },
@@ -220,9 +228,13 @@
                                         toolbox: {
                                             show: true,
                                             right: 15,
-                                            itemGap:10,
+                                            itemGap: 10,
                                             feature: {
-                                                saveAsImage: {show: true, title:'Save As Image', backgroundColor: '#27293d'},
+                                                saveAsImage: {
+                                                    show: true,
+                                                    title: 'Save As Image',
+                                                    backgroundColor: '#27293d'
+                                                },
                                                 dataView: {show: true, readOnly: true, title: 'View Data'}
                                             }
                                         },
@@ -259,9 +271,9 @@
                                             axisLabel: {color: 'white'},
                                             axisLine: {lineStyle: {color: '#7f7e7e'}},
                                             splitLine: {lineStyle: {color: '#4c4b4b'}},
-                                            name:"CO₂ (kg)",
-                                            nameLocation:'middle',
-                                            nameTextStyle:{verticaLAlign: 'middle', fontSize: 14},
+                                            name: "CO₂ (kg)",
+                                            nameLocation: 'middle',
+                                            nameTextStyle: {verticaLAlign: 'middle', fontSize: 14},
                                             align: 'left',
                                             nameGap: 35
                                         },
