@@ -173,16 +173,15 @@ public class AppController {
     // USER METHODS
     @PostMapping("/save")
     public String processRegister(@Valid User user, BindingResult bindingResult,
-                                  @ModelAttribute("username") String username,
-                                  @ModelAttribute("email") String email,
-                                  @ModelAttribute("location") String location,
-                                  @ModelAttribute("uErr") String uErr,
-                                  @ModelAttribute("lErr") String lErr,
-                                  @ModelAttribute("eErr") String eErr, Model model) {
+                                        @ModelAttribute("username") String username,
+                                        @ModelAttribute("email") String email,
+                                        @ModelAttribute("location") String location,
+                                        @ModelAttribute("uErr") String uErr,
+                                        @ModelAttribute("lErr") String lErr,
+                                        @ModelAttribute("eErr") String eErr, Model model, @RequestParam("image") MultipartFile multipartFile) throws IOException {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-
         ArrayList<String> names = new ArrayList<>();
 
         for (int i = 0; i < service.listAll().size(); i++) {
@@ -200,7 +199,6 @@ public class AppController {
         model.addAttribute("location", location);
 
         if (bindingResult.hasErrors()) {
-
             return "signUp";
 
         }
@@ -216,38 +214,27 @@ public class AppController {
             model.addAttribute("eErr", eErr);
             return "signUp";
         }
-            if (location.equals("")) {
-                    lErr = "*Choose a location!";
-                model.addAttribute("lErr", lErr);
-                return "signUp";
+        if (location.equals("")) {
+            lErr = "*Choose a location!";
+            model.addAttribute("lErr", lErr);
+            return "signUp";
 
         } else {
+
+//            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//            user.setProfilePic(fileName);
+//            String uploadDir = "profilePics/" + user.getUserID();
+//            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             service.save(user);
             return "register_success";
         }
     }
 
-//    @PostMapping("/users/save")
-//    public RedirectView saveUser(User user,
-//                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
-//
-//        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//        user.setProfilePic(fileName);
-//
-//        User savedUser = service.save(user);
-//
-//        String uploadDir = "user-photos/" + savedUser.getId();
-//
-//        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-//
-//        return new RedirectView("/users", true);
-//    }
-
     // CALC FOOD
 
     @PostMapping(value = "/calcFood", params = "add")
     public ModelAndView addFood(@ModelAttribute("foodObject") AddEmission foodObject, @ModelAttribute("type") String foodN,
-                                 @ModelAttribute("quantity") double g, Model model) {
+                                @ModelAttribute("quantity") double g, Model model) {
         double res = 0;
         String username = userDetails.returnUsername();
         List<Food> fl = f.listAll();
@@ -279,7 +266,7 @@ public class AppController {
             foodObject.setRes(res);
             foodObject.setUsername(username);
             aes.save(foodObject);
-            model.addAttribute("res", g + "g "+"of "+ foodN + " = " + res + " kg of CO₂");
+            model.addAttribute("res", g + "g " + "of " + foodN + " = " + res + " kg of CO₂");
             model.addAttribute("type", foodN);
             model.addAttribute("quantity", g);
             return new ModelAndView("addFood");
@@ -372,7 +359,7 @@ public class AppController {
             transObject.setRes(res);
             transObject.setUsername(userDetails.returnUsername());
             aes.save(transObject);
-            model.addAttribute("res", d + " km "+"in a "+ type + " = " + res + " kg of CO₂");
+            model.addAttribute("res", d + " km " + "in a " + type + " = " + res + " kg of CO₂");
             model.addAttribute("type", type);
             model.addAttribute("quantity", d);
 
@@ -465,7 +452,7 @@ public class AppController {
             houseObject.setRes(res);
             houseObject.setUsername(userDetails.returnUsername());
             aes.save(houseObject);
-            model.addAttribute("res", kWh + " kWh "+"of "+ etype + " = " + res + " kg of CO₂");
+            model.addAttribute("res", kWh + " kWh " + "of " + etype + " = " + res + " kg of CO₂");
             model.addAttribute("type", etype);
             model.addAttribute("quantity", kWh);
 
@@ -545,7 +532,7 @@ public class AppController {
             flightObject.setRes(res);
             flightObject.setUsername(userDetails.returnUsername());
             aes.save(flightObject);
-            model.addAttribute("res", distance + " km "+" flight "+ " = " + res + " kg of CO₂");
+            model.addAttribute("res", distance + " km " + " flight " + " = " + res + " kg of CO₂");
             model.addAttribute("quantity", distance);
 
             return new ModelAndView("addFlight");
@@ -584,7 +571,7 @@ public class AppController {
             flightTotalObject.setDate(date);
             flts.save(flightTotalObject);
 
-            model.addAttribute("total", "Total CO₂ = "+ total+" kg");
+            model.addAttribute("total", "Total CO₂ = " + total + " kg");
             // have to add above /calcFood method attributes here too
             // and in method parameters else form submit won't work
             model.addAttribute("quantity", distance);

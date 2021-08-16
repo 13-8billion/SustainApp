@@ -8,6 +8,10 @@
     <link th:href="@{css/external.css}" rel="stylesheet"/>
     <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script><!-- jquery for alerts plugin-->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <link href="css/pe-icon-7-stroke.css" rel="stylesheet"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 <body>
 <div id="page-container">
@@ -15,18 +19,19 @@
         <div class="backgroundSignUp">
             <div class="header">
                 <figure>
-                    <img id="logo2" src="images/sideLogo.png" alt="images/image of logo"/>
+                    <img id="logo2" src="images/sideLogo.png" alt="images/image of logo" style="width: 10%"/>
                     <figcaption>
                         <p id="logoCaption" style="font-size:220%">SIGN UP</p>
                     </figcaption>
                 </figure>
             </div>
             <!-- form begins here-->
-            <form action="#" th:action="@{/save}" th:object="${user}" method="post">
+            <form action="#" th:action="@{/save}" th:object="${user}" method="post" enctype="multipart/form-data">
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12">
+
                                 <!--username input field-->
                                 <input type="email" id="inputdefault" placeholder="Email"
                                        th:field="*{email}" style="margin-top:-1%"/></div>
@@ -793,12 +798,26 @@
                                 <p th:if="${#fields.hasErrors('password')}" class="inputValidation"
                                    th:errors="*{password}"></p>
                         </div>
+
+
                             <div class="col-sm-12">
                                 <button class="button" type="submit" name="signUp" value="SIGN UP"
                                         id="createAcc">
                                     CREATE ACCOUNT
                                 </button>
                         </div>
+                            <div class="logo">
+
+                            <div class="col-sm-12">
+                                <img src="/@{${user.profilePicImagePath}}" alt="Avatar" class="avatar" id="profile-pic">
+                                <div style="margin-top:-15%; margin-left: 62%;">
+                                    <i class="fa fa-camera upload-button" style="color:#ffffff"></i>
+                                    <input class="file-upload" type="file"  accept="images/*" name="image"/>
+                                </div>
+                            </div>
+                            </div>
+                            <br>
+                            <br>
                             <div class="col-sm-12">
                                 <p id="copy" style="color: #a3a1a1; margin-top:1%">&copy; 2020-2021</p></div>
                     </div>

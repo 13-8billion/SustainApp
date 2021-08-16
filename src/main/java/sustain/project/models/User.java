@@ -80,4 +80,11 @@ public class User implements Serializable {
     public String getProfilePic() {
         return profilePic;
     }
+
+    @Transient
+    public String getProfilePicImagePath() {
+        if (profilePic == null || userID == 0) return null;
+
+        return "/profilePics/" + userID + "/" + profilePic;
+    }
 }

@@ -35,15 +35,12 @@
     <div class="sidebar" data-color="azure" data-image="images/sidebar-5.jpg">
         <div class="sidebar-wrapper">
             <div class="logo">
-                <form th:action="@{/users/save}"
-                      th:object="${user}" method="post"
-                      enctype="multipart/form-data">
-                    <img src="images/profile.png" alt="Avatar" class="avatar" id="profile-pic">
-                    <div style="margin-top:-15%; margin-left: 62%;">
-                        <i class="fa fa-camera upload-button" style="color:#ffffff"></i>
-                        <input class="file-upload" style="display: none" type="file" accept="images/*"/>
-                    </div>
-                </form>
+
+                <img src="images/profile.png" alt="Avatar" class="avatar" id="profile-pic">
+                <div style="margin-top:-15%; margin-left: 62%;">
+                    <i class="fa fa-camera upload-button" style="color:#ffffff"></i>
+                    <input class="file-upload" style="display: none" type="file" accept="images/*" name="image"/>
+                </div>
 
                 <a href="#" class="simple-text" style="margin-top:5%;">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
