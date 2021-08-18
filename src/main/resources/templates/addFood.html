@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
@@ -136,7 +135,7 @@
                                             <div class="col-lg-4">
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="card" style=" background-color:white">
+                                                <div class="card" style=" background-color:white; margin-bottom:-5%">
 
                                                     <div class="btn-group d-flex" role="group"
                                                          style="width: 120%">
@@ -152,7 +151,8 @@
                                                     <div class="card" style=" background-color:white; padding:4%">
                                                         <div class="clipArt">
                                                             <img src="images/foodClip.png"
-                                                                 alt="food clip art" style="width: 105%; margin-left:-3%">
+                                                                 alt="food clip art"
+                                                                 style="width: 105%; margin-left:-3%">
                                                         </div>
 
                                                         <h3 id="tableH2"> Select a food or drink</h3>
@@ -221,14 +221,16 @@
                                                            style="text-align: right;"></p>
 
                                                         <h3 id="tableH3"> Enter quantity in grams</h3>
-                                                        <input type="number" min="0" name="grams" size="30"
-                                                               value="Grams"
+                                                        <input type="number" min="0" name="grams" required
+                                                               value="0"
                                                                th:field="*{quantity}"
                                                                th:object="${foodObject}">
 
 
                                                         <p th:text="${gErr}" class="inputValidation"
                                                            style="text-align: right;"></p>
+
+
                                                         <br>
                                                         <button class="calcBtn" name="add"
                                                                 value="ADD FOOD">ADD FOOD
@@ -261,7 +263,6 @@
                                     </div>
                                 </div>
                             </form>
-
 
                             <h3 id="h3"><i><b>*NB</b> once "calculate total" has been clicked, the total CO₂ emissions
                                 will

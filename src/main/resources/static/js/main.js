@@ -18,14 +18,8 @@ function searchFunction() {
     }
 }
 
-function TestsFunction() {
-    var T = document.getElementById("res");
-    setTimeout( function () { T.style.display = "block"; }, 2000);
-}
 
 $(document).ready(function() {
-
-
     var readURL = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -48,32 +42,3 @@ $(document).ready(function() {
     });
 });
 
-
-
-function validateFood()
-{
-
-//email not blank
-    var grams=document.forms["addFood"]["grams"].value;
-    if (grams === 0.0) //if name is null or blank
-    {
-        alert("Please enter grams");
-        return false;
-    }
-
-// //password not blank and 8 characters
-//     var password=document.forms["loginForm"]["password"].value;
-//     if (password.length <8 || password=="") //if password less than 8 characters or blank
-//     {
-//         alert("Password must be eight characters in length");
-//         return false;
-//     }
-//
-// //if email and password meet stipulations then alert successful login
-//     var all=document.forms["loginForm"]["contactEmail1" && "password"].value;
-//     if (all != null || all!="") //if all input is not null or blank
-//     {
-//         alert("Successful login. You will now be redirected to our home page.");
-//         return true;
-//     }
-}

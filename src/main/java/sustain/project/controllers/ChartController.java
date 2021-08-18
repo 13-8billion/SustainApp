@@ -35,7 +35,7 @@ public class ChartController {
 
 
     @GetMapping("/lastYearStats")
-    public String showAnnualStats(Model model) {
+    public String lastYearStats(Model model) {
 
         String username = userDetails.returnUsername();
         List<FoodTotal> ft = fts.listAll();
@@ -68,6 +68,7 @@ public class ChartController {
                 oat1.setMonthly(foodTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
+
             if (foodTotal.getDate().getMonthValue() == 2 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total2 = total2 + foodTotal.getTotalCo2();
                 oat2.setUsername(username);
@@ -418,7 +419,6 @@ public class ChartController {
                 oats.save(oat2);
             }
 
-
             if (flightTotal.getDate().getMonthValue() == 3 && flightTotal.getUsername().equals(username)) {
                 total3 = flightTotal.getTotal();
                 oat3.setUsername(username);
@@ -547,19 +547,19 @@ public class ChartController {
             }
         }
 
-        for (int i = 0; i < house.size(); i++) {
+        for (HouseEnergyTotal houseEnergyTotal : house) {
 
-            if (house.get(i).getUsername().equals(username)) {
+            if (houseEnergyTotal.getUsername().equals(username)) {
 
-                houseT = houseT + house.get(i).getTotal();
+                houseT = houseT + houseEnergyTotal.getTotal();
             }
         }
 
-        for (int i = 0; i < flights.size(); i++) {
+        for (FlightTotal flight : flights) {
 
-            if (flights.get(i).getUsername().equals(username)) {
+            if (flight.getUsername().equals(username)) {
 
-                flightT = flightT + flights.get(i).getTotal();
+                flightT = flightT + flight.getTotal();
             }
         }
 

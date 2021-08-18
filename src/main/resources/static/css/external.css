@@ -124,13 +124,13 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, sel
     color:#454545;
 }
 
-input:invalid {
-    background-color: #FFAAAA;
-}
+/*input:invalid {*/
+/*    background-color: #FFAAAA;*/
+/*}*/
 
-input:valid {
-    background-color: #AAFFAA;
-}
+/*input:valid {*/
+/*    background-color: #AAFFAA;*/
+/*}*/
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

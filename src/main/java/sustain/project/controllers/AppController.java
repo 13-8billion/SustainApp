@@ -1,16 +1,13 @@
 package sustain.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 import sustain.project.models.*;
 import sustain.project.service.*;
 
@@ -88,6 +85,24 @@ public class AppController {
     public ModelAndView viewLogout() {
         return new ModelAndView("index");
     }
+
+    @RequestMapping("/viewAccount")
+    public ModelAndView viewAccount(Model model) {
+
+        List<User> listUser = service.listAll();
+        String username = userDetails.returnUsername();
+        User user = null;
+
+        for (int i = 0; i < listUser.size(); i++) {
+            if (listUser.get(i).getUsername().equals(username)) {
+                user = listUser.get(i);
+            }
+        }
+        model.addAttribute("userInfo", user);
+
+        return new ModelAndView("userAccount");
+    }
+
 
     @RequestMapping("/signUp")
     public String showSignUpForm(Model model) {
@@ -172,13 +187,12 @@ public class AppController {
 
     // USER METHODS
     @PostMapping("/save")
-    public String processRegister(@Valid User user, BindingResult bindingResult,
-                                        @ModelAttribute("username") String username,
-                                        @ModelAttribute("email") String email,
-                                        @ModelAttribute("location") String location,
-                                        @ModelAttribute("uErr") String uErr,
-                                        @ModelAttribute("lErr") String lErr,
-                                        @ModelAttribute("eErr") String eErr, Model model, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public String saveUser(@Valid User user, BindingResult bindingResult,
+                                  @ModelAttribute("username") String username,
+                                  @ModelAttribute("email") String email,
+                                  @ModelAttribute("location") String location,
+                                  Model model) {
+//        @RequestParam("image") MultipartFile multipartFile) throws IOException
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
@@ -203,19 +217,19 @@ public class AppController {
 
         }
         if (names.contains(username)) {
-            uErr = "*Username already exists!";
+            String uErr = "*Username already exists!";
             model.addAttribute("uErr", uErr);
             return "signUp";
 
         }
         if (emails.contains(email)) {
 
-            eErr = "*Email already exists!";
+            String eErr = "*Email already exists!";
             model.addAttribute("eErr", eErr);
             return "signUp";
         }
         if (location.equals("")) {
-            lErr = "*Choose a location!";
+            String lErr = "*Choose a location!";
             model.addAttribute("lErr", lErr);
             return "signUp";
 
@@ -257,10 +271,11 @@ public class AppController {
             return new ModelAndView("addFood");
         }
 
-        if (g == 0.0 || String.valueOf(g).equals("")) {
+        if (g == 0.0) {
             String gErr = "*quantity required!";
             model.addAttribute("gErr", gErr);
             return new ModelAndView("addFood");
+
 
         } else {
             foodObject.setRes(res);
@@ -294,33 +309,19 @@ public class AppController {
             }
         }
 
-        if (foodN.equals("")) {
-            String fErr = "*food/drink required!";
-            model.addAttribute("fErr", fErr);
-            return new ModelAndView("addFood");
-        }
+        foodTotalObject.setTotalCo2(total);
+        foodTotalObject.setDate(date);
+        fts.save(foodTotalObject);
+        model.addAttribute("total", "Total CO₂ = " + total + " kg");
+        // have to add above /calcFood method attributes here too
+        // and in method parameters else form submit won't work
+        model.addAttribute("type", foodN);
+        model.addAttribute("quantity", g);
+        Iterable<AddEmission> deleteFoodObject = aes.listAll();
+        aes.deleteAll(deleteFoodObject);
 
-        if (g == 0.0 || String.valueOf(g).equals(" ")) {
-            String gErr = "*quantity required!";
-            model.addAttribute("gErr", gErr);
-            return new ModelAndView("addFood");
+        return new ModelAndView("addFood");
 
-        } else {
-
-            foodTotalObject.setTotalCo2(total);
-            foodTotalObject.setDate(date);
-            fts.save(foodTotalObject);
-
-            model.addAttribute("total", "Total CO₂ = " + total + " kg");
-            // have to add above /calcFood method attributes here too
-            // and in method parameters else form submit won't work
-            model.addAttribute("type", foodN);
-            model.addAttribute("quantity", g);
-            Iterable<AddEmission> deleteFoodObject = aes.listAll();
-            aes.deleteAll(deleteFoodObject);
-
-            return new ModelAndView("addFood");
-        }
     }
 
 
@@ -388,34 +389,23 @@ public class AppController {
             }
         }
 
-        if (type.equals("")) {
-            String Err = "*vehicle required!";
-            model.addAttribute("Err", Err);
-            return new ModelAndView("addTransport");
-        }
 
-        if (d == 0.0 || String.valueOf(d).equals(" ")) {
-            String tErr = "*distance required!";
-            model.addAttribute("tErr", tErr);
-            return new ModelAndView("addTransport");
+        transTotalObject.setTotalCo2(total);
+        transTotalObject.setDate(date);
+        tts.save(transTotalObject);
 
-        } else {
+        model.addAttribute("total", "Total CO₂ = " + total + " kg");
+        // have to add above /calcFood method attributes here too
+        // and in method parameters else form submit won't work
+        model.addAttribute("type", type);
+        model.addAttribute("quantity", d);
+        Iterable<AddEmission> deleteTransObject = aes.listAll();
+        aes.deleteAll(deleteTransObject);
 
-            transTotalObject.setTotalCo2(total);
-            transTotalObject.setDate(date);
-            tts.save(transTotalObject);
+        return new ModelAndView("addTransport");
 
-            model.addAttribute("total", "Total CO₂ = " + total + " kg");
-            // have to add above /calcFood method attributes here too
-            // and in method parameters else form submit won't work
-            model.addAttribute("type", type);
-            model.addAttribute("quantity", d);
-            Iterable<AddEmission> deleteTransObject = aes.listAll();
-            aes.deleteAll(deleteTransObject);
-
-            return new ModelAndView("addTransport");
-        }
     }
+
 
     // CALC HOUSE ENERGY
 
@@ -480,33 +470,22 @@ public class AppController {
                 total = total / 100;
             }
         }
-        if (etype.equals("")) {
-            String eErr = "*type required!";
-            model.addAttribute("eErr", eErr);
-            return new ModelAndView("addHouse");
-        }
 
-        if (kWh == 0.0 || String.valueOf(kWh).equals(" ")) {
-            String kErr = "*quantity required!";
-            model.addAttribute("kErr", kErr);
-            return new ModelAndView("addHouse");
 
-        } else {
+        houseTotalObject.setTotal(total);
+        houseTotalObject.setDate(date);
+        hets.save(houseTotalObject);
 
-            houseTotalObject.setTotal(total);
-            houseTotalObject.setDate(date);
-            hets.save(houseTotalObject);
+        model.addAttribute("total", "Total CO₂ = " + total + " kg");
+        // have to add above /calcFood method attributes here too
+        // and in method parameters else form submit won't work
+        model.addAttribute("type", etype);
+        model.addAttribute("quantity", kWh);
+        Iterable<AddEmission> deleteHouseObject = aes.listAll();
+        aes.deleteAll(deleteHouseObject);
 
-            model.addAttribute("total", "Total CO₂ = " + total + " kg");
-            // have to add above /calcFood method attributes here too
-            // and in method parameters else form submit won't work
-            model.addAttribute("type", etype);
-            model.addAttribute("quantity", kWh);
-            Iterable<AddEmission> deleteHouseObject = aes.listAll();
-            aes.deleteAll(deleteHouseObject);
+        return new ModelAndView("addHouse");
 
-            return new ModelAndView("addHouse");
-        }
     }
 
 
@@ -560,26 +539,19 @@ public class AppController {
             }
         }
 
-        if (distance == 0.0 || String.valueOf(distance).equals(" ")) {
-            String fErr = "*distance required!";
-            model.addAttribute("fErr", fErr);
-            return new ModelAndView("addFlight");
+        flightTotalObject.setTotal(total);
+        flightTotalObject.setDate(date);
+        flts.save(flightTotalObject);
 
-        } else {
+        model.addAttribute("total", "Total CO₂ = " + total + " kg");
+        // have to add above /calcFood method attributes here too
+        // and in method parameters else form submit won't work
+        model.addAttribute("quantity", distance);
+        Iterable<AddEmission> deleteFlightObject = aes.listAll();
+        aes.deleteAll(deleteFlightObject);
 
-            flightTotalObject.setTotal(total);
-            flightTotalObject.setDate(date);
-            flts.save(flightTotalObject);
+        return new ModelAndView("addFlight");
 
-            model.addAttribute("total", "Total CO₂ = " + total + " kg");
-            // have to add above /calcFood method attributes here too
-            // and in method parameters else form submit won't work
-            model.addAttribute("quantity", distance);
-            Iterable<AddEmission> deleteFlightObject = aes.listAll();
-            aes.deleteAll(deleteFlightObject);
-
-            return new ModelAndView("addFlight");
-        }
     }
 
 
@@ -596,10 +568,10 @@ public class AppController {
     }
 
 
-    @RequestMapping("/edit/{userID}")
-    public ModelAndView showEditUserForm(@PathVariable(name = "userID") int userID) {
+    @RequestMapping(value = "/edit/{userID}")
+    public ModelAndView editUser(@PathVariable(name = "userID") int userID) {
 
-        ModelAndView mav = new ModelAndView("editActivity"); // name of html page
+        ModelAndView mav = new ModelAndView("editUser"); // name of html page
         User user = service.get(userID);
         mav.addObject("user", user);
 

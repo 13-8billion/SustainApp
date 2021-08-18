@@ -135,7 +135,7 @@
                                             <div class="col-lg-4">
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="card" style="background-color:white;">
+                                                <div class="card" style="background-color:white; margin-bottom:-9%">
                                                     <div class="btn-group" style="margin: auto; width:118%;">
                                                         <a href="addFoodView" class="btn btn-arrows">FOOD</a>
                                                         <a href="addTransportView"
@@ -283,8 +283,7 @@
                                                             km</h3>
 
                                                         <input type="number" min="0" name="distance"
-                                                               size="30"
-                                                               value="distance"
+                                                               value="0" required
                                                                th:field="*{quantity}"
                                                                th:object="${transObject}">
 
@@ -322,6 +321,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </form>
 
 

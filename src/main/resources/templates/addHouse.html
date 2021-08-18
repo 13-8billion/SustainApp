@@ -133,7 +133,7 @@
                                             <div class="col-lg-4">
                                             </div>
                                             <div class="col-lg-4">
-                                                <div class="card" style="background-color:white;">
+                                                <div class="card" style="background-color:white; margin-bottom:-10%">
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group flex-wrap" role="group"
                                                              style="width: 112%;">
@@ -175,7 +175,7 @@
 
                                                         <h3 id="tableH3"> Enter energy consumed in kWh</h3>
                                                         <input type="number" min="0" name="kWh"
-                                                               value="kWh"
+                                                               value="0" required
                                                                th:field="*{quantity}" th:object="${houseObject}">
 
                                                         <p th:text="${kErr}" class="inputValidation"
