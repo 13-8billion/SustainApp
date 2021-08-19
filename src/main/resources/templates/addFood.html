@@ -1,14 +1,11 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
+    <meta  name="description" content="Carbon emission calculator to determin carbon emission figures per source">
     <meta charset="utf-8"/>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <script src="js/jquery-1.6.1.min.js"></script>
-    <script src="js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="js/echart/echarts.min.js"></script>
-    <script src="js/echart/drawchart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/light-bootstrap-dashboard.js?v=1.4.0"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -20,11 +17,13 @@
     <!-- Bootstrap core CSS     -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+    </style>
     <link href="css/pe-icon-7-stroke.css" rel="stylesheet"/>
     <!--  Light Bootstrap Table core CSS    -->
     <link href="css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
+
 
 </head>
 <body>
@@ -38,9 +37,9 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <img src="images/profile.png" alt="Avatar" class="avatar">
-                <a href="#" class="simple-text">
+                <div  class="simple-text">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
-                </a>
+                </div>
                 <div style="display: flex; justify-content: center; margin-left:-5%;">
                     <p style="font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]
                     </p>
@@ -80,8 +79,8 @@
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><p style="font-size: 95%;">
-                    </p></a>
+                    <div class="navbar-brand" href="#"><p style="font-size: 95%;">
+                    </p></div>
                 </div>
                 <div class="collapse navbar-collapse">
                     <form th:action="@{/logout}" method="post">
@@ -96,11 +95,7 @@
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
+                                    <li><a href="viewAccount">Account Info</a></li>
                                     <li class="divider"></li>
                                     <li><a href="logout">Log out</a></li>
                                 </ul>
@@ -138,7 +133,7 @@
                                                 <div class="card" style=" background-color:white; margin-bottom:-5%">
 
                                                     <div class="btn-group d-flex" role="group"
-                                                         style="width: 120%">
+                                                         style="width: 123%">
                                                         <a href="addFoodView"
                                                            class="btn btn-arrows active w-100">FOOD</a>
                                                         <a href="addTransportView"
@@ -154,78 +149,78 @@
                                                                  alt="food clip art"
                                                                  style="width: 105%; margin-left:-3%">
                                                         </div>
-
-                                                        <h3 id="tableH2"> Select a food or drink</h3>
-                                                        <select class="activity" name="type"
-                                                                th:field="*{type}"
-                                                                th:object="${foodObject}">
-                                                            <option label="Select food" value="">
-                                                            </option>
-                                                            <option value="apples">Apple</option>
-                                                            <option value="bananas">Banana</option>
-                                                            <option value="beef (dairy)">Beef (dairy herd)
-                                                            </option>
-                                                            <option value="beef (herd)">Beef (beef herd)
-                                                            </option>
-                                                            <option value="beer">Beer (5% ABV)</option>
-                                                            <option value="beet sugar">Beet Sugar</option>
-                                                            <option value="berries">Berries</option>
-                                                            <option value="wheat & rye (bread)">Bread (wheat
-                                                                &
-                                                                rye)
-                                                            </option>
-                                                            <option value="cane sugar">Cane Sugar</option>
-                                                            <option value="cheese">Cheese</option>
-                                                            <option value="citrus">Citrus Fruit</option>
-                                                            <option value="coffee">Coffee (1 portion = 15g)
-                                                            </option>
-                                                            <option value="dark chocolate">Dark Chocolate
-                                                            </option>
-                                                            <option value="eggs">Eggs</option>
-                                                            <option value="fish (farmed)">Fish (farmed)
-                                                            </option>
-                                                            <option value="grains">Grains</option>
-                                                            <option value="groundnuts">Groundnuts</option>
-                                                            <option value="lamb">Lamb</option>
-                                                            <option value="maize (meal)">Maize (meal)
-                                                            </option>
-                                                            <option value="milk">Milk (dairy)</option>
-                                                            <option value="soymilk">Milk (soy)</option>
-                                                            <option value="nuts">Nuts</option>
-                                                            <option value="oatmeal">Oatmeal</option>
-                                                            <option value="olive oil">Olive Oil</option>
-                                                            <option value="onions & leeks">Onions & Leeks
-                                                            </option>
-                                                            <option value="palm oil">Palm Oil</option>
-                                                            <option value="peas">Peas</option>
-                                                            <option value="pork">Pork</option>
-                                                            <option value="potatoes">Potatoes</option>
-                                                            <option value="poultry">Poultry</option>
-                                                            <option value="prawns (farmed)">Prawns (farmed)
-                                                            </option>
-                                                            <option value="pulses">Pulses</option>
-                                                            <option value="rapeseed oil">Rapeseed Oil
-                                                            </option>
-                                                            <option value="rice">Rice</option>
-                                                            <option value="root vegetables">Root Vegetables
-                                                            </option>
-                                                            <option value="soybean oil">Soybean Oil</option>
-                                                            <option value="sunflower oil">Sunflower Oil
-                                                            </option>
-                                                            <option value="tofu">Tofu</option>
-                                                            <option value="tomatoes">Tomatoes</option>
-                                                            <option value="wine">Wine</option>
-                                                        </select>
+                                                        <label for="food" style="font-size: 0.1%; color: white;">Select food</label>
+                                                        <h3 id="tableH2" style="margin-top: -.1%"> Select a food or drink</h3>
+                                                        <select class="activity" name="type" id="food"
+                                                                    th:field="*{type}"
+                                                                    th:object="${foodObject}">
+                                                                <option label="Select food" value="">
+                                                                </option>
+                                                                <option value="apples">Apple</option>
+                                                                <option value="bananas">Banana</option>
+                                                                <option value="beef (dairy)">Beef (dairy herd)
+                                                                </option>
+                                                                <option value="beef (herd)">Beef (beef herd)
+                                                                </option>
+                                                                <option value="beer">Beer (5% ABV)</option>
+                                                                <option value="beet sugar">Beet Sugar</option>
+                                                                <option value="berries">Berries</option>
+                                                                <option value="wheat & rye (bread)">Bread (wheat
+                                                                    &
+                                                                    rye)
+                                                                </option>
+                                                                <option value="cane sugar">Cane Sugar</option>
+                                                                <option value="cheese">Cheese</option>
+                                                                <option value="citrus">Citrus Fruit</option>
+                                                                <option value="coffee">Coffee (1 portion = 15g)
+                                                                </option>
+                                                                <option value="dark chocolate">Dark Chocolate
+                                                                </option>
+                                                                <option value="eggs">Eggs</option>
+                                                                <option value="fish (farmed)">Fish (farmed)
+                                                                </option>
+                                                                <option value="grains">Grains</option>
+                                                                <option value="groundnuts">Groundnuts</option>
+                                                                <option value="lamb">Lamb</option>
+                                                                <option value="maize (meal)">Maize (meal)
+                                                                </option>
+                                                                <option value="milk">Milk (dairy)</option>
+                                                                <option value="soymilk">Milk (soy)</option>
+                                                                <option value="nuts">Nuts</option>
+                                                                <option value="oatmeal">Oatmeal</option>
+                                                                <option value="olive oil">Olive Oil</option>
+                                                                <option value="onions & leeks">Onions & Leeks
+                                                                </option>
+                                                                <option value="palm oil">Palm Oil</option>
+                                                                <option value="peas">Peas</option>
+                                                                <option value="pork">Pork</option>
+                                                                <option value="potatoes">Potatoes</option>
+                                                                <option value="poultry">Poultry</option>
+                                                                <option value="prawns (farmed)">Prawns (farmed)
+                                                                </option>
+                                                                <option value="pulses">Pulses</option>
+                                                                <option value="rapeseed oil">Rapeseed Oil
+                                                                </option>
+                                                                <option value="rice">Rice</option>
+                                                                <option value="root vegetables">Root Vegetables
+                                                                </option>
+                                                                <option value="soybean oil">Soybean Oil</option>
+                                                                <option value="sunflower oil">Sunflower Oil
+                                                                </option>
+                                                                <option value="tofu">Tofu</option>
+                                                                <option value="tomatoes">Tomatoes</option>
+                                                                <option value="wine">Wine</option>
+                                                            </select>
 
                                                         <p th:text="${fErr}" class="inputValidation"
                                                            style="text-align: right;"></p>
 
-                                                        <h3 id="tableH3"> Enter quantity in grams</h3>
-                                                        <input type="number" min="0" name="grams" required
-                                                               value="0"
-                                                               th:field="*{quantity}"
-                                                               th:object="${foodObject}">
-
+                                                        <label for="grams" style="font-size: 1%; color: white;">Enter quantity in grams</label>
+                                                        <h3 id="tableH3" style="margin-top: -.1%"> Enter quantity in grams</h3>
+                                                            <input type="number" min="0" name="grams" required
+                                                                   value="0" size ="30" id="grams"
+                                                                   th:field="*{quantity}"
+                                                                   th:object="${foodObject}">
 
                                                         <p th:text="${gErr}" class="inputValidation"
                                                            style="text-align: right;"></p>
@@ -268,15 +263,6 @@
                                 will
                                 be added to your
                                 statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
-
-                            <!--        <div id="TestsDiv" style="display:none">-->
-                            <!--            tests here!-->
-                            <!--        </div>-->
-
-                            <!--        <div class="form-group">-->
-                            <!--            <button onclick="TestsFunction()">Tests</button>-->
-                            <!--        </div>-->
-
                         </div>
                     </div>
                 </div>

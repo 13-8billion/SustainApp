@@ -1,15 +1,12 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xml:lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta name="description" content="Carbon emission calculator to determin carbon emission figures per source">
+
     <meta charset="utf-8"/>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <script src="js/jquery-1.6.1.min.js"></script>
-    <script src="js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="js/echart/echarts.min.js"></script>
-    <script src="js/echart/drawchart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/light-bootstrap-dashboard.js?v=1.4.0"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -21,11 +18,13 @@
     <!-- Bootstrap core CSS     -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+    </style>
     <link href="css/pe-icon-7-stroke.css" rel="stylesheet"/>
     <!--  Light Bootstrap Table core CSS    -->
     <link href="css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 <div class="wrapper">
@@ -36,9 +35,9 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <img src="images/profile.png" alt="Avatar" class="avatar">
-                <a href="#" class="simple-text">
+                <div class="simple-text">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
-                </a>
+                </div>
                 <div style="display: flex; justify-content: center; margin-left:-5%;">
                     <p style="font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]
                     </p>
@@ -77,8 +76,8 @@
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><p style="font-size: 95%;">
-                    </p></a>
+                    <div class="navbar-brand" href="#"><p style="font-size: 95%;">
+                    </p></div>
                 </div>
                 <div class="collapse navbar-collapse">
                     <form th:action="@{/logout}" method="post">
@@ -93,11 +92,7 @@
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
+                                    <li><a href="viewAccount">Account Info</a></li>
                                     <li class="divider"></li>
                                     <li><a href="logout">Log out</a></li>
                                 </ul>
@@ -130,7 +125,7 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="card" style="background-color:white; margin-bottom:-8%">
-                                                    <div class="btn-group" style="margin: auto; width:115%;">
+                                                    <div class="btn-group" style="margin: auto; width:118%;">
                                                         <a href="addFoodView" class="btn btn-arrows">FOOD</a>
                                                         <a href="addTransportView" class="btn btn-arrows">TRANSPORT</a>
                                                         <a href="addHouseEnergyView" class="btn btn-arrows">HOUSE</a>
@@ -141,9 +136,13 @@
                                                             <img src="images/plane.png" alt="bulb clip art"
                                                                  style="width:105%;margin-bottom: 5%; margin-left:-3%; margin-top:5%;">
                                                         </div>
-                                                        <h3 id="tableH3"> Enter distance travelled in
+                                                        <label for="distance" style="font-size: 0.1%; color: white;">Select
+                                                            food</label>
+
+                                                        <h3 id="tableH3" style="margin-top: -.1%"> Enter distance
+                                                            travelled in
                                                             km</h3>
-                                                        <input type="number" min="0" name="distance"
+                                                        <input type="number" min="0" name="distance" id="distance"
                                                                value="0" required
                                                                th:field="*{quantity}"
                                                                th:object="${flightObject}">
@@ -179,61 +178,54 @@
                                 statistics.<br>Calculated totals can be removed by navigating to your account.</i></h3>
 
 
-                            <div id="googleMap" style="width:100%;height:400px;"></div>
+<!--                            <div id="googleMap" style="width:100%;height:400px;"></div>-->
 
-                            <script>
-                                function myMap() {
-                                    var mapProp = {
-                                        center: new google.maps.LatLng(51.508742, -0.120850),
-                                        zoom: 5,
-                                    };
-                                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-                                }
-                            </script>
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpDwv3elCPVhrEVMgjCvo6TxmLT-HbM1c&callback=myMap"></script>
+<!--                            <script>-->
+<!--                                function myMap() {-->
+<!--                                    var mapProp = {-->
+<!--                                        center: new google.maps.LatLng(51.508742, -0.120850),-->
+<!--                                        zoom: 5,-->
+<!--                                    };-->
+<!--                                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);-->
+<!--                                }-->
+<!--                            </script>-->
+<!--                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpDwv3elCPVhrEVMgjCvo6TxmLT-HbM1c&callback=myMap"></script>-->
 
-<!--                            <div style="width: 100%">-->
-<!--                                <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0"-->
-<!--                                        marginwidth="0"-->
-<!--                                        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>-->
-<!--                                <a href="https://www.maps.ie/draw-radius-circle-map/">Measure km radius</a></div>-->
-
-<!--                        </div>-->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Contact
-                            </a>
-                        </li>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Contact
+                                </a>
+                            </li>
 
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy;
-                    <script>document.write(new Date().getFullYear())</script>
-                    <a href="#">SUSTAIN</a> What change will you make?
-                </p>
-            </div>
-        </footer>
+                        </ul>
+                    </nav>
+                    <p class="copyright pull-right">
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script>
+                        <a href="#">SUSTAIN</a> What change will you make?
+                    </p>
+                </div>
+            </footer>
+        </div>
     </div>
-</div>
 </div>
 
 </body>
