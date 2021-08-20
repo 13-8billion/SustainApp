@@ -284,7 +284,8 @@ public class AppController {
     // CALC FOOD
 
     @PostMapping(value = "/calcFood", params = "add")
-    public ModelAndView addFood(@ModelAttribute("foodObject") AddEmission foodObject, @ModelAttribute("type") String foodN,
+    public ModelAndView addFood(@ModelAttribute("foodObject") AddEmission foodObject,
+                                @ModelAttribute("type") String foodN,
                                 @ModelAttribute("quantity") double g, Model model) {
         double res = 0;
         String username = userDetails.returnUsername();
@@ -294,9 +295,10 @@ public class AppController {
 
             if (food.getFoodName().equals(foodN)) {
 
-                double oneG = food.getCo2g() / 100; // oneG = kg of co2 per 1gram of food.. co2g is kg co2 per 100 gram of food
-
-                res = g * oneG; // result is user input grams * oneG (kg of co2 per 1 gram of food item)
+                double oneG = food.getCo2g() / 100;
+                // oneG = kg of co2 per 1gram of food - co2g is kg co2 per 100 gram of food
+                res = g * oneG;
+                // result is user input grams * oneG (kg of co2 per 1 gram of food item)
                 res = Math.round(res * 100);
                 res = res / 100; // get to the nearest 2 decimal place
             }
@@ -318,7 +320,8 @@ public class AppController {
             foodObject.setRes(res);
             foodObject.setUsername(username);
             aes.save(foodObject);
-            model.addAttribute("res", g + "g " + "of " + foodN + " = " + res + " kg of CO₂");
+            model.addAttribute("res", g + "g " + "of "
+                    + foodN + " = " + res + " kg of CO₂");
             model.addAttribute("type", foodN);
             model.addAttribute("quantity", g);
             return new ModelAndView("addFood");
@@ -327,7 +330,8 @@ public class AppController {
 
     @PostMapping(value = "/calcFood", params = "calc")
     public ModelAndView calcFoodTotal(@ModelAttribute("foodTotalObject") EmissionTotal foodTotalObject,
-                                      @ModelAttribute("foodObject") AddEmission foodObject, @ModelAttribute("type") String foodN,
+                                      @ModelAttribute("foodObject") AddEmission foodObject,
+                                      @ModelAttribute("type") String foodN,
                                       @ModelAttribute("quantity") double g, Model model) {
 
         List<AddEmission> ufl = aes.listAll();

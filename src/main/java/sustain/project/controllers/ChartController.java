@@ -22,12 +22,6 @@ public class ChartController {
     private EmissionTotalService ets;
     @Autowired
     private OverAllTotalService oats;
-    @Autowired
-    private TransportTotalService tts;
-    @Autowired
-    private HouseEnergyTotalService hets;
-    @Autowired
-    private FlightTotalService flts;
 
     private final LocalDate now = LocalDate.now();
 
@@ -849,9 +843,8 @@ public class ChartController {
     @GetMapping("/dashboard")
     public String dashStats(Model model) {
 
-
         String username = userDetails.returnUsername();
-        List<EmissionTotal> et = ets.listAll();
+        List<EmissionTotal> ft = ets.listAll();
 
         double total1 = 0, total2 = 0, total3 = 0, total4 = 0, total5 = 0, total6 = 0, total7 = 0,
                 total8 = 0, total9 = 0, total10 = 0, total11 = 0, total12 = 0;
@@ -873,7 +866,7 @@ public class ChartController {
 
         // FOOD
 
-        for (EmissionTotal foodTotal : et) {
+        for (EmissionTotal foodTotal : ft) {
             if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 1 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total1 = total1 + foodTotal.getTotalCo2();
                 oat1.setUsername(username);
@@ -983,8 +976,9 @@ public class ChartController {
 
         // TRANSPORT
 
+        List<EmissionTotal> tt = ets.listAll();
 
-        for (EmissionTotal transTotal : et) {
+        for (EmissionTotal transTotal : tt) {
 
             if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 1 && transTotal.getUsername().equals(username)) {
                 total1 = transTotal.getTotalCo2();
@@ -1095,8 +1089,9 @@ public class ChartController {
 
         // HOUSE ENERGY
 
+        List<EmissionTotal> het = ets.listAll();
 
-        for (EmissionTotal houseTotal : et) {
+        for (EmissionTotal houseTotal : het) {
 
             if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 1 && houseTotal.getUsername().equals(username)) {
                 total1 = houseTotal.getTotalCo2();
@@ -1205,11 +1200,12 @@ public class ChartController {
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
 
-
         // FLIGHT
 
 
-        for (EmissionTotal flightTotal : et) {
+        List<EmissionTotal> flt = ets.listAll();
+
+        for (EmissionTotal flightTotal : flt) {
 
             if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 1 && flightTotal.getUsername().equals(username)) {
                 total1 = flightTotal.getTotalCo2();
@@ -1335,6 +1331,11 @@ public class ChartController {
         double transT = 0;
         double houseT = 0;
         double flightT = 0;
+
+        List<EmissionTotal> et = ets.listAll();
+//        List<TransportTotal> trans = tts.listAll();
+//        List<HouseEnergyTotal> house = hets.listAll();
+//        List<FlightTotal> flights = flts.listAll();
 
         for (EmissionTotal food : et) {
 
