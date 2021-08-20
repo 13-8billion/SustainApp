@@ -94,7 +94,7 @@ input[type=text], input[type=password], input[type=email], select, #foodName{
     min-width:43vh;
     padding: 1%;
     margin: 1% 0;
-    border-radius: 50px;
+    border-radius: 5px;
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, .1);
     transition: 0.5s;
@@ -147,7 +147,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, sel
     min-height: 6vh;
     margin: 1% 0;
     border: none;
-    border-radius: 40px;
+    border-radius: 5px;
     cursor: pointer;
     outline: none;
     font-family: Helvetica, sans-serif;
@@ -173,7 +173,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, sel
     color: #4dffa6;
     padding: 1%;
     border: none;
-    border-radius: 40px;
+    border-radius: 5px;
     cursor: pointer;
     outline: none;
     font-family: Helvetica, sans-serif;

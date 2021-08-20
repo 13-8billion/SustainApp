@@ -1,4 +1,5 @@
 package sustain.project.models;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -7,8 +8,8 @@ import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "TransportTotal")
-public class TransportTotal implements Serializable {
+@Table(name = "EmissionTotal")
+public class EmissionTotal implements Serializable {
     private static final long serialVersionUID = 1L;
 
     // VARIABLES
@@ -19,14 +20,32 @@ public class TransportTotal implements Serializable {
     private String username;
     @Column(name = "totalCo2")
     private double totalCo2;
+    @Column(name = "emissionType")
+    private String emissionType;
     @Column
     @Transient
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+
+    // CONSTRUCTORS
+
+    public EmissionTotal(int ID, String username) {
+        this.ID = ID;
+        this.username = username;
     }
+
+
+    public EmissionTotal(double totalCo2) {
+        this.totalCo2 = totalCo2;
+
+    }
+
+    public EmissionTotal() {
+
+    }
+
+    // SETTERS AND GETTERS
 
     @Id //  mySQL primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,6 +74,14 @@ public class TransportTotal implements Serializable {
         this.totalCo2 = totalCo2;
     }
 
+    public String getEmissionType() {
+        return emissionType;
+    }
+
+    public void setEmissionType(String emissionType) {
+        this.emissionType = emissionType;
+    }
+
     public LocalDate getDate() {
         return date;
     }
@@ -62,4 +89,5 @@ public class TransportTotal implements Serializable {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
 }

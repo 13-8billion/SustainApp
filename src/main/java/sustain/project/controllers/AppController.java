@@ -25,31 +25,24 @@ public class AppController {
     private UserService service;
 
     @Autowired
+    private CustomUserDetailsService userDetails;
+
+    @Autowired
     private AddEmissionService aes;
+
+    @Autowired
+    private EmissionTotalService ets;
 
     @Autowired
     private FoodService f;
 
     @Autowired
-    private CustomUserDetailsService userDetails;
-
-    @Autowired
-    private FoodTotalService fts;
-
-    @Autowired
     private TransportService ts;
-
-    @Autowired
-    private TransportTotalService tts;
 
     @Autowired
     private HouseEnergyService hes;
 
-    @Autowired
-    private HouseEnergyTotalService hets;
 
-    @Autowired
-    private FlightTotalService flts;
 
     // VIEWS
 
@@ -228,6 +221,8 @@ public class AppController {
             return "register_success";
         }
     }
+
+
     @PostMapping("/editSave")
     public String editSave(@Valid User user, BindingResult bindingResult,
                            @ModelAttribute("username") String username,
@@ -331,7 +326,7 @@ public class AppController {
     }
 
     @PostMapping(value = "/calcFood", params = "calc")
-    public ModelAndView calcFoodTotal(@ModelAttribute("foodTotalObject") FoodTotal foodTotalObject,
+    public ModelAndView calcFoodTotal(@ModelAttribute("foodTotalObject") EmissionTotal foodTotalObject,
                                       @ModelAttribute("foodObject") AddEmission foodObject, @ModelAttribute("type") String foodN,
                                       @ModelAttribute("quantity") double g, Model model) {
 
@@ -353,7 +348,8 @@ public class AppController {
 
         foodTotalObject.setTotalCo2(total);
         foodTotalObject.setDate(date);
-        fts.save(foodTotalObject);
+        foodTotalObject.setEmissionType("food");
+        ets.save(foodTotalObject);
         model.addAttribute("total", "Total CO₂ = " + total + " kg");
         // have to add above /calcFood method attributes here too
         // and in method parameters else form submit won't work
@@ -411,7 +407,7 @@ public class AppController {
     }
 
     @PostMapping(value = "/calcTransport", params = "calc")
-    public ModelAndView calcTransportTotal(@ModelAttribute("transTotalObject") TransportTotal transTotalObject,
+    public ModelAndView calcTransportTotal(@ModelAttribute("transTotalObject") EmissionTotal transTotalObject,
                                            @ModelAttribute("transObject") AddEmission transObject, @ModelAttribute("type") String type,
                                            @ModelAttribute("quantity") double d, Model model) {
 
@@ -434,7 +430,8 @@ public class AppController {
 
         transTotalObject.setTotalCo2(total);
         transTotalObject.setDate(date);
-        tts.save(transTotalObject);
+        transTotalObject.setEmissionType("transport");
+        ets.save(transTotalObject);
 
         model.addAttribute("total", "Total CO₂ = " + total + " kg");
         // have to add above /calcFood method attributes here too
@@ -493,7 +490,7 @@ public class AppController {
     }
 
     @PostMapping(value = "/calcHouse", params = "calc")
-    public ModelAndView calcHouseTotal(@ModelAttribute("houseTotalObject") HouseEnergyTotal houseTotalObject,
+    public ModelAndView calcHouseTotal(@ModelAttribute("houseTotalObject") EmissionTotal houseTotalObject,
                                        @ModelAttribute("houseObject") AddEmission houseObject, @ModelAttribute("type") String etype,
                                        @ModelAttribute("quantity") double kWh, Model model) {
 
@@ -514,9 +511,10 @@ public class AppController {
         }
 
 
-        houseTotalObject.setTotal(total);
+        houseTotalObject.setTotalCo2(total);
         houseTotalObject.setDate(date);
-        hets.save(houseTotalObject);
+        houseTotalObject.setEmissionType("home");
+        ets.save(houseTotalObject);
 
         model.addAttribute("total", "Total CO₂ = " + total + " kg");
         // have to add above /calcFood method attributes here too
@@ -561,7 +559,7 @@ public class AppController {
     }
 
     @PostMapping(value = "/calcFlight", params = "calc")
-    public ModelAndView calcFlightTotal(@ModelAttribute("flightTotalObject") FlightTotal flightTotalObject,
+    public ModelAndView calcFlightTotal(@ModelAttribute("flightTotalObject") EmissionTotal flightTotalObject,
                                         @ModelAttribute("flightObject") AddEmission flightObject, @ModelAttribute("quantity") double distance,
                                         Model model) {
 
@@ -581,9 +579,10 @@ public class AppController {
             }
         }
 
-        flightTotalObject.setTotal(total);
+        flightTotalObject.setTotalCo2(total);
         flightTotalObject.setDate(date);
-        flts.save(flightTotalObject);
+        flightTotalObject.setEmissionType("flight");
+        ets.save(flightTotalObject);
 
         model.addAttribute("total", "Total CO₂ = " + total + " kg");
         // have to add above /calcFood method attributes here too

@@ -19,7 +19,7 @@ public class ChartController {
     @Autowired
     private CustomUserDetailsService userDetails;
     @Autowired
-    private FoodTotalService fts;
+    private EmissionTotalService ets;
     @Autowired
     private OverAllTotalService oats;
     @Autowired
@@ -38,7 +38,7 @@ public class ChartController {
     public String lastYearStats(Model model) {
 
         String username = userDetails.returnUsername();
-        List<FoodTotal> ft = fts.listAll();
+        List<EmissionTotal> et = ets.listAll();
 
         double total1 = 0, total2 = 0, total3 = 0, total4 = 0, total5 = 0, total6 = 0, total7 = 0,
                 total8 = 0, total9 = 0, total10 = 0, total11 = 0, total12 = 0;
@@ -60,8 +60,8 @@ public class ChartController {
 
         // FOOD
 
-        for (FoodTotal foodTotal : ft) {
-            if (foodTotal.getDate().getMonthValue() == 1 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+        for (EmissionTotal foodTotal : et) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 1 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total1 = total1 + foodTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
@@ -69,7 +69,7 @@ public class ChartController {
                 oats.save(oat1);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 2 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 2 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total2 = total2 + foodTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
@@ -77,7 +77,7 @@ public class ChartController {
                 oats.save(oat2);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 3 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 3 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total3 = total3 + foodTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
@@ -85,7 +85,7 @@ public class ChartController {
                 oats.save(oat3);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 4 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 4 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total4 = total4 + foodTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
@@ -93,7 +93,7 @@ public class ChartController {
                 oats.save(oat4);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 5 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 5 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total5 = total5 + foodTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
@@ -101,7 +101,7 @@ public class ChartController {
                 oats.save(oat5);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 6 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 6 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total6 = total6 + foodTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
@@ -109,7 +109,7 @@ public class ChartController {
                 oats.save(oat6);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 7 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 7 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total7 = total7 + foodTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
@@ -117,7 +117,7 @@ public class ChartController {
                 oats.save(oat7);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 8 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 8 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total8 = total8 + foodTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
@@ -125,7 +125,7 @@ public class ChartController {
                 oats.save(oat8);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 9 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 9 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total9 = total9 + foodTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
@@ -133,7 +133,7 @@ public class ChartController {
                 oats.save(oat9);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 10 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 10 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total10 = total10 + foodTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
@@ -141,7 +141,7 @@ public class ChartController {
                 oats.save(oat10);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 11 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 11 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total11 = total11 + foodTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
@@ -149,7 +149,7 @@ public class ChartController {
                 oats.save(oat11);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 12 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 12 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total12 = total12 + foodTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
@@ -170,11 +170,10 @@ public class ChartController {
 
         // TRANSPORT
 
-        List<TransportTotal> tt = tts.listAll();
 
-        for (TransportTotal transTotal : tt) {
+        for (EmissionTotal transTotal : et) {
 
-            if (transTotal.getDate().getMonthValue() == 1 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 1 && transTotal.getUsername().equals(username)) {
                 total1 = transTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
@@ -182,7 +181,7 @@ public class ChartController {
                 oats.save(oat1);
             }
 
-            if (transTotal.getDate().getMonthValue() == 2 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 2 && transTotal.getUsername().equals(username)) {
                 total2 = transTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
@@ -191,7 +190,7 @@ public class ChartController {
             }
 
 
-            if (transTotal.getDate().getMonthValue() == 3 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 3 && transTotal.getUsername().equals(username)) {
                 total3 = transTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
@@ -199,7 +198,7 @@ public class ChartController {
                 oats.save(oat3);
             }
 
-            if (transTotal.getDate().getMonthValue() == 4 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 4 && transTotal.getUsername().equals(username)) {
                 total4 = transTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
@@ -207,7 +206,7 @@ public class ChartController {
                 oats.save(oat4);
             }
 
-            if (transTotal.getDate().getMonthValue() == 5 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 5 && transTotal.getUsername().equals(username)) {
                 total5 = transTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
@@ -215,7 +214,7 @@ public class ChartController {
                 oats.save(oat5);
             }
 
-            if (transTotal.getDate().getMonthValue() == 6 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 6 && transTotal.getUsername().equals(username)) {
                 total6 = transTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
@@ -223,7 +222,7 @@ public class ChartController {
                 oats.save(oat6);
             }
 
-            if (transTotal.getDate().getMonthValue() == 7 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 7 && transTotal.getUsername().equals(username)) {
                 total7 = transTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
@@ -231,7 +230,7 @@ public class ChartController {
                 oats.save(oat7);
             }
 
-            if (transTotal.getDate().getMonthValue() == 8 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 8 && transTotal.getUsername().equals(username)) {
                 total8 = transTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
@@ -239,7 +238,7 @@ public class ChartController {
                 oats.save(oat8);
             }
 
-            if (transTotal.getDate().getMonthValue() == 9 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 9 && transTotal.getUsername().equals(username)) {
                 total9 = transTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
@@ -247,7 +246,7 @@ public class ChartController {
                 oats.save(oat9);
             }
 
-            if (transTotal.getDate().getMonthValue() == 10 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 10 && transTotal.getUsername().equals(username)) {
                 total10 = transTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
@@ -255,7 +254,7 @@ public class ChartController {
                 oats.save(oat10);
             }
 
-            if (transTotal.getDate().getMonthValue() == 11 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 11 && transTotal.getUsername().equals(username)) {
                 total11 = transTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
@@ -263,7 +262,7 @@ public class ChartController {
                 oats.save(oat11);
             }
 
-            if (transTotal.getDate().getMonthValue() == 12 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 12 && transTotal.getUsername().equals(username)) {
                 total12 = transTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
@@ -283,20 +282,19 @@ public class ChartController {
 
         // HOUSE ENERGY
 
-        List<HouseEnergyTotal> het = hets.listAll();
 
-        for (HouseEnergyTotal houseTotal : het) {
+        for (EmissionTotal houseTotal : et) {
 
-            if (houseTotal.getDate().getMonthValue() == 1 && houseTotal.getUsername().equals(username)) {
-                total1 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 1 && houseTotal.getUsername().equals(username)) {
+                total1 = houseTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
                 oat1.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 2 && houseTotal.getUsername().equals(username)) {
-                total2 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 2 && houseTotal.getUsername().equals(username)) {
+                total2 = houseTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
                 oat2.setMonthly(houseTotal.getDate().getMonthValue());
@@ -304,80 +302,80 @@ public class ChartController {
             }
 
 
-            if (houseTotal.getDate().getMonthValue() == 3 && houseTotal.getUsername().equals(username)) {
-                total3 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 3 && houseTotal.getUsername().equals(username)) {
+                total3 = houseTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
                 oat3.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 4 && houseTotal.getUsername().equals(username)) {
-                total4 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 4 && houseTotal.getUsername().equals(username)) {
+                total4 = houseTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
                 oat4.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 5 && houseTotal.getUsername().equals(username)) {
-                total5 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 5 && houseTotal.getUsername().equals(username)) {
+                total5 = houseTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
                 oat5.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 6 && houseTotal.getUsername().equals(username)) {
-                total6 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 6 && houseTotal.getUsername().equals(username)) {
+                total6 = houseTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
                 oat6.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 7 && houseTotal.getUsername().equals(username)) {
-                total7 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 7 && houseTotal.getUsername().equals(username)) {
+                total7 = houseTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
                 oat7.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat7);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 8 && houseTotal.getUsername().equals(username)) {
-                total8 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 8 && houseTotal.getUsername().equals(username)) {
+                total8 = houseTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
                 oat8.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 9 && houseTotal.getUsername().equals(username)) {
-                total9 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 9 && houseTotal.getUsername().equals(username)) {
+                total9 = houseTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
                 oat9.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 10 && houseTotal.getUsername().equals(username)) {
-                total10 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 10 && houseTotal.getUsername().equals(username)) {
+                total10 = houseTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
                 oat10.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 11 && houseTotal.getUsername().equals(username)) {
-                total11 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 11 && houseTotal.getUsername().equals(username)) {
+                total11 = houseTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
                 oat11.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 12 && houseTotal.getUsername().equals(username)) {
-                total12 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 12 && houseTotal.getUsername().equals(username)) {
+                total12 = houseTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
                 oat12.setMonthly(houseTotal.getDate().getMonthValue());
@@ -394,15 +392,14 @@ public class ChartController {
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
 
+
         // FLIGHT
 
 
-        List<FlightTotal> flt = flts.listAll();
+        for (EmissionTotal flightTotal : et) {
 
-        for (FlightTotal flightTotal : flt) {
-
-            if (flightTotal.getDate().getMonthValue() == 1 && flightTotal.getUsername().equals(username)) {
-                total1 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 1 && flightTotal.getUsername().equals(username)) {
+                total1 = flightTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
 //                Month month = Month.from(flightTotal.getDate());
@@ -410,8 +407,8 @@ public class ChartController {
                 oats.save(oat1);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 2 && flightTotal.getUsername().equals(username)) {
-                total2 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 2 && flightTotal.getUsername().equals(username)) {
+                total2 = flightTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
 //                Month month = Month.from(flightTotal.getDate());
@@ -419,8 +416,8 @@ public class ChartController {
                 oats.save(oat2);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 3 && flightTotal.getUsername().equals(username)) {
-                total3 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 3 && flightTotal.getUsername().equals(username)) {
+                total3 = flightTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
 //                Month month = Month.from(flightTotal.getDate());
@@ -428,8 +425,8 @@ public class ChartController {
                 oats.save(oat3);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 4 && flightTotal.getUsername().equals(username)) {
-                total4 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 4 && flightTotal.getUsername().equals(username)) {
+                total4 = flightTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
 //                Month month = Month.from(flightTotal.getDate());
@@ -437,8 +434,8 @@ public class ChartController {
                 oats.save(oat4);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 5 && flightTotal.getUsername().equals(username)) {
-                total5 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 5 && flightTotal.getUsername().equals(username)) {
+                total5 = flightTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
 //                Month month = Month.from(flightTotal.getDate());
@@ -446,8 +443,8 @@ public class ChartController {
                 oats.save(oat5);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 6 && flightTotal.getUsername().equals(username)) {
-                total6 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 6 && flightTotal.getUsername().equals(username)) {
+                total6 = flightTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
 //                Month month = Month.from(flightTotal.getDate());
@@ -455,8 +452,8 @@ public class ChartController {
                 oats.save(oat6);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 7 && flightTotal.getUsername().equals(username)) {
-                total7 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 7 && flightTotal.getUsername().equals(username)) {
+                total7 = flightTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
 //                Month month = Month.from(flightTotal.getDate());
@@ -464,8 +461,8 @@ public class ChartController {
                 oats.save(oat7);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 8 && flightTotal.getUsername().equals(username)) {
-                total8 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 8 && flightTotal.getUsername().equals(username)) {
+                total8 = flightTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
 //                Month month = Month.from(flightTotal.getDate());
@@ -473,8 +470,8 @@ public class ChartController {
                 oats.save(oat8);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 9 && flightTotal.getUsername().equals(username)) {
-                total9 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 9 && flightTotal.getUsername().equals(username)) {
+                total9 = flightTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
 //                Month month = Month.from(flightTotal.getDate());
@@ -482,8 +479,8 @@ public class ChartController {
                 oats.save(oat9);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 10 && flightTotal.getUsername().equals(username)) {
-                total10 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 10 && flightTotal.getUsername().equals(username)) {
+                total10 = flightTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
 //                Month month = Month.from(flightTotal.getDate());
@@ -491,8 +488,8 @@ public class ChartController {
                 oats.save(oat10);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 11 && flightTotal.getUsername().equals(username)) {
-                total11 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 11 && flightTotal.getUsername().equals(username)) {
+                total11 = flightTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
 //                Month month = Month.from(flightTotal.getDate());
@@ -500,8 +497,8 @@ public class ChartController {
                 oats.save(oat11);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 12 && flightTotal.getUsername().equals(username)) {
-                total12 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 12 && flightTotal.getUsername().equals(username)) {
+                total12 = flightTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
 //                Month month = Month.from(flightTotal.getDate());
@@ -526,40 +523,35 @@ public class ChartController {
         double houseT = 0;
         double flightT = 0;
 
-        List<FoodTotal> foods = fts.listAll();
-        List<TransportTotal> trans = tts.listAll();
-        List<HouseEnergyTotal> house = hets.listAll();
-        List<FlightTotal> flights = flts.listAll();
+        for (EmissionTotal food : et) {
 
-        for (FoodTotal food : foods) {
-
-            if (food.getUsername().equals(username)) {
+            if (food.getEmissionType().equals("food") && food.getUsername().equals(username)) {
 
                 foodT = foodT + food.getTotalCo2();
             }
         }
 
-        for (TransportTotal tran : trans) {
+        for (EmissionTotal tran : et) {
 
-            if (tran.getUsername().equals(username)) {
+            if (tran.getEmissionType().equals("transport") && tran.getUsername().equals(username)) {
 
                 transT = transT + tran.getTotalCo2();
             }
         }
 
-        for (HouseEnergyTotal houseEnergyTotal : house) {
+        for (EmissionTotal houseEnergyTotal : et) {
 
-            if (houseEnergyTotal.getUsername().equals(username)) {
+            if (houseEnergyTotal.getEmissionType().equals("food") && houseEnergyTotal.getUsername().equals(username)) {
 
-                houseT = houseT + houseEnergyTotal.getTotal();
+                houseT = houseT + houseEnergyTotal.getTotalCo2();
             }
         }
 
-        for (FlightTotal flight : flights) {
+        for (EmissionTotal flight : et) {
 
-            if (flight.getUsername().equals(username)) {
+            if (flight.getEmissionType().equals("flight") && flight.getUsername().equals(username)) {
 
-                flightT = flightT + flight.getTotal();
+                flightT = flightT + flight.getTotalCo2();
             }
         }
 
@@ -576,17 +568,17 @@ public class ChartController {
 
         // FOOD
 
-        List<FoodTotal> ft = fts.listAll();
+        List<EmissionTotal> et = ets.listAll();
         String username = userDetails.returnUsername();
 
-        for (int i = 0; i<ft.size(); i ++) {
-            if (ft.get(i).getDate().getMonthValue() == now.getMonthValue() && ft.get(i).getUsername().equals(username)) {
+        for (EmissionTotal emissionTotal : et) {
+            if (emissionTotal.getEmissionType().equals("food") && emissionTotal.getDate().getMonthValue() == now.getMonthValue() && emissionTotal.getUsername().equals(username)) {
                 OverAllTotal foodMonth = new OverAllTotal();
                 double total = 0;
-                total = total + ft.get(i).getTotalCo2();
+                total = total + emissionTotal.getTotalCo2();
                 foodMonth.setUsername(username);
                 foodMonth.setTotal(total);
-                foodMonth.setFullDate(ft.get(i).getDate());
+                foodMonth.setFullDate(emissionTotal.getDate());
 
 //
 //                if(ft.get(i).getDate() == ft.get(i).getDate()){
@@ -610,15 +602,13 @@ public class ChartController {
 
         // TRANSPORT
 
-        List<TransportTotal> tt = tts.listAll();
-
-        for (TransportTotal transTotal : tt) {
-            if (transTotal.getDate().getMonthValue() == now.getMonthValue() && transTotal.getUsername().equals(username)) {
+        for (EmissionTotal emissionTotal : et) {
+            if (emissionTotal.getEmissionType().equals("transport") &&  emissionTotal.getDate().getMonthValue() == now.getMonthValue() && emissionTotal.getUsername().equals(username)) {
                 OverAllTotal transMonth = new OverAllTotal();
 
                 transMonth.setUsername(username);
-                transMonth.setTotal(transTotal.getTotalCo2());
-                transMonth.setFullDate(transTotal.getDate());
+                transMonth.setTotal(emissionTotal.getTotalCo2());
+                transMonth.setFullDate(emissionTotal.getDate());
                 oats.save(transMonth);
             }
 
@@ -632,14 +622,13 @@ public class ChartController {
 
         // HOUSE
 
-        List<HouseEnergyTotal> ht = hets.listAll();
 
-        for (HouseEnergyTotal houseTotal : ht) {
-            if (houseTotal.getDate().getMonthValue() == now.getMonthValue() && houseTotal.getUsername().equals(username)) {
+        for (EmissionTotal houseTotal : et) {
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == now.getMonthValue() && houseTotal.getUsername().equals(username)) {
                 OverAllTotal houseMonth = new OverAllTotal();
 
                 houseMonth.setUsername(username);
-                houseMonth.setTotal(houseTotal.getTotal());
+                houseMonth.setTotal(houseTotal.getTotalCo2());
                 houseMonth.setFullDate(houseTotal.getDate());
                 oats.save(houseMonth);
             }
@@ -654,14 +643,13 @@ public class ChartController {
 
         // FLIGHT
 
-        List<FlightTotal> flt = flts.listAll();
 
-        for (FlightTotal flightTotal : flt) {
-            if (flightTotal.getDate().getMonthValue() == now.getMonthValue() && flightTotal.getUsername().equals(username)) {
+        for (EmissionTotal flightTotal : et) {
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == now.getMonthValue() && flightTotal.getUsername().equals(username)) {
                 OverAllTotal flightMonth = new OverAllTotal();
 
                 flightMonth.setUsername(username);
-                flightMonth.setTotal(flightTotal.getTotal());
+                flightMonth.setTotal(flightTotal.getTotalCo2());
                 flightMonth.setFullDate(flightTotal.getDate());
                 oats.save(flightMonth);
             }
@@ -682,7 +670,7 @@ public class ChartController {
 
         // FOOD
 
-        List<FoodTotal> ft = fts.listAll();
+        List<EmissionTotal> et = ets.listAll();
         String username = userDetails.returnUsername();
         LocalDate startDate = LocalDate.now().minusDays(7);
         LocalDate endDate = LocalDate.now();
@@ -695,15 +683,15 @@ public class ChartController {
         ArrayList<LocalDate> arListDates = new ArrayList<>(listOfDates);
         ArrayList<LocalDate> arrDate = new ArrayList<>();
 
-        for (FoodTotal foodTotal : ft) {
+        for (EmissionTotal foodTotal : et) {
 
             arrDate.add(foodTotal.getDate());
         }
         arrDate.retainAll(arListDates);
 
-        for (FoodTotal foodTotal : ft) {
+        for (EmissionTotal foodTotal : et) {
 
-            if (arrDate.contains(foodTotal.getDate()) && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && arrDate.contains(foodTotal.getDate()) && foodTotal.getUsername().equals(username)) {
 
                 OverAllTotal foodWeek = new OverAllTotal();
                 foodWeek.setUsername(username);
@@ -724,17 +712,16 @@ public class ChartController {
 
         // TRANSPORT
 
-        List<TransportTotal> tt = tts.listAll();
 
-        for (TransportTotal transTotal : tt) {
+        for (EmissionTotal transTotal : et) {
 
             arrDate.add(transTotal.getDate());
         }
         arrDate.retainAll(arListDates);
 
-        for (TransportTotal transTotal : tt) {
+        for (EmissionTotal transTotal : et) {
 
-            if (arrDate.contains(transTotal.getDate()) && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && arrDate.contains(transTotal.getDate()) && transTotal.getUsername().equals(username)) {
 
                 OverAllTotal transWeek = new OverAllTotal();
 
@@ -752,24 +739,23 @@ public class ChartController {
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
 
+
         // HOUSE
 
-        List<HouseEnergyTotal> het = hets.listAll();
-
-        for (HouseEnergyTotal houseTotal : het) {
+        for (EmissionTotal houseTotal : et) {
 
             arrDate.add(houseTotal.getDate());
         }
         arrDate.retainAll(arListDates);
 
-        for (HouseEnergyTotal houseTotal : het) {
+        for (EmissionTotal houseTotal : et) {
 
-            if (arrDate.contains(houseTotal.getDate()) && houseTotal.getUsername().equals(username)) {
+            if (houseTotal.getEmissionType().equals("home") && arrDate.contains(houseTotal.getDate()) && houseTotal.getUsername().equals(username)) {
 
                 OverAllTotal houseWeek = new OverAllTotal();
 
                 houseWeek.setUsername(username);
-                houseWeek.setTotal(houseTotal.getTotal());
+                houseWeek.setTotal(houseTotal.getTotalCo2());
                 houseWeek.setFullDate(houseTotal.getDate());
                 oats.save(houseWeek);
             }
@@ -782,24 +768,23 @@ public class ChartController {
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
 
+
         // FLIGHT
 
-        List<FlightTotal> flt = flts.listAll();
-
-        for (FlightTotal flightTotal : flt) {
+        for (EmissionTotal flightTotal : et) {
 
             arrDate.add(flightTotal.getDate());
         }
         arrDate.retainAll(arListDates);
 
-        for (FlightTotal flightTotal : flt) {
+        for (EmissionTotal flightTotal : et) {
 
-            if (arrDate.contains(flightTotal.getDate()) && flightTotal.getUsername().equals(username)) {
+            if (flightTotal.getEmissionType().equals("flight") && arrDate.contains(flightTotal.getDate()) && flightTotal.getUsername().equals(username)) {
 
                 OverAllTotal flightWeek = new OverAllTotal();
 
                 flightWeek.setUsername(username);
-                flightWeek.setTotal(flightTotal.getTotal());
+                flightWeek.setTotal(flightTotal.getTotalCo2());
                 flightWeek.setFullDate(flightTotal.getDate());
                 oats.save(flightWeek);
             }
@@ -815,46 +800,40 @@ public class ChartController {
 
         // PIE CHART
 
-
         double foodT = 0;
         double transT = 0;
         double houseT = 0;
         double flightT = 0;
 
-        List<FoodTotal> foods = fts.listAll();
-        List<TransportTotal> trans = tts.listAll();
-        List<HouseEnergyTotal> house = hets.listAll();
-        List<FlightTotal> flights = flts.listAll();
+        for (EmissionTotal food : et) {
 
-        for (FoodTotal food : foods) {
-
-            if (arrDate.contains(food.getDate()) && food.getUsername().equals(username)) {
+            if (food.getEmissionType().equals("food") && arrDate.contains(food.getDate()) && food.getUsername().equals(username)) {
 
                 foodT = foodT + food.getTotalCo2();
             }
         }
 
-        for (TransportTotal tran : trans) {
+        for (EmissionTotal tran : et) {
 
-            if (arrDate.contains(tran.getDate()) && tran.getUsername().equals(username)) {
+            if (tran.getEmissionType().equals("transport") && arrDate.contains(tran.getDate()) && tran.getUsername().equals(username)) {
 
                 transT = transT + tran.getTotalCo2();
             }
         }
 
-        for (int i = 0; i < house.size(); i++) {
+        for (EmissionTotal houseEnergyTotal : et) {
 
-            if (arrDate.contains(house.get(i).getDate()) && house.get(i).getUsername().equals(username)) {
+            if (houseEnergyTotal.getEmissionType().equals("home") && arrDate.contains(houseEnergyTotal.getDate()) && houseEnergyTotal.getUsername().equals(username)) {
 
-                houseT = houseT + house.get(i).getTotal();
+                houseT = houseT + houseEnergyTotal.getTotalCo2();
             }
         }
 
-        for (int i = 0; i < flights.size(); i++) {
+        for (EmissionTotal flight : et) {
 
-            if (arrDate.contains(flights.get(i).getDate()) && flights.get(i).getUsername().equals(username)) {
+            if (flight.getEmissionType().equals("flight") && arrDate.contains(flight.getDate()) && flight.getUsername().equals(username)) {
 
-                flightT = flightT + flights.get(i).getTotal();
+                flightT = flightT + flight.getTotalCo2();
             }
         }
 
@@ -868,40 +847,34 @@ public class ChartController {
     }
 
     @GetMapping("/dashboard")
-    public String showStatsDash(Model model) {
+    public String dashStats(Model model) {
+
 
         String username = userDetails.returnUsername();
-        List<FoodTotal> ft = fts.listAll();
-        double total1 = 0;
-        double total2 = 0;
-        double total3 = 0;
-        double total4 = 0;
-        double total5 = 0;
-        double total6 = 0;
-        double total7 = 0;
-        double total8 = 0;
-        double total9 = 0;
-        double total10 = 0;
-        double total11 = 0;
-        double total12 = 0;
+        List<EmissionTotal> et = ets.listAll();
 
-        OverAllTotal oat1 = new OverAllTotal();
-        OverAllTotal oat2 = new OverAllTotal();
-        OverAllTotal oat3 = new OverAllTotal();
-        OverAllTotal oat4 = new OverAllTotal();
-        OverAllTotal oat5 = new OverAllTotal();
-        OverAllTotal oat6 = new OverAllTotal();
-        OverAllTotal oat7 = new OverAllTotal();
-        OverAllTotal oat8 = new OverAllTotal();
-        OverAllTotal oat9 = new OverAllTotal();
-        OverAllTotal oat10 = new OverAllTotal();
-        OverAllTotal oat11 = new OverAllTotal();
-        OverAllTotal oat12 = new OverAllTotal();
+        double total1 = 0, total2 = 0, total3 = 0, total4 = 0, total5 = 0, total6 = 0, total7 = 0,
+                total8 = 0, total9 = 0, total10 = 0, total11 = 0, total12 = 0;
+
+        OverAllTotal oat1, oat2, oat3, oat4, oat5, oat6, oat7, oat8, oat9, oat10, oat11, oat12;
+        oat1 = new OverAllTotal();
+        oat2 = new OverAllTotal();
+        oat3 = new OverAllTotal();
+        oat4 = new OverAllTotal();
+        oat5 = new OverAllTotal();
+        oat6 = new OverAllTotal();
+        oat7 = new OverAllTotal();
+        oat8 = new OverAllTotal();
+        oat9 = new OverAllTotal();
+        oat10 = new OverAllTotal();
+        oat11 = new OverAllTotal();
+        oat12 = new OverAllTotal();
+
 
         // FOOD
 
-        for (FoodTotal foodTotal : ft) {
-            if (foodTotal.getDate().getMonthValue() == 1 && foodTotal.getUsername().equals(username)) {
+        for (EmissionTotal foodTotal : et) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 1 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total1 = total1 + foodTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
@@ -909,7 +882,7 @@ public class ChartController {
                 oats.save(oat1);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 2 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 2 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total2 = total2 + foodTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
@@ -917,8 +890,7 @@ public class ChartController {
                 oats.save(oat2);
             }
 
-
-            if (foodTotal.getDate().getMonthValue() == 3 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 3 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total3 = total3 + foodTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
@@ -926,7 +898,7 @@ public class ChartController {
                 oats.save(oat3);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 4 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 4 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total4 = total4 + foodTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
@@ -934,7 +906,7 @@ public class ChartController {
                 oats.save(oat4);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 5 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 5 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total5 = total5 + foodTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
@@ -942,7 +914,7 @@ public class ChartController {
                 oats.save(oat5);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 6 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 6 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total6 = total6 + foodTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
@@ -950,7 +922,7 @@ public class ChartController {
                 oats.save(oat6);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 7 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 7 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total7 = total7 + foodTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
@@ -958,7 +930,7 @@ public class ChartController {
                 oats.save(oat7);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 8 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 8 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total8 = total8 + foodTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
@@ -966,7 +938,7 @@ public class ChartController {
                 oats.save(oat8);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 9 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 9 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total9 = total9 + foodTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
@@ -974,7 +946,7 @@ public class ChartController {
                 oats.save(oat9);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 10 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 10 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total10 = total10 + foodTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
@@ -982,7 +954,7 @@ public class ChartController {
                 oats.save(oat10);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 11 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 11 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total11 = total11 + foodTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
@@ -990,7 +962,7 @@ public class ChartController {
                 oats.save(oat11);
             }
 
-            if (foodTotal.getDate().getMonthValue() == 12 && foodTotal.getUsername().equals(username)) {
+            if (foodTotal.getEmissionType().equals("food") && foodTotal.getDate().getMonthValue() == 12 && foodTotal.getDate().getYear() == now.getYear() && foodTotal.getUsername().equals(username)) {
                 total12 = total12 + foodTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
@@ -1011,11 +983,10 @@ public class ChartController {
 
         // TRANSPORT
 
-        List<TransportTotal> tt = tts.listAll();
 
-        for (TransportTotal transTotal : tt) {
+        for (EmissionTotal transTotal : et) {
 
-            if (transTotal.getDate().getMonthValue() == 1 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 1 && transTotal.getUsername().equals(username)) {
                 total1 = transTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
@@ -1023,7 +994,7 @@ public class ChartController {
                 oats.save(oat1);
             }
 
-            if (transTotal.getDate().getMonthValue() == 2 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 2 && transTotal.getUsername().equals(username)) {
                 total2 = transTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
@@ -1032,7 +1003,7 @@ public class ChartController {
             }
 
 
-            if (transTotal.getDate().getMonthValue() == 3 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 3 && transTotal.getUsername().equals(username)) {
                 total3 = transTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
@@ -1040,7 +1011,7 @@ public class ChartController {
                 oats.save(oat3);
             }
 
-            if (transTotal.getDate().getMonthValue() == 4 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 4 && transTotal.getUsername().equals(username)) {
                 total4 = transTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
@@ -1048,7 +1019,7 @@ public class ChartController {
                 oats.save(oat4);
             }
 
-            if (transTotal.getDate().getMonthValue() == 5 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 5 && transTotal.getUsername().equals(username)) {
                 total5 = transTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
@@ -1056,7 +1027,7 @@ public class ChartController {
                 oats.save(oat5);
             }
 
-            if (transTotal.getDate().getMonthValue() == 6 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 6 && transTotal.getUsername().equals(username)) {
                 total6 = transTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
@@ -1064,7 +1035,7 @@ public class ChartController {
                 oats.save(oat6);
             }
 
-            if (transTotal.getDate().getMonthValue() == 7 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 7 && transTotal.getUsername().equals(username)) {
                 total7 = transTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
@@ -1072,7 +1043,7 @@ public class ChartController {
                 oats.save(oat7);
             }
 
-            if (transTotal.getDate().getMonthValue() == 8 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 8 && transTotal.getUsername().equals(username)) {
                 total8 = transTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
@@ -1080,7 +1051,7 @@ public class ChartController {
                 oats.save(oat8);
             }
 
-            if (transTotal.getDate().getMonthValue() == 9 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 9 && transTotal.getUsername().equals(username)) {
                 total9 = transTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
@@ -1088,7 +1059,7 @@ public class ChartController {
                 oats.save(oat9);
             }
 
-            if (transTotal.getDate().getMonthValue() == 10 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 10 && transTotal.getUsername().equals(username)) {
                 total10 = transTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
@@ -1096,7 +1067,7 @@ public class ChartController {
                 oats.save(oat10);
             }
 
-            if (transTotal.getDate().getMonthValue() == 11 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 11 && transTotal.getUsername().equals(username)) {
                 total11 = transTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
@@ -1104,7 +1075,7 @@ public class ChartController {
                 oats.save(oat11);
             }
 
-            if (transTotal.getDate().getMonthValue() == 12 && transTotal.getUsername().equals(username)) {
+            if (transTotal.getEmissionType().equals("transport") && transTotal.getDate().getMonthValue() == 12 && transTotal.getUsername().equals(username)) {
                 total12 = transTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
@@ -1124,20 +1095,19 @@ public class ChartController {
 
         // HOUSE ENERGY
 
-        List<HouseEnergyTotal> het = hets.listAll();
 
-        for (HouseEnergyTotal houseTotal : het) {
+        for (EmissionTotal houseTotal : et) {
 
-            if (houseTotal.getDate().getMonthValue() == 1 && houseTotal.getUsername().equals(username)) {
-                total1 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 1 && houseTotal.getUsername().equals(username)) {
+                total1 = houseTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
                 oat1.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat1);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 2 && houseTotal.getUsername().equals(username)) {
-                total2 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 2 && houseTotal.getUsername().equals(username)) {
+                total2 = houseTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
                 oat2.setMonthly(houseTotal.getDate().getMonthValue());
@@ -1145,80 +1115,80 @@ public class ChartController {
             }
 
 
-            if (houseTotal.getDate().getMonthValue() == 3 && houseTotal.getUsername().equals(username)) {
-                total3 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 3 && houseTotal.getUsername().equals(username)) {
+                total3 = houseTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
                 oat3.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat3);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 4 && houseTotal.getUsername().equals(username)) {
-                total4 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 4 && houseTotal.getUsername().equals(username)) {
+                total4 = houseTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
                 oat4.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat4);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 5 && houseTotal.getUsername().equals(username)) {
-                total5 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 5 && houseTotal.getUsername().equals(username)) {
+                total5 = houseTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
                 oat5.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat5);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 6 && houseTotal.getUsername().equals(username)) {
-                total6 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 6 && houseTotal.getUsername().equals(username)) {
+                total6 = houseTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
                 oat6.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat6);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 7 && houseTotal.getUsername().equals(username)) {
-                total7 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 7 && houseTotal.getUsername().equals(username)) {
+                total7 = houseTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
                 oat7.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat7);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 8 && houseTotal.getUsername().equals(username)) {
-                total8 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 8 && houseTotal.getUsername().equals(username)) {
+                total8 = houseTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
                 oat8.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat8);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 9 && houseTotal.getUsername().equals(username)) {
-                total9 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 9 && houseTotal.getUsername().equals(username)) {
+                total9 = houseTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
                 oat9.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat9);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 10 && houseTotal.getUsername().equals(username)) {
-                total10 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 10 && houseTotal.getUsername().equals(username)) {
+                total10 = houseTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
                 oat10.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat10);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 11 && houseTotal.getUsername().equals(username)) {
-                total11 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 11 && houseTotal.getUsername().equals(username)) {
+                total11 = houseTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
                 oat11.setMonthly(houseTotal.getDate().getMonthValue());
                 oats.save(oat11);
             }
 
-            if (houseTotal.getDate().getMonthValue() == 12 && houseTotal.getUsername().equals(username)) {
-                total12 = houseTotal.getTotal();
+            if (houseTotal.getEmissionType().equals("home") && houseTotal.getDate().getMonthValue() == 12 && houseTotal.getUsername().equals(username)) {
+                total12 = houseTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
                 oat12.setMonthly(houseTotal.getDate().getMonthValue());
@@ -1235,15 +1205,14 @@ public class ChartController {
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
 
+
         // FLIGHT
 
 
-        List<FlightTotal> flt = flts.listAll();
+        for (EmissionTotal flightTotal : et) {
 
-        for (FlightTotal flightTotal : flt) {
-
-            if (flightTotal.getDate().getMonthValue() == 1 && flightTotal.getUsername().equals(username)) {
-                total1 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 1 && flightTotal.getUsername().equals(username)) {
+                total1 = flightTotal.getTotalCo2();
                 oat1.setUsername(username);
                 oat1.setTotal(total1);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1251,8 +1220,8 @@ public class ChartController {
                 oats.save(oat1);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 2 && flightTotal.getUsername().equals(username)) {
-                total2 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 2 && flightTotal.getUsername().equals(username)) {
+                total2 = flightTotal.getTotalCo2();
                 oat2.setUsername(username);
                 oat2.setTotal(total2);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1260,9 +1229,8 @@ public class ChartController {
                 oats.save(oat2);
             }
 
-
-            if (flightTotal.getDate().getMonthValue() == 3 && flightTotal.getUsername().equals(username)) {
-                total3 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 3 && flightTotal.getUsername().equals(username)) {
+                total3 = flightTotal.getTotalCo2();
                 oat3.setUsername(username);
                 oat3.setTotal(total3);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1270,8 +1238,8 @@ public class ChartController {
                 oats.save(oat3);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 4 && flightTotal.getUsername().equals(username)) {
-                total4 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 4 && flightTotal.getUsername().equals(username)) {
+                total4 = flightTotal.getTotalCo2();
                 oat4.setUsername(username);
                 oat4.setTotal(total4);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1279,8 +1247,8 @@ public class ChartController {
                 oats.save(oat4);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 5 && flightTotal.getUsername().equals(username)) {
-                total5 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 5 && flightTotal.getUsername().equals(username)) {
+                total5 = flightTotal.getTotalCo2();
                 oat5.setUsername(username);
                 oat5.setTotal(total5);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1288,8 +1256,8 @@ public class ChartController {
                 oats.save(oat5);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 6 && flightTotal.getUsername().equals(username)) {
-                total6 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 6 && flightTotal.getUsername().equals(username)) {
+                total6 = flightTotal.getTotalCo2();
                 oat6.setUsername(username);
                 oat6.setTotal(total6);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1297,8 +1265,8 @@ public class ChartController {
                 oats.save(oat6);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 7 && flightTotal.getUsername().equals(username)) {
-                total7 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 7 && flightTotal.getUsername().equals(username)) {
+                total7 = flightTotal.getTotalCo2();
                 oat7.setUsername(username);
                 oat7.setTotal(total7);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1306,8 +1274,8 @@ public class ChartController {
                 oats.save(oat7);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 8 && flightTotal.getUsername().equals(username)) {
-                total8 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 8 && flightTotal.getUsername().equals(username)) {
+                total8 = flightTotal.getTotalCo2();
                 oat8.setUsername(username);
                 oat8.setTotal(total8);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1315,8 +1283,8 @@ public class ChartController {
                 oats.save(oat8);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 9 && flightTotal.getUsername().equals(username)) {
-                total9 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 9 && flightTotal.getUsername().equals(username)) {
+                total9 = flightTotal.getTotalCo2();
                 oat9.setUsername(username);
                 oat9.setTotal(total9);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1324,8 +1292,8 @@ public class ChartController {
                 oats.save(oat9);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 10 && flightTotal.getUsername().equals(username)) {
-                total10 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 10 && flightTotal.getUsername().equals(username)) {
+                total10 = flightTotal.getTotalCo2();
                 oat10.setUsername(username);
                 oat10.setTotal(total10);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1333,8 +1301,8 @@ public class ChartController {
                 oats.save(oat10);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 11 && flightTotal.getUsername().equals(username)) {
-                total11 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 11 && flightTotal.getUsername().equals(username)) {
+                total11 = flightTotal.getTotalCo2();
                 oat11.setUsername(username);
                 oat11.setTotal(total11);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1342,8 +1310,8 @@ public class ChartController {
                 oats.save(oat11);
             }
 
-            if (flightTotal.getDate().getMonthValue() == 12 && flightTotal.getUsername().equals(username)) {
-                total12 = flightTotal.getTotal();
+            if (flightTotal.getEmissionType().equals("flight") && flightTotal.getDate().getMonthValue() == 12 && flightTotal.getUsername().equals(username)) {
+                total12 = flightTotal.getTotalCo2();
                 oat12.setUsername(username);
                 oat12.setTotal(total12);
 //                Month month = Month.from(flightTotal.getDate());
@@ -1356,9 +1324,7 @@ public class ChartController {
             List<Integer> date = oats.listAll().stream().map(OverAllTotal::getMonthly).collect(Collectors.toList());
 
             model.addAttribute("totalFlight", totalFlight);
-            model.addAttribute("date", date);
-
-
+            model.addAttribute("dateFl", date);
         }
         deleteTotalObject = oats.listAll();
         oats.deleteAll(deleteTotalObject);
@@ -1370,40 +1336,35 @@ public class ChartController {
         double houseT = 0;
         double flightT = 0;
 
-        List<FoodTotal> foods = fts.listAll();
-        List<TransportTotal> trans = tts.listAll();
-        List<HouseEnergyTotal> house = hets.listAll();
-        List<FlightTotal> flights = flts.listAll();
+        for (EmissionTotal food : et) {
 
-        for (FoodTotal food : foods) {
-
-            if (food.getUsername().equals(username)) {
+            if (food.getEmissionType().equals("food") && food.getUsername().equals(username)) {
 
                 foodT = foodT + food.getTotalCo2();
             }
         }
 
-        for (TransportTotal tran : trans) {
+        for (EmissionTotal tran : et) {
 
-            if (tran.getUsername().equals(username)) {
+            if (tran.getEmissionType().equals("transport") && tran.getUsername().equals(username)) {
 
                 transT = transT + tran.getTotalCo2();
             }
         }
 
-        for (int i = 0; i < house.size(); i++) {
+        for (EmissionTotal houseEnergyTotal : et) {
 
-            if (house.get(i).getUsername().equals(username)) {
+            if (houseEnergyTotal.getEmissionType().equals("food") && houseEnergyTotal.getUsername().equals(username)) {
 
-                houseT = houseT + house.get(i).getTotal();
+                houseT = houseT + houseEnergyTotal.getTotalCo2();
             }
         }
 
-        for (int i = 0; i < flights.size(); i++) {
+        for (EmissionTotal flight : et) {
 
-            if (flights.get(i).getUsername().equals(username)) {
+            if (flight.getEmissionType().equals("flight") && flight.getUsername().equals(username)) {
 
-                flightT = flightT + flights.get(i).getTotal();
+                flightT = flightT + flight.getTotalCo2();
             }
         }
 
