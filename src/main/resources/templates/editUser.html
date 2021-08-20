@@ -116,7 +116,7 @@
                 <div class="row">
                     <div class="col-sm-8">
                         <div class="card" style="color: white">
-                            <form action="#" th:action="@{/save}" th:object="${user}"
+                            <form action="#" th:action="@{/editSave}" th:object="${user}"
                                   method="post" enctype="multipart/form-data">
 
                                 <table border="0" cellpadding="10">
@@ -134,7 +134,7 @@
                                     </tr>
                                     <tr>
                                         <td>email:</td>
-                                        <td><input type="text" th:field="*{email}" /></td>
+                                        <td><input type="text" th:field="*{email}"/></td>
                                     </tr>
                                     <tr>
                                         <td>location:</td>
@@ -142,7 +142,7 @@
                                     </tr>
                                     <tr>
                                         <td>Password:</td>
-                                        <td><input type="text" th:field="*{password}" /></td>
+                                        <td><input type="text" th:field="*{password}" readonly="readonly"/></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2"><button type="submit">Save</button> </td>
@@ -162,7 +162,6 @@
             </div>
         </div>
 
-        <button><a href="test">click me</a></button>
 
         <footer class="footer">
             <div class="container-fluid">

@@ -29,8 +29,21 @@
     list-style: none;
 }
 
-.container, #seasonalFood{
-    margin-left: -3%;
+.btn.btn-food.active{
+    color: #1ff394;
+    font-weight: bolder;
+}
+
+.btn.btn-food{
+    color: white;
+}
+
+.btn.btn-food:hover{
+    color: white;
+    color: #1ff394;
+}
+
+.container, #seasonalFood{margin-left: -3%;
     display: grid;
     /*height: 700px;*/
     grid-template-columns: 440px 440px;

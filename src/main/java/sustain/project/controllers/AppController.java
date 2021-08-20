@@ -53,24 +53,6 @@ public class AppController {
 
     // VIEWS
 
-    @RequestMapping("/test")
-    public String viewHomePage(Model model) {
-
-        List<User> listUser = service.listAll();
-        String username = userDetails.returnUsername();
-        User user = null;
-
-        for (int i = 0; i < listUser.size(); i++) {
-            if (listUser.get(i).getUsername().equals(username)) {
-                user = listUser.get(i);
-            }
-        }
-        model.addAttribute("userInfo", user);
-
-        return "list"; // return is how the method takes you to the html page
-        // must be same name as page
-    }
-
     @RequestMapping(value = "/")
     public ModelAndView showLanding() {
         return new ModelAndView("index");
@@ -89,20 +71,22 @@ public class AppController {
     @RequestMapping("/viewAccount")
     public ModelAndView viewAccount(Model model) {
 
+        User user = new User();
+        model.addAttribute("user", user);
+
         List<User> listUser = service.listAll();
         String username = userDetails.returnUsername();
-        User user = null;
+        User user2 = null;
 
         for (int i = 0; i < listUser.size(); i++) {
             if (listUser.get(i).getUsername().equals(username)) {
-                user = listUser.get(i);
+                user2 = listUser.get(i);
             }
         }
-        model.addAttribute("userInfo", user);
+        model.addAttribute("userInfo", user2);
 
         return new ModelAndView("userAccount");
     }
-
 
     @RequestMapping("/signUp")
     public String showSignUpForm(Model model) {
@@ -185,6 +169,7 @@ public class AppController {
     }
 
 
+
     // USER METHODS
     @PostMapping("/save")
     public String saveUser(@Valid User user, BindingResult bindingResult,
@@ -241,6 +226,63 @@ public class AppController {
 //            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             service.save(user);
             return "register_success";
+        }
+    }
+    @PostMapping("/editSave")
+    public String editSave(@Valid User user, BindingResult bindingResult,
+                           @ModelAttribute("username") String username,
+                           @ModelAttribute("email") String email,
+                           @ModelAttribute("location") String location,
+                           Model model) {
+//        @RequestParam("image") MultipartFile multipartFile) throws IOException
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        ArrayList<String> names = new ArrayList<>();
+
+        for (int i = 0; i < service.listAll().size(); i++) {
+            names.add(service.listAll().get(i).getUsername());
+        }
+
+        ArrayList<String> emails = new ArrayList<>();
+
+        for (int i = 0; i < service.listAll().size(); i++) {
+            emails.add(service.listAll().get(i).getEmail());
+        }
+
+        model.addAttribute("username", username);
+        model.addAttribute("email", email);
+        model.addAttribute("location", location);
+
+        if (bindingResult.hasErrors()) {
+            return "signUp";
+
+        }
+        if (names.contains(username)) {
+            String uErr = "*Username already exists!";
+            model.addAttribute("uErr", uErr);
+            return "signUp";
+
+        }
+        if (emails.contains(email)) {
+
+            String eErr = "*Email already exists!";
+            model.addAttribute("eErr", eErr);
+            return "signUp";
+        }
+        if (location.equals("")) {
+            String lErr = "*Choose a location!";
+            model.addAttribute("lErr", lErr);
+            return "signUp";
+
+        } else {
+
+//            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//            user.setProfilePic(fileName);
+//            String uploadDir = "profilePics/" + user.getUserID();
+//            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+            service.save(user);
+            return "editUser";
         }
     }
 
@@ -574,9 +616,10 @@ public class AppController {
         ModelAndView mav = new ModelAndView("editUser"); // name of html page
         User user = service.get(userID);
         mav.addObject("user", user);
-
         return mav;
     }
+
+
 
     @RequestMapping("/delete/{userID}")
     public String deleteUser(@PathVariable(name = "userID") int userID) {

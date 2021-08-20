@@ -18,7 +18,7 @@ body {
 .backgroundSignUp {
     background-size: cover;
     min-height: 100vh; /* so background stays full size of viewport*/
-    background-image: url('../images/lake.jpeg');
+    background-image: url('../images/northernLights1.jpeg');
     width: 100%;
 }
 
@@ -48,8 +48,8 @@ body {
 }
 
 #logo {
-   width: 30%;
-   padding: 2%;
+    width: 30%;
+    padding: 2%;
     margin-top:2%;
 }
 
@@ -184,8 +184,9 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, sel
 
 
 #copy{
-    color: #454545;
+    color: #ffffff;
     font-family: Helvetica, sans-serif;
+    margin-top: 3%;
 }
 
 

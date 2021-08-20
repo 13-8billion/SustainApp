@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <meta  name="description" content="Display of user generated carbon emission statistics, viewable by year, month or week">
+    <meta name="description"
+          content="Display of user generated carbon emission statistics, viewable by year, month or week">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -29,20 +30,15 @@
 <body>
 <div class="wrapper">
 
-    <img src="images/sideLogo.png" alt="sideLogo" id="smallLogo">
+    <img src="images/sideLogo.png" alt="sideLogo"
+         id="smallLogo" height="auto">
     <div class="sidebar" data-color="azure" data-image="images/sidebar-5.jpg">
         <div class="sidebar-wrapper">
             <div class="logo">
-
-                <img src="images/profile.png" alt="Avatar" class="avatar" id="profile-pic">
-                <div style="margin-top:-15%; margin-left: 62%;">
-                    <i class="fa fa-camera upload-button" style="color:#ffffff"></i>
-                    <input class="file-upload" style="display: none" type="file" accept="images/*" name="image"/>
-                </div>
-
-                <a href="#" class="simple-text" style="margin-top:5%;">
+                <img src="images/profile.png" alt="Avatar" class="avatar">
+                <div class="simple-text">
                     <b>[[${#request.userPrincipal.principal.username}]]</b>
-                </a>
+                </div>
                 <div style="display: flex; justify-content: center; margin-left:-5%;">
                     <p style="font-size: 100%; color:#e0dede; margin-top:-15%"><i class="pe-7s-map-marker"></i>&nbsp;[[${#request.userPrincipal.principal.location}]]
                     </p>
@@ -115,15 +111,15 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-8">
-                        <div class="card" style="color: white">
+                    <div class="col-sm-12">
+                        <div class="card" style="color: white; padding:1%;" >
                             <table border="1">
                                 <thead>
                                 <tr>
                                     <th>Email</th>
                                     <th>Username</th>
                                     <th>Location</th>
-                                    <th>Password</th>
+<!--                                    <th>Password</th>-->
                                     <th>Edit/Delete</th>
                                 </tr>
                                 </thead>
@@ -132,17 +128,49 @@
                                     <td th:text="${user.email}">email</td>
                                     <td th:text="${user.username}">username</td>
                                     <td th:text="${user.location}">location</td>
-                                    <td th:text="${user.password}" type="password">password</td>
+<!--                                    <td th:text="${user.password}" type="password">password</td>-->
                                     <td><a th:href="@{'/edit/' + ${user.userID}}">Edit</a></td>
 
 
                                 </tr>
                                 </tbody>
                             </table>
+
+<!--                            <form action="#" th:action="@{/save}" th:object="${user}"-->
+<!--                                  method="post" enctype="multipart/form-data">-->
+
+<!--                                <table border="0" cellpadding="10">-->
+<!--                                    <tr>-->
+<!--                                        <td>UserID:</td>-->
+<!--                                        <td>-->
+<!--                                            <input type="text" th:field="*{userID}" readonly="readonly" />-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>username:</td>-->
+<!--                                        <td>-->
+<!--                                            <input type="text" th:field="*{username}" />-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>email:</td>-->
+<!--                                        <td><input type="text" th:field="*{email}" /></td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>location:</td>-->
+<!--                                        <td><input type="text" th:field="*{location}" /></td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td>Password:</td>-->
+<!--                                        <td><input type="text" th:field="*{password}" /></td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td colspan="2"><button type="submit">Save</button> </td>-->
+<!--                                    </tr>-->
+<!--                                </table>-->
+<!--                            </form>-->
                         </div>
                     </div>
-
-
                     <div class="col-md-8">
                         <div class="card" style="margin-top:-3%;">
 
@@ -151,9 +179,6 @@
                 </div>
             </div>
         </div>
-
-        <button><a href="test">click me</a></button>
-
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
