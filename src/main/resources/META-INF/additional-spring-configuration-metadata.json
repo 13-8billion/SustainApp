@@ -4,5 +4,10 @@
       "name": "spring.jpa.hibernate-auto",
       "type": "java.lang.String",
       "description": "Description for spring.jpa.hibernate-auto."
-  }
-] }
+    },
+    {
+      "name": "-Dserver.port",
+      "type": "java.lang.String",
+      "description": "Description for -Dserver.port."
+    }
+  ] }
