@@ -203,47 +203,6 @@ input[type=text]:focus, input[type=number]:focus, #select:focus, option:focus, #
     color: #727171;
 }
 
-/*@media screen and (max-width:576px) {*/
-/*    .btn-group {*/
-/*        margin-left: 33%;*/
-/*        display: flex;*/
-/*        flex-direction: column;*/
-/*        !*margin-top: -7%;*!*/
-/*        !*padding: 10px 10px 10px 10px;*!*/
-/*    }*/
-/*}*/
-
-/*@media (max-width: 991px) {*/
-/*    .btn-group > .btn {*/
-/*        display: block;*/
-/*        width: 100%;*/
-/*    }*/
-
-/*    !* making the border-radius correct *!*/
-/*    .btn-group > .btn:first-child {*/
-/*        border-radius: 6px 6px 0 0;*/
-/*    }*/
-/*    .btn-group> .btn:first-child:not(:last-child):not(.dropdown-toggle) {*/
-/*        border-top-right-radius: 6px;*/
-/*    }*/
-/*    .btn-group> .btn:last-child:not(:first-child) {*/
-/*        border-radius: 0 0 6px 6px;*/
-/*    }*/
-
-/*    !* fixing margin *!*/
-/*    .btn-group.btn + .btn {*/
-/*        margin-left: 0;*/
-/*    }*/
-
-/*}*/
-
-/*.btn-group.special {*/
-/*    display: flex;*/
-/*}*/
-
-/*!*.special .btn {*!*/
-/*!*    flex: 1;*!*/
-/*!*}*!*/
 
 .btn.btn-primary {
     color: #1ff394;
@@ -296,4 +255,14 @@ input[type=text]:focus, input[type=number]:focus, #select:focus, option:focus, #
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+}
+
+.userTable{
+
+}
+
+
+.userTableData{
+    padding: 10% 10% 10% 5%;
+
 }

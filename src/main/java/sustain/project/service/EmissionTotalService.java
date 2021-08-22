@@ -23,12 +23,12 @@ public class EmissionTotalService {
         repo.save(emissionTotalObject);
     }
 
-    public EmissionTotal get(String username) {
-        return repo.findById(username).get();
+    public EmissionTotal get(int id) {
+        return repo.findById(id).get();
     }
 
-    public void delete(String username) {
-        repo.deleteById(username);
+    public void delete(int id) {
+        repo.deleteById(id);
     }
 
 }

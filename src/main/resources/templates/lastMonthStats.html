@@ -146,8 +146,6 @@
                                         legend: {
                                             top: 'bottom',
                                             textStyle: {fontSize: 12, color: 'white'},
-                                            // orient: 'horizontal',
-                                            // left: 'center',
                                             data: ["Food", "Transport", "House", "Flight"],
                                         },
 
@@ -212,7 +210,6 @@
                                     const today = new Date();
                                     var option = {
                                             color: ['#44e394', 'rgb(88,175,248)', 'rgba(255, 0, 135)', 'rgba(255, 191, 0)'],
-                                            // backgroundColor: 'white',
                                             title: {
                                                 left: '2.3%',
                                                 itemGap: 4,
@@ -251,7 +248,6 @@
                                                 orient: 'horizontal',
                                                 left: 'center',
                                                 data: ["Food", "Transport", "House", "Flight"],
-                                                // bottom: 'bottom',
                                                 top: 'bottom',
                                                 icon: 'roundRect',
 
@@ -283,20 +279,6 @@
                                                 name: 'Food',
                                                 type: 'line',
                                                 smooth: 'true',
-                                                // stack: 'Total amount',
-                                                // itemStyle: {
-                                                //     normal: {
-                                                //         areaStyle: {
-                                                //             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                //                 offset: 0,
-                                                //                 color: 'rgba(128, 255, 165)'
-                                                //             }, {
-                                                //                 offset: 1,
-                                                //                 color: 'rgba(1, 191, 236)',
-                                                //             }])
-                                                //         }
-                                                //     }
-                                                // },
                                                 lineStyle: {normal: {color: '#44e394'}},
                                                 data: [[${totalfm}]],
                                                 text: 'CO₂ (kg)',
@@ -306,20 +288,6 @@
                                                     name: 'Transport',
                                                     type: 'line',
                                                     smooth: 'true',
-                                                    // stack: 'Total amount',
-                                                    // itemStyle: {
-                                                    //     normal: {
-                                                    //         areaStyle: {
-                                                    //             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                    //                 offset: 0,
-                                                    //                 color: 'rgba(55, 162, 255)'
-                                                    //             }, {
-                                                    //                 offset: 1,
-                                                    //                 color: 'rgba(116, 21, 219)'
-                                                    //             }])
-                                                    //         }
-                                                    //     }
-                                                    // },
                                                     lineStyle: {normal: {color: 'rgb(88,175,248)'}},
                                                     data: [[${totaltm}]],
                                                     text: 'CO₂ (kg)',
@@ -330,20 +298,6 @@
                                                     type: 'line',
                                                     smooth: 'true',
                                                     stack: 'Total amount',
-                                                    // itemStyle: {
-                                                    //     normal: {
-                                                    //         areaStyle: {
-                                                    //             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                    //                 offset: 0,
-                                                    //                 color: 'rgba(255, 0, 135)'
-                                                    //             }, {
-                                                    //                 offset: 1,
-                                                    //                 color: 'rgba(135, 0, 157)'
-                                                    //             }])
-                                                    //
-                                                    //         }
-                                                    //     }
-                                                    // },
                                                     lineStyle: {normal: {color: 'rgba(255, 0, 135)'}},
                                                     data: [[${totalhm}]],
                                                     text: 'CO₂ (kg)',
@@ -354,20 +308,6 @@
                                                     name: 'Flight',
                                                     type: 'line',
                                                     smooth: 'true',
-                                                    // stack: 'Total amount',
-                                                    // itemStyle: {
-                                                    //     normal: {
-                                                    //         areaStyle: {
-                                                    //             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                                    //                 offset: 0,
-                                                    //                 color: 'rgba(255, 191, 0)'
-                                                    //             }, {
-                                                    //                 offset: 1,
-                                                    //                 color: 'rgba(224, 62, 76)'
-                                                    //             }])
-                                                    //         }
-                                                    //     }
-                                                    // },
                                                     lineStyle: {normal: {color: 'rgba(255, 191, 0)'}},
                                                     data: [[${totalflm}]],
                                                     text: 'CO₂ (kg)',
@@ -382,7 +322,7 @@
                         </div>
                     </div>
                 </div>
-                <!--        </div>-->
+
 
                 <div class="content">
                     <div class="container-fluid">
@@ -441,7 +381,6 @@
                                             xAxis: {
                                                 type: 'category',
                                                 data: [[${datefm}]],
-                                                // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                                 boundaryGap: false,
                                                 axisLabel: {color: 'white'},
                                                 axisLine: {lineStyle: {color: '#7f7e7e'}},
@@ -549,7 +488,6 @@
                                                 xAxis: {
                                                     type: 'category',
                                                     data: [[${datetm}]],
-                                                    // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                                     boundaryGap: false,
                                                     axisLabel: {color: 'white'},
                                                     axisLine: {lineStyle: {color: '#7f7e7e'}},
@@ -664,7 +602,6 @@
                                                     xAxis: {
                                                         type: 'category',
                                                         data: [[${datehm}]],
-                                                        // data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                                                         boundaryGap: false,
                                                         axisLabel: {color: 'white'},
                                                         axisLine: {lineStyle: {color: '#7f7e7e'}},

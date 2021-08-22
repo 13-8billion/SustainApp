@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <title>Sign Up</title>
     <meta charset="UTF-8"/>
@@ -42,12 +42,13 @@
                             </div>
 
                             <div class="col-sm-12">
-                                <input type="text" th:field="*{username}"  name="username" placeholder="Username" style="margin-top:-1%"></div>
+                                <input type="text" th:field="*{username}" name="username" placeholder="Username"
+                                       style="margin-top:-1%"></div>
                             <div class="col-sm-12">
                                 <p th:if="${#fields.hasErrors('username')}" class="inputValidation"
                                    th:errors="*{username}"></p>
                                 <p th:text="${uErr}" class="inputValidation"></p>
-                        </div>
+                            </div>
                             <div class="col-sm-12">
                                 <select name="country" th:field="*{location}" style="margin-top:-1%">
                                     <option label="Location" value="">
@@ -785,18 +786,18 @@
                                         Zimbabwe
                                     </option>
                                 </select>
-                        </div>
-                        <div class="col-sm-12">
-                            <p th:text="${lErr}" class="inputValidation"></p>
-                        </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <p th:text="${lErr}" class="inputValidation"></p>
+                            </div>
                             <div class="col-sm-12">
                                 <input type="password" name="password" placeholder="Password" style="margin-top:-.01%"
                                        th:field="*{password}"/>
-                        </div>
+                            </div>
                             <div class="col-sm-12">
                                 <p th:if="${#fields.hasErrors('password')}" class="inputValidation"
                                    th:errors="*{password}"></p>
-                        </div>
+                            </div>
 
 
                             <div class="col-sm-12">
@@ -804,22 +805,12 @@
                                         id="createAcc">
                                     CREATE ACCOUNT
                                 </button>
-                        </div>
-<!--                            <div class="logo">-->
-
-<!--                            <div class="col-sm-12">-->
-<!--                                <img src="/@{${user.profilePicImagePath}}" alt="Avatar" class="avatar" id="profile-pic">-->
-<!--                                <div style="margin-top:-15%; margin-left: 62%;">-->
-<!--                                    <i class="fa fa-camera upload-button" style="color:#ffffff"></i>-->
-<!--                                    <input class="file-upload" type="file"  accept="images/*" name="image"/>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            </div>-->
+                            </div>
                             <br>
                             <br>
                             <div class="col-sm-12">
                                 <p id="copy" style="color: #ffffff; margin-top:1%">&copy; 2020-2021</p></div>
-                    </div>
+                        </div>
                     </div>
                 </div>
             </form>

@@ -21,6 +21,10 @@ import java.util.List;
 @Controller
 public class AppController {
 
+    //To implement CRUD operations in the AppController,
+    // an instance of all the service classes is injected via a
+    // private field using the @Autowired annotation.
+
     @Autowired
     private UserService service;
 
@@ -45,6 +49,10 @@ public class AppController {
 
 
     // VIEWS
+    //A View handler method is defined for each HTML5 template
+    // and is responsible for rendering the content to the user.
+    // Web requests defined in the HTML5 templates via hyperlinks,
+    // are mapped onto the handler methods with the @RequestMapping annotation
 
     @RequestMapping(value = "/")
     public ModelAndView showLanding() {
@@ -66,20 +74,43 @@ public class AppController {
 
         User user = new User();
         model.addAttribute("user", user);
+        EmissionTotal et = new EmissionTotal();
+        model.addAttribute("et", et);
 
         List<User> listUser = service.listAll();
         String username = userDetails.returnUsername();
-        User user2 = null;
+        String email=null;
+        String location=null;
+        int id=0;
 
-        for (int i = 0; i < listUser.size(); i++) {
-            if (listUser.get(i).getUsername().equals(username)) {
-                user2 = listUser.get(i);
+        for (User value : listUser) {
+            if (value.getUsername().equals(username)) {
+                username=value.getUsername();
+                email=value.getEmail();
+                location= value.getLocation();
+                id=value.getUserID();
             }
         }
-        model.addAttribute("userInfo", user2);
+
+        // to display user emissions data on their user profile with the option to delete
+        List<EmissionTotal> listEmissions = ets.listAll();
+
+        for (int j = 0; j<listEmissions.size();j++){
+
+            if(listEmissions.get(j).getUsername().equals(username)) {
+
+                model.addAttribute("listEmissions", listEmissions);
+            }
+        }
+
+        model.addAttribute("username", username);
+        model.addAttribute("email", email);
+        model.addAttribute("location", location);
+        model.addAttribute("id", id);
 
         return new ModelAndView("userAccount");
     }
+
 
     @RequestMapping("/signUp")
     public String showSignUpForm(Model model) {
@@ -164,13 +195,15 @@ public class AppController {
 
 
     // USER METHODS
+
     @PostMapping("/save")
     public String saveUser(@Valid User user, BindingResult bindingResult,
                                   @ModelAttribute("username") String username,
                                   @ModelAttribute("email") String email,
                                   @ModelAttribute("location") String location,
                                   Model model) {
-//        @RequestParam("image") MultipartFile multipartFile) throws IOException
+
+      //SPRING SECURITY PASSWORD ENCODER
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
@@ -190,6 +223,7 @@ public class AppController {
         model.addAttribute("email", email);
         model.addAttribute("location", location);
 
+        // INPUT VALIDATION
         if (bindingResult.hasErrors()) {
             return "signUp";
 
@@ -213,71 +247,10 @@ public class AppController {
 
         } else {
 
-//            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//            user.setProfilePic(fileName);
-//            String uploadDir = "profilePics/" + user.getUserID();
-//            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+            //the JpaRepository method save( ) to
+            // persist the User object to the respective database table.
             service.save(user);
             return "register_success";
-        }
-    }
-
-
-    @PostMapping("/editSave")
-    public String editSave(@Valid User user, BindingResult bindingResult,
-                           @ModelAttribute("username") String username,
-                           @ModelAttribute("email") String email,
-                           @ModelAttribute("location") String location,
-                           Model model) {
-//        @RequestParam("image") MultipartFile multipartFile) throws IOException
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        ArrayList<String> names = new ArrayList<>();
-
-        for (int i = 0; i < service.listAll().size(); i++) {
-            names.add(service.listAll().get(i).getUsername());
-        }
-
-        ArrayList<String> emails = new ArrayList<>();
-
-        for (int i = 0; i < service.listAll().size(); i++) {
-            emails.add(service.listAll().get(i).getEmail());
-        }
-
-        model.addAttribute("username", username);
-        model.addAttribute("email", email);
-        model.addAttribute("location", location);
-
-        if (bindingResult.hasErrors()) {
-            return "signUp";
-
-        }
-        if (names.contains(username)) {
-            String uErr = "*Username already exists!";
-            model.addAttribute("uErr", uErr);
-            return "signUp";
-
-        }
-        if (emails.contains(email)) {
-
-            String eErr = "*Email already exists!";
-            model.addAttribute("eErr", eErr);
-            return "signUp";
-        }
-        if (location.equals("")) {
-            String lErr = "*Choose a location!";
-            model.addAttribute("lErr", lErr);
-            return "signUp";
-
-        } else {
-
-//            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//            user.setProfilePic(fileName);
-//            String uploadDir = "profilePics/" + user.getUserID();
-//            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-            service.save(user);
-            return "editUser";
         }
     }
 
@@ -288,6 +261,9 @@ public class AppController {
                                 @ModelAttribute("type") String foodN,
                                 @ModelAttribute("quantity") double g, Model model) {
         double res = 0;
+        //the current user is associated with the calculator
+        // instance by passing the username to a local variable
+        // using a custom Spring Security method returnUsername( ).
         String username = userDetails.returnUsername();
         List<Food> fl = f.listAll();
 
@@ -304,6 +280,7 @@ public class AppController {
             }
         }
 
+        // INPUT VALIDATION
         if (foodN.equals("")) {
             String fErr = "*food/drink required!";
             model.addAttribute("fErr", fErr);
@@ -319,6 +296,8 @@ public class AppController {
         } else {
             foodObject.setRes(res);
             foodObject.setUsername(username);
+         //   AddEmission object and temporarily stored in the
+            //   respective table using the JpaRepository save( ) method.
             aes.save(foodObject);
             model.addAttribute("res", g + "g " + "of "
                     + foodN + " = " + res + " kg of CO₂");
@@ -355,10 +334,12 @@ public class AppController {
         foodTotalObject.setEmissionType("food");
         ets.save(foodTotalObject);
         model.addAttribute("total", "Total CO₂ = " + total + " kg");
-        // have to add above /calcFood method attributes here too
-        // and in method parameters else form submit won't work
+
         model.addAttribute("type", foodN);
         model.addAttribute("quantity", g);
+        //AddEmission object is iterated over using the Java
+        // Iterable interface and the JpaRepository method deleteAll( ) is called
+       // Deleting the contents prepares the database table for the next calculated instance
         Iterable<AddEmission> deleteFoodObject = aes.listAll();
         aes.deleteAll(deleteFoodObject);
 
@@ -600,7 +581,7 @@ public class AppController {
     }
 
 
-    // SECURITY
+    // METHOD TO RETRIEVE CURRENT USERNAME
 
     @Controller
     public class SecurityController {
@@ -613,22 +594,19 @@ public class AppController {
     }
 
 
-    @RequestMapping(value = "/edit/{userID}")
-    public ModelAndView editUser(@PathVariable(name = "userID") int userID) {
-
-        ModelAndView mav = new ModelAndView("editUser"); // name of html page
-        User user = service.get(userID);
-        mav.addObject("user", user);
-        return mav;
-    }
-
-
-
-    @RequestMapping("/delete/{userID}")
+    // DELETE METHODS
+    @RequestMapping("user/delete/{userID}")
     public String deleteUser(@PathVariable(name = "userID") int userID) {
         service.delete(userID);
 
-        return "redirect:/"; //eg. homepage
+        return "redirect:/"; //eg. login
+    }
+
+    @RequestMapping("/delete/{ID}")
+    public ModelAndView deleteEmission(@PathVariable(name = "ID") int id) {
+        ets.delete(id);
+
+        return new ModelAndView("redirect:/viewAccount");
     }
 
 }

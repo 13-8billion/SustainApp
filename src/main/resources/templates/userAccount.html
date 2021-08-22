@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta name="description"
           content="Display of user generated carbon emission statistics, viewable by year, month or week">
@@ -112,68 +112,57 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="card" style="color: white; padding:1%;" >
-                            <table border="1">
-                                <thead>
+                        <div class="card" style="color: white; padding:1%;">
+                            <h3 style="padding-left: .5%; color:rgba(255,0,135,0.65) ">Account Details</h3>
+                            <table class="userTable">
                                 <tr>
-                                    <th>Email</th>
-                                    <th>Username</th>
-                                    <th>Location</th>
-<!--                                    <th>Password</th>-->
-                                    <th>Edit/Delete</th>
+                                    <td class="userTableData" style="font-weight: bold">AccountID:</td>
+                                    <td class="userTableData" th:text="*{id}"></td>
+                                </tr>
+                                <tr>
+                                    <td class="userTableData" style="font-weight: bold">Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td class="userTableData" th:text="*{username}"></td>
+                                </tr>
+                                <tr>
+                                    <td class="userTableData" style="font-weight: bold">Email:</td>
+                                    <td class="userTableData" th:text="*{email}"></td>
+                                </tr>
+                                <tr>
+                                    <td class="userTableData" style="font-weight: bold">Location:</td>
+                                    <td class="userTableData" th:text="*{location}"></td>
+                                </tr>
+                            </table>
+                            <p style="padding-left: .5%;font-size:95%"><a th:href="@{'user/delete/' + ${id}}">Delete
+                                Account</a></p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card" style="padding:1%">
+                            <h3 style="padding-left: .5%; color:rgba(255,0,135,0.65) ">Delete Emissions Data</h3>
+
+                            <table class="table table-light">
+                                <thead>
+                                <tr style="color: white">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Emission Type</th>
+                                    <th scope="col">Total CO₂e</th>
+                                    <th scope="col"></th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr th:each="user : ${userInfo}">
-                                    <td th:text="${user.email}">email</td>
-                                    <td th:text="${user.username}">username</td>
-                                    <td th:text="${user.location}">location</td>
-<!--                                    <td th:text="${user.password}" type="password">password</td>-->
-                                    <td><a th:href="@{'/edit/' + ${user.userID}}">Edit</a></td>
-
-
+                                <tbody style="color: white">
+                                <tr th:each="et : ${listEmissions}">
+                                    <td th:text="${et.ID}">ID</td>
+                                    <td th:text="${et.date}">Emission Type</td>
+                                    <td th:text="${et.emissionType}">Date</td>
+                                    <td th:text="${et.totalCo2}">Total CO₂e</td>
+                                    <td>
+                                        <a th:href="@{'/delete/' + ${et.ID}}">Delete</a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
-
-<!--                            <form action="#" th:action="@{/save}" th:object="${user}"-->
-<!--                                  method="post" enctype="multipart/form-data">-->
-
-<!--                                <table border="0" cellpadding="10">-->
-<!--                                    <tr>-->
-<!--                                        <td>UserID:</td>-->
-<!--                                        <td>-->
-<!--                                            <input type="text" th:field="*{userID}" readonly="readonly" />-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td>username:</td>-->
-<!--                                        <td>-->
-<!--                                            <input type="text" th:field="*{username}" />-->
-<!--                                        </td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td>email:</td>-->
-<!--                                        <td><input type="text" th:field="*{email}" /></td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td>location:</td>-->
-<!--                                        <td><input type="text" th:field="*{location}" /></td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td>Password:</td>-->
-<!--                                        <td><input type="text" th:field="*{password}" /></td>-->
-<!--                                    </tr>-->
-<!--                                    <tr>-->
-<!--                                        <td colspan="2"><button type="submit">Save</button> </td>-->
-<!--                                    </tr>-->
-<!--                                </table>-->
-<!--                            </form>-->
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card" style="margin-top:-3%;">
-
                         </div>
                     </div>
                 </div>

@@ -25,18 +25,20 @@ public class ChartController {
 
     private final LocalDate now = LocalDate.now();
 
-    // METHODS
-
-
+    // LAST YEAR STATS
     @GetMapping("/lastYearStats")
     public String lastYearStats(Model model) {
 
         String username = userDetails.returnUsername();
+
+        // List of type EmissionTotal populated with the total CO₂e figures is instantiated.
         List<EmissionTotal> et = ets.listAll();
 
         double total1 = 0, total2 = 0, total3 = 0, total4 = 0, total5 = 0, total6 = 0, total7 = 0,
                 total8 = 0, total9 = 0, total10 = 0, total11 = 0, total12 = 0;
 
+
+        // instantiating the domain model class OverAllTotal, as a means to store the data
         OverAllTotal oat1, oat2, oat3, oat4, oat5, oat6, oat7, oat8, oat9, oat10, oat11, oat12;
         oat1 = new OverAllTotal();
         oat2 = new OverAllTotal();
@@ -557,6 +559,7 @@ public class ChartController {
         return "lastYearStats";
     }
 
+    // LAST MONTH STATS
     @GetMapping("/lastMonthStats")
     public String lastMonthStats(Model model) {
 
@@ -659,6 +662,7 @@ public class ChartController {
         return "lastMonthStats";
     }
 
+    // LAST WEEK STATS
     @GetMapping("/statistics")
     public String lastWeekStats(Model model) {
 
@@ -840,6 +844,7 @@ public class ChartController {
         return "statistics";
     }
 
+    // LAST YEAR STATS FOR DASHBOARD
     @GetMapping("/dashboard")
     public String dashStats(Model model) {
 

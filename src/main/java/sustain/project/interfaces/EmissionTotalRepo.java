@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import sustain.project.models.EmissionTotal;
 
 @Repository
-public interface EmissionTotalRepo extends JpaRepository<EmissionTotal, String> {
+public interface EmissionTotalRepo extends JpaRepository<EmissionTotal, Integer> {
 }
